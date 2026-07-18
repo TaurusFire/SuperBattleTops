@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://ctwv1cda675p3" path="res://Scenes/DefenceTop.tscn" id="5_50glp"]
 [ext_resource type="Script" uid="uid://cwfynragtcdna" path="res://Scripts/game_manager.gd" id="5_pbw6q"]
 [ext_resource type="Script" uid="uid://cdv62a0ahk1sb" path="res://Scripts/patterns/circle_pattern.gd" id="6_vy5pj"]
+[ext_resource type="Script" uid="uid://4g5lfuungv1k" path="res://Scripts/debugging_visuals.gd" id="7_bmxlf"]
+
+[sub_resource type="Resource" id="Resource_bmxlf"]
+script = ExtResource("4_v1gob")
+metadata/_custom_type_script = "uid://37lrv1kyiaif"
 
 [sub_resource type="Resource" id="Resource_grg3l"]
 script = ExtResource("4_v1gob")
@@ -18,9 +23,9 @@ metadata/_custom_type_script = "uid://37lrv1kyiaif"
 script = ExtResource("6_vy5pj")
 metadata/_custom_type_script = "uid://cdv62a0ahk1sb"
 
-[sub_resource type="Resource" id="Resource_bmxlf"]
-script = ExtResource("4_v1gob")
-metadata/_custom_type_script = "uid://37lrv1kyiaif"
+[sub_resource type="Resource" id="Resource_4kpch"]
+script = ExtResource("6_vy5pj")
+metadata/_custom_type_script = "uid://cdv62a0ahk1sb"
 
 [sub_resource type="Resource" id="Resource_1p5hy"]
 script = ExtResource("6_vy5pj")
@@ -29,10 +34,6 @@ metadata/_custom_type_script = "uid://cdv62a0ahk1sb"
 [sub_resource type="Resource" id="Resource_h1m7h"]
 script = ExtResource("4_v1gob")
 metadata/_custom_type_script = "uid://37lrv1kyiaif"
-
-[sub_resource type="Resource" id="Resource_4kpch"]
-script = ExtResource("6_vy5pj")
-metadata/_custom_type_script = "uid://cdv62a0ahk1sb"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kln2b"]
 
@@ -59,14 +60,17 @@ mass = 0.15
 continuous_cd = true
 rpm_base_decay_rate = 30.0
 rpm_decay_frac = 0.03
+movement_pattern = SubResource("Resource_bmxlf")
 pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_grg3l"), SubResource("Resource_frkhe")])
 pattern_weights = Array[float]([0.7, 0.3])
-movement_pattern = SubResource("Resource_bmxlf")
 base_knockback = 15
 defence = 20.0
 base_damage = 30
 weight = 0.2
 drift_wander = 0.03
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AttackTop" unique_id=970673739]
+script = ExtResource("7_bmxlf")
 
 [node name="DefenceTop" parent="." unique_id=833782843 instance=ExtResource("5_50glp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09121135, 0.109648645, -0.0709825)
@@ -74,9 +78,9 @@ visible = false
 mass = 0.25
 initial_rpm = 3500.0
 rpm_decay_frac = 0.02
+movement_pattern = SubResource("Resource_4kpch")
 pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_1p5hy"), SubResource("Resource_h1m7h")])
 pattern_weights = Array[float]([0.7, 0.3])
-movement_pattern = SubResource("Resource_4kpch")
 scale_floor = 0.8
 base_knockback = 10
 defence = 35.0
@@ -84,7 +88,7 @@ base_damage = 15
 weight = 0.3
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=100451635]
-transform = Transform3D(1, 0, 0, 0, 0.9081578, 0.41862804, 0, -0.41862804, 0.9081578, 0, 0.16765429, 0.25581196)
+transform = Transform3D(1, 0, 0, 0, 0.9081578, 0.41862804, 0, -0.41862804, 0.9081578, 0, 0.20146431, 0.27319103)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=744639338]
 transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 2.038272, 0)

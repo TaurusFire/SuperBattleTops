@@ -29,22 +29,23 @@ var _visual_rpm := 0.0 # for spawning
 @export var max_visual_spin := 40.0
 
 
-@export_group('Patterns')
-# pattern seeking
+@export_group('Movement')
+@export var movement_pattern: MovementPattern
+
+@export_subgroup('Speed')
+@export var pattern_speed := 2
+@export var speed_margin := 1.7 # affects move_cap, affects the max move per frame
+@export var base_responsiveness := 2 # affects how much actual move gets to max move
+@export var rotation_rate := 0.0
+
 @export_subgroup('Pattern Picking')
 @export var pattern_pool: Array[MovementPattern] = []
 @export var pattern_weights: Array[float] = []
 
-@export_subgroup('Pattern Seeking')
-@export var movement_pattern: MovementPattern
-@export var speed_margin := 1.4 # affects move_cap, affects the max move per frame
-@export var base_responsiveness := 1 # affects how much actual move gets to max move
-@export var rotation_rate := 0.1
-
 # affects pattern scaling
 @export_subgroup('Pattern Scaling')
-@export_range(0.0, 1.0) var max_rpm_scale := 0.8 # full rpm orbit as frac of arena radius
-@export_range(0.0, 1.0) var scale_floor := 0.4 # min frac of baseline
+@export_range(0.0, 1.0) var max_rpm_scale := 0.7 # full rpm orbit as frac of arena radius
+@export_range(0.0, 1.0) var scale_floor := 0.5 # min frac of baseline
 
 # countdown and spawning
 @export_group('Spawning')
@@ -87,10 +88,10 @@ var _airborne := false
 var vertical_fraction := 0.2
 
 @export_group('Centre Drift')
-@export var drift_wander := 0.05
+@export var drift_wander := 0.02
 @export var drift_pull := 1.5
-@export var drift_max := 0.04
-@export var drift_damping := 0.7
+@export var drift_max := 0.02
+@export var drift_damping := 0.9
 var _centre_offset := Vector2.ZERO
 var _centre_velocity := Vector2.ZERO
 
@@ -137,6 +138,45 @@ func _physics_process(delta: float) -> void:
 		State.COUNTDOWN: _update_countdown(delta)
 		State.ACTIVE: _update_active(delta)
 
+
+func _update_active(delta) -> void:
+	_pattern_time += delta
+	_angle += pattern_speed * pow(rpm_ratio, 0.2) * delta
+	_rotation_phase += rotation_rate * delta
+	
+	if Input.is_action_just_pressed('ui_accept'):
+		_vertical_velocity = 0.5
+	
+	var decay = rpm_base_decay_rate + current_rpm * rpm_decay_frac
+	current_rpm = max(current_rpm - decay * delta, 0.0)
+	if current_rpm < dead_rpm:
+		print(self.name, ' entering dying')
+		_enter_dying()
+		print(self.name, ' dead')
+	
+	_update_centre_drift(delta)
+	
+	if not _airborne and _wall_recoil_timer <= 0.0:
+		
+		var centre := arena_centre + _centre_offset
+		var pattern_scale = _get_pattern_scale()
+		var local := _get_target(_angle, pattern_scale, _rotation_phase)
+		var target := centre + local  
+
+		var target_speed = pattern_speed * pow(rpm_ratio, 0.3) * pattern_scale
+		var move_cap = target_speed * speed_margin
+		
+		var distance_delta = target - _horizontal_pos()
+
+		var max_move = distance_delta.normalized() * move_cap
+		var responsiveness = base_responsiveness * pow(rpm_ratio, 0.3)
+		_velocity = _velocity.lerp(max_move, clamp(responsiveness * delta, 0, 1))
+	else:
+		_wall_recoil_timer = max(_wall_recoil_timer - delta, 0.0)
+	
+	_apply_velocity(delta)
+	_apply_wall_collision()
+	
 
 func _apply_velocity(delta: float) -> void:
 	var pos := global_position
@@ -244,7 +284,7 @@ func _surface_y_at(x:float, z:float) -> float:
 
 
 func _get_pattern_scale() -> float:
-	var rpm_factor = scale_floor + (1-scale_floor) * pow(rpm_ratio, 0.3)
+	var rpm_factor = scale_floor + (1-scale_floor) * pow(rpm_ratio, 0.5)
 	var radius = arena_radius * max_rpm_scale * rpm_factor
 	return min(radius, arena_radius)
 
@@ -280,45 +320,7 @@ func _update_countdown(delta: float) -> void:
 	var eased = pow(progress, 3.5)
 	_visual_rpm = initial_rpm * eased
 
-func _update_active(delta) -> void:
-	_pattern_time += delta
-	_angle += movement_pattern.angular_speed * pow(rpm_ratio, 0.2) * delta
-	_rotation_phase += rotation_rate * delta
-	
-	if Input.is_action_just_pressed('ui_accept'):
-		_vertical_velocity = 0.5
-	
-	var decay = rpm_base_decay_rate + current_rpm * rpm_decay_frac
-	current_rpm = max(current_rpm - decay * delta, 0.0)
-	if current_rpm < dead_rpm:
-		print(self.name, ' entering dying')
-		_enter_dying()
-		print(self.name, ' dead')
-	
-	_update_centre_drift(delta)
-	
- 
-	
-	if not _airborne and _wall_recoil_timer <= 0.0:
-		
-		var centre := arena_centre + _centre_offset
-		var pattern_scale = _get_pattern_scale()
-		var local := _get_target(_angle, pattern_scale, _rotation_phase)
-		var target := centre + local  
-		
-		var target_speed = movement_pattern.angular_speed * root_rpm_ratio * pattern_scale
-		var move_cap = target_speed * speed_margin
-		
-		var distance_delta = target - _horizontal_pos()
 
-		var max_move = distance_delta.normalized() * move_cap
-		var responsiveness = base_responsiveness * pow(rpm_ratio, 0.3)
-		_velocity = _velocity.lerp(max_move, clamp(responsiveness * delta, 0, 1))
-	else:
-		_wall_recoil_timer = max(_wall_recoil_timer - delta, 0.0)
-	
-	_apply_velocity(delta)
-	_apply_wall_collision()
 
 func _wobble_amount() -> float:
 	if rpm_ratio >= wobble_onset:
@@ -391,7 +393,7 @@ func _update_topple(delta: float) -> void:
 
 
 func _update_vertical(delta: float) -> void:
-	var surface_y = _surface_y_at(global_position.x, global_position.y)
+	var surface_y = _surface_y_at(global_position.x, global_position.z)
 	_vertical_velocity -= gravity * delta
 	var new_y := global_position.y + _vertical_velocity * delta
 	if new_y <= surface_y:
