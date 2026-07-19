@@ -10,7 +10,7 @@ signal entered_dying(top: Top)
 var radius: float
 
 @export_group('Wall')
-@export var wall_recoil_time := 0.15
+@export var wall_recoil_time := 0.25
 var wall_bounce : float
 var wall_damage : float
 var _wall_recoil_timer := 0.0
@@ -196,13 +196,6 @@ func _apply_velocity(delta: float) -> void:
 func _horizontal_pos() -> Vector2:
 	return Vector2(global_position.x, global_position.z)
 
-
-#func _find_mesh() -> Node3D:
-	#for child in get_children():
-		#if child is MeshInstance3D:
-			#return child
-	#return null
-
 func attack(opponent: Top, velo_bonus: float) -> void:
 	if current_state != State.ACTIVE or opponent.current_state != State.ACTIVE:
 		last_knockback_dealt = 0.0
@@ -212,14 +205,14 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	var defence_term = opponent.defence
 
 	# Damage
-	var adj_damage = (base_damage + 100 * velo_bonus) * power - defence_term
+	var adj_damage = (base_damage + 50 * velo_bonus) * power - defence_term
 	var dmg_dealt = max(base_damage, adj_damage)
 	opponent._receive_dmg(dmg_dealt)
 	
 	# knockback
 	var total_rpm = current_rpm + opponent.current_rpm
 	var dominance = current_rpm / total_rpm if total_rpm > 0 else 0.5
-	var raw = (base_knockback + 20 * velo_bonus) * pow(power, 0.5) / defence_term
+	var raw = (base_knockback + 40 * velo_bonus) * pow(power, 0.5) / (100*opponent.weight)
 	var weight_factor := weight / (weight + opponent.weight) 
 	var applied = max(raw, 0.0) * weight_factor * (dominance*1.1)
 
@@ -249,7 +242,7 @@ func _receive_dmg(dmg: float) -> void:
 
 func _receive_kb(knockback: float, dir: Vector2) -> void:
 	_velocity += dir * knockback
-	_vertical_velocity += knockback * vertical_fraction
+	_vertical_velocity += knockback * vertical_fraction * clamp((2000/current_rpm),0.9,1.5)
 	movement_pattern = _pick_weighted_pattern()
 	
 
@@ -456,21 +449,26 @@ func _apply_wall_collision() -> void:
 		return 
 
 	var from_centre := _horizontal_pos() - arena_centre
+	var normal := from_centre.normalized()
 	var dist := from_centre.length()
 	var limit := wall_radius - radius
+
 	if dist < limit:
 		return
-
-	var normal := from_centre.normalized()
+	
 	var outward_speed := _velocity.dot(normal)
-	if outward_speed > 0.0:
+	if outward_speed > 0.05:
 		_velocity -= normal * outward_speed * (1.0 + wall_bounce)
 		_wall_recoil_timer = wall_recoil_time
-		#print(name, " WALL HIT — speed in: ", outward_speed, " bounce vel: ", _velocity)
-		_receive_dmg(wall_damage - defence)
+		_receive_dmg(max(wall_damage - defence, 0.0))
+		print(self.name, ' wall collision registered')
+	elif outward_speed > 0.0:
+		# Gentle contact — stop outward drift, no bounce, no damage.
+		_velocity -= normal * outward_speed
 	
-	global_position.x = arena_centre.x + normal.x * (limit)
-	global_position.z = arena_centre.y + normal.y * (limit)
+	var inset := limit - 0.001
+	global_position.x = arena_centre.x + normal.x * inset
+	global_position.z = arena_centre.y + normal.y * inset
 
 func _enter_knocked_out() -> void:
 	current_state = State.KNOCKED_OUT

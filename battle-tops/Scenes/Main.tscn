@@ -85,7 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07742092, 0.11501101, -0.0
 mass = 0.15
 continuous_cd = true
 rpm_base_decay_rate = 30.0
-rpm_decay_frac = 0.06
+rpm_decay_frac = 0.05
 movement_pattern = SubResource("Resource_bmxlf")
 pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_grg3l"), SubResource("Resource_erwvk"), SubResource("Resource_frkhe")])
 pattern_weights = Array[float]([0.2, 0.4, 0.4])
@@ -97,21 +97,21 @@ weight = 0.15
 script = ExtResource("7_bmxlf")
 
 [node name="DefenceTop" parent="." unique_id=833782843 instance=ExtResource("5_50glp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09121135, 0.109648645, -0.0709825)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0646254, 0.109648645, -0.0709825)
 mass = 0.25
-initial_rpm = 3500.0
-rpm_base_decay_rate = 30.0
+initial_rpm = 3300.0
+rpm_base_decay_rate = 25.0
 rpm_decay_frac = 0.03
 movement_pattern = SubResource("Resource_4kpch")
 pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_1p5hy"), SubResource("Resource_2w5on"), SubResource("Resource_h1m7h")])
 pattern_weights = Array[float]([0.4, 0.5, 0.1])
 base_knockback = 15
-defence = 20.0
-base_damage = 20
-weight = 0.2
+defence = 25.0
+base_damage = 15
+weight = 0.25
 
 [node name="StaminaTop" parent="." unique_id=448867687 instance=ExtResource("12_grg3l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06720544, 0.11851378, 0.003418427)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.034001857, 0.1094148, 0.0650526)
 initial_rpm = 3500.0
 rpm_base_decay_rate = 10.0
 rpm_decay_frac = 0.02

@@ -6,7 +6,7 @@ extends Node
 # collisions
 @export var collision_radius := 0.08
 @export var separation_radius := 0.11
-@export var velocity_weight := 0.4
+@export var velocity_weight := 0.45
 
 # game over
 @export var slowmo_scale := 0.3
@@ -14,7 +14,7 @@ extends Node
 @export_group('Hitstop')
 @export var hitstop_max_duration := 0.1
 @export var hitstop_reference_knockback := 1
-@export var hitstop_threshold := 0.5
+@export var hitstop_threshold := 0.35
 var _hitstop_remaining := 0.0
 var _hitstop_end_msec := 0
 
