@@ -6,15 +6,15 @@ extends Node
 # collisions
 @export var collision_radius := 0.08
 @export var separation_radius := 0.11
-@export var velocity_weight := 0.2
+@export var velocity_weight := 0.4
 
 # game over
 @export var slowmo_scale := 0.3
 
 @export_group('Hitstop')
 @export var hitstop_max_duration := 0.1
-@export var hitstop_reference_knockback := 0.9
-@export var hitstop_threshold := 0.4
+@export var hitstop_reference_knockback := 1
+@export var hitstop_threshold := 0.5
 var _hitstop_remaining := 0.0
 var _hitstop_end_msec := 0
 
@@ -42,7 +42,8 @@ func _ready() -> void:
 			arena.wall_radius,
 			arena.wall_bounce,
 			arena.wall_damage,
-			arena.gravity
+			arena.gravity,
+			arena.knockout_radius
 		)
 		top.opponents = tops.filter(func(t): return t != top)
 		top.stopped.connect(_on_top_stopped)
@@ -160,5 +161,6 @@ func _trigger_hitstop(knockback: float) -> void:
 	if strength < hitstop_threshold:
 		return
 	var duration = hitstop_max_duration * clamp(strength, 0.0, 1.0)
+	print("hitstop strength: ", clamp(strength, 0.0, 1.0), ", hitstop duration: ", duration)
 	_hitstop_end_msec = Time.get_ticks_msec() + int(duration * 1000.0)
 	Engine.time_scale = 0.0

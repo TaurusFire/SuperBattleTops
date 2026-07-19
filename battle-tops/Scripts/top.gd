@@ -72,7 +72,7 @@ var _topple_start_lean := 0.0
 # orientation
 @export_group('Orientation')
 @onready var orientation_pivot: Node3D = $OrientationPivot
-@export var max_curve_lean := 0.1
+@export var max_curve_lean := 0.15
 
 @export_group('Vertical')
 var gravity : float
@@ -87,6 +87,11 @@ var _airborne := false
 @export var ref_rpm := 4000.0
 var vertical_fraction := 0.4
 var last_knockback_dealt := 0.0
+
+@export_group('Knockout')
+@export var ko_drag := 0.4
+@export var ko_kill_depth := 0.5
+var knockout_radius : float
 
 @export_group('Centre Drift')
 @export var drift_wander := 0.01
@@ -132,12 +137,12 @@ func _physics_process(delta: float) -> void:
 	_update_visual_spin(delta)
 	_update_orientation(delta)
 
-	
-	if current_state in [State.ACTIVE, State.DYING, State.KNOCKED_OUT]:
+	if current_state in [State.ACTIVE, State.DYING]:
 		_update_vertical(delta)
 	match current_state:
 		State.COUNTDOWN: _update_countdown(delta)
 		State.ACTIVE: _update_active(delta)
+		State.KNOCKED_OUT: _update_knocked_out(delta)
 
 
 func _update_active(delta) -> void:
@@ -177,6 +182,8 @@ func _update_active(delta) -> void:
 	
 	_apply_velocity(delta)
 	_apply_wall_collision()
+	if _airborne and _horizontal_pos().distance_to(arena_centre) > knockout_radius:
+		_enter_knocked_out()
 	
 
 func _apply_velocity(delta: float) -> void:
@@ -202,19 +209,19 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 		return
 	
 	var power := pow(((current_rpm + ref_rpm) / ref_rpm), 1)
-	
+	var defence_term = opponent.defence
+
 	# Damage
-	var adj_damage = (base_damage + 100 * velo_bonus) * power
+	var adj_damage = (base_damage + 100 * velo_bonus) * power - defence_term
 	var dmg_dealt = max(base_damage, adj_damage)
 	opponent._receive_dmg(dmg_dealt)
 	
 	# knockback
 	var total_rpm = current_rpm + opponent.current_rpm
 	var dominance = current_rpm / total_rpm if total_rpm > 0 else 0.5
-	var defence_term = opponent.defence * 0.5
-	var raw = (base_knockback + 10 * velo_bonus) * pow(power, 0.5) / defence_term
+	var raw = (base_knockback + 20 * velo_bonus) * pow(power, 0.5) / defence_term
 	var weight_factor := weight / (weight + opponent.weight) 
-	var applied = max(raw, 0.0) * weight_factor * (dominance*1.3)
+	var applied = max(raw, 0.0) * weight_factor * (dominance*1.1)
 
 	# direction
 	var dir := Vector2(opponent.global_position.x, opponent.global_position.z) \
@@ -223,10 +230,14 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	
 	print(
 		self.name,
+		' velocity:',
+		self._velocity.length(),
 		' damage_dealt:',
 		dmg_dealt,
 		' knockback_dealt:',
-		applied
+		applied,
+		' to opponent: ',
+		opponent.name
 	)
 	
 	last_knockback_dealt = applied
@@ -253,7 +264,8 @@ func _set_arena(
 	arena_wall_radius: float,
 	arena_wall_bounce: float,
 	arena_wall_damage: float,
-	arena_gravity: float
+	arena_gravity: float,
+	arena_knockout_radius: float
 	) -> void:
 	arena_centre = centre
 	arena_radius = radius
@@ -261,6 +273,7 @@ func _set_arena(
 	wall_bounce = arena_wall_bounce
 	wall_damage = arena_wall_damage
 	gravity = arena_gravity
+	knockout_radius = arena_knockout_radius
 
 
 func _begin_kinematic() -> void:
@@ -351,6 +364,8 @@ func _update_orientation(delta: float) -> void:
 		State.DYING:
 			_update_topple(delta)
 		State.STOPPED:
+			pass
+		State.KNOCKED_OUT:
 			pass
 
 
@@ -456,3 +471,22 @@ func _apply_wall_collision() -> void:
 	
 	global_position.x = arena_centre.x + normal.x * (limit)
 	global_position.z = arena_centre.y + normal.y * (limit)
+
+func _enter_knocked_out() -> void:
+	current_state = State.KNOCKED_OUT
+	entered_dying.emit(self)
+	
+func _update_knocked_out(delta: float) -> void:
+	# Free fall — no surface snap, so it drops past the arena floor.
+	_vertical_velocity -= gravity * delta
+	global_position.y += _vertical_velocity * delta
+
+	# Coast outward, bleeding speed.
+	_velocity = _velocity.lerp(Vector2.ZERO, clamp(ko_drag * delta, 0.0, 1.0))
+	_apply_velocity(delta)
+
+	_wobble_phase += precession_rate * delta * 2.0
+	_apply_wobble(max_wobble_angle * 1.5)
+
+	if global_position.y < arena_centre.y - ko_kill_depth:
+		_enter_stopped()

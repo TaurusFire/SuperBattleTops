@@ -90,8 +90,8 @@ movement_pattern = SubResource("Resource_bmxlf")
 pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_grg3l"), SubResource("Resource_erwvk"), SubResource("Resource_frkhe")])
 pattern_weights = Array[float]([0.2, 0.4, 0.4])
 base_knockback = 30
-defence = 20.0
-weight = 0.2
+defence = 10.0
+weight = 0.15
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AttackTop" unique_id=970673739]
 script = ExtResource("7_bmxlf")
@@ -106,13 +106,14 @@ movement_pattern = SubResource("Resource_4kpch")
 pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_1p5hy"), SubResource("Resource_2w5on"), SubResource("Resource_h1m7h")])
 pattern_weights = Array[float]([0.4, 0.5, 0.1])
 base_knockback = 15
-defence = 35.0
+defence = 20.0
 base_damage = 20
-weight = 0.3
+weight = 0.2
 
 [node name="StaminaTop" parent="." unique_id=448867687 instance=ExtResource("12_grg3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06720544, 0.11851378, 0.003418427)
-initial_rpm = 5000.0
+initial_rpm = 3500.0
+rpm_base_decay_rate = 10.0
 rpm_decay_frac = 0.02
 movement_pattern = SubResource("Resource_346fj")
 pattern_speed = 3.0
@@ -123,8 +124,8 @@ max_rpm_scale = 0.8
 scale_floor = 0.4
 max_wobble_angle = 0.6
 base_knockback = 15
-defence = 25.0
-base_damage = 30
+defence = 12.0
+base_damage = 25
 weight = 0.15
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=100451635]
