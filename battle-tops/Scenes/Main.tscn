@@ -8,8 +8,10 @@
 [ext_resource type="Script" uid="uid://1i821p505v1f" path="res://Scripts/patterns/MovementPattern.gd" id="4_vy5pj"]
 [ext_resource type="PackedScene" uid="uid://ctwv1cda675p3" path="res://Scenes/DefenceTop.tscn" id="5_50glp"]
 [ext_resource type="Script" uid="uid://cwfynragtcdna" path="res://Scripts/game_manager.gd" id="5_pbw6q"]
+[ext_resource type="Script" uid="uid://c1eg5di7xo615" path="res://Scripts/patterns/oval_pattern.gd" id="6_4kpch"]
 [ext_resource type="Script" uid="uid://cdv62a0ahk1sb" path="res://Scripts/patterns/circle_pattern.gd" id="6_vy5pj"]
 [ext_resource type="Script" uid="uid://4g5lfuungv1k" path="res://Scripts/debugging_visuals.gd" id="7_bmxlf"]
+[ext_resource type="PackedScene" uid="uid://i7xahxmp10a8" path="res://Scenes/StaminaTop.tscn" id="12_grg3l"]
 
 [sub_resource type="Resource" id="Resource_bmxlf"]
 script = ExtResource("4_v1gob")
@@ -18,6 +20,10 @@ metadata/_custom_type_script = "uid://37lrv1kyiaif"
 [sub_resource type="Resource" id="Resource_grg3l"]
 script = ExtResource("4_v1gob")
 metadata/_custom_type_script = "uid://37lrv1kyiaif"
+
+[sub_resource type="Resource" id="Resource_erwvk"]
+script = ExtResource("6_4kpch")
+metadata/_custom_type_script = "uid://c1eg5di7xo615"
 
 [sub_resource type="Resource" id="Resource_frkhe"]
 script = ExtResource("6_vy5pj")
@@ -31,9 +37,29 @@ metadata/_custom_type_script = "uid://cdv62a0ahk1sb"
 script = ExtResource("6_vy5pj")
 metadata/_custom_type_script = "uid://cdv62a0ahk1sb"
 
+[sub_resource type="Resource" id="Resource_2w5on"]
+script = ExtResource("6_4kpch")
+metadata/_custom_type_script = "uid://c1eg5di7xo615"
+
 [sub_resource type="Resource" id="Resource_h1m7h"]
 script = ExtResource("4_v1gob")
 metadata/_custom_type_script = "uid://37lrv1kyiaif"
+
+[sub_resource type="Resource" id="Resource_346fj"]
+script = ExtResource("4_v1gob")
+metadata/_custom_type_script = "uid://37lrv1kyiaif"
+
+[sub_resource type="Resource" id="Resource_0sclb"]
+script = ExtResource("4_v1gob")
+metadata/_custom_type_script = "uid://37lrv1kyiaif"
+
+[sub_resource type="Resource" id="Resource_sxkr1"]
+script = ExtResource("6_vy5pj")
+metadata/_custom_type_script = "uid://cdv62a0ahk1sb"
+
+[sub_resource type="Resource" id="Resource_fq0cl"]
+script = ExtResource("6_4kpch")
+metadata/_custom_type_script = "uid://c1eg5di7xo615"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kln2b"]
 
@@ -59,36 +85,50 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07742092, 0.11501101, -0.0
 mass = 0.15
 continuous_cd = true
 rpm_base_decay_rate = 30.0
-rpm_decay_frac = 0.03
+rpm_decay_frac = 0.06
 movement_pattern = SubResource("Resource_bmxlf")
-pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_grg3l"), SubResource("Resource_frkhe")])
-pattern_weights = Array[float]([0.7, 0.3])
-base_knockback = 15
+pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_grg3l"), SubResource("Resource_erwvk"), SubResource("Resource_frkhe")])
+pattern_weights = Array[float]([0.2, 0.4, 0.4])
+base_knockback = 30
 defence = 20.0
-base_damage = 30
 weight = 0.2
-drift_wander = 0.03
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AttackTop" unique_id=970673739]
 script = ExtResource("7_bmxlf")
 
 [node name="DefenceTop" parent="." unique_id=833782843 instance=ExtResource("5_50glp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09121135, 0.109648645, -0.0709825)
-visible = false
 mass = 0.25
 initial_rpm = 3500.0
-rpm_decay_frac = 0.02
+rpm_base_decay_rate = 30.0
+rpm_decay_frac = 0.03
 movement_pattern = SubResource("Resource_4kpch")
-pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_1p5hy"), SubResource("Resource_h1m7h")])
-pattern_weights = Array[float]([0.7, 0.3])
-scale_floor = 0.8
-base_knockback = 10
+pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_1p5hy"), SubResource("Resource_2w5on"), SubResource("Resource_h1m7h")])
+pattern_weights = Array[float]([0.4, 0.5, 0.1])
+base_knockback = 15
 defence = 35.0
-base_damage = 15
+base_damage = 20
 weight = 0.3
 
+[node name="StaminaTop" parent="." unique_id=448867687 instance=ExtResource("12_grg3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06720544, 0.11851378, 0.003418427)
+initial_rpm = 5000.0
+rpm_decay_frac = 0.02
+movement_pattern = SubResource("Resource_346fj")
+pattern_speed = 3.0
+speed_margin = 2.0
+pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_0sclb"), SubResource("Resource_sxkr1"), SubResource("Resource_fq0cl")])
+pattern_weights = Array[float]([0.5, 0.1, 0.4])
+max_rpm_scale = 0.8
+scale_floor = 0.4
+max_wobble_angle = 0.6
+base_knockback = 15
+defence = 25.0
+base_damage = 30
+weight = 0.15
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=100451635]
-transform = Transform3D(1, 0, 0, 0, 0.9081578, 0.41862804, 0, -0.41862804, 0.9081578, 0, 0.20146431, 0.27319103)
+transform = Transform3D(1, 0, 0, 0, 0.9081578, 0.41862804, 0, -0.41862804, 0.9081578, 0, 0.21955918, 0.3396783)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=744639338]
 transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 2.038272, 0)
@@ -118,8 +158,21 @@ offset_bottom = 23.0
 theme_override_font_sizes/font_size = 32
 script = ExtResource("4_rgh2o")
 top = NodePath("../../DefenceTop")
+metadata/_edit_use_anchors_ = true
+
+[node name="Top3CL3" type="CanvasLayer" parent="." unique_id=1695167265]
+offset = Vector2(1000, 2000)
+transform = Transform2D(1, 0, 0, 1, 1000, 2000)
+
+[node name="Top3Label" type="Label" parent="Top3CL3" unique_id=623946320 node_paths=PackedStringArray("top")]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+script = ExtResource("4_rgh2o")
+top = NodePath("../../StaminaTop")
+metadata/_edit_use_anchors_ = true
 
 [node name="GameManager" type="Node" parent="." unique_id=1117798205 node_paths=PackedStringArray("arena", "tops")]
 script = ExtResource("5_pbw6q")
 arena = NodePath("../Arena")
-tops = [NodePath("../AttackTop")]
+tops = [NodePath("../AttackTop"), NodePath("../StaminaTop"), NodePath("../DefenceTop")]

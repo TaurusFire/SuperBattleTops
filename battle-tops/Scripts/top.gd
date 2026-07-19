@@ -26,17 +26,17 @@ var dead_rpm := 5
 @export_group('Spinning')
 @onready var spin_visual: MeshInstance3D = $OrientationPivot/TopMesh
 var _visual_rpm := 0.0 # for spawning
-@export var max_visual_spin := 40.0
+@export var max_visual_spin := 50.0
 
 
 @export_group('Movement')
 @export var movement_pattern: MovementPattern
 
 @export_subgroup('Speed')
-@export var pattern_speed := 2
-@export var speed_margin := 1.7 # affects move_cap, affects the max move per frame
-@export var base_responsiveness := 2 # affects how much actual move gets to max move
-@export var rotation_rate := 0.0
+@export var pattern_speed := 2.0
+@export var speed_margin := 1.4 # affects move_cap, affects the max move per frame
+@export var base_responsiveness := 2.0 # affects how much actual move gets to max move
+@export var rotation_rate := 0.1
 
 @export_subgroup('Pattern Picking')
 @export var pattern_pool: Array[MovementPattern] = []
@@ -45,7 +45,7 @@ var _visual_rpm := 0.0 # for spawning
 # affects pattern scaling
 @export_subgroup('Pattern Scaling')
 @export_range(0.0, 1.0) var max_rpm_scale := 0.7 # full rpm orbit as frac of arena radius
-@export_range(0.0, 1.0) var scale_floor := 0.5 # min frac of baseline
+@export_range(0.0, 1.0) var scale_floor := 0.3 # min frac of baseline
 
 # countdown and spawning
 @export_group('Spawning')
@@ -85,13 +85,14 @@ var _airborne := false
 @export var base_damage := 50
 @export var weight := 0.1
 @export var ref_rpm := 4000.0
-var vertical_fraction := 0.2
+var vertical_fraction := 0.4
+var last_knockback_dealt := 0.0
 
 @export_group('Centre Drift')
-@export var drift_wander := 0.02
-@export var drift_pull := 1.5
+@export var drift_wander := 0.01
+@export var drift_pull := 1
 @export var drift_max := 0.02
-@export var drift_damping := 0.9
+@export var drift_damping := 1
 var _centre_offset := Vector2.ZERO
 var _centre_velocity := Vector2.ZERO
 
@@ -197,6 +198,7 @@ func _horizontal_pos() -> Vector2:
 
 func attack(opponent: Top, velo_bonus: float) -> void:
 	if current_state != State.ACTIVE or opponent.current_state != State.ACTIVE:
+		last_knockback_dealt = 0.0
 		return
 	
 	var power := pow(((current_rpm + ref_rpm) / ref_rpm), 1)
@@ -227,6 +229,7 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 		applied
 	)
 	
+	last_knockback_dealt = applied
 	opponent._receive_kb(applied, dir)
 	
 	

@@ -11,6 +11,14 @@ extends Node
 # game over
 @export var slowmo_scale := 0.3
 
+@export_group('Hitstop')
+@export var hitstop_max_duration := 0.1
+@export var hitstop_reference_knockback := 0.9
+@export var hitstop_threshold := 0.4
+var _hitstop_remaining := 0.0
+var _hitstop_end_msec := 0
+
+
 var _in_contact := {}
 
 var countdown_seconds := 3.0
@@ -44,14 +52,19 @@ func _ready() -> void:
 	phase = Phase.COUNTDOWN
 
 func _process(delta: float) -> void:
+	# Hitstop freezes everything, so this must run on wall-clock time.
+	if _hitstop_end_msec > 0:
+		if Time.get_ticks_msec() >= _hitstop_end_msec:
+			_hitstop_end_msec = 0
+			# Restore to slow-mo if the match has already been decided.
+			Engine.time_scale = slowmo_scale if phase == Phase.ENDING else 1.0
+		return
 	if phase != Phase.COUNTDOWN:
 		return
 	var before = ceil(time_remaining)
-	
 	time_remaining = max(time_remaining - delta, 0.0)
 	for top in tops:
 		top.set_countdown_remaining(time_remaining)
-		
 	var after = ceil(time_remaining)
 	if after != before and after > 0:
 		countdown_tick.emit(int(after))
@@ -97,19 +110,20 @@ func _start_match() -> void:
 	
 
 func _resolve_collision(a: Top, b: Top) -> void:
-	var dir_ab := Vector2(b.global_position.x, b.global_position.z) \
-					- Vector2(a.global_position.x, a.global_position.z)
+	var a_pos := Vector2(a.global_position.x, a.global_position.z)
+	var b_pos := Vector2(b.global_position.x, b.global_position.z)
+
+	var dir_ab := (b_pos - a_pos)
 	dir_ab = dir_ab.normalized() if dir_ab.length() > 0.001 else Vector2.RIGHT
 	var dir_ba := -dir_ab
-	
+
 	var a_bonus = max(a._velocity.dot(dir_ab), 0.0) * velocity_weight
 	var b_bonus = max(b._velocity.dot(dir_ba), 0.0) * velocity_weight
-	
-	print(a.name, ' velocity:', a._velocity.dot(dir_ab))
-	print(b.name, ' velocity:', b._velocity.dot(dir_ba))
-	
+
 	a.attack(b, a_bonus)
 	b.attack(a, b_bonus)
+
+	_trigger_hitstop(max(a.last_knockback_dealt, b.last_knockback_dealt))
 
 func _on_top_stopped(stopped_top: Top) -> void:
 
@@ -138,3 +152,13 @@ func _end_match(survivors: Array[Top]) -> void:
 	var winner: Top = survivors[0] if survivors.size() == 1 else null
 	match_ended.emit(winner)
 	# end sequence goes here
+
+func _trigger_hitstop(knockback: float) -> void:
+	if phase != Phase.FIGHTING:
+		return
+	var strength := knockback / hitstop_reference_knockback
+	if strength < hitstop_threshold:
+		return
+	var duration = hitstop_max_duration * clamp(strength, 0.0, 1.0)
+	_hitstop_end_msec = Time.get_ticks_msec() + int(duration * 1000.0)
+	Engine.time_scale = 0.0

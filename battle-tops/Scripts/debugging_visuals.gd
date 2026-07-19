@@ -39,7 +39,7 @@ func _process(_delta: float) -> void:
 		return
 
 	var y := _top.global_position.y + 0.01   # lift slightly off the surface
-	print("viz global_transform: ", global_transform)
+	#print("viz global_transform: ", global_transform)
 	_imm.clear_surfaces()
 	_imm.surface_begin(Mesh.PRIMITIVE_LINES)
 
@@ -53,6 +53,7 @@ func _process(_delta: float) -> void:
 	var target_2d: Vector2 = centre_2d + _top.movement_pattern.get_target(
 		_top._angle, scale_now, _top._rotation_phase)
 	var target := Vector3(target_2d.x, y, target_2d.y)
+	
 	_trail.append(_top.global_position + Vector3(0, 0.01, 0))
 	_target_trail.append(target)
 	if _trail.size() > trail_length:
@@ -73,10 +74,10 @@ func _process(_delta: float) -> void:
 	
 	_imm.surface_end()
 
-	print("top: ", _top.global_position,
-		  " centre: ", centre,
-		  " target: ", target,
-		  " arena_centre: ", _top.arena_centre)
+	#print("top: ", _top.global_position,
+		  #" centre: ", centre,
+		  #" target: ", target,
+		  #" arena_centre: ", _top.arena_centre)
 
 func _cross(at: Vector3, col: Color) -> void:
 	_line(at - Vector3(marker_size, 0, 0), at + Vector3(marker_size, 0, 0), col)
