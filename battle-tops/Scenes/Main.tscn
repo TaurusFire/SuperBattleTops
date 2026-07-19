@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://c1eg5di7xo615" path="res://Scripts/patterns/oval_pattern.gd" id="6_4kpch"]
 [ext_resource type="Script" uid="uid://cdv62a0ahk1sb" path="res://Scripts/patterns/circle_pattern.gd" id="6_vy5pj"]
 [ext_resource type="Script" uid="uid://4g5lfuungv1k" path="res://Scripts/debugging_visuals.gd" id="7_bmxlf"]
+[ext_resource type="Script" uid="uid://chlrxh3p2hvgi" path="res://Scripts/battle_camera.gd" id="11_frkhe"]
 [ext_resource type="PackedScene" uid="uid://i7xahxmp10a8" path="res://Scenes/StaminaTop.tscn" id="12_grg3l"]
 
 [sub_resource type="Resource" id="Resource_bmxlf"]
@@ -128,8 +129,14 @@ defence = 12.0
 base_damage = 25
 weight = 0.15
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=100451635]
-transform = Transform3D(1, 0, 0, 0, 0.9081578, 0.41862804, 0, -0.41862804, 0.9081578, 0, 0.21955918, 0.3396783)
+[node name="CameraRig" type="Node3D" parent="." unique_id=2087369725 node_paths=PackedStringArray("manager", "arena")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0646254, 0.109648645, -0.0709825)
+script = ExtResource("11_frkhe")
+manager = NodePath("../GameManager")
+arena = NodePath("../Arena")
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=100451635]
+transform = Transform3D(1, 0, 0, 0, 0.9081578, 0.41862804, 0, -0.41862804, 0.9081578, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=744639338]
 transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 2.038272, 0)

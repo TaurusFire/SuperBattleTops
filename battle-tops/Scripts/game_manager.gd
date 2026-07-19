@@ -1,3 +1,4 @@
+class_name GameManager
 extends Node
 
 @export var arena: Arena
@@ -12,9 +13,9 @@ extends Node
 @export var slowmo_scale := 0.3
 
 @export_group('Hitstop')
-@export var hitstop_max_duration := 0.1
+@export var hitstop_max_duration := 0.08
 @export var hitstop_reference_knockback := 1
-@export var hitstop_threshold := 0.35
+@export var hitstop_threshold := 0.2
 var _hitstop_remaining := 0.0
 var _hitstop_end_msec := 0
 
