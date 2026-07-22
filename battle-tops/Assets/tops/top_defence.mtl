@@ -1,0 +1,11 @@
+# Defence materials
+newmtl Rim
+Kd 0.800 0.800 0.840
+Ks 0.940 0.940 0.940
+Ns 120
+
+newmtl Body
+Kd 0.160 0.460 0.720
+Ks 0.260 0.260 0.260
+Ns 36
+

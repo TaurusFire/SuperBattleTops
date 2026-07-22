@@ -1,0 +1,19 @@
+# Arena materials
+newmtl Floor
+Kd 0.620 0.630 0.660
+Ks 0.200 0.200 0.200
+Ns 24
+# map_Kd floor_albedo.png
+
+newmtl Wall
+Kd 0.420 0.440 0.480
+Ks 0.550 0.550 0.550
+Ns 64
+# map_Kd wall_albedo.png
+
+newmtl Shell
+Kd 0.220 0.220 0.250
+Ks 0.150 0.150 0.150
+Ns 16
+# map_Kd shell_albedo.png
+

@@ -1,0 +1,11 @@
+# Stamina materials
+newmtl Rim
+Kd 0.860 0.860 0.880
+Ks 0.920 0.920 0.920
+Ns 110
+
+newmtl Body
+Kd 0.200 0.580 0.300
+Ks 0.280 0.280 0.280
+Ns 40
+

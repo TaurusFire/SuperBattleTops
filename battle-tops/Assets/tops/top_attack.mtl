@@ -1,0 +1,11 @@
+# Attack materials
+newmtl Rim
+Kd 0.820 0.820 0.860
+Ks 0.900 0.900 0.900
+Ns 96
+
+newmtl Body
+Kd 0.720 0.140 0.120
+Ks 0.300 0.300 0.300
+Ns 32
+

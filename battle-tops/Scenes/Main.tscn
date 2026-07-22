@@ -14,9 +14,9 @@
 [ext_resource type="Script" uid="uid://chlrxh3p2hvgi" path="res://Scripts/battle_camera.gd" id="11_frkhe"]
 [ext_resource type="PackedScene" uid="uid://i7xahxmp10a8" path="res://Scenes/StaminaTop.tscn" id="12_grg3l"]
 
-[sub_resource type="Resource" id="Resource_bmxlf"]
-script = ExtResource("4_v1gob")
-metadata/_custom_type_script = "uid://37lrv1kyiaif"
+[sub_resource type="Resource" id="Resource_hwpts"]
+script = ExtResource("6_4kpch")
+metadata/_custom_type_script = "uid://c1eg5di7xo615"
 
 [sub_resource type="Resource" id="Resource_grg3l"]
 script = ExtResource("4_v1gob")
@@ -30,9 +30,9 @@ metadata/_custom_type_script = "uid://c1eg5di7xo615"
 script = ExtResource("6_vy5pj")
 metadata/_custom_type_script = "uid://cdv62a0ahk1sb"
 
-[sub_resource type="Resource" id="Resource_4kpch"]
-script = ExtResource("6_vy5pj")
-metadata/_custom_type_script = "uid://cdv62a0ahk1sb"
+[sub_resource type="Resource" id="Resource_jyqft"]
+script = ExtResource("6_4kpch")
+metadata/_custom_type_script = "uid://c1eg5di7xo615"
 
 [sub_resource type="Resource" id="Resource_1p5hy"]
 script = ExtResource("6_vy5pj")
@@ -70,9 +70,12 @@ sky_material = SubResource("ProceduralSkyMaterial_kln2b")
 [sub_resource type="Environment" id="Environment_pbw6q"]
 background_mode = 2
 sky = SubResource("Sky_rgh2o")
+sky_custom_fov = 101.0
 ambient_light_source = 3
 ambient_light_energy = 0.3
-tonemap_mode = 2
+tonemap_mode = 3
+glow_enabled = true
+glow_bloom = 0.1
 
 [node name="Main" type="Node3D" unique_id=963593362]
 
@@ -85,11 +88,12 @@ script = ExtResource("2_jw32o")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07742092, 0.11501101, -0.009354532)
 mass = 0.15
 continuous_cd = true
-rpm_base_decay_rate = 30.0
-rpm_decay_frac = 0.05
-movement_pattern = SubResource("Resource_bmxlf")
+initial_rpm = 4200.0
+rpm_base_decay_rate = 40.0
+rpm_decay_frac = 0.04
+movement_pattern = SubResource("Resource_hwpts")
 pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_grg3l"), SubResource("Resource_erwvk"), SubResource("Resource_frkhe")])
-pattern_weights = Array[float]([0.2, 0.4, 0.4])
+pattern_weights = Array[float]([0.35, 0.5, 0.15])
 base_knockback = 30
 defence = 10.0
 weight = 0.15
@@ -103,18 +107,18 @@ mass = 0.25
 initial_rpm = 3300.0
 rpm_base_decay_rate = 25.0
 rpm_decay_frac = 0.03
-movement_pattern = SubResource("Resource_4kpch")
+movement_pattern = SubResource("Resource_jyqft")
 pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_1p5hy"), SubResource("Resource_2w5on"), SubResource("Resource_h1m7h")])
-pattern_weights = Array[float]([0.4, 0.5, 0.1])
+pattern_weights = Array[float]([0.3, 0.6, 0.1])
+max_wobble_angle = 0.2
 base_knockback = 15
-defence = 25.0
 base_damage = 15
 weight = 0.25
 
 [node name="StaminaTop" parent="." unique_id=448867687 instance=ExtResource("12_grg3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.034001857, 0.1094148, 0.0650526)
 initial_rpm = 3500.0
-rpm_base_decay_rate = 10.0
+rpm_base_decay_rate = 15.0
 rpm_decay_frac = 0.02
 movement_pattern = SubResource("Resource_346fj")
 pattern_speed = 3.0
@@ -122,12 +126,11 @@ speed_margin = 2.0
 pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_0sclb"), SubResource("Resource_sxkr1"), SubResource("Resource_fq0cl")])
 pattern_weights = Array[float]([0.5, 0.1, 0.4])
 max_rpm_scale = 0.8
-scale_floor = 0.4
 max_wobble_angle = 0.6
 base_knockback = 15
 defence = 12.0
 base_damage = 25
-weight = 0.15
+weight = 0.16
 
 [node name="CameraRig" type="Node3D" parent="." unique_id=2087369725 node_paths=PackedStringArray("manager", "arena")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0646254, 0.109648645, -0.0709825)
@@ -138,9 +141,20 @@ arena = NodePath("../Arena")
 [node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=100451635]
 transform = Transform3D(1, 0, 0, 0, 0.9081578, 0.41862804, 0, -0.41862804, 0.9081578, 0, 0, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=744639338]
-transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 2.038272, 0)
+[node name="KeyLight" type="DirectionalLight3D" parent="." unique_id=744639338]
+transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 0.9550481, 0.36389476)
+light_color = Color(1, 0.95, 0.85, 1)
+light_energy = 0.6
 shadow_enabled = true
+shadow_bias = 0.01
+shadow_blur = 5.0
+directional_shadow_max_distance = 1.0
+
+[node name="RimLight" type="DirectionalLight3D" parent="." unique_id=1005643701]
+transform = Transform3D(-1, -7.619437e-09, -8.7090065e-08, -3.26756e-08, 0.95656973, 0.29150376, 8.108662e-08, 0.29150376, -0.95656973, 0, 1.0950716, -3.7434037)
+light_color = Color(0.75, 0.85, 1, 1)
+light_energy = 0.2
+directional_shadow_max_distance = 2.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2043798271]
 environment = SubResource("Environment_pbw6q")

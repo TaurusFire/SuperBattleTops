@@ -10,14 +10,23 @@ extends Node
 @export var velocity_weight := 0.45
 
 # game over
-@export var slowmo_scale := 0.3
+@export var slowmo_scale := 0.5
 
 @export_group('Hitstop')
 @export var hitstop_max_duration := 0.08
+@export var hitstop_reference_damage := 60
 @export var hitstop_reference_knockback := 1
 @export var hitstop_threshold := 0.2
 var _hitstop_remaining := 0.0
 var _hitstop_end_msec := 0
+
+
+@export_group('Spawn Arrangement')
+## Ring radius as a fraction of arena radius.
+@export_range(0.0, 1.0) var spawn_radius_ratio := 0.6
+## Rotates the whole ring. Randomise for variety between clips.
+@export var spawn_angle_offset := 0.0
+@export var randomise_spawn_rotation := true
 
 
 var _in_contact := {}
@@ -30,6 +39,7 @@ var phase := Phase.COUNTDOWN
 signal countdown_tick(seconds_left: int)
 signal match_started
 signal match_ended(winner: Top)
+signal collision_occurred(a: Top, b: Top)
 
 
 func _ready() -> void:
@@ -50,6 +60,8 @@ func _ready() -> void:
 		top.stopped.connect(_on_top_stopped)
 		top.entered_dying.connect(_on_top_entered_dying)
 		
+	_arrange_tops()
+	
 	time_remaining = countdown_seconds
 	phase = Phase.COUNTDOWN
 
@@ -111,6 +123,19 @@ func _start_match() -> void:
 	match_started.emit()
 	
 
+func _arrange_tops() -> void:
+	var ring := arena.radius * spawn_radius_ratio
+	var base := spawn_angle_offset
+	if randomise_spawn_rotation:
+		base = randf() * TAU
+
+	for i in tops.size():
+		var angle := base + TAU * float(i) / tops.size()
+		var pos := arena.centre + Vector2(cos(angle), sin(angle)) * ring
+		var top := tops[i]
+		top.global_position = Vector3(pos.x, top.global_position.y, pos.y)
+		
+
 func _resolve_collision(a: Top, b: Top) -> void:
 	var a_pos := Vector2(a.global_position.x, a.global_position.z)
 	var b_pos := Vector2(b.global_position.x, b.global_position.z)
@@ -125,7 +150,11 @@ func _resolve_collision(a: Top, b: Top) -> void:
 	a.attack(b, a_bonus)
 	b.attack(a, b_bonus)
 
-	_trigger_hitstop(max(a.last_knockback_dealt, b.last_knockback_dealt))
+	_trigger_hitstop(
+		max(a.last_damage_dealt, b.last_damage_dealt),
+		max(a.last_knockback_dealt, b.last_knockback_dealt)
+	)
+	collision_occurred.emit(a,b)
 
 func _on_top_stopped(stopped_top: Top) -> void:
 
@@ -145,20 +174,26 @@ func _living_tops() -> Array[Top]:
 									and t.current_state != Top.State.KNOCKED_OUT)
 
 func _begin_slowmo() -> void:
+	
+	if phase != Phase.FIGHTING:
+		return
+	
 	phase = Phase.ENDING
 	Engine.time_scale = slowmo_scale
 
 func _end_match(survivors: Array[Top]) -> void:
 	Engine.time_scale = 1.0
-	phase = Phase.ENDING
+	phase = Phase.ENDED
 	var winner: Top = survivors[0] if survivors.size() == 1 else null
 	match_ended.emit(winner)
 	# end sequence goes here
 
-func _trigger_hitstop(knockback: float) -> void:
+func _trigger_hitstop(damage:float, knockback: float) -> void:
 	if phase != Phase.FIGHTING:
 		return
-	var strength := knockback / hitstop_reference_knockback
+	var strength := (
+		(knockback / hitstop_reference_knockback) + (damage / hitstop_reference_damage)
+		)/2
 	if strength < hitstop_threshold:
 		return
 	var duration = hitstop_max_duration * clamp(strength, 0.0, 1.0)
