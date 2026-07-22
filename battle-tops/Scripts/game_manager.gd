@@ -13,7 +13,7 @@ extends Node
 @export var slowmo_scale := 0.5
 
 @export_group('Hitstop')
-@export var hitstop_max_duration := 0.08
+@export var hitstop_max_duration := 0.05
 @export var hitstop_reference_damage := 60
 @export var hitstop_reference_knockback := 1
 @export var hitstop_threshold := 0.2
