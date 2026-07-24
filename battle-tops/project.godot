@@ -22,15 +22,21 @@ window/size/viewport_height=1920
 window/size/window_width_override=540
 window/size/window_height_override=960
 
+[editor]
+
+movie_writer/fps=300
+
 [layer_names]
 
 3d_physics/layer_3="Arena"
 
 [physics]
 
-common/physics_ticks_per_second=120
+common/physics_ticks_per_second=360
+common/max_physics_steps_per_frame=32
 3d/physics_engine="Jolt Physics"
 jolt_physics_3d/limits/max_angular_velocity=628.3185307179587
+common/physics_interpolation=true
 
 [rendering]
 

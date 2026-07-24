@@ -26,7 +26,7 @@ var dead_rpm := 5
 @export_group('Spinning')
 @onready var spin_visual: MeshInstance3D = $OrientationPivot/TopMesh
 var _visual_rpm := 0.0 # for spawning
-@export var max_visual_spin := 40.0
+@export var max_visual_spin := 50.0
 
 
 @export_group('Movement')
@@ -170,14 +170,13 @@ func _update_active(delta) -> void:
 		var pattern_scale = _get_pattern_scale()
 		var local := _get_target(_angle, pattern_scale, _rotation_phase)
 		var target := centre + local  
-
-		var target_speed = pattern_speed * pow(rpm_ratio, 0.3) * pattern_scale
+		var target_speed = pattern_speed * pow(rpm_ratio, 0.1) * pattern_scale
 		var move_cap = target_speed * speed_margin
 		
 		var distance_delta = target - _horizontal_pos()
 
 		var max_move = distance_delta.normalized() * move_cap
-		var responsiveness = base_responsiveness * pow(rpm_ratio, 0.3)
+		var responsiveness = base_responsiveness * pow(rpm_ratio, 0.1)
 		_velocity = _velocity.lerp(max_move, clamp(responsiveness * delta, 0, 1))
 	else:
 		_wall_recoil_timer = max(_wall_recoil_timer - delta, 0.0)
@@ -208,7 +207,7 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	
 	# Damage
 	var adj_damage = (base_damage) * power - defence_term
-	var dmg_dealt = max(base_damage, adj_damage) + (50*velo_bonus)
+	var dmg_dealt = max(base_damage, adj_damage) + (60*velo_bonus)
 	
 	last_damage_dealt = dmg_dealt
 	opponent._receive_dmg(dmg_dealt)
@@ -216,9 +215,9 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	# knockback
 	var total_rpm = current_rpm + opponent.current_rpm
 	var dominance = current_rpm / total_rpm if total_rpm > 0 else 0.5
-	var raw = (base_knockback) * pow(power, 0.5) / (100*opponent.weight)
+	var raw = (base_knockback) * pow(power, 0.25) / (100*opponent.weight)
 	var weight_factor := weight / (weight + opponent.weight) 
-	var applied = max(raw, 0.0) * weight_factor * (dominance*1.1) + (velo_bonus)
+	var applied = max(raw, 0.0) * weight_factor * (dominance*1.05) + (1.05*velo_bonus)
 
 	# direction
 	var dir := Vector2(opponent.global_position.x, opponent.global_position.z) \
@@ -248,7 +247,7 @@ func _receive_dmg(dmg: float) -> void:
 
 func _receive_kb(knockback: float, dir: Vector2) -> void:
 	_velocity += dir * knockback
-	_vertical_velocity += knockback * vertical_fraction * clamp((2000/current_rpm),0.9,1.5)
+	_vertical_velocity += knockback * vertical_fraction * clamp((2000/current_rpm),0.9,1.8)
 	movement_pattern = _pick_weighted_pattern()
 	
 
@@ -312,7 +311,7 @@ func begin_match() -> void:
 func _update_visual_spin(delta) -> void:
 	var rpm_for_spin = _visual_rpm if current_state == State.COUNTDOWN else current_rpm
 	#var rad_per_sec : float = rpm_for_spin * TAU / 60
-	var rad_per_sec : float = max_visual_spin * pow((rpm_for_spin / initial_rpm), 0.35)
+	var rad_per_sec : float = max_visual_spin * pow((rpm_for_spin / initial_rpm), 0.3)
 	spin_visual.rotate_y(-rad_per_sec * delta)
 
 

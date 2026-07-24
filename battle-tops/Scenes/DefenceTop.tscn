@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wilfjkm1pvob" path="res://Scripts/top.gd" id="1_5lwcg"]
 [ext_resource type="ArrayMesh" uid="uid://cprk1dp7613w4" path="res://Assets/tops/top_defence.obj" id="2_txnk4"]
+[ext_resource type="Script" uid="uid://xgpr6hm7jhc" path="res://Scripts/trail.gd" id="3_1xyna"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txnk4"]
 albedo_color = Color(0.15025344, 0.1396724, 0.9158123, 1)
@@ -32,3 +33,8 @@ surface_material_override/1 = SubResource("StandardMaterial3D_1xyna")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1365318698]
 transform = Transform3D(0.89, 0, 0, 0, 0.89, 0, 0, 0, 0.89, 0, 0.015, 0)
 shape = SubResource("CylinderShape3D_txnk4")
+
+[node name="Trail" type="MeshInstance3D" parent="." unique_id=1352034340 node_paths=PackedStringArray("top")]
+script = ExtResource("3_1xyna")
+top = NodePath("..")
+trail_colour = Color(0.14742705, 0.34328055, 1, 1)

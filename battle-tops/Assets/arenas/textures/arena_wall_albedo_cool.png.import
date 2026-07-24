@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uft8lymaawf7"
-path.s3tc="res://.godot/imported/arena_floor_albedo_warm.png-4392b5328b8de7240767d4ab2956cf6a.s3tc.ctex"
+uid="uid://bh0ed7tfhorgn"
+path.s3tc="res://.godot/imported/arena_wall_albedo_cool.png-01ecab9f21efdf3e21f4928dabd1cbc7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/arenas/arena_floor_albedo_warm.png"
-dest_files=["res://.godot/imported/arena_floor_albedo_warm.png-4392b5328b8de7240767d4ab2956cf6a.s3tc.ctex"]
+source_file="res://Assets/arenas/textures/arena_wall_albedo_cool.png"
+dest_files=["res://.godot/imported/arena_wall_albedo_cool.png-01ecab9f21efdf3e21f4928dabd1cbc7.s3tc.ctex"]
 
 [params]
 

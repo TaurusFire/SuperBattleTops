@@ -13,14 +13,11 @@
 [ext_resource type="Script" uid="uid://4g5lfuungv1k" path="res://Scripts/debugging_visuals.gd" id="7_bmxlf"]
 [ext_resource type="Script" uid="uid://chlrxh3p2hvgi" path="res://Scripts/battle_camera.gd" id="11_frkhe"]
 [ext_resource type="PackedScene" uid="uid://i7xahxmp10a8" path="res://Scenes/StaminaTop.tscn" id="12_grg3l"]
+[ext_resource type="Script" uid="uid://dijh5idgjhftf" path="res://Scripts/clash_sparks.gd" id="14_1p5hy"]
 
 [sub_resource type="Resource" id="Resource_hwpts"]
 script = ExtResource("6_4kpch")
 metadata/_custom_type_script = "uid://c1eg5di7xo615"
-
-[sub_resource type="Resource" id="Resource_grg3l"]
-script = ExtResource("4_v1gob")
-metadata/_custom_type_script = "uid://37lrv1kyiaif"
 
 [sub_resource type="Resource" id="Resource_erwvk"]
 script = ExtResource("6_4kpch")
@@ -47,10 +44,6 @@ script = ExtResource("4_v1gob")
 metadata/_custom_type_script = "uid://37lrv1kyiaif"
 
 [sub_resource type="Resource" id="Resource_346fj"]
-script = ExtResource("4_v1gob")
-metadata/_custom_type_script = "uid://37lrv1kyiaif"
-
-[sub_resource type="Resource" id="Resource_0sclb"]
 script = ExtResource("4_v1gob")
 metadata/_custom_type_script = "uid://37lrv1kyiaif"
 
@@ -88,24 +81,28 @@ script = ExtResource("2_jw32o")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07742092, 0.11501101, -0.009354532)
 mass = 0.15
 continuous_cd = true
-initial_rpm = 4200.0
+initial_rpm = 4250.0
 rpm_base_decay_rate = 40.0
 rpm_decay_frac = 0.04
 movement_pattern = SubResource("Resource_hwpts")
-pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_grg3l"), SubResource("Resource_erwvk"), SubResource("Resource_frkhe")])
-pattern_weights = Array[float]([0.35, 0.5, 0.15])
+pattern_speed = 3.0
+speed_margin = 2.0
+pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_erwvk"), SubResource("Resource_frkhe")])
+pattern_weights = Array[float]([0.5, 0.15])
+max_rpm_scale = 0.6
 base_knockback = 30
 defence = 10.0
+base_damage = 40
 weight = 0.15
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AttackTop" unique_id=970673739]
+[node name="DebugViz" type="MeshInstance3D" parent="AttackTop" unique_id=970673739]
 script = ExtResource("7_bmxlf")
 
 [node name="DefenceTop" parent="." unique_id=833782843 instance=ExtResource("5_50glp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0646254, 0.109648645, -0.0709825)
 mass = 0.25
 initial_rpm = 3300.0
-rpm_base_decay_rate = 25.0
+rpm_base_decay_rate = 24.0
 rpm_decay_frac = 0.03
 movement_pattern = SubResource("Resource_jyqft")
 pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_1p5hy"), SubResource("Resource_2w5on"), SubResource("Resource_h1m7h")])
@@ -113,24 +110,24 @@ pattern_weights = Array[float]([0.3, 0.6, 0.1])
 max_wobble_angle = 0.2
 base_knockback = 15
 base_damage = 15
-weight = 0.25
+weight = 0.21
 
 [node name="StaminaTop" parent="." unique_id=448867687 instance=ExtResource("12_grg3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.034001857, 0.1094148, 0.0650526)
 initial_rpm = 3500.0
 rpm_base_decay_rate = 15.0
-rpm_decay_frac = 0.02
+rpm_decay_frac = 0.025
 movement_pattern = SubResource("Resource_346fj")
 pattern_speed = 3.0
 speed_margin = 2.0
-pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_0sclb"), SubResource("Resource_sxkr1"), SubResource("Resource_fq0cl")])
-pattern_weights = Array[float]([0.5, 0.1, 0.4])
-max_rpm_scale = 0.8
+pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_sxkr1"), SubResource("Resource_fq0cl")])
+pattern_weights = Array[float]([0.1, 0.4])
+max_rpm_scale = 0.75
 max_wobble_angle = 0.6
 base_knockback = 15
 defence = 12.0
 base_damage = 25
-weight = 0.16
+weight = 0.17
 
 [node name="CameraRig" type="Node3D" parent="." unique_id=2087369725 node_paths=PackedStringArray("manager", "arena")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0646254, 0.109648645, -0.0709825)
@@ -198,3 +195,7 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("5_pbw6q")
 arena = NodePath("../Arena")
 tops = [NodePath("../AttackTop"), NodePath("../StaminaTop"), NodePath("../DefenceTop")]
+
+[node name="Node3D" type="Node3D" parent="." unique_id=860210630 node_paths=PackedStringArray("manager")]
+script = ExtResource("14_1p5hy")
+manager = NodePath("../GameManager")

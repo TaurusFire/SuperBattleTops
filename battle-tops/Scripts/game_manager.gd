@@ -149,12 +149,13 @@ func _resolve_collision(a: Top, b: Top) -> void:
 
 	a.attack(b, a_bonus)
 	b.attack(a, b_bonus)
-
+	
+	collision_occurred.emit(a,b)
 	_trigger_hitstop(
 		max(a.last_damage_dealt, b.last_damage_dealt),
 		max(a.last_knockback_dealt, b.last_knockback_dealt)
 	)
-	collision_occurred.emit(a,b)
+
 
 func _on_top_stopped(stopped_top: Top) -> void:
 
@@ -197,6 +198,5 @@ func _trigger_hitstop(damage:float, knockback: float) -> void:
 	if strength < hitstop_threshold:
 		return
 	var duration = hitstop_max_duration * clamp(strength, 0.0, 1.0)
-	print("hitstop strength: ", clamp(strength, 0.0, 1.0), ", hitstop duration: ", duration)
 	_hitstop_end_msec = Time.get_ticks_msec() + int(duration * 1000.0)
-	Engine.time_scale = 0.0
+	Engine.time_scale = 0.05

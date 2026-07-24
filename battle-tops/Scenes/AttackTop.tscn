@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://wilfjkm1pvob" path="res://Scripts/top.gd" id="1_4grls"]
 [ext_resource type="Script" uid="uid://cdv62a0ahk1sb" path="res://Scripts/patterns/circle_pattern.gd" id="2_pdjma"]
 [ext_resource type="ArrayMesh" uid="uid://d2hthn04gdta2" path="res://Assets/tops/top_attack.obj" id="3_ftj42"]
+[ext_resource type="Script" uid="uid://xgpr6hm7jhc" path="res://Scripts/trail.gd" id="4_yd0ip"]
 
 [sub_resource type="Resource" id="Resource_ftj42"]
 script = ExtResource("2_pdjma")
@@ -38,3 +39,7 @@ shape = SubResource("CylinderShape3D_4grls")
 mesh = ExtResource("3_ftj42")
 surface_material_override/0 = SubResource("StandardMaterial3D_ftj42")
 surface_material_override/1 = SubResource("StandardMaterial3D_yd0ip")
+
+[node name="Trail" type="MeshInstance3D" parent="." unique_id=704595816 node_paths=PackedStringArray("top")]
+script = ExtResource("4_yd0ip")
+top = NodePath("..")

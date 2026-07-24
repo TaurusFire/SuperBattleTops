@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6v8vwob7ofs"
-path.s3tc="res://.godot/imported/arena_floor_albedo_cool.png-fe42218c4563138a6b179e6d82a828a4.s3tc.ctex"
+uid="uid://luuc0ifjccmm"
+path.s3tc="res://.godot/imported/arena_floor_albedo_wood.png-86b7470c757a9db504a7ae107865a0eb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/arenas/arena_floor_albedo_cool.png"
-dest_files=["res://.godot/imported/arena_floor_albedo_cool.png-fe42218c4563138a6b179e6d82a828a4.s3tc.ctex"]
+source_file="res://Assets/arenas/textures/arena_floor_albedo_wood.png"
+dest_files=["res://.godot/imported/arena_floor_albedo_wood.png-86b7470c757a9db504a7ae107865a0eb.s3tc.ctex"]
 
 [params]
 

@@ -6,8 +6,8 @@ extends StaticBody3D
 @export var radius := 0.16
 @export var wall_radius := 0.165
 @export var wall_bounce := 1.05
-@export var wall_damage := 50
-@export var gravity := 1.1
+@export var wall_damage := 55
+@export var gravity := 1.05
 
 func _ready() -> void:
 	pass # Replace with function body.
