@@ -82,7 +82,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07742092, 0.11501101, -0.0
 mass = 0.15
 continuous_cd = true
 initial_rpm = 4250.0
-rpm_base_decay_rate = 40.0
+rpm_base_decay_rate = 35.0
 rpm_decay_frac = 0.04
 movement_pattern = SubResource("Resource_hwpts")
 pattern_speed = 3.0
@@ -90,12 +90,14 @@ speed_margin = 2.0
 pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_erwvk"), SubResource("Resource_frkhe")])
 pattern_weights = Array[float]([0.5, 0.15])
 max_rpm_scale = 0.6
-base_knockback = 30
+base_knockback = 30.0
 defence = 10.0
 base_damage = 40
 weight = 0.15
+drift_max = 0.04
 
 [node name="DebugViz" type="MeshInstance3D" parent="AttackTop" unique_id=970673739]
+visible = false
 script = ExtResource("7_bmxlf")
 
 [node name="DefenceTop" parent="." unique_id=833782843 instance=ExtResource("5_50glp")]
@@ -108,9 +110,9 @@ movement_pattern = SubResource("Resource_jyqft")
 pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_1p5hy"), SubResource("Resource_2w5on"), SubResource("Resource_h1m7h")])
 pattern_weights = Array[float]([0.3, 0.6, 0.1])
 max_wobble_angle = 0.2
-base_knockback = 15
+base_knockback = 12.0
 base_damage = 15
-weight = 0.21
+weight = 0.22
 
 [node name="StaminaTop" parent="." unique_id=448867687 instance=ExtResource("12_grg3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.034001857, 0.1094148, 0.0650526)
@@ -124,7 +126,7 @@ pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_sxkr1"), Sub
 pattern_weights = Array[float]([0.1, 0.4])
 max_rpm_scale = 0.75
 max_wobble_angle = 0.6
-base_knockback = 15
+base_knockback = 14.0
 defence = 12.0
 base_damage = 25
 weight = 0.17

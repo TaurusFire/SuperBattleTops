@@ -80,7 +80,7 @@ var _vertical_velocity := 0.0
 var _airborne := false
 
 @export_group('Combat')
-@export var base_knockback := 16
+@export var base_knockback := 16.0
 @export var defence := 30.0
 @export var base_damage := 50
 @export var weight := 0.1
@@ -88,6 +88,8 @@ var _airborne := false
 var vertical_fraction := 0.4
 var last_damage_dealt := 0.0
 var last_knockback_dealt := 0.0
+var dominance_influence := 0.15
+var velo_cap := 0.75
 
 @export_group('Knockout')
 @export var ko_drag := 0.4
@@ -215,10 +217,15 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	# knockback
 	var total_rpm = current_rpm + opponent.current_rpm
 	var dominance = current_rpm / total_rpm if total_rpm > 0 else 0.5
-	var raw = (base_knockback) * pow(power, 0.25) / (100*opponent.weight)
-	var weight_factor := weight / (weight + opponent.weight) 
-	var applied = max(raw, 0.0) * weight_factor * (dominance*1.05) + (1.05*velo_bonus)
-
+	var dominance_mult = 1.0 + (dominance - 0.5) * 2.0 * dominance_influence
+	
+	var raw = base_knockback * pow(power, 0.3)
+	var weight_factor := weight / (weight + opponent.weight)
+	var base_term = raw * weight_factor * 0.75
+	
+	var velo_term = min(5*velo_bonus, velo_cap)
+	var applied = base_term * dominance_mult + velo_term
+		
 	# direction
 	var dir := Vector2(opponent.global_position.x, opponent.global_position.z) \
 				- Vector2(global_position.x, global_position.z)
@@ -228,8 +235,12 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 		self.name,
 		' velocity:',
 		self._velocity.length(),
-		',raw velo_bonus: ',
-		velo_bonus,
+		', base kb term:',
+		base_term,
+		', dominance mult:',
+		dominance_mult,
+		', velo term: ',
+		velo_term,
 		' damage_dealt: ',
 		dmg_dealt,
 		' knockback_dealt: ',
@@ -246,8 +257,9 @@ func _receive_dmg(dmg: float) -> void:
 	current_rpm = max(current_rpm - dmg, 0.0)
 
 func _receive_kb(knockback: float, dir: Vector2) -> void:
+	knockback = knockback / (95*weight)
 	_velocity += dir * knockback
-	_vertical_velocity += knockback * vertical_fraction * clamp((2000/current_rpm),0.9,1.8)
+	_vertical_velocity += knockback * vertical_fraction * clamp((1000/max(current_rpm, 1.0)),0.75,1.8)
 	movement_pattern = _pick_weighted_pattern()
 	
 
@@ -256,7 +268,7 @@ func _get_target(angle: float, pattern_scale: float, rot_phase: float) -> Vector
 	return target
 
 
-func _set_arena(
+func _set_arena( 
 	centre: Vector2,
 	radius:float,
 	arena_wall_radius: float,

@@ -2,11 +2,11 @@ class_name Arena
 extends StaticBody3D
 
 @export var centre := Vector2(0,0)
-@export var knockout_radius : float = 0.21
+@export var knockout_radius : float = 0.20
 @export var radius := 0.16
 @export var wall_radius := 0.165
 @export var wall_bounce := 1.05
-@export var wall_damage := 55
+@export var wall_damage := 65
 @export var gravity := 1.05
 
 func _ready() -> void:

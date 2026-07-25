@@ -9,11 +9,11 @@ extends Node3D
 
 @export_group('Scale')
 
-@export var knockback_reference := 0.3
-@export var damage_reference := 40
-@export var rpm_reference := 3000
+@export var knockback_reference := 0.6
+@export var damage_reference := 50
+@export var rpm_reference := 2500
 ## Particles at full strength. Weak hits emit proportionally fewer.
-@export var max_particles := 48
+@export var max_particles := 50
 ## Below this fraction of reference, no sparks at all.
 @export var threshold := 0.4
 
@@ -64,9 +64,9 @@ func _make_process_material() -> ParticleProcessMaterial:
 	m.initial_velocity_min = min_speed
 	m.initial_velocity_max = max_speed
 
-	m.gravity = Vector3(0, -1, 0)
-	m.damping_min = 5
-	m.damping_max = 10
+	m.gravity = Vector3(0, -1.5, 0)
+	m.damping_min = 7.5
+	m.damping_max = 15
 
 	m.scale_min = 0.5
 	m.scale_max = 1.0
@@ -110,9 +110,7 @@ func _on_collision(a: Top, b: Top) -> void:
 	var rpm_ref: float = max(a.current_rpm, b.current_rpm) / rpm_reference
 	
 	var raw: float = (knockback_ref + damage_ref + rpm_ref) / 3
-	var strength: float = clamp(sqrt(raw), 0.15, 1.0)
-	print('raw: ', raw, ' strength: ', strength)
-	
+	var strength: float = clamp(raw, 0, 1)
 	if strength < threshold:
 		return
 	
@@ -127,7 +125,3 @@ func _on_collision(a: Top, b: Top) -> void:
 
 	_particles.amount_ratio = clamp(strength, 0.15, 1.0)
 	_particles.restart()
-	print("spark fired at ", global_position,
-		  " ratio=", _particles.amount_ratio,
-		  " emitting=", _particles.emitting,
-		  " visible=", visible)
