@@ -9,22 +9,28 @@ extends Node3D
 
 @export_group('Scale')
 
-@export var knockback_reference := 0.6
-@export var damage_reference := 50
-@export var rpm_reference := 2500
+@export var knockback_reference := 12
+@export var damage_reference := 100
 ## Particles at full strength. Weak hits emit proportionally fewer.
-@export var max_particles := 50
+@export var max_particles := 60
 ## Below this fraction of reference, no sparks at all.
 @export var threshold := 0.4
+@export var overrun_max := 2.0
 
 @export_group('Look')
-@export var spark_colour := Color(1.0, 0.906, 0.724, 1.0)
+@export var spark_colour := Color(1.0, 0.882, 0.59, 1.0)
 @export var spark_size := 0.003
 @export var min_speed := 0.60
 @export var max_speed := 1.2
 @export var lifetime := 0.08
 ## Upward bias, so sparks arc rather than spraying flat.
 @export var upward_bias := 0.3
+## Colour at `overrun_max`. Whiter and brighter, so an exceptional hit reads
+## as hotter rather than merely bigger.
+@export var spark_colour_hot := Color(1.0, 0.98, 0.92, 1.0)
+## How much brighter the hottest sparks burn. Above 1 pushes past white into
+## the glow threshold, which is what makes them bloom.
+@export var hot_energy := 2.2
 
 var _particles: GPUParticles3D
 
@@ -105,14 +111,23 @@ func _make_spark_texture() -> GradientTexture2D:
 
 func _on_collision(a: Top, b: Top) -> void:
 	
+	# Deliberately excludes the tops' current RPM. A kamikaze strike comes from
+	# a nearly-spent top, so an RPM term would dilute the one hit that most
+	# needs to look violent — the damage and knockback already encode force.
 	var knockback_ref: float = max(a.last_knockback_dealt, b.last_knockback_dealt) / knockback_reference
 	var damage_ref: float = max(a.last_damage_dealt, b.last_damage_dealt) / damage_reference
-	var rpm_ref: float = max(a.current_rpm, b.current_rpm) / rpm_reference
-	
-	var raw: float = (knockback_ref + damage_ref + rpm_ref) / 3
-	var strength: float = clamp(raw, 0, 1)
-	if strength < threshold:
+
+	var raw: float = (knockback_ref + damage_ref) * 0.5
+	if raw < threshold:
 		return
+
+	# Two separate readings of the same hit. `strength` drives the particle
+	# count, which saturates at the reference because amount_ratio caps at 1.
+	# `overrun` carries everything beyond that, and makes the burst physically
+	# bigger and hotter instead — otherwise the biggest hit in a match looks
+	# identical to a routine one.
+	var strength: float = clamp(raw, 0.0, 1.0)
+	var overrun: float = clamp(raw, 1.0, overrun_max)
 	
 	var a_pos := Vector3(a.global_position.x, 0.0, a.global_position.z)
 	var b_pos := Vector3(b.global_position.x, 0.0, b.global_position.z)
@@ -123,5 +138,23 @@ func _on_collision(a: Top, b: Top) -> void:
 	contact.y = min(max(a.global_position.y, b.global_position.y) + a.radius * 0.4, 0.05)
 	global_position = contact
 
+	# 0 at the reference, 1 at overrun_max — how far past "a solid hit" this was.
+	var heat := inverse_lerp(1.0, overrun_max, overrun)
+	heat = clamp(heat, 0.0, 1.0)
+
+	var col := spark_colour.lerp(spark_colour_hot, heat)
+	# Push the intensity past 1 so the brightest hits cross the glow threshold
+	# and bloom, rather than just being pale.
+	col = col * lerpf(1.0, hot_energy, heat)
+
+	var mat := _particles.material_override as StandardMaterial3D
+	mat.albedo_color = col
+
+	var pm := _particles.process_material as ParticleProcessMaterial
+	pm.color = col
+	pm.initial_velocity_min = min_speed * overrun
+	pm.initial_velocity_max = max_speed * overrun
+
+	_particles.draw_pass_1.size = Vector2(spark_size, spark_size) * overrun
 	_particles.amount_ratio = clamp(strength, 0.15, 1.0)
 	_particles.restart()

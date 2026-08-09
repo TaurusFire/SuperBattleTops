@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatDisplayConfig" format=3 uid="uid://b3027gvapw8qq"]
+
+[ext_resource type="Script" uid="uid://1mprwdka0ogo" path="res://Scripts/stat_entry.gd" id="1_5ffci"]
+[ext_resource type="Script" uid="uid://b2ljsgacru2js" path="res://Scripts/stat_display_config.gd" id="1_bvugt"]
+[ext_resource type="Resource" uid="uid://dyf140do08yl" path="res://Resources/stat_entries/kb_se.tres" id="2_cj11p"]
+[ext_resource type="Resource" uid="uid://b73k21babh3rd" path="res://Resources/stat_entries/dmg_se.tres" id="3_2el1h"]
+[ext_resource type="Resource" uid="uid://dxvqx2bmy55td" path="res://Resources/stat_entries/def_se.tres" id="4_r8g5d"]
+[ext_resource type="Resource" uid="uid://ci366547k4anp" path="res://Resources/stat_entries/sta_se.tres" id="5_mtmi7"]
+
+[resource]
+script = ExtResource("1_bvugt")
+entries = Array[ExtResource("1_5ffci")]([ExtResource("2_cj11p"), ExtResource("3_2el1h"), ExtResource("4_r8g5d"), ExtResource("5_mtmi7")])
+metadata/_custom_type_script = "uid://b2ljsgacru2js"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatEntry" format=3 uid="uid://b73k21babh3rd"]
+
+[ext_resource type="Script" uid="uid://1mprwdka0ogo" path="res://Scripts/stat_entry.gd" id="1_2tbqa"]
+
+[resource]
+script = ExtResource("1_2tbqa")
+label = "DMG"
+stat_property = "base_damage"
+per_half_star = 20.0
+metadata/_custom_type_script = "uid://1mprwdka0ogo"

@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="TopStats" format=3 uid="uid://d03bu307247xs"]
+
+[ext_resource type="Script" uid="uid://dafu8qp62ki8n" path="res://Scripts/Abilities/speedboost.gd" id="1_14wbo"]
+[ext_resource type="ArrayMesh" uid="uid://dbnbrumwihqbe" path="res://Assets/tops/top_stamina.obj" id="2_q6yxo"]
+[ext_resource type="Script" uid="uid://t37dunmlguwa" path="res://Scripts/top_stats.gd" id="3_unkte"]
+
+[sub_resource type="Resource" id="Resource_vpwyr"]
+script = ExtResource("1_14wbo")
+metadata/_custom_type_script = "uid://dafu8qp62ki8n"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xdy8"]
+albedo_color = Color(1.0862142, 1.0364043, 0.47038192, 1)
+roughness = 0.35
+clearcoat_enabled = true
+clearcoat = 0.5
+clearcoat_roughness = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bi8nj"]
+albedo_color = Color(0.8927557, 0.8927558, 0.8927555, 1)
+metallic = 1.0
+roughness = 0.3
+
+[resource]
+script = ExtResource("3_unkte")
+display_name = "Speedboost"
+mesh = ExtResource("2_q6yxo")
+materials = Array[Material]([SubResource("StandardMaterial3D_7xdy8"), SubResource("StandardMaterial3D_bi8nj")])
+trail_colour = Color(2.2905588, 2.3575678, 0, 1)
+name_colour = Color(0.6272139, 0.58362144, 6.9708136e-07, 1)
+name_colour_secondary = Color(1.086, 1.036, 0.47, 1)
+initial_rpm = 3300.0
+rpm_base_decay_rate = 17.0
+rpm_decay_frac = 0.028
+base_knockback = 30.0
+base_damage = 30.0
+defence = 12.0
+weight = 0.16
+move_speed = 0.5
+aggression = 0.8
+orbit_radius = 0.08
+dodge_skill = 0.7
+base_responsiveness = 3.0
+ability = SubResource("Resource_vpwyr")
+metadata/_custom_type_script = "uid://t37dunmlguwa"

@@ -35,6 +35,9 @@ func _ready() -> void:
 	if top == null:
 		top = get_parent() as Top
 
+	if top != null and top.stats != null:
+		trail_colour = top.stats.trail_colour
+	
 	# Draw in raw world space: the ribbon's vertices are world positions, so the
 	# node must contribute no transform of its own.
 	top_level = true

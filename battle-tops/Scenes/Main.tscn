@@ -2,58 +2,24 @@
 
 [ext_resource type="PackedScene" uid="uid://bw4ibn0x63nic" path="res://Scenes/Arena.tscn" id="1_kln2b"]
 [ext_resource type="Script" uid="uid://du8l53udjwpp3" path="res://Scripts/arena.gd" id="2_jw32o"]
-[ext_resource type="PackedScene" uid="uid://b76dx2t6nc7hb" path="res://Scenes/AttackTop.tscn" id="2_rgh2o"]
-[ext_resource type="Script" uid="uid://cl6wvxx2x7gmu" path="res://Scripts/label.gd" id="4_rgh2o"]
-[ext_resource type="Script" uid="uid://37lrv1kyiaif" path="res://Scripts/patterns/figure_eight_pattern.gd" id="4_v1gob"]
-[ext_resource type="Script" uid="uid://1i821p505v1f" path="res://Scripts/patterns/MovementPattern.gd" id="4_vy5pj"]
-[ext_resource type="PackedScene" uid="uid://ctwv1cda675p3" path="res://Scenes/DefenceTop.tscn" id="5_50glp"]
 [ext_resource type="Script" uid="uid://cwfynragtcdna" path="res://Scripts/game_manager.gd" id="5_pbw6q"]
-[ext_resource type="Script" uid="uid://c1eg5di7xo615" path="res://Scripts/patterns/oval_pattern.gd" id="6_4kpch"]
-[ext_resource type="Script" uid="uid://cdv62a0ahk1sb" path="res://Scripts/patterns/circle_pattern.gd" id="6_vy5pj"]
-[ext_resource type="Script" uid="uid://4g5lfuungv1k" path="res://Scripts/debugging_visuals.gd" id="7_bmxlf"]
+[ext_resource type="Resource" uid="uid://bdxnha6inkrda" path="res://Resources/TopStats/kamikaze_top.tres" id="7_erwvk"]
+[ext_resource type="Resource" uid="uid://d03bu307247xs" path="res://Resources/TopStats/speedboost_top.tres" id="8_2w5on"]
 [ext_resource type="Script" uid="uid://chlrxh3p2hvgi" path="res://Scripts/battle_camera.gd" id="11_frkhe"]
-[ext_resource type="PackedScene" uid="uid://i7xahxmp10a8" path="res://Scenes/StaminaTop.tscn" id="12_grg3l"]
 [ext_resource type="Script" uid="uid://dijh5idgjhftf" path="res://Scripts/clash_sparks.gd" id="14_1p5hy"]
-
-[sub_resource type="Resource" id="Resource_hwpts"]
-script = ExtResource("6_4kpch")
-metadata/_custom_type_script = "uid://c1eg5di7xo615"
-
-[sub_resource type="Resource" id="Resource_erwvk"]
-script = ExtResource("6_4kpch")
-metadata/_custom_type_script = "uid://c1eg5di7xo615"
-
-[sub_resource type="Resource" id="Resource_frkhe"]
-script = ExtResource("6_vy5pj")
-metadata/_custom_type_script = "uid://cdv62a0ahk1sb"
-
-[sub_resource type="Resource" id="Resource_jyqft"]
-script = ExtResource("6_4kpch")
-metadata/_custom_type_script = "uid://c1eg5di7xo615"
-
-[sub_resource type="Resource" id="Resource_1p5hy"]
-script = ExtResource("6_vy5pj")
-metadata/_custom_type_script = "uid://cdv62a0ahk1sb"
-
-[sub_resource type="Resource" id="Resource_2w5on"]
-script = ExtResource("6_4kpch")
-metadata/_custom_type_script = "uid://c1eg5di7xo615"
-
-[sub_resource type="Resource" id="Resource_h1m7h"]
-script = ExtResource("4_v1gob")
-metadata/_custom_type_script = "uid://37lrv1kyiaif"
-
-[sub_resource type="Resource" id="Resource_346fj"]
-script = ExtResource("4_v1gob")
-metadata/_custom_type_script = "uid://37lrv1kyiaif"
-
-[sub_resource type="Resource" id="Resource_sxkr1"]
-script = ExtResource("6_vy5pj")
-metadata/_custom_type_script = "uid://cdv62a0ahk1sb"
-
-[sub_resource type="Resource" id="Resource_fq0cl"]
-script = ExtResource("6_4kpch")
-metadata/_custom_type_script = "uid://c1eg5di7xo615"
+[ext_resource type="Resource" uid="uid://xbkfk4vypo24" path="res://Resources/TopStats/defence_top.tres" id="14_h1m7h"]
+[ext_resource type="Resource" uid="uid://cyw1ponrlaltn" path="res://Resources/TopStats/stamina_top.tres" id="15_erwvk"]
+[ext_resource type="Script" uid="uid://tryrqifax2po" path="res://Scripts/gauge_panel.gd" id="15_h1m7h"]
+[ext_resource type="Script" uid="uid://bgsbswi4nujlb" path="res://Scripts/countdown_display.gd" id="16_2w5on"]
+[ext_resource type="PackedScene" uid="uid://cqohu1kheqbkw" path="res://Scenes/Top.tscn" id="16_346fj"]
+[ext_resource type="PackedScene" uid="uid://tgacqdy7vdc8" path="res://Scenes/rpm_gauge.tscn" id="16_erwvk"]
+[ext_resource type="Resource" uid="uid://j8euabjne2gy" path="res://Resources/TopStats/attack_top.tres" id="17_0sclb"]
+[ext_resource type="Script" uid="uid://bw43ncg7l51di" path="res://Scripts/result_display.gd" id="17_2w5on"]
+[ext_resource type="FontFile" uid="uid://30ixsbo8oqf4" path="res://Assets/fonts/Bungee/Bungee-Regular.ttf" id="17_346fj"]
+[ext_resource type="Shader" uid="uid://cndrxyi4ya8jk" path="res://Assets/fonts/text_gradient.gdshader" id="18_0sclb"]
+[ext_resource type="Script" uid="uid://cyyh86gto6xke" path="res://Scripts/intro_sequence.gd" id="18_346fj"]
+[ext_resource type="Script" uid="uid://bvghi1nb53vvq" path="res://Scripts/stat_card.gd" id="18_sxkr1"]
+[ext_resource type="Resource" uid="uid://b3027gvapw8qq" path="res://Resources/statdisplayconfig.tres" id="19_fq0cl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kln2b"]
 
@@ -77,59 +43,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1273575e-05, -0.0001745522,
 collision_layer = 4
 script = ExtResource("2_jw32o")
 
-[node name="AttackTop" parent="." unique_id=281245743 instance=ExtResource("2_rgh2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07742092, 0.11501101, -0.009354532)
-mass = 0.15
-continuous_cd = true
-initial_rpm = 4250.0
-rpm_base_decay_rate = 35.0
-rpm_decay_frac = 0.04
-movement_pattern = SubResource("Resource_hwpts")
-pattern_speed = 3.0
-speed_margin = 2.0
-pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_erwvk"), SubResource("Resource_frkhe")])
-pattern_weights = Array[float]([0.5, 0.15])
-max_rpm_scale = 0.6
-base_knockback = 30.0
-defence = 10.0
-base_damage = 40
-weight = 0.15
-drift_max = 0.04
-
-[node name="DebugViz" type="MeshInstance3D" parent="AttackTop" unique_id=970673739]
+[node name="Att" parent="." unique_id=2088087833 instance=ExtResource("16_346fj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05456163, 0)
 visible = false
-script = ExtResource("7_bmxlf")
+stats = ExtResource("17_0sclb")
 
-[node name="DefenceTop" parent="." unique_id=833782843 instance=ExtResource("5_50glp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0646254, 0.109648645, -0.0709825)
-mass = 0.25
-initial_rpm = 3300.0
-rpm_base_decay_rate = 24.0
-rpm_decay_frac = 0.03
-movement_pattern = SubResource("Resource_jyqft")
-pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_1p5hy"), SubResource("Resource_2w5on"), SubResource("Resource_h1m7h")])
-pattern_weights = Array[float]([0.3, 0.6, 0.1])
-max_wobble_angle = 0.2
-base_knockback = 12.0
-base_damage = 15
-weight = 0.22
+[node name="Def" parent="." unique_id=1788708962 instance=ExtResource("16_346fj")]
+stats = ExtResource("14_h1m7h")
 
-[node name="StaminaTop" parent="." unique_id=448867687 instance=ExtResource("12_grg3l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.034001857, 0.1094148, 0.0650526)
-initial_rpm = 3500.0
-rpm_base_decay_rate = 15.0
-rpm_decay_frac = 0.025
-movement_pattern = SubResource("Resource_346fj")
-pattern_speed = 3.0
-speed_margin = 2.0
-pattern_pool = Array[ExtResource("4_vy5pj")]([SubResource("Resource_sxkr1"), SubResource("Resource_fq0cl")])
-pattern_weights = Array[float]([0.1, 0.4])
-max_rpm_scale = 0.75
-max_wobble_angle = 0.6
-base_knockback = 14.0
-defence = 12.0
-base_damage = 25
-weight = 0.17
+[node name="Stam" parent="." unique_id=1632133170 instance=ExtResource("16_346fj")]
+stats = ExtResource("15_erwvk")
+
+[node name="Kam" parent="." unique_id=1078701170 instance=ExtResource("16_346fj")]
+stats = ExtResource("7_erwvk")
+
+[node name="Kam2" parent="." unique_id=1259181042 instance=ExtResource("16_346fj")]
+visible = false
+stats = ExtResource("7_erwvk")
+
+[node name="Kam3" parent="." unique_id=1233186677 instance=ExtResource("16_346fj")]
+visible = false
+stats = ExtResource("7_erwvk")
+
+[node name="Spe" parent="." unique_id=1313620997 instance=ExtResource("16_346fj")]
+visible = false
+stats = ExtResource("8_2w5on")
 
 [node name="CameraRig" type="Node3D" parent="." unique_id=2087369725 node_paths=PackedStringArray("manager", "arena")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0646254, 0.109648645, -0.0709825)
@@ -158,46 +96,78 @@ directional_shadow_max_distance = 2.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2043798271]
 environment = SubResource("Environment_pbw6q")
 
-[node name="Top1CL" type="CanvasLayer" parent="." unique_id=301273540]
-offset = Vector2(20, 0)
-transform = Transform2D(1, 0, 0, 1, 20, 0)
-
-[node name="Top1Label" type="Label" parent="Top1CL" unique_id=1558996023 node_paths=PackedStringArray("top")]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 32
-script = ExtResource("4_rgh2o")
-top = NodePath("../../AttackTop")
-
-[node name="Top2CL" type="CanvasLayer" parent="." unique_id=189407982]
-offset = Vector2(1000, 0)
-transform = Transform2D(1, 0, 0, 1, 1000, 0)
-
-[node name="Top2Label" type="Label" parent="Top2CL" unique_id=1385327905 node_paths=PackedStringArray("top")]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 32
-script = ExtResource("4_rgh2o")
-top = NodePath("../../DefenceTop")
-metadata/_edit_use_anchors_ = true
-
-[node name="Top3CL3" type="CanvasLayer" parent="." unique_id=1695167265]
-offset = Vector2(1000, 2000)
-transform = Transform2D(1, 0, 0, 1, 1000, 2000)
-
-[node name="Top3Label" type="Label" parent="Top3CL3" unique_id=623946320 node_paths=PackedStringArray("top")]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 32
-script = ExtResource("4_rgh2o")
-top = NodePath("../../StaminaTop")
-metadata/_edit_use_anchors_ = true
-
 [node name="GameManager" type="Node" parent="." unique_id=1117798205 node_paths=PackedStringArray("arena", "tops")]
 script = ExtResource("5_pbw6q")
 arena = NodePath("../Arena")
-tops = [NodePath("../AttackTop"), NodePath("../StaminaTop"), NodePath("../DefenceTop")]
+tops = [NodePath("../Def"), NodePath("../Kam"), NodePath("../Stam")]
+collision_radius = null
+separation_radius = null
+velocity_weight = null
+slowmo_scale = null
+hitstop_max_duration = null
+hitstop_reference_damage = null
+hitstop_reference_knockback = null
+hitstop_threshold = null
+hitstop_overrun = null
+hitstop_curve = null
+spawn_radius_ratio = null
+spawn_angle_offset = null
+randomise_spawn_rotation = null
+tie_window = null
+freeze_delay = null
+vertical_threshold = null
 
-[node name="Node3D" type="Node3D" parent="." unique_id=860210630 node_paths=PackedStringArray("manager")]
+[node name="ClashSparks" type="Node3D" parent="." unique_id=860210630 node_paths=PackedStringArray("manager")]
 script = ExtResource("14_1p5hy")
 manager = NodePath("../GameManager")
+
+[node name="GaugePanel" type="CanvasLayer" parent="." unique_id=621190517 node_paths=PackedStringArray("manager")]
+script = ExtResource("15_h1m7h")
+manager = NodePath("../GameManager")
+gauge_scene = ExtResource("16_erwvk")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1595222250]
+
+[node name="CountdownDisplay" type="Control" parent="UI" unique_id=1540062413 node_paths=PackedStringArray("manager")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_2w5on")
+manager = NodePath("../../GameManager")
+font = ExtResource("17_346fj")
+shader = ExtResource("18_0sclb")
+
+[node name="ResultDisplay" type="Control" parent="UI" unique_id=1205491703 node_paths=PackedStringArray("manager")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_2w5on")
+manager = NodePath("../../GameManager")
+font = ExtResource("17_346fj")
+shader = ExtResource("18_0sclb")
+top_colour = Color(0, 0.6076555, 0.6562108, 1)
+bottom_colour = Color(0.36569962, 0.96994084, 3.85046e-07, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="StatCard" type="Control" parent="UI" unique_id=130678001 node_paths=PackedStringArray("intro")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("18_sxkr1")
+intro = NodePath("../../IntroSequence")
+config = ExtResource("19_fq0cl")
+metadata/_custom_type_script = "uid://bvghi1nb53vvq"
+
+[node name="IntroSequence" type="Node" parent="." unique_id=1116842354 node_paths=PackedStringArray("manager", "arena", "camera")]
+script = ExtResource("18_346fj")
+manager = NodePath("../GameManager")
+arena = NodePath("../Arena")
+camera = NodePath("../CameraRig")
+metadata/_custom_type_script = "uid://cyyh86gto6xke"

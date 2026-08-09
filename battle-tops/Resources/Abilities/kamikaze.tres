@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="KamikazeAbility" format=3 uid="uid://cbas6qeouvg67"]
+
+[ext_resource type="Script" uid="uid://do24nda1r2x48" path="res://Scripts/Abilities/kamikaze.gd" id="1_knblu"]
+
+[resource]
+script = ExtResource("1_knblu")
+metadata/_custom_type_script = "uid://do24nda1r2x48"

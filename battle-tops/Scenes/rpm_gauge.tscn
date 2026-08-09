@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://tgacqdy7vdc8"]
+
+[ext_resource type="Script" uid="uid://codm156hyl70w" path="res://Scripts/rpm_gauge.gd" id="1_j0juo"]
+[ext_resource type="FontFile" uid="uid://30ixsbo8oqf4" path="res://Assets/fonts/Bungee/Bungee-Regular.ttf" id="2_kr1ia"]
+[ext_resource type="Shader" uid="uid://cndrxyi4ya8jk" path="res://Assets/fonts/text_gradient.gdshader" id="3_tu1b8"]
+
+[node name="Control" type="Control" unique_id=2100269017]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_j0juo")
+readout_font = ExtResource("2_kr1ia")
+readout_shader = ExtResource("3_tu1b8")

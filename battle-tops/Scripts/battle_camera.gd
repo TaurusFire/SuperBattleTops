@@ -24,6 +24,7 @@ var _distance := 0.5
 @export var distance_max := 0.5
 ## Spread (in world units) that maps to distance_max.
 @export var spread_reference := 0.3
+@export_range(0.0, 1.5) var focus_leash := 0.5
 
 @export_group('Impact')
 ## Peak positional shake at reference knockback, in world units.
@@ -65,6 +66,15 @@ func _process(delta: float) -> void:
 		target_focus = Vector3(mid.x, look_height, mid.y)
 		target_distance = lerp(distance_min, distance_max,
 			clamp(_spread(living) / spread_reference, 0.0, 1.0))
+		
+		# Leash the focus to the arena, so a top flying out or a lopsided
+		# midpoint can't drag the frame off the fight.
+		var centre = Vector3(arena.centre.x, look_height, arena.centre.y)
+		var from_centre = target_focus - centre
+		from_centre.y = 0.0
+		var leash = arena.radius * focus_leash
+		if from_centre.length() > leash:
+			target_focus = centre + from_centre.normalized() * leash
 
 	_focus = _focus.lerp(target_focus, clamp(focus_lerp * delta, 0.0, 1.0))
 	_distance = lerp(_distance, target_distance, clamp(distance_lerp * delta, 0.0, 1.0))

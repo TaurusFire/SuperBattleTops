@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StatEntry" format=3 uid="uid://ci366547k4anp"]
+
+[ext_resource type="Script" uid="uid://1mprwdka0ogo" path="res://Scripts/stat_entry.gd" id="1_4itja"]
+
+[resource]
+script = ExtResource("1_4itja")
+label = "STA"
+stat_property = "rpm_base_decay_rate"
+per_half_star = 8.0
+invert = true
+invert_baseline = 80.0
+metadata/_custom_type_script = "uid://1mprwdka0ogo"

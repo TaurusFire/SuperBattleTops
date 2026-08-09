@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="TopStats" format=3 uid="uid://cyw1ponrlaltn"]
+
+[ext_resource type="ArrayMesh" uid="uid://dbnbrumwihqbe" path="res://Assets/tops/top_stamina.obj" id="1_2jdrh"]
+[ext_resource type="Script" uid="uid://t37dunmlguwa" path="res://Scripts/top_stats.gd" id="5_3hyy8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xdy8"]
+albedo_color = Color(0, 0.91881955, 0.39708722, 1)
+roughness = 0.35
+clearcoat_enabled = true
+clearcoat = 0.5
+clearcoat_roughness = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bi8nj"]
+albedo_color = Color(0.8927557, 0.8927558, 0.8927555, 1)
+metallic = 1.0
+roughness = 0.3
+
+[resource]
+script = ExtResource("5_3hyy8")
+display_name = "Stamina"
+mesh = ExtResource("1_2jdrh")
+materials = Array[Material]([SubResource("StandardMaterial3D_7xdy8"), SubResource("StandardMaterial3D_bi8nj")])
+trail_colour = Color(0, 0.9137255, 0.21960784, 1)
+name_colour = Color(0, 0.6842409, 0, 1)
+name_colour_secondary = Color(0.5377861, 1, 0.50600374, 1)
+initial_rpm = 3500.0
+rpm_decay_frac = 0.025
+base_knockback = 25.0
+base_damage = 25.0
+defence = 25.0
+weight = 0.16
+move_speed = 0.7
+aggression = 0.6
+orbit_radius = 0.08
+dodge_skill = 0.8
+base_responsiveness = 3.0
+metadata/_custom_type_script = "uid://t37dunmlguwa"

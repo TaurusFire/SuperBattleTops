@@ -49,7 +49,7 @@ func _process(_delta: float) -> void:
 	_cross(centre, centre_colour)
 
 	# Current pattern target
-	var scale_now := _top._get_pattern_scale()
+	var scale_now := 0.5
 	var target_2d: Vector2 = centre_2d + _top.movement_pattern.get_target(
 		_top._angle, scale_now, _top._rotation_phase)
 	var target := Vector3(target_2d.x, y, target_2d.y)

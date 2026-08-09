@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="TopStats" format=3 uid="uid://j8euabjne2gy"]
+
+[ext_resource type="ArrayMesh" uid="uid://d2hthn04gdta2" path="res://Assets/tops/top_attack.obj" id="1_3toy4"]
+[ext_resource type="Script" uid="uid://t37dunmlguwa" path="res://Scripts/top_stats.gd" id="2_3toy4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xdy8"]
+albedo_color = Color(1, 0.33551362, 0.2695955, 1)
+roughness = 0.35
+clearcoat_enabled = true
+clearcoat = 0.5
+clearcoat_roughness = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bi8nj"]
+albedo_color = Color(0.8927557, 0.8927558, 0.8927555, 1)
+metallic = 1.0
+roughness = 0.3
+
+[resource]
+script = ExtResource("2_3toy4")
+display_name = "Attack"
+mesh = ExtResource("1_3toy4")
+materials = Array[Material]([SubResource("StandardMaterial3D_7xdy8"), SubResource("StandardMaterial3D_bi8nj")])
+name_colour = Color(1, 0, 0, 1)
+name_colour_secondary = Color(1, 0.6587266, 0.60562193, 1)
+rpm_base_decay_rate = 40.0
+rpm_decay_frac = 0.04
+base_knockback = 40.0
+base_damage = 45.0
+defence = 10.0
+weight = 0.15
+move_speed = 0.9
+aggression = 0.85
+orbit_radius = 0.09
+dodge_skill = 0.2
+metadata/_custom_type_script = "uid://t37dunmlguwa"

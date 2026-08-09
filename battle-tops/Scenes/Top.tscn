@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cqohu1kheqbkw"]
+
+[ext_resource type="Script" uid="uid://wilfjkm1pvob" path="res://Scripts/top.gd" id="1_ek7ld"]
+[ext_resource type="Script" uid="uid://xgpr6hm7jhc" path="res://Scripts/trail.gd" id="2_p07lo"]
+
+[node name="Top" type="Node3D" unique_id=1632133170]
+script = ExtResource("1_ek7ld")
+
+[node name="OrientationPivot" type="Node3D" parent="." unique_id=445847807]
+
+[node name="TopMesh" type="MeshInstance3D" parent="OrientationPivot" unique_id=930064008]
+
+[node name="TopTrail" type="MeshInstance3D" parent="OrientationPivot" unique_id=795196551 node_paths=PackedStringArray("top")]
+script = ExtResource("2_p07lo")
+top = NodePath("../..")

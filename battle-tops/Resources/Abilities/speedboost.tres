@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SpeedsterAbility" format=3 uid="uid://bqdrjvsvelvdg"]
+
+[ext_resource type="Script" uid="uid://dafu8qp62ki8n" path="res://Scripts/Abilities/speedboost.gd" id="1_v0gxd"]
+
+[resource]
+script = ExtResource("1_v0gxd")
+metadata/_custom_type_script = "uid://dafu8qp62ki8n"
