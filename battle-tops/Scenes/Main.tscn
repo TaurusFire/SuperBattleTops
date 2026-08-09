@@ -96,26 +96,11 @@ directional_shadow_max_distance = 2.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2043798271]
 environment = SubResource("Environment_pbw6q")
 
-[node name="GameManager" type="Node" parent="." unique_id=1117798205 node_paths=PackedStringArray("arena", "tops")]
+[node name="GameManager" type="Node" parent="." unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
 script = ExtResource("5_pbw6q")
 arena = NodePath("../Arena")
 tops = [NodePath("../Def"), NodePath("../Kam"), NodePath("../Stam")]
-collision_radius = null
-separation_radius = null
-velocity_weight = null
-slowmo_scale = null
-hitstop_max_duration = null
-hitstop_reference_damage = null
-hitstop_reference_knockback = null
-hitstop_threshold = null
-hitstop_overrun = null
-hitstop_curve = null
-spawn_radius_ratio = null
-spawn_angle_offset = null
-randomise_spawn_rotation = null
-tie_window = null
-freeze_delay = null
-vertical_threshold = null
+intro = NodePath("../IntroSequence")
 
 [node name="ClashSparks" type="Node3D" parent="." unique_id=860210630 node_paths=PackedStringArray("manager")]
 script = ExtResource("14_1p5hy")

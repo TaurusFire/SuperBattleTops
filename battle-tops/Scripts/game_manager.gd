@@ -60,7 +60,7 @@ signal collision_occurred(a: Top, b: Top)
 func _ready() -> void:
 	assert(not tops.is_empty(), "GameManager: tops array is unassigned!")
 	assert(arena != null, "GameManager: arena is unassigned!")
-	
+
 	for top in tops:
 		top._set_arena(
 			arena.centre,
@@ -73,16 +73,17 @@ func _ready() -> void:
 		)
 		top.opponents = tops.filter(func(t): return t != top)
 		top.entered_dying.connect(_on_top_entered_dying)
-		
+
+	# Must precede the intro: the sequencer reads each top's position as the
+	# destination it flies to.
+	_arrange_tops()
+
 	if intro != null:
 		phase = Phase.INTRO
 		intro.finished.connect(_on_intro_finished)
 		intro.begin()
 	else:
 		_start_countdown()
-	
-	time_remaining = countdown_seconds
-	phase = Phase.COUNTDOWN
 
 func _on_intro_finished() -> void:
 	_start_countdown()
