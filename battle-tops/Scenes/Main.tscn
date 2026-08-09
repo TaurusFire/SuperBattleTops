@@ -140,7 +140,7 @@ top_colour = Color(0, 0.6076555, 0.6562108, 1)
 bottom_colour = Color(0.36569962, 0.96994084, 3.85046e-07, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="StatCard" type="Control" parent="UI" unique_id=130678001 node_paths=PackedStringArray("intro")]
+[node name="StatCard" type="Control" parent="UI" unique_id=130678001 node_paths=PackedStringArray("intro", "camera")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -148,6 +148,7 @@ offset_bottom = 40.0
 script = ExtResource("18_sxkr1")
 intro = NodePath("../../IntroSequence")
 config = ExtResource("19_fq0cl")
+camera = NodePath("../../CameraRig/Camera3D")
 metadata/_custom_type_script = "uid://bvghi1nb53vvq"
 
 [node name="IntroSequence" type="Node" parent="." unique_id=1116842354 node_paths=PackedStringArray("manager", "arena", "camera")]

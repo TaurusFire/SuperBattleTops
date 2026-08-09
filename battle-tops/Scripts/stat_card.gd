@@ -7,6 +7,8 @@ extends Control
 
 @export var intro: IntroSequence
 @export var config: StatDisplayConfig
+var _anchor := Vector2.ZERO
+
 
 @export_group('Layout')
 ## Which side of the frame the card sits on, matching the fighter's gauge.
@@ -32,6 +34,13 @@ extends Control
 @export var fade_out = 0.18
 ## How far the card slides in from its side, in pixels.
 @export var slide = 70.0
+
+@export var camera: Camera3D
+@export_group('Layout')
+## Horizontal gap between the top and the card, in pixels.
+@export var card_gap := 90.0
+@export var card_width := 340.0
+
 
 var _top: Top
 var _ratings: Array = []          # [{label, stars}]
@@ -79,13 +88,16 @@ func _on_introduced(top: Top, index: int) -> void:
 	_top = top
 	_right_side = (index % 2) == 1
 	_ratings = _rate_all(top)
+	# Captured once: the card marks where the top was when it reached the
+	# apex, rather than tracking it as it moves on.
+	_anchor = _compute_anchor(top)
 
 	var txt = top.display_name().to_upper()
 	_name_label.text = txt
 	_name_outline.text = txt
 	_name_label.add_theme_color_override("font_color", top.stats.name_colour)
 	_name_label.horizontal_alignment = \
-		HORIZONTAL_ALIGNMENT_RIGHT if _right_side else HORIZONTAL_ALIGNMENT_LEFT
+		HORIZONTAL_ALIGNMENT_LEFT if _right_side else HORIZONTAL_ALIGNMENT_RIGHT
 	_name_outline.horizontal_alignment = _name_label.horizontal_alignment
 
 	_target_alpha = 1.0
@@ -131,10 +143,10 @@ func _process(delta: float) -> void:
 func _layout() -> void:
 	if _name_label == null:
 		return
+	var anchor := _anchor
+	var x = anchor.x + _slide_amount * slide * (-1.0 if _right_side else 1.0)
+	var y = anchor.y - float(name_size) * 1.2
 	var w = 340.0
-	var x = (size.x - w - side_margin) if _right_side else side_margin
-	x += _slide_amount * slide * (1.0 if _right_side else -1.0)
-	var y = size.y * vertical_centre - float(name_size) * 1.2
 
 	var rect = Vector2(w, float(name_size) * 1.3)
 	for l in [_name_label, _name_outline]:
@@ -147,10 +159,9 @@ func _draw() -> void:
 	if _alpha <= 0.001 or _ratings.is_empty():
 		return
 
-	var w = 340.0
-	var x = (size.x - w - side_margin) if _right_side else side_margin
-	x += _slide_amount * slide * (1.0 if _right_side else -1.0)
-	var y = size.y * vertical_centre + float(name_size) * 0.4
+	var anchor := _anchor
+	var x = anchor.x + _slide_amount * slide * (-1.0 if _right_side else 1.0)
+	var y = anchor.y - float(name_size) * 1.2
 
 	var f: Font = font if font != null else ThemeDB.fallback_font
 
@@ -200,3 +211,31 @@ func _star(centre: Vector2, r: float, col: Color, fraction: float) -> void:
 			p.x = min(p.x, centre.x)
 		pts.append(p)
 	draw_colored_polygon(pts, col)
+
+
+func _screen_anchor() -> Vector2:
+	if _top == null or camera == null:
+		return Vector2(side_margin, size.y * vertical_centre)
+	var p := camera.unproject_position(_top.global_position)
+	# Sit on the opposite side of the top from the frame edge it's heading to,
+	# so the card never runs off screen.
+	var x := (p.x - card_width - card_gap) if _right_side else (p.x + card_gap)
+	return Vector2(clamp(x, side_margin, size.x - card_width - side_margin), p.y)
+	
+func _compute_anchor(top: Top) -> Vector2:
+	if top == null or camera == null:
+		return Vector2(side_margin, size.y * vertical_centre)
+
+	# A point behind the lens unprojects to a mirrored position, so fall back
+	# rather than placing the card somewhere nonsensical.
+	var local := camera.global_transform.affine_inverse() * top.global_position
+	if local.z > -0.001:
+		return Vector2(side_margin, size.y * vertical_centre)
+
+	var p := camera.unproject_position(top.global_position)
+	var x := (p.x + card_gap) if _right_side else (p.x - card_width - card_gap)
+	var card_h = float(name_size) * 1.3 + row_height * max(_ratings.size(), 1)
+	return Vector2(
+		clamp(x, side_margin, size.x - card_width - side_margin),
+		clamp(p.y, card_h * 0.5 + 20.0, size.y - card_h * 0.5 - 20.0)
+	)

@@ -175,8 +175,11 @@ func _arrange_tops() -> void:
 	for i in tops.size():
 		var angle := base + TAU * float(i) / tops.size()
 		var pos := arena.centre + Vector2(cos(angle), sin(angle)) * ring
-		var top := tops[i]
-		top.global_position = Vector3(pos.x, top.global_position.y, pos.y)
+		var top: Top = tops[i]
+		# Y matters now: the intro flies each top to this exact point, and the
+		# countdown then holds it there, so a mismatch shows as a snap.
+		var surface := top._surface_y_at(pos.x, pos.y)
+		top.global_position = Vector3(pos.x, surface + top.drop_height, pos.y)
 		
 
 func _resolve_collision(a: Top, b: Top) -> void:
