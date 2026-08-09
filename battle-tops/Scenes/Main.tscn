@@ -155,4 +155,6 @@ script = ExtResource("18_346fj")
 manager = NodePath("../GameManager")
 arena = NodePath("../Arena")
 camera = NodePath("../CameraRig")
+approach_time = 0.25
+apex_tilt = 0.3
 metadata/_custom_type_script = "uid://cyyh86gto6xke"

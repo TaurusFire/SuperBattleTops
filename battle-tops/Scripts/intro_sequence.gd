@@ -53,9 +53,6 @@ var _elapsed := 0.0
 var _entries: Array[Dictionary] = []
 
 
-func _ready() -> void:
-	set_process(false)
-
 
 ## Called by the manager. Tops must already be arranged at their spawn ring
 ## positions — those are the destinations.
@@ -83,13 +80,21 @@ func begin() -> void:
 	_elapsed = 0.0
 	_running = true
 	set_process(true)
+	print("intro.begin: ... is_processing=%s process_mode=%d tree_paused=%s" % [
+		is_processing(), process_mode, get_tree().paused])
 
 
 func _process(delta: float) -> void:
+	print("_process called: running=%s elapsed=%.3f" % [_running, _elapsed])
 	if not _running:
 		return
 	_elapsed += delta
-
+	
+	if _elapsed < 0.1:
+		print("intro tick: elapsed=%.3f" % _elapsed)
+	if _elapsed < 0.2:
+		print("intro tick %.3f, first top at %s" % [_elapsed, _entries[0]["top"].global_position])
+	print("states: ", manager.tops.map(func(t): return t.current_state))
 	var all_done := true
 	for e in _entries:
 		if _advance(e):
