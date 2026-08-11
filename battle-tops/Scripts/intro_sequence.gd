@@ -29,6 +29,7 @@ signal finished
 @export_range(0.0, 1.0) var overlap := 0.8
 ## Stillness after the last top settles, before the countdown starts.
 @export var settle_time := 0.4
+@export_range(0.05, 1.0) var apex_spin_scale := 0.25
 
 @export_group('Path')
 ## Distance in front of the camera at the apex. Small enough to fill frame.
@@ -45,8 +46,12 @@ signal finished
 @export var arc_bow := 0.09
 
 @export_group('Orientation')
-## Tilt at the apex, radians, so the top's face is toward the camera.
+## Tilt back toward the camera at the apex, radians, so the top's face shows.
 @export var apex_tilt := 0.9
+## Roll about the camera's view axis — leans the top left or right on screen.
+@export var apex_roll := 0.3
+## Yaw about the top's own vertical — turns it to present a different side.
+@export var apex_yaw := 0.0
 
 var _running := false
 var _elapsed := 0.0
@@ -85,16 +90,10 @@ func begin() -> void:
 
 
 func _process(delta: float) -> void:
-	print("_process called: running=%s elapsed=%.3f" % [_running, _elapsed])
 	if not _running:
 		return
 	_elapsed += delta
 	
-	if _elapsed < 0.1:
-		print("intro tick: elapsed=%.3f" % _elapsed)
-	if _elapsed < 0.2:
-		print("intro tick %.3f, first top at %s" % [_elapsed, _entries[0]["top"].global_position])
-	print("states: ", manager.tops.map(func(t): return t.current_state))
 	var all_done := true
 	for e in _entries:
 		if _advance(e):
@@ -118,10 +117,14 @@ func _total_time() -> float:
 func _advance(e: Dictionary) -> bool:
 	var top: Top = e["top"]
 	var t: float = _elapsed - e["start_time"]
+	# Roll alternates with the crossing direction, so consecutive entries lean
+	# opposite ways rather than looking like repeats of the same shot.
+	var roll_dir := 1.0 if e["gauge_right"] else -1.0
 
 	if t < 0.0:
 		# Not yet entered — park it out of sight behind the camera.
 		top.global_position = _start_point(e)
+		top.spin_display_scale = 1.0
 		return true
 
 	var apex := _apex_point(e)
@@ -131,7 +134,10 @@ func _advance(e: Dictionary) -> bool:
 		# Ease out, so it decelerates into the hold rather than arriving flat.
 		var eased := 1.0 - pow(1.0 - u, 3.0)
 		top.global_position = _start_point(e).lerp(apex, eased)
-		_set_tilt(top, apex_tilt * eased)
+		_set_tilt(top, eased, roll_dir)
+		# Wind the visible spin down as it arrives, so the top is legible while
+		# its stats are on screen.
+		top.spin_display_scale = lerpf(1.0, apex_spin_scale, eased)
 		return true
 
 	if t < approach_time + hold_time:
@@ -141,7 +147,8 @@ func _advance(e: Dictionary) -> bool:
 		# Drift very slightly through the hold, so it isn't frozen on screen.
 		var u := (t - approach_time) / hold_time
 		top.global_position = apex + _apex_drift(e) * u
-		_set_tilt(top, apex_tilt)
+		_set_tilt(top, 1.0, roll_dir)
+		top.spin_display_scale = apex_spin_scale
 		return true
 
 	if t < approach_time + hold_time + depart_time:
@@ -151,12 +158,15 @@ func _advance(e: Dictionary) -> bool:
 		var u := (t - approach_time - hold_time) / depart_time
 		var eased := u * u * (3.0 - 2.0 * u)          # smoothstep
 		top.global_position = _arc(apex + _apex_drift(e), e["home"], eased, e)
-		# Straighten as it settles, so the countdown begins upright.
-		_set_tilt(top, apex_tilt * (1.0 - eased))
+		# Straighten and spin back up as it settles, so it reaches its mark
+		# upright and under power for the countdown.
+		_set_tilt(top, 1.0 - eased, roll_dir)
+		top.spin_display_scale = lerpf(apex_spin_scale, 1.0, eased)
 		return true
 
 	top.global_position = e["home"]
-	_set_tilt(top, 0.0)
+	_set_tilt(top, 0.0, roll_dir)
+	top.spin_display_scale = 1.0
 	return false
 
 
@@ -199,13 +209,14 @@ func _arc(from: Vector3, to: Vector3, u: float, e: Dictionary) -> Vector3:
 
 ## Tilts the pivot toward the camera so the top's face is visible, leaving the
 ## mesh free to keep spinning inside it.
-func _set_tilt(top: Top, amount: float) -> void:
+func _set_tilt(top: Top, amount: float, roll_dir: float) -> void:
 	if amount <= 0.001:
 		top.orientation_pivot.basis = Basis()
 		return
-	var to_cam := (camera.global_position - top.global_position)
-	to_cam.y = 0.0
-	if to_cam.length() < 0.001:
-		return
-	var axis := to_cam.normalized().cross(Vector3.UP).normalized()
-	top.orientation_pivot.basis = Basis(axis, -amount)
+
+	var cam := camera.global_transform.basis
+	var b := Basis()
+	b = Basis(cam.x, apex_tilt * amount) * b
+	b = Basis(cam.z, apex_roll * roll_dir * amount) * b
+	b = Basis(Vector3.UP, apex_yaw * amount) * b
+	top.orientation_pivot.basis = b

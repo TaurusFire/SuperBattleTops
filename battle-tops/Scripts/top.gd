@@ -113,7 +113,10 @@ var ability: Ability
 @export_group('Spinning')
 ## Visible spin is capped well below real RPM to avoid wagon-wheel aliasing;
 ## the render frame rate can't sample fast rotation faithfully.
-@export var max_visual_spin = 50.0
+@export var max_visual_spin :float = 50.0
+## Scales visible spin without touching RPM. Used by the intro to present a
+## top clearly at the apex.
+var spin_display_scale := 1.0
 
 @export_group('Engagement')
 ## Orbit duration at aggression 0 and 1 respectively.
@@ -756,7 +759,7 @@ func _should_flee() -> bool:
 	if rpm_ratio >= band:
 		return false
 	# Only run from someone who can still finish you.
-	return target.current_rpm > current_rpm * 1.25
+	return target.current_rpm > current_rpm * 2
 
 
 func _begin_fleeing() -> void:
@@ -1029,16 +1032,8 @@ func _surface_y_at(x: float, z: float) -> float:
 func _update_visual_spin(delta: float) -> void:
 	if _spin_frozen:
 		return
-	# The countdown scripts its own rev-up, so it uses a separate value.
-	var rpm_for_spin = _visual_rpm
-	if current_state == State.INTRO:
-		rpm_for_spin = initial_rpm
-	elif current_state != State.COUNTDOWN:
-		rpm_for_spin = current_rpm
-	var ratio = clamp(rpm_for_spin / max(initial_rpm, 1.0), 0.0, 1.0)
-	var rad_per_sec = max_visual_spin * pow(rpm_for_spin / initial_rpm, 0.3)
-	spin_visual.rotate_y(-rad_per_sec * delta)
-
+	var ratio = clamp(current_rpm / max(initial_rpm, 1.0), 0.0, 1.0)
+	spin_visual.rotate_y(-max_visual_spin * pow(ratio, 0.3) * spin_display_scale * delta)
 
 func _update_orientation(delta: float) -> void:
 	match current_state:
@@ -1104,7 +1099,6 @@ func set_countdown_remaining(t: float) -> void:
 
 
 func _update_countdown(delta: float) -> void:
-	_countdown_elapsed += delta
 
 	var surface_y = _surface_y_at(global_position.x, global_position.z)
 	if _countdown_remaining > drop_duration:
@@ -1113,10 +1107,6 @@ func _update_countdown(delta: float) -> void:
 		var t = 1.0 - (_countdown_remaining / drop_duration)
 		global_position.y = surface_y + drop_height * (1.0 - ease(t, 2.5))
 
-	# Rev-up curve: a strong ease-in, so the top lingers slow then spins up
-	# hard as the count runs out.
-	var progress = clamp(_countdown_elapsed / countdown_duration, 0.0, 1.0)
-	_visual_rpm = initial_rpm * pow(progress, 3.5)
 
 func begin_countdown() -> void:
 	current_state = State.COUNTDOWN

@@ -55,6 +55,7 @@ stats = ExtResource("14_h1m7h")
 stats = ExtResource("15_erwvk")
 
 [node name="Kam" parent="." unique_id=1078701170 instance=ExtResource("16_346fj")]
+visible = false
 stats = ExtResource("7_erwvk")
 
 [node name="Kam2" parent="." unique_id=1259181042 instance=ExtResource("16_346fj")]
@@ -99,7 +100,7 @@ environment = SubResource("Environment_pbw6q")
 [node name="GameManager" type="Node" parent="." unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
 script = ExtResource("5_pbw6q")
 arena = NodePath("../Arena")
-tops = [NodePath("../Def"), NodePath("../Kam"), NodePath("../Stam")]
+tops = [NodePath("../Def"), NodePath("../Stam")]
 intro = NodePath("../IntroSequence")
 
 [node name="ClashSparks" type="Node3D" parent="." unique_id=860210630 node_paths=PackedStringArray("manager")]
@@ -142,20 +143,27 @@ metadata/_edit_use_anchors_ = true
 
 [node name="StatCard" type="Control" parent="UI" unique_id=130678001 node_paths=PackedStringArray("intro", "camera")]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("18_sxkr1")
 intro = NodePath("../../IntroSequence")
 config = ExtResource("19_fq0cl")
+font = ExtResource("17_346fj")
+slide = 30.0
 camera = NodePath("../../CameraRig/Camera3D")
 metadata/_custom_type_script = "uid://bvghi1nb53vvq"
+metadata/_edit_use_anchors_ = true
 
 [node name="IntroSequence" type="Node" parent="." unique_id=1116842354 node_paths=PackedStringArray("manager", "arena", "camera")]
 script = ExtResource("18_346fj")
 manager = NodePath("../GameManager")
 arena = NodePath("../Arena")
 camera = NodePath("../CameraRig")
-approach_time = 0.25
-apex_tilt = 0.3
+approach_time = 0.15
+hold_time = 0.8
+apex_lateral = 0.01
+apex_tilt = 0.0
 metadata/_custom_type_script = "uid://cyyh86gto6xke"

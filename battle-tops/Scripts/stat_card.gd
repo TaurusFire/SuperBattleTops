@@ -20,9 +20,9 @@ var _anchor := Vector2.ZERO
 @export_group('Style')
 @export var font: Font
 @export var name_size = 54
-@export var label_size = 24
-@export var outline_size = 6
-@export var star_size = 22.0
+@export var label_size = 30
+@export var outline_size = 12
+@export var star_size = 30.0
 @export var star_gap = 6.0
 @export var star_filled = Color(1.0, 0.84, 0.28)
 @export var star_empty = Color(0.28, 0.29, 0.33, 0.85)
@@ -101,7 +101,8 @@ func _on_introduced(top: Top, index: int) -> void:
 	_name_outline.horizontal_alignment = _name_label.horizontal_alignment
 
 	_target_alpha = 1.0
-
+	print("card: %s ratings=%d anchor=%s viewport=%s" % [
+		top.display_name(), _ratings.size(), _anchor, size])
 
 func _on_departed(_top: Top, _index: int) -> void:
 	_target_alpha = 0.0

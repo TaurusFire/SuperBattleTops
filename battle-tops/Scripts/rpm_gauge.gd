@@ -49,7 +49,7 @@ var _name_outline: Label
 @export var chip_drain_speed := 0.55
 ## A drop larger than this counts as a hit and restarts the delay. Below it,
 ## the red simply trails the continuous RPM decay.
-@export var hit_threshold := 0.005
+@export var hit_threshold := 0.001
 
 @export_group("Colours")
 @export var gradient: Gradient
