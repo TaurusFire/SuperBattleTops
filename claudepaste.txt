@@ -1,0 +1,2060 @@
+Godot Engine v4.6.stable.official.89cea1439 - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 Max (Apple9)
+
+Defence: combo eligible, chance 0.09
+Stamina: no combo, velo -0.038 below 0.040
+  -> freezing for 0.023s
+Stamina wall snap: 0.1429 -> 0.1429
+Stamina took wall damage
+Defence: combo eligible, chance 0.09
+Stamina: combo eligible, chance 1.14
+Stamina combo QUEUED hit 1, distance now 0.0457, interval 0.120, my vel 0.220, their vel 0.027
+  -> freezing for 0.075s
+Defence stunned: timer=0.9324 mobility=0.0 desired before=0.754 after=0.000
+Defence stunned: timer=0.9296 mobility=0.0 desired before=0.759 after=0.000
+Defence stunned: timer=0.9268 mobility=0.0 desired before=0.765 after=0.000
+Defence stunned: timer=0.9240 mobility=0.0 desired before=0.771 after=0.000
+Defence stunned: timer=0.9212 mobility=0.0 desired before=0.776 after=0.000
+Defence stunned: timer=0.9185 mobility=0.0 desired before=0.783 after=0.000
+Defence stunned: timer=0.9157 mobility=0.0 desired before=0.789 after=0.000
+Defence stunned: timer=0.9129 mobility=0.0 desired before=0.795 after=0.000
+Defence stunned: timer=0.9101 mobility=0.0 desired before=0.801 after=0.000
+Defence stunned: timer=0.9074 mobility=0.0 desired before=0.808 after=0.000
+Defence stunned: timer=0.9046 mobility=0.0 desired before=0.815 after=0.000
+Defence stunned: timer=0.9018 mobility=0.0 desired before=0.822 after=0.000
+Defence stunned: timer=0.8990 mobility=0.0 desired before=0.828 after=0.000
+Defence stunned: timer=0.8962 mobility=0.0 desired before=0.836 after=0.000
+Defence stunned: timer=0.8935 mobility=0.0 desired before=0.875 after=0.000
+Defence stunned: timer=0.8907 mobility=0.0 desired before=0.961 after=0.000
+Defence stunned: timer=0.8879 mobility=0.0 desired before=1.049 after=0.000
+Defence stunned: timer=0.8851 mobility=0.0 desired before=1.138 after=0.000
+Defence stunned: timer=0.8824 mobility=0.0 desired before=1.227 after=0.000
+Defence stunned: timer=0.8796 mobility=0.0 desired before=1.318 after=0.000
+Defence stunned: timer=0.8768 mobility=0.0 desired before=1.409 after=0.000
+Stamina combo broken: distance 0.1220, at r=0.0883, vel=0.220, target vel=0.472, intent=8, target intent=2, stun=0.877
+Defence wall snap: 0.1422 -> 0.1422
+Defence took wall damage
+Defence stunned: timer=0.8129 mobility=0.0 desired before=4.126 after=0.000
+Defence stunned: timer=0.8101 mobility=0.0 desired before=4.141 after=0.000
+Defence stunned: timer=0.8074 mobility=0.0 desired before=4.156 after=0.000
+Defence stunned: timer=0.8046 mobility=0.0 desired before=4.173 after=0.000
+Defence stunned: timer=0.8018 mobility=0.0 desired before=4.191 after=0.000
+Defence stunned: timer=0.7990 mobility=0.0 desired before=4.210 after=0.000
+Defence stunned: timer=0.7963 mobility=0.0 desired before=4.230 after=0.000
+Defence stunned: timer=0.7935 mobility=0.0 desired before=4.251 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.7713 mobility=0.0 desired before=4.244 after=0.000
+Defence stunned: timer=0.7685 mobility=0.0 desired before=4.260 after=0.000
+Defence stunned: timer=0.7657 mobility=0.0 desired before=4.277 after=0.000
+Defence stunned: timer=0.7629 mobility=0.0 desired before=4.294 after=0.000
+Defence stunned: timer=0.7601 mobility=0.0 desired before=4.313 after=0.000
+Defence stunned: timer=0.7574 mobility=0.0 desired before=4.332 after=0.000
+Defence stunned: timer=0.7546 mobility=0.0 desired before=4.352 after=0.000
+Defence stunned: timer=0.7518 mobility=0.0 desired before=4.374 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.7296 mobility=0.0 desired before=4.372 after=0.000
+Defence stunned: timer=0.7268 mobility=0.0 desired before=4.388 after=0.000
+Defence stunned: timer=0.7240 mobility=0.0 desired before=4.404 after=0.000
+Defence stunned: timer=0.7213 mobility=0.0 desired before=4.422 after=0.000
+Defence stunned: timer=0.7185 mobility=0.0 desired before=4.440 after=0.000
+Defence stunned: timer=0.7157 mobility=0.0 desired before=4.459 after=0.000
+Defence stunned: timer=0.7129 mobility=0.0 desired before=4.479 after=0.000
+Defence stunned: timer=0.7101 mobility=0.0 desired before=4.499 after=0.000
+Defence stunned: timer=0.7074 mobility=0.0 desired before=4.520 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.6851 mobility=0.0 desired before=4.526 after=0.000
+Defence stunned: timer=0.6824 mobility=0.0 desired before=4.542 after=0.000
+Defence stunned: timer=0.6796 mobility=0.0 desired before=4.559 after=0.000
+Defence stunned: timer=0.6768 mobility=0.0 desired before=4.576 after=0.000
+Defence stunned: timer=0.6740 mobility=0.0 desired before=4.594 after=0.000
+Defence stunned: timer=0.6713 mobility=0.0 desired before=4.613 after=0.000
+Defence stunned: timer=0.6685 mobility=0.0 desired before=4.632 after=0.000
+Defence stunned: timer=0.6657 mobility=0.0 desired before=4.652 after=0.000
+Defence stunned: timer=0.6629 mobility=0.0 desired before=4.673 after=0.000
+Defence stunned: timer=0.6601 mobility=0.0 desired before=4.695 after=0.000
+Defence stunned: timer=0.6574 mobility=0.0 desired before=4.717 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.6351 mobility=0.0 desired before=4.722 after=0.000
+Defence stunned: timer=0.6324 mobility=0.0 desired before=4.739 after=0.000
+Defence stunned: timer=0.6296 mobility=0.0 desired before=4.756 after=0.000
+Defence stunned: timer=0.6268 mobility=0.0 desired before=4.773 after=0.000
+Defence stunned: timer=0.6240 mobility=0.0 desired before=4.791 after=0.000
+Defence stunned: timer=0.6213 mobility=0.0 desired before=4.810 after=0.000
+Defence stunned: timer=0.6185 mobility=0.0 desired before=4.829 after=0.000
+Defence stunned: timer=0.6157 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.6129 mobility=0.0 desired before=4.870 after=0.000
+Defence stunned: timer=0.6101 mobility=0.0 desired before=4.891 after=0.000
+Defence stunned: timer=0.6074 mobility=0.0 desired before=4.912 after=0.000
+Defence stunned: timer=0.6046 mobility=0.0 desired before=4.934 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.5824 mobility=0.0 desired before=4.920 after=0.000
+Defence stunned: timer=0.5796 mobility=0.0 desired before=4.921 after=0.000
+Defence stunned: timer=0.5768 mobility=0.0 desired before=4.923 after=0.000
+Defence stunned: timer=0.5740 mobility=0.0 desired before=4.925 after=0.000
+Defence stunned: timer=0.5713 mobility=0.0 desired before=4.927 after=0.000
+Defence stunned: timer=0.5685 mobility=0.0 desired before=4.930 after=0.000
+Defence stunned: timer=0.5657 mobility=0.0 desired before=4.933 after=0.000
+Defence stunned: timer=0.5629 mobility=0.0 desired before=4.937 after=0.000
+Defence stunned: timer=0.5601 mobility=0.0 desired before=4.941 after=0.000
+Defence stunned: timer=0.5574 mobility=0.0 desired before=4.945 after=0.000
+Defence stunned: timer=0.5546 mobility=0.0 desired before=4.950 after=0.000
+Defence stunned: timer=0.5518 mobility=0.0 desired before=4.955 after=0.000
+Defence stunned: timer=0.5490 mobility=0.0 desired before=4.960 after=0.000
+Defence stunned: timer=0.5463 mobility=0.0 desired before=4.966 after=0.000
+Defence stunned: timer=0.5435 mobility=0.0 desired before=4.972 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.5185 mobility=0.0 desired before=4.858 after=0.000
+Defence stunned: timer=0.5157 mobility=0.0 desired before=4.858 after=0.000
+Defence stunned: timer=0.5129 mobility=0.0 desired before=4.859 after=0.000
+Defence stunned: timer=0.5101 mobility=0.0 desired before=4.859 after=0.000
+Defence stunned: timer=0.5074 mobility=0.0 desired before=4.861 after=0.000
+Defence stunned: timer=0.5046 mobility=0.0 desired before=4.862 after=0.000
+Defence stunned: timer=0.5018 mobility=0.0 desired before=4.864 after=0.000
+Defence stunned: timer=0.4990 mobility=0.0 desired before=4.866 after=0.000
+Defence stunned: timer=0.4963 mobility=0.0 desired before=4.868 after=0.000
+Defence stunned: timer=0.4935 mobility=0.0 desired before=4.871 after=0.000
+Defence stunned: timer=0.4907 mobility=0.0 desired before=4.874 after=0.000
+Defence stunned: timer=0.4879 mobility=0.0 desired before=4.877 after=0.000
+Defence stunned: timer=0.4851 mobility=0.0 desired before=4.880 after=0.000
+Defence stunned: timer=0.4824 mobility=0.0 desired before=4.884 after=0.000
+Defence stunned: timer=0.4796 mobility=0.0 desired before=4.888 after=0.000
+Defence stunned: timer=0.4768 mobility=0.0 desired before=4.892 after=0.000
+Defence stunned: timer=0.4740 mobility=0.0 desired before=4.896 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.4518 mobility=0.0 desired before=4.773 after=0.000
+Defence stunned: timer=0.4490 mobility=0.0 desired before=4.772 after=0.000
+Defence stunned: timer=0.4463 mobility=0.0 desired before=4.771 after=0.000
+Defence stunned: timer=0.4435 mobility=0.0 desired before=4.770 after=0.000
+Defence stunned: timer=0.4407 mobility=0.0 desired before=4.769 after=0.000
+Defence stunned: timer=0.4379 mobility=0.0 desired before=4.768 after=0.000
+Defence stunned: timer=0.4351 mobility=0.0 desired before=4.768 after=0.000
+Defence stunned: timer=0.4324 mobility=0.0 desired before=4.768 after=0.000
+Defence stunned: timer=0.4296 mobility=0.0 desired before=4.768 after=0.000
+Defence stunned: timer=0.4268 mobility=0.0 desired before=4.768 after=0.000
+Defence stunned: timer=0.4240 mobility=0.0 desired before=4.768 after=0.000
+Defence stunned: timer=0.4213 mobility=0.0 desired before=4.769 after=0.000
+Defence stunned: timer=0.4185 mobility=0.0 desired before=4.770 after=0.000
+Defence stunned: timer=0.4157 mobility=0.0 desired before=4.771 after=0.000
+Defence stunned: timer=0.4129 mobility=0.0 desired before=4.772 after=0.000
+Defence stunned: timer=0.4101 mobility=0.0 desired before=4.773 after=0.000
+Defence stunned: timer=0.4074 mobility=0.0 desired before=4.774 after=0.000
+Defence stunned: timer=0.4046 mobility=0.0 desired before=4.776 after=0.000
+Defence stunned: timer=0.4018 mobility=0.0 desired before=4.778 after=0.000
+Defence stunned: timer=0.3990 mobility=0.0 desired before=4.779 after=0.000
+Defence stunned: timer=0.3963 mobility=0.0 desired before=4.781 after=0.000
+Defence stunned: timer=0.3935 mobility=0.0 desired before=4.784 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.3685 mobility=0.0 desired before=4.650 after=0.000
+Defence stunned: timer=0.3657 mobility=0.0 desired before=4.647 after=0.000
+Defence stunned: timer=0.3629 mobility=0.0 desired before=4.644 after=0.000
+Defence stunned: timer=0.3601 mobility=0.0 desired before=4.642 after=0.000
+Defence stunned: timer=0.3574 mobility=0.0 desired before=4.639 after=0.000
+Defence stunned: timer=0.3546 mobility=0.0 desired before=4.637 after=0.000
+Defence stunned: timer=0.3518 mobility=0.0 desired before=4.635 after=0.000
+Defence stunned: timer=0.3490 mobility=0.0 desired before=4.633 after=0.000
+Defence stunned: timer=0.3463 mobility=0.0 desired before=4.631 after=0.000
+Defence stunned: timer=0.3435 mobility=0.0 desired before=4.629 after=0.000
+Defence stunned: timer=0.3407 mobility=0.0 desired before=4.627 after=0.000
+Defence stunned: timer=0.3379 mobility=0.0 desired before=4.626 after=0.000
+Defence stunned: timer=0.3351 mobility=0.0 desired before=4.624 after=0.000
+Defence stunned: timer=0.3324 mobility=0.0 desired before=4.623 after=0.000
+Defence stunned: timer=0.3296 mobility=0.0 desired before=4.622 after=0.000
+Defence stunned: timer=0.3268 mobility=0.0 desired before=4.621 after=0.000
+Defence stunned: timer=0.3240 mobility=0.0 desired before=4.619 after=0.000
+Defence stunned: timer=0.3213 mobility=0.0 desired before=4.618 after=0.000
+Defence stunned: timer=0.3185 mobility=0.0 desired before=4.618 after=0.000
+Defence stunned: timer=0.3157 mobility=0.0 desired before=4.617 after=0.000
+Defence stunned: timer=0.3129 mobility=0.0 desired before=4.616 after=0.000
+Defence stunned: timer=0.3101 mobility=0.0 desired before=4.615 after=0.000
+Defence stunned: timer=0.3074 mobility=0.0 desired before=4.615 after=0.000
+Defence stunned: timer=0.3046 mobility=0.0 desired before=4.614 after=0.000
+Defence stunned: timer=0.3018 mobility=0.0 desired before=4.614 after=0.000
+Defence stunned: timer=0.2990 mobility=0.0 desired before=4.613 after=0.000
+Defence stunned: timer=0.2963 mobility=0.0 desired before=4.613 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.2740 mobility=0.0 desired before=4.471 after=0.000
+Defence stunned: timer=0.2713 mobility=0.0 desired before=4.466 after=0.000
+Defence stunned: timer=0.2685 mobility=0.0 desired before=4.461 after=0.000
+Defence stunned: timer=0.2657 mobility=0.0 desired before=4.454 after=0.000
+Defence stunned: timer=0.2629 mobility=0.0 desired before=4.447 after=0.000
+Defence stunned: timer=0.2601 mobility=0.0 desired before=4.440 after=0.000
+Defence stunned: timer=0.2574 mobility=0.0 desired before=4.433 after=0.000
+Defence stunned: timer=0.2546 mobility=0.0 desired before=4.426 after=0.000
+Defence stunned: timer=0.2518 mobility=0.0 desired before=4.419 after=0.000
+Defence stunned: timer=0.2490 mobility=0.0 desired before=4.412 after=0.000
+Defence stunned: timer=0.2463 mobility=0.0 desired before=4.405 after=0.000
+Defence stunned: timer=0.2435 mobility=0.0 desired before=4.398 after=0.000
+Defence stunned: timer=0.2407 mobility=0.0 desired before=4.392 after=0.000
+Defence stunned: timer=0.2379 mobility=0.0 desired before=4.385 after=0.000
+Defence stunned: timer=0.2351 mobility=0.0 desired before=4.379 after=0.000
+Defence stunned: timer=0.2324 mobility=0.0 desired before=4.373 after=0.000
+Defence stunned: timer=0.2296 mobility=0.0 desired before=4.367 after=0.000
+Defence stunned: timer=0.2268 mobility=0.0 desired before=4.361 after=0.000
+Defence stunned: timer=0.2240 mobility=0.0 desired before=4.355 after=0.000
+Defence stunned: timer=0.2213 mobility=0.0 desired before=4.350 after=0.000
+Defence stunned: timer=0.2185 mobility=0.0 desired before=4.344 after=0.000
+Defence stunned: timer=0.2157 mobility=0.0 desired before=4.339 after=0.000
+Defence stunned: timer=0.2129 mobility=0.0 desired before=4.334 after=0.000
+Defence stunned: timer=0.2101 mobility=0.0 desired before=4.329 after=0.000
+Defence stunned: timer=0.2074 mobility=0.0 desired before=4.324 after=0.000
+Defence stunned: timer=0.2046 mobility=0.0 desired before=4.320 after=0.000
+Defence stunned: timer=0.2018 mobility=0.0 desired before=4.315 after=0.000
+Defence stunned: timer=0.1990 mobility=0.0 desired before=4.311 after=0.000
+Defence stunned: timer=0.1963 mobility=0.0 desired before=4.307 after=0.000
+Defence stunned: timer=0.1935 mobility=0.0 desired before=4.303 after=0.000
+Defence stunned: timer=0.1907 mobility=0.0 desired before=4.299 after=0.000
+Defence stunned: timer=0.1879 mobility=0.0 desired before=4.296 after=0.000
+Defence stunned: timer=0.1851 mobility=0.0 desired before=4.293 after=0.000
+Defence stunned: timer=0.1824 mobility=0.0 desired before=4.290 after=0.000
+Defence stunned: timer=0.1796 mobility=0.0 desired before=4.287 after=0.000
+Defence stunned: timer=0.1768 mobility=0.0 desired before=4.284 after=0.000
+Defence stunned: timer=0.1740 mobility=0.0 desired before=4.281 after=0.000
+Defence stunned: timer=0.1713 mobility=0.0 desired before=4.279 after=0.000
+Defence stunned: timer=0.1685 mobility=0.0 desired before=4.277 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.1435 mobility=0.0 desired before=4.126 after=0.000
+Defence stunned: timer=0.1407 mobility=0.0 desired before=4.121 after=0.000
+Defence stunned: timer=0.1379 mobility=0.0 desired before=4.117 after=0.000
+Defence stunned: timer=0.1351 mobility=0.0 desired before=4.113 after=0.000
+Defence stunned: timer=0.1324 mobility=0.0 desired before=4.109 after=0.000
+Defence stunned: timer=0.1296 mobility=0.0 desired before=4.105 after=0.000
+Defence stunned: timer=0.1268 mobility=0.0 desired before=4.102 after=0.000
+Defence stunned: timer=0.1240 mobility=0.0 desired before=4.098 after=0.000
+Defence stunned: timer=0.1213 mobility=0.0 desired before=4.095 after=0.000
+Defence stunned: timer=0.1185 mobility=0.0 desired before=4.092 after=0.000
+Defence stunned: timer=0.1157 mobility=0.0 desired before=4.089 after=0.000
+Defence stunned: timer=0.1129 mobility=0.0 desired before=4.086 after=0.000
+Defence stunned: timer=0.1101 mobility=0.0 desired before=4.083 after=0.000
+Defence stunned: timer=0.1074 mobility=0.0 desired before=4.081 after=0.000
+Defence stunned: timer=0.1046 mobility=0.0 desired before=4.078 after=0.000
+Defence stunned: timer=0.1018 mobility=0.0 desired before=4.076 after=0.000
+Defence stunned: timer=0.0990 mobility=0.0 desired before=4.074 after=0.000
+Defence stunned: timer=0.0963 mobility=0.0 desired before=4.072 after=0.000
+Defence stunned: timer=0.0935 mobility=0.0 desired before=4.070 after=0.000
+Defence stunned: timer=0.0907 mobility=0.0 desired before=4.068 after=0.000
+Defence stunned: timer=0.0879 mobility=0.0 desired before=4.067 after=0.000
+Defence stunned: timer=0.0851 mobility=0.0 desired before=4.065 after=0.000
+Defence stunned: timer=0.0824 mobility=0.0 desired before=4.064 after=0.000
+Defence stunned: timer=0.0796 mobility=0.0 desired before=4.063 after=0.000
+Defence stunned: timer=0.0768 mobility=0.0 desired before=4.062 after=0.000
+Defence stunned: timer=0.0740 mobility=0.0 desired before=4.061 after=0.000
+Defence stunned: timer=0.0713 mobility=0.0 desired before=4.060 after=0.000
+Defence stunned: timer=0.0685 mobility=0.0 desired before=4.059 after=0.000
+Defence stunned: timer=0.0657 mobility=0.0 desired before=4.059 after=0.000
+Defence stunned: timer=0.0629 mobility=0.0 desired before=4.058 after=0.000
+Defence stunned: timer=0.0601 mobility=0.0 desired before=4.058 after=0.000
+Defence stunned: timer=0.0574 mobility=0.0 desired before=4.058 after=0.000
+Defence stunned: timer=0.0546 mobility=0.0 desired before=4.058 after=0.000
+Defence stunned: timer=0.0518 mobility=0.0 desired before=4.058 after=0.000
+Defence stunned: timer=0.0490 mobility=0.0 desired before=4.058 after=0.000
+Defence stunned: timer=0.0463 mobility=0.0 desired before=4.058 after=0.000
+Defence stunned: timer=0.0435 mobility=0.0 desired before=4.059 after=0.000
+Defence stunned: timer=0.0407 mobility=0.0 desired before=4.059 after=0.000
+Defence stunned: timer=0.0379 mobility=0.0 desired before=4.060 after=0.000
+Defence stunned: timer=0.0351 mobility=0.0 desired before=4.061 after=0.000
+Defence stunned: timer=0.0324 mobility=0.0 desired before=4.062 after=0.000
+Defence stunned: timer=0.0296 mobility=0.0 desired before=4.063 after=0.000
+Defence stunned: timer=0.0268 mobility=0.0 desired before=4.064 after=0.000
+Defence stunned: timer=0.0240 mobility=0.0 desired before=4.065 after=0.000
+Defence stunned: timer=0.0213 mobility=0.0 desired before=4.066 after=0.000
+Defence stunned: timer=0.0185 mobility=0.0 desired before=4.067 after=0.000
+Defence stunned: timer=0.0157 mobility=0.0 desired before=4.059 after=0.000
+Defence stunned: timer=0.0129 mobility=0.0 desired before=4.050 after=0.000
+Defence: combo eligible, chance 0.09
+Stamina: combo eligible, chance 1.14
+Stamina combo QUEUED hit 1, distance now 0.0457, interval 0.120, my vel 0.200, their vel 0.015
+  -> freezing for 0.070s
+Defence wall snap: 0.1418 -> 0.1418
+Defence took wall damage
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.9353 mobility=0.0 desired before=4.948 after=0.000
+Defence stunned: timer=0.9325 mobility=0.0 desired before=4.956 after=0.000
+Defence stunned: timer=0.9297 mobility=0.0 desired before=4.965 after=0.000
+Defence stunned: timer=0.9269 mobility=0.0 desired before=4.975 after=0.000
+Defence stunned: timer=0.9242 mobility=0.0 desired before=4.987 after=0.000
+Defence stunned: timer=0.9214 mobility=0.0 desired before=4.999 after=0.000
+Defence stunned: timer=0.9186 mobility=0.0 desired before=5.012 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.8964 mobility=0.0 desired before=4.943 after=0.000
+Defence stunned: timer=0.8936 mobility=0.0 desired before=4.950 after=0.000
+Defence stunned: timer=0.8908 mobility=0.0 desired before=4.958 after=0.000
+Defence stunned: timer=0.8881 mobility=0.0 desired before=4.968 after=0.000
+Defence stunned: timer=0.8853 mobility=0.0 desired before=4.978 after=0.000
+Defence stunned: timer=0.8825 mobility=0.0 desired before=4.988 after=0.000
+Defence stunned: timer=0.8797 mobility=0.0 desired before=5.000 after=0.000
+Defence stunned: timer=0.8769 mobility=0.0 desired before=5.013 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Stamina combo broken: distance 0.1063, at r=0.1117, vel=0.200, target vel=0.393, intent=8, target intent=2, stun=0.877
+Defence wall snap: 0.1432 -> 0.1432
+Defence stunned: timer=0.8269 mobility=0.0 desired before=4.532 after=0.000
+Defence wall snap: 0.1414 -> 0.1414
+Defence stunned: timer=0.8047 mobility=0.0 desired before=4.531 after=0.000
+Defence stunned: timer=0.8019 mobility=0.0 desired before=4.550 after=0.000
+Defence stunned: timer=0.7992 mobility=0.0 desired before=4.570 after=0.000
+Defence stunned: timer=0.7964 mobility=0.0 desired before=4.592 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.7769 mobility=0.0 desired before=4.554 after=0.000
+Defence stunned: timer=0.7742 mobility=0.0 desired before=4.570 after=0.000
+Defence stunned: timer=0.7714 mobility=0.0 desired before=4.587 after=0.000
+Defence stunned: timer=0.7686 mobility=0.0 desired before=4.606 after=0.000
+Defence stunned: timer=0.7658 mobility=0.0 desired before=4.626 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.7464 mobility=0.0 desired before=4.593 after=0.000
+Defence stunned: timer=0.7436 mobility=0.0 desired before=4.608 after=0.000
+Defence stunned: timer=0.7408 mobility=0.0 desired before=4.624 after=0.000
+Defence stunned: timer=0.7381 mobility=0.0 desired before=4.641 after=0.000
+Defence stunned: timer=0.7353 mobility=0.0 desired before=4.660 after=0.000
+Defence stunned: timer=0.7325 mobility=0.0 desired before=4.680 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.7103 mobility=0.0 desired before=4.648 after=0.000
+Defence stunned: timer=0.7075 mobility=0.0 desired before=4.663 after=0.000
+Defence stunned: timer=0.7047 mobility=0.0 desired before=4.678 after=0.000
+Defence stunned: timer=0.7019 mobility=0.0 desired before=4.696 after=0.000
+Defence stunned: timer=0.6992 mobility=0.0 desired before=4.714 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.6797 mobility=0.0 desired before=4.676 after=0.000
+Defence stunned: timer=0.6769 mobility=0.0 desired before=4.688 after=0.000
+Defence stunned: timer=0.6742 mobility=0.0 desired before=4.701 after=0.000
+Defence stunned: timer=0.6714 mobility=0.0 desired before=4.716 after=0.000
+Defence stunned: timer=0.6686 mobility=0.0 desired before=4.732 after=0.000
+Defence stunned: timer=0.6658 mobility=0.0 desired before=4.749 after=0.000
+Defence stunned: timer=0.6631 mobility=0.0 desired before=4.766 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence took wall damage
+Defence stunned: timer=0.6408 mobility=0.0 desired before=4.727 after=0.000
+Defence stunned: timer=0.6381 mobility=0.0 desired before=4.739 after=0.000
+Defence stunned: timer=0.6353 mobility=0.0 desired before=4.752 after=0.000
+Defence stunned: timer=0.6325 mobility=0.0 desired before=4.766 after=0.000
+Defence stunned: timer=0.6297 mobility=0.0 desired before=4.781 after=0.000
+Defence stunned: timer=0.6269 mobility=0.0 desired before=4.798 after=0.000
+Defence stunned: timer=0.6242 mobility=0.0 desired before=4.815 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.6019 mobility=0.0 desired before=4.769 after=0.000
+Defence stunned: timer=0.5992 mobility=0.0 desired before=4.780 after=0.000
+Defence stunned: timer=0.5964 mobility=0.0 desired before=4.792 after=0.000
+Defence stunned: timer=0.5936 mobility=0.0 desired before=4.804 after=0.000
+Defence stunned: timer=0.5908 mobility=0.0 desired before=4.818 after=0.000
+Defence stunned: timer=0.5881 mobility=0.0 desired before=4.833 after=0.000
+Defence stunned: timer=0.5853 mobility=0.0 desired before=4.848 after=0.000
+Defence stunned: timer=0.5825 mobility=0.0 desired before=4.864 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.5603 mobility=0.0 desired before=4.811 after=0.000
+Defence stunned: timer=0.5575 mobility=0.0 desired before=4.821 after=0.000
+Defence stunned: timer=0.5547 mobility=0.0 desired before=4.832 after=0.000
+Defence stunned: timer=0.5519 mobility=0.0 desired before=4.843 after=0.000
+Defence stunned: timer=0.5492 mobility=0.0 desired before=4.855 after=0.000
+Defence stunned: timer=0.5464 mobility=0.0 desired before=4.868 after=0.000
+Defence stunned: timer=0.5436 mobility=0.0 desired before=4.881 after=0.000
+Defence stunned: timer=0.5408 mobility=0.0 desired before=4.896 after=0.000
+Defence stunned: timer=0.5381 mobility=0.0 desired before=4.910 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.5158 mobility=0.0 desired before=4.854 after=0.000
+Defence stunned: timer=0.5131 mobility=0.0 desired before=4.862 after=0.000
+Defence stunned: timer=0.5103 mobility=0.0 desired before=4.871 after=0.000
+Defence stunned: timer=0.5075 mobility=0.0 desired before=4.881 after=0.000
+Defence stunned: timer=0.5047 mobility=0.0 desired before=4.892 after=0.000
+Defence stunned: timer=0.5019 mobility=0.0 desired before=4.903 after=0.000
+Defence stunned: timer=0.4992 mobility=0.0 desired before=4.915 after=0.000
+Defence stunned: timer=0.4964 mobility=0.0 desired before=4.927 after=0.000
+Defence stunned: timer=0.4936 mobility=0.0 desired before=4.940 after=0.000
+Defence stunned: timer=0.4908 mobility=0.0 desired before=4.954 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.4686 mobility=0.0 desired before=4.895 after=0.000
+Defence stunned: timer=0.4658 mobility=0.0 desired before=4.903 after=0.000
+Defence stunned: timer=0.4631 mobility=0.0 desired before=4.910 after=0.000
+Defence stunned: timer=0.4603 mobility=0.0 desired before=4.919 after=0.000
+Defence stunned: timer=0.4575 mobility=0.0 desired before=4.928 after=0.000
+Defence stunned: timer=0.4547 mobility=0.0 desired before=4.938 after=0.000
+Defence stunned: timer=0.4519 mobility=0.0 desired before=4.948 after=0.000
+Defence stunned: timer=0.4492 mobility=0.0 desired before=4.959 after=0.000
+Defence stunned: timer=0.4464 mobility=0.0 desired before=4.970 after=0.000
+Defence stunned: timer=0.4436 mobility=0.0 desired before=4.981 after=0.000
+Defence stunned: timer=0.4408 mobility=0.0 desired before=4.994 after=0.000
+Defence stunned: timer=0.4381 mobility=0.0 desired before=5.006 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.4131 mobility=0.0 desired before=4.945 after=0.000
+Defence stunned: timer=0.4103 mobility=0.0 desired before=4.952 after=0.000
+Defence stunned: timer=0.4075 mobility=0.0 desired before=4.959 after=0.000
+Defence stunned: timer=0.4047 mobility=0.0 desired before=4.967 after=0.000
+Defence stunned: timer=0.4019 mobility=0.0 desired before=4.975 after=0.000
+Defence stunned: timer=0.3992 mobility=0.0 desired before=4.984 after=0.000
+Defence stunned: timer=0.3964 mobility=0.0 desired before=4.993 after=0.000
+Defence stunned: timer=0.3936 mobility=0.0 desired before=5.003 after=0.000
+Defence stunned: timer=0.3908 mobility=0.0 desired before=5.013 after=0.000
+Defence stunned: timer=0.3881 mobility=0.0 desired before=5.023 after=0.000
+Defence stunned: timer=0.3853 mobility=0.0 desired before=5.034 after=0.000
+Defence stunned: timer=0.3825 mobility=0.0 desired before=5.045 after=0.000
+Defence stunned: timer=0.3797 mobility=0.0 desired before=5.057 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.3575 mobility=0.0 desired before=4.986 after=0.000
+Defence stunned: timer=0.3547 mobility=0.0 desired before=4.991 after=0.000
+Defence stunned: timer=0.3519 mobility=0.0 desired before=4.997 after=0.000
+Defence stunned: timer=0.3492 mobility=0.0 desired before=5.003 after=0.000
+Defence stunned: timer=0.3464 mobility=0.0 desired before=5.010 after=0.000
+Defence stunned: timer=0.3436 mobility=0.0 desired before=5.017 after=0.000
+Defence stunned: timer=0.3408 mobility=0.0 desired before=5.025 after=0.000
+Defence stunned: timer=0.3381 mobility=0.0 desired before=5.032 after=0.000
+Defence stunned: timer=0.3353 mobility=0.0 desired before=5.040 after=0.000
+Defence stunned: timer=0.3325 mobility=0.0 desired before=5.049 after=0.000
+Defence stunned: timer=0.3297 mobility=0.0 desired before=5.058 after=0.000
+Defence stunned: timer=0.3269 mobility=0.0 desired before=5.067 after=0.000
+Defence stunned: timer=0.3242 mobility=0.0 desired before=5.076 after=0.000
+Defence stunned: timer=0.3214 mobility=0.0 desired before=5.085 after=0.000
+Defence stunned: timer=0.3186 mobility=0.0 desired before=5.095 after=0.000
+Defence stunned: timer=0.3158 mobility=0.0 desired before=5.105 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.2908 mobility=0.0 desired before=5.040 after=0.000
+Defence stunned: timer=0.2881 mobility=0.0 desired before=5.045 after=0.000
+Defence stunned: timer=0.2853 mobility=0.0 desired before=5.050 after=0.000
+Defence stunned: timer=0.2825 mobility=0.0 desired before=5.055 after=0.000
+Defence stunned: timer=0.2797 mobility=0.0 desired before=5.061 after=0.000
+Defence stunned: timer=0.2769 mobility=0.0 desired before=5.067 after=0.000
+Defence stunned: timer=0.2742 mobility=0.0 desired before=5.074 after=0.000
+Defence stunned: timer=0.2714 mobility=0.0 desired before=5.080 after=0.000
+Defence stunned: timer=0.2686 mobility=0.0 desired before=5.087 after=0.000
+Defence stunned: timer=0.2658 mobility=0.0 desired before=5.094 after=0.000
+Defence stunned: timer=0.2631 mobility=0.0 desired before=5.101 after=0.000
+Defence stunned: timer=0.2603 mobility=0.0 desired before=5.109 after=0.000
+Defence stunned: timer=0.2575 mobility=0.0 desired before=5.116 after=0.000
+Defence stunned: timer=0.2547 mobility=0.0 desired before=5.124 after=0.000
+Defence stunned: timer=0.2519 mobility=0.0 desired before=5.133 after=0.000
+Defence stunned: timer=0.2492 mobility=0.0 desired before=5.141 after=0.000
+Defence stunned: timer=0.2464 mobility=0.0 desired before=5.149 after=0.000
+Defence stunned: timer=0.2436 mobility=0.0 desired before=5.158 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.2214 mobility=0.0 desired before=5.082 after=0.000
+Defence stunned: timer=0.2186 mobility=0.0 desired before=5.085 after=0.000
+Defence stunned: timer=0.2158 mobility=0.0 desired before=5.088 after=0.000
+Defence stunned: timer=0.2131 mobility=0.0 desired before=5.091 after=0.000
+Defence stunned: timer=0.2103 mobility=0.0 desired before=5.094 after=0.000
+Defence stunned: timer=0.2075 mobility=0.0 desired before=5.097 after=0.000
+Defence stunned: timer=0.2047 mobility=0.0 desired before=5.101 after=0.000
+Defence stunned: timer=0.2019 mobility=0.0 desired before=5.104 after=0.000
+Defence stunned: timer=0.1992 mobility=0.0 desired before=5.108 after=0.000
+Defence stunned: timer=0.1964 mobility=0.0 desired before=5.113 after=0.000
+Defence stunned: timer=0.1936 mobility=0.0 desired before=5.117 after=0.000
+Defence stunned: timer=0.1908 mobility=0.0 desired before=5.122 after=0.000
+Defence stunned: timer=0.1881 mobility=0.0 desired before=5.126 after=0.000
+Defence stunned: timer=0.1853 mobility=0.0 desired before=5.131 after=0.000
+Defence stunned: timer=0.1825 mobility=0.0 desired before=5.137 after=0.000
+Defence stunned: timer=0.1797 mobility=0.0 desired before=5.142 after=0.000
+Defence stunned: timer=0.1769 mobility=0.0 desired before=5.147 after=0.000
+Defence stunned: timer=0.1742 mobility=0.0 desired before=5.153 after=0.000
+Defence stunned: timer=0.1714 mobility=0.0 desired before=5.159 after=0.000
+Defence stunned: timer=0.1686 mobility=0.0 desired before=5.165 after=0.000
+Defence stunned: timer=0.1658 mobility=0.0 desired before=5.171 after=0.000
+Defence stunned: timer=0.1631 mobility=0.0 desired before=5.177 after=0.000
+Defence stunned: timer=0.1603 mobility=0.0 desired before=5.183 after=0.000
+Defence stunned: timer=0.1575 mobility=0.0 desired before=5.190 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.1325 mobility=0.0 desired before=5.103 after=0.000
+Defence stunned: timer=0.1297 mobility=0.0 desired before=5.105 after=0.000
+Defence stunned: timer=0.1269 mobility=0.0 desired before=5.107 after=0.000
+Defence stunned: timer=0.1242 mobility=0.0 desired before=5.109 after=0.000
+Defence stunned: timer=0.1214 mobility=0.0 desired before=5.112 after=0.000
+Defence stunned: timer=0.1186 mobility=0.0 desired before=5.114 after=0.000
+Defence stunned: timer=0.1158 mobility=0.0 desired before=5.117 after=0.000
+Defence stunned: timer=0.1131 mobility=0.0 desired before=5.120 after=0.000
+Defence stunned: timer=0.1103 mobility=0.0 desired before=5.122 after=0.000
+Defence stunned: timer=0.1075 mobility=0.0 desired before=5.125 after=0.000
+Defence stunned: timer=0.1047 mobility=0.0 desired before=5.128 after=0.000
+Defence stunned: timer=0.1019 mobility=0.0 desired before=5.131 after=0.000
+Defence stunned: timer=0.0992 mobility=0.0 desired before=5.134 after=0.000
+Defence stunned: timer=0.0964 mobility=0.0 desired before=5.138 after=0.000
+Defence stunned: timer=0.0936 mobility=0.0 desired before=5.141 after=0.000
+Defence stunned: timer=0.0908 mobility=0.0 desired before=5.144 after=0.000
+Defence stunned: timer=0.0881 mobility=0.0 desired before=5.148 after=0.000
+Defence stunned: timer=0.0853 mobility=0.0 desired before=5.151 after=0.000
+Defence stunned: timer=0.0825 mobility=0.0 desired before=5.155 after=0.000
+Defence stunned: timer=0.0797 mobility=0.0 desired before=5.158 after=0.000
+Defence stunned: timer=0.0769 mobility=0.0 desired before=5.162 after=0.000
+Defence stunned: timer=0.0742 mobility=0.0 desired before=5.165 after=0.000
+Defence stunned: timer=0.0714 mobility=0.0 desired before=5.169 after=0.000
+Defence stunned: timer=0.0686 mobility=0.0 desired before=5.173 after=0.000
+Defence stunned: timer=0.0658 mobility=0.0 desired before=5.176 after=0.000
+Defence stunned: timer=0.0631 mobility=0.0 desired before=5.180 after=0.000
+Defence stunned: timer=0.0603 mobility=0.0 desired before=5.184 after=0.000
+Defence stunned: timer=0.0575 mobility=0.0 desired before=5.187 after=0.000
+Defence stunned: timer=0.0547 mobility=0.0 desired before=5.191 after=0.000
+Defence stunned: timer=0.0519 mobility=0.0 desired before=5.195 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.0269 mobility=0.0 desired before=5.092 after=0.000
+Defence stunned: timer=0.0242 mobility=0.0 desired before=5.092 after=0.000
+Defence stunned: timer=0.0214 mobility=0.0 desired before=5.091 after=0.000
+Defence stunned: timer=0.0186 mobility=0.0 desired before=5.091 after=0.000
+Defence stunned: timer=0.0158 mobility=0.0 desired before=5.091 after=0.000
+Defence stunned: timer=0.0131 mobility=0.0 desired before=5.091 after=0.000
+Defence stunned: timer=0.0103 mobility=0.0 desired before=5.091 after=0.000
+Defence stunned: timer=0.0075 mobility=0.0 desired before=5.091 after=0.000
+Defence stunned: timer=0.0047 mobility=0.0 desired before=5.091 after=0.000
+Defence stunned: timer=0.0019 mobility=0.0 desired before=5.091 after=0.000
+Defence: combo eligible, chance 0.09
+Stamina: combo eligible, chance 1.14
+Stamina combo QUEUED hit 1, distance now 0.0462, interval 0.120, my vel 0.457, their vel 0.028
+  -> freezing for 0.052s
+Defence wall snap: 0.1432 -> 0.1432
+Defence took wall damage
+Defence stunned: timer=0.9361 mobility=0.0 desired before=4.974 after=0.000
+Defence stunned: timer=0.9333 mobility=0.0 desired before=4.984 after=0.000
+Defence stunned: timer=0.9306 mobility=0.0 desired before=4.996 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.9083 mobility=0.0 desired before=4.916 after=0.000
+Defence stunned: timer=0.9056 mobility=0.0 desired before=4.921 after=0.000
+Defence stunned: timer=0.9028 mobility=0.0 desired before=4.927 after=0.000
+Defence stunned: timer=0.9000 mobility=0.0 desired before=4.933 after=0.000
+Defence stunned: timer=0.8972 mobility=0.0 desired before=4.940 after=0.000
+Defence stunned: timer=0.8944 mobility=0.0 desired before=4.948 after=0.000
+Defence stunned: timer=0.8917 mobility=0.0 desired before=4.956 after=0.000
+Defence stunned: timer=0.8889 mobility=0.0 desired before=4.965 after=0.000
+Defence stunned: timer=0.8861 mobility=0.0 desired before=4.975 after=0.000
+Defence stunned: timer=0.8833 mobility=0.0 desired before=4.985 after=0.000
+Defence stunned: timer=0.8806 mobility=0.0 desired before=4.995 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Stamina combo broken: distance 0.1363, at r=0.1189, vel=0.457, target vel=0.326, intent=8, target intent=2, stun=0.875
+Defence wall snap: 0.1433 -> 0.1433
+Defence stunned: timer=0.8194 mobility=0.0 desired before=5.174 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.7972 mobility=0.0 desired before=5.099 after=0.000
+Defence stunned: timer=0.7944 mobility=0.0 desired before=5.107 after=0.000
+Defence stunned: timer=0.7917 mobility=0.0 desired before=5.117 after=0.000
+Defence stunned: timer=0.7889 mobility=0.0 desired before=5.128 after=0.000
+Defence stunned: timer=0.7861 mobility=0.0 desired before=5.139 after=0.000
+Defence stunned: timer=0.7833 mobility=0.0 desired before=5.152 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.7639 mobility=0.0 desired before=5.069 after=0.000
+Defence stunned: timer=0.7611 mobility=0.0 desired before=5.075 after=0.000
+Defence stunned: timer=0.7583 mobility=0.0 desired before=5.082 after=0.000
+Defence stunned: timer=0.7556 mobility=0.0 desired before=5.090 after=0.000
+Defence stunned: timer=0.7528 mobility=0.0 desired before=5.099 after=0.000
+Defence stunned: timer=0.7500 mobility=0.0 desired before=5.110 after=0.000
+Defence stunned: timer=0.7472 mobility=0.0 desired before=5.121 after=0.000
+Defence stunned: timer=0.7444 mobility=0.0 desired before=5.133 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.7222 mobility=0.0 desired before=5.045 after=0.000
+Defence stunned: timer=0.7194 mobility=0.0 desired before=5.051 after=0.000
+Defence stunned: timer=0.7167 mobility=0.0 desired before=5.058 after=0.000
+Defence stunned: timer=0.7139 mobility=0.0 desired before=5.065 after=0.000
+Defence stunned: timer=0.7111 mobility=0.0 desired before=5.074 after=0.000
+Defence stunned: timer=0.7083 mobility=0.0 desired before=5.083 after=0.000
+Defence stunned: timer=0.7056 mobility=0.0 desired before=5.093 after=0.000
+Defence stunned: timer=0.7028 mobility=0.0 desired before=5.104 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.6806 mobility=0.0 desired before=5.010 after=0.000
+Defence stunned: timer=0.6778 mobility=0.0 desired before=5.014 after=0.000
+Defence stunned: timer=0.6750 mobility=0.0 desired before=5.020 after=0.000
+Defence stunned: timer=0.6722 mobility=0.0 desired before=5.026 after=0.000
+Defence stunned: timer=0.6694 mobility=0.0 desired before=5.033 after=0.000
+Defence stunned: timer=0.6667 mobility=0.0 desired before=5.041 after=0.000
+Defence stunned: timer=0.6639 mobility=0.0 desired before=5.049 after=0.000
+Defence stunned: timer=0.6611 mobility=0.0 desired before=5.058 after=0.000
+Defence stunned: timer=0.6583 mobility=0.0 desired before=5.068 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.6361 mobility=0.0 desired before=4.969 after=0.000
+Defence stunned: timer=0.6333 mobility=0.0 desired before=4.973 after=0.000
+Defence stunned: timer=0.6306 mobility=0.0 desired before=4.977 after=0.000
+Defence stunned: timer=0.6278 mobility=0.0 desired before=4.982 after=0.000
+Defence stunned: timer=0.6250 mobility=0.0 desired before=4.987 after=0.000
+Defence stunned: timer=0.6222 mobility=0.0 desired before=4.993 after=0.000
+Defence stunned: timer=0.6194 mobility=0.0 desired before=5.000 after=0.000
+Defence stunned: timer=0.6167 mobility=0.0 desired before=5.008 after=0.000
+Defence stunned: timer=0.6139 mobility=0.0 desired before=5.016 after=0.000
+Defence stunned: timer=0.6111 mobility=0.0 desired before=5.024 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.5889 mobility=0.0 desired before=4.924 after=0.000
+Defence stunned: timer=0.5861 mobility=0.0 desired before=4.926 after=0.000
+Defence stunned: timer=0.5833 mobility=0.0 desired before=4.929 after=0.000
+Defence stunned: timer=0.5806 mobility=0.0 desired before=4.933 after=0.000
+Defence stunned: timer=0.5778 mobility=0.0 desired before=4.937 after=0.000
+Defence stunned: timer=0.5750 mobility=0.0 desired before=4.942 after=0.000
+Defence stunned: timer=0.5722 mobility=0.0 desired before=4.947 after=0.000
+Defence stunned: timer=0.5694 mobility=0.0 desired before=4.953 after=0.000
+Defence stunned: timer=0.5667 mobility=0.0 desired before=4.960 after=0.000
+Defence stunned: timer=0.5639 mobility=0.0 desired before=4.967 after=0.000
+Defence stunned: timer=0.5611 mobility=0.0 desired before=4.974 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.5389 mobility=0.0 desired before=4.875 after=0.000
+Defence stunned: timer=0.5361 mobility=0.0 desired before=4.877 after=0.000
+Defence stunned: timer=0.5333 mobility=0.0 desired before=4.879 after=0.000
+Defence stunned: timer=0.5306 mobility=0.0 desired before=4.881 after=0.000
+Defence stunned: timer=0.5278 mobility=0.0 desired before=4.885 after=0.000
+Defence stunned: timer=0.5250 mobility=0.0 desired before=4.888 after=0.000
+Defence stunned: timer=0.5222 mobility=0.0 desired before=4.892 after=0.000
+Defence stunned: timer=0.5194 mobility=0.0 desired before=4.897 after=0.000
+Defence stunned: timer=0.5167 mobility=0.0 desired before=4.902 after=0.000
+Defence stunned: timer=0.5139 mobility=0.0 desired before=4.907 after=0.000
+Defence stunned: timer=0.5111 mobility=0.0 desired before=4.913 after=0.000
+Defence stunned: timer=0.5083 mobility=0.0 desired before=4.919 after=0.000
+Defence stunned: timer=0.5056 mobility=0.0 desired before=4.926 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.4833 mobility=0.0 desired before=4.821 after=0.000
+Defence stunned: timer=0.4806 mobility=0.0 desired before=4.822 after=0.000
+Defence stunned: timer=0.4778 mobility=0.0 desired before=4.823 after=0.000
+Defence stunned: timer=0.4750 mobility=0.0 desired before=4.825 after=0.000
+Defence stunned: timer=0.4722 mobility=0.0 desired before=4.827 after=0.000
+Defence stunned: timer=0.4694 mobility=0.0 desired before=4.830 after=0.000
+Defence stunned: timer=0.4667 mobility=0.0 desired before=4.832 after=0.000
+Defence stunned: timer=0.4639 mobility=0.0 desired before=4.836 after=0.000
+Defence stunned: timer=0.4611 mobility=0.0 desired before=4.839 after=0.000
+Defence stunned: timer=0.4583 mobility=0.0 desired before=4.843 after=0.000
+Defence stunned: timer=0.4556 mobility=0.0 desired before=4.848 after=0.000
+Defence stunned: timer=0.4528 mobility=0.0 desired before=4.852 after=0.000
+Defence stunned: timer=0.4500 mobility=0.0 desired before=4.857 after=0.000
+Defence stunned: timer=0.4472 mobility=0.0 desired before=4.863 after=0.000
+Defence stunned: timer=0.4444 mobility=0.0 desired before=4.868 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.4222 mobility=0.0 desired before=4.764 after=0.000
+Defence stunned: timer=0.4194 mobility=0.0 desired before=4.764 after=0.000
+Defence stunned: timer=0.4167 mobility=0.0 desired before=4.765 after=0.000
+Defence stunned: timer=0.4139 mobility=0.0 desired before=4.765 after=0.000
+Defence stunned: timer=0.4111 mobility=0.0 desired before=4.767 after=0.000
+Defence stunned: timer=0.4083 mobility=0.0 desired before=4.768 after=0.000
+Defence stunned: timer=0.4056 mobility=0.0 desired before=4.770 after=0.000
+Defence stunned: timer=0.4028 mobility=0.0 desired before=4.772 after=0.000
+Defence stunned: timer=0.4000 mobility=0.0 desired before=4.775 after=0.000
+Defence stunned: timer=0.3972 mobility=0.0 desired before=4.778 after=0.000
+Defence stunned: timer=0.3944 mobility=0.0 desired before=4.781 after=0.000
+Defence stunned: timer=0.3917 mobility=0.0 desired before=4.784 after=0.000
+Defence stunned: timer=0.3889 mobility=0.0 desired before=4.787 after=0.000
+Defence stunned: timer=0.3861 mobility=0.0 desired before=4.791 after=0.000
+Defence stunned: timer=0.3833 mobility=0.0 desired before=4.795 after=0.000
+Defence stunned: timer=0.3806 mobility=0.0 desired before=4.800 after=0.000
+Defence stunned: timer=0.3778 mobility=0.0 desired before=4.804 after=0.000
+Defence stunned: timer=0.3750 mobility=0.0 desired before=4.809 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.3528 mobility=0.0 desired before=4.703 after=0.000
+Defence stunned: timer=0.3500 mobility=0.0 desired before=4.702 after=0.000
+Defence stunned: timer=0.3472 mobility=0.0 desired before=4.702 after=0.000
+Defence stunned: timer=0.3444 mobility=0.0 desired before=4.703 after=0.000
+Defence stunned: timer=0.3417 mobility=0.0 desired before=4.703 after=0.000
+Defence stunned: timer=0.3389 mobility=0.0 desired before=4.704 after=0.000
+Defence stunned: timer=0.3361 mobility=0.0 desired before=4.705 after=0.000
+Defence stunned: timer=0.3333 mobility=0.0 desired before=4.706 after=0.000
+Defence stunned: timer=0.3306 mobility=0.0 desired before=4.708 after=0.000
+Defence stunned: timer=0.3278 mobility=0.0 desired before=4.709 after=0.000
+Defence stunned: timer=0.3250 mobility=0.0 desired before=4.711 after=0.000
+Defence stunned: timer=0.3222 mobility=0.0 desired before=4.713 after=0.000
+Defence stunned: timer=0.3194 mobility=0.0 desired before=4.716 after=0.000
+Defence stunned: timer=0.3167 mobility=0.0 desired before=4.718 after=0.000
+Defence stunned: timer=0.3139 mobility=0.0 desired before=4.721 after=0.000
+Defence stunned: timer=0.3111 mobility=0.0 desired before=4.724 after=0.000
+Defence stunned: timer=0.3083 mobility=0.0 desired before=4.727 after=0.000
+Defence stunned: timer=0.3056 mobility=0.0 desired before=4.731 after=0.000
+Defence stunned: timer=0.3028 mobility=0.0 desired before=4.734 after=0.000
+Defence stunned: timer=0.3000 mobility=0.0 desired before=4.738 after=0.000
+Defence stunned: timer=0.2972 mobility=0.0 desired before=4.742 after=0.000
+Defence stunned: timer=0.2944 mobility=0.0 desired before=4.746 after=0.000
+Defence stunned: timer=0.2917 mobility=0.0 desired before=4.750 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.2667 mobility=0.0 desired before=4.636 after=0.000
+Defence stunned: timer=0.2639 mobility=0.0 desired before=4.636 after=0.000
+Defence stunned: timer=0.2611 mobility=0.0 desired before=4.636 after=0.000
+Defence stunned: timer=0.2583 mobility=0.0 desired before=4.636 after=0.000
+Defence stunned: timer=0.2556 mobility=0.0 desired before=4.636 after=0.000
+Defence stunned: timer=0.2528 mobility=0.0 desired before=4.636 after=0.000
+Defence stunned: timer=0.2500 mobility=0.0 desired before=4.637 after=0.000
+Defence stunned: timer=0.2472 mobility=0.0 desired before=4.638 after=0.000
+Defence stunned: timer=0.2444 mobility=0.0 desired before=4.638 after=0.000
+Defence stunned: timer=0.2417 mobility=0.0 desired before=4.639 after=0.000
+Defence stunned: timer=0.2389 mobility=0.0 desired before=4.641 after=0.000
+Defence stunned: timer=0.2361 mobility=0.0 desired before=4.642 after=0.000
+Defence stunned: timer=0.2333 mobility=0.0 desired before=4.644 after=0.000
+Defence stunned: timer=0.2306 mobility=0.0 desired before=4.645 after=0.000
+Defence stunned: timer=0.2278 mobility=0.0 desired before=4.647 after=0.000
+Defence stunned: timer=0.2250 mobility=0.0 desired before=4.649 after=0.000
+Defence stunned: timer=0.2222 mobility=0.0 desired before=4.651 after=0.000
+Defence stunned: timer=0.2194 mobility=0.0 desired before=4.654 after=0.000
+Defence stunned: timer=0.2167 mobility=0.0 desired before=4.656 after=0.000
+Defence stunned: timer=0.2139 mobility=0.0 desired before=4.659 after=0.000
+Defence stunned: timer=0.2111 mobility=0.0 desired before=4.661 after=0.000
+Defence stunned: timer=0.2083 mobility=0.0 desired before=4.664 after=0.000
+Defence stunned: timer=0.2056 mobility=0.0 desired before=4.667 after=0.000
+Defence stunned: timer=0.2028 mobility=0.0 desired before=4.670 after=0.000
+Defence stunned: timer=0.2000 mobility=0.0 desired before=4.673 after=0.000
+Defence stunned: timer=0.1972 mobility=0.0 desired before=4.677 after=0.000
+Defence stunned: timer=0.1944 mobility=0.0 desired before=4.680 after=0.000
+Defence stunned: timer=0.1917 mobility=0.0 desired before=4.683 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.1667 mobility=0.0 desired before=4.572 after=0.000
+Defence stunned: timer=0.1639 mobility=0.0 desired before=4.572 after=0.000
+Defence stunned: timer=0.1611 mobility=0.0 desired before=4.572 after=0.000
+Defence stunned: timer=0.1583 mobility=0.0 desired before=4.571 after=0.000
+Defence stunned: timer=0.1556 mobility=0.0 desired before=4.572 after=0.000
+Defence stunned: timer=0.1528 mobility=0.0 desired before=4.572 after=0.000
+Defence stunned: timer=0.1500 mobility=0.0 desired before=4.572 after=0.000
+Defence stunned: timer=0.1472 mobility=0.0 desired before=4.572 after=0.000
+Defence stunned: timer=0.1444 mobility=0.0 desired before=4.573 after=0.000
+Defence stunned: timer=0.1417 mobility=0.0 desired before=4.573 after=0.000
+Defence stunned: timer=0.1389 mobility=0.0 desired before=4.574 after=0.000
+Defence stunned: timer=0.1361 mobility=0.0 desired before=4.575 after=0.000
+Defence stunned: timer=0.1333 mobility=0.0 desired before=4.576 after=0.000
+Defence stunned: timer=0.1306 mobility=0.0 desired before=4.577 after=0.000
+Defence stunned: timer=0.1278 mobility=0.0 desired before=4.578 after=0.000
+Defence stunned: timer=0.1250 mobility=0.0 desired before=4.580 after=0.000
+Defence stunned: timer=0.1222 mobility=0.0 desired before=4.581 after=0.000
+Defence stunned: timer=0.1194 mobility=0.0 desired before=4.583 after=0.000
+Defence stunned: timer=0.1167 mobility=0.0 desired before=4.584 after=0.000
+Defence stunned: timer=0.1139 mobility=0.0 desired before=4.586 after=0.000
+Defence stunned: timer=0.1111 mobility=0.0 desired before=4.588 after=0.000
+Defence stunned: timer=0.1083 mobility=0.0 desired before=4.590 after=0.000
+Defence stunned: timer=0.1056 mobility=0.0 desired before=4.592 after=0.000
+Defence stunned: timer=0.1028 mobility=0.0 desired before=4.594 after=0.000
+Defence stunned: timer=0.1000 mobility=0.0 desired before=4.596 after=0.000
+Defence stunned: timer=0.0972 mobility=0.0 desired before=4.598 after=0.000
+Defence stunned: timer=0.0944 mobility=0.0 desired before=4.601 after=0.000
+Defence stunned: timer=0.0917 mobility=0.0 desired before=4.603 after=0.000
+Defence stunned: timer=0.0889 mobility=0.0 desired before=4.606 after=0.000
+Defence stunned: timer=0.0861 mobility=0.0 desired before=4.609 after=0.000
+Defence stunned: timer=0.0833 mobility=0.0 desired before=4.611 after=0.000
+Defence stunned: timer=0.0806 mobility=0.0 desired before=4.614 after=0.000
+Defence stunned: timer=0.0778 mobility=0.0 desired before=4.617 after=0.000
+Defence stunned: timer=0.0750 mobility=0.0 desired before=4.620 after=0.000
+Defence stunned: timer=0.0722 mobility=0.0 desired before=4.623 after=0.000
+Defence stunned: timer=0.0694 mobility=0.0 desired before=4.626 after=0.000
+Defence stunned: timer=0.0667 mobility=0.0 desired before=4.630 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.0417 mobility=0.0 desired before=4.507 after=0.000
+Defence stunned: timer=0.0389 mobility=0.0 desired before=4.504 after=0.000
+Defence stunned: timer=0.0361 mobility=0.0 desired before=4.501 after=0.000
+Defence stunned: timer=0.0333 mobility=0.0 desired before=4.498 after=0.000
+Defence stunned: timer=0.0306 mobility=0.0 desired before=4.495 after=0.000
+Defence stunned: timer=0.0278 mobility=0.0 desired before=4.492 after=0.000
+Defence stunned: timer=0.0250 mobility=0.0 desired before=4.490 after=0.000
+Defence stunned: timer=0.0222 mobility=0.0 desired before=4.487 after=0.000
+Defence stunned: timer=0.0194 mobility=0.0 desired before=4.485 after=0.000
+Defence stunned: timer=0.0167 mobility=0.0 desired before=4.482 after=0.000
+Defence stunned: timer=0.0139 mobility=0.0 desired before=4.480 after=0.000
+Defence stunned: timer=0.0111 mobility=0.0 desired before=4.478 after=0.000
+Defence stunned: timer=0.0083 mobility=0.0 desired before=4.476 after=0.000
+Defence stunned: timer=0.0056 mobility=0.0 desired before=4.474 after=0.000
+Defence stunned: timer=0.0028 mobility=0.0 desired before=4.472 after=0.000
+Defence stunned: timer=0.0000 mobility=0.0 desired before=4.470 after=0.000
+Defence: no combo, velo -0.083 below 0.040
+Stamina: combo eligible, chance 1.14
+Stamina combo QUEUED hit 1, distance now 0.0465, interval 0.120, my vel 0.618, their vel 0.059
+  -> freezing for 0.067s
+Defence stunned: timer=0.9383 mobility=0.0 desired before=0.326 after=0.000
+Defence stunned: timer=0.9356 mobility=0.0 desired before=0.325 after=0.000
+Defence stunned: timer=0.9328 mobility=0.0 desired before=0.328 after=0.000
+Defence stunned: timer=0.9300 mobility=0.0 desired before=0.334 after=0.000
+Defence stunned: timer=0.9272 mobility=0.0 desired before=0.344 after=0.000
+Defence stunned: timer=0.9244 mobility=0.0 desired before=0.357 after=0.000
+Defence stunned: timer=0.9217 mobility=0.0 desired before=0.372 after=0.000
+Defence stunned: timer=0.9189 mobility=0.0 desired before=0.391 after=0.000
+Defence stunned: timer=0.9161 mobility=0.0 desired before=0.412 after=0.000
+Defence stunned: timer=0.9133 mobility=0.0 desired before=0.435 after=0.000
+Defence stunned: timer=0.9106 mobility=0.0 desired before=0.460 after=0.000
+Defence stunned: timer=0.9078 mobility=0.0 desired before=0.378 after=0.000
+Defence stunned: timer=0.9050 mobility=0.0 desired before=0.292 after=0.000
+Defence stunned: timer=0.9022 mobility=0.0 desired before=0.246 after=0.000
+Defence stunned: timer=0.8994 mobility=0.0 desired before=0.259 after=0.000
+Defence stunned: timer=0.8967 mobility=0.0 desired before=0.322 after=0.000
+Defence stunned: timer=0.8939 mobility=0.0 desired before=0.412 after=0.000
+Defence stunned: timer=0.8911 mobility=0.0 desired before=0.515 after=0.000
+Defence stunned: timer=0.8883 mobility=0.0 desired before=0.624 after=0.000
+Defence stunned: timer=0.8856 mobility=0.0 desired before=0.736 after=0.000
+Defence stunned: timer=0.8828 mobility=0.0 desired before=0.850 after=0.000
+Defence stunned: timer=0.8800 mobility=0.0 desired before=0.965 after=0.000
+Defence stunned: timer=0.8772 mobility=0.0 desired before=1.082 after=0.000
+Defence stunned: timer=0.8744 mobility=0.0 desired before=1.200 after=0.000
+Stamina combo hit 1 on Defence (chance now 1.13, falloff 0.90)
+Stamina combo QUEUED hit 2, distance now 0.0162, interval 0.120, my vel 1.253, their vel 0.113
+  -> freezing for 0.032s
+Defence stunned: timer=0.9372 mobility=0.0 desired before=2.622 after=0.000
+Defence stunned: timer=0.9344 mobility=0.0 desired before=2.633 after=0.000
+Defence wall snap: 0.1412 -> 0.1412
+Defence took wall damage
+Defence stunned: timer=0.9150 mobility=0.0 desired before=2.659 after=0.000
+Defence stunned: timer=0.9122 mobility=0.0 desired before=2.672 after=0.000
+Defence stunned: timer=0.9094 mobility=0.0 desired before=2.686 after=0.000
+Defence stunned: timer=0.9067 mobility=0.0 desired before=2.701 after=0.000
+Defence stunned: timer=0.9039 mobility=0.0 desired before=2.718 after=0.000
+Defence stunned: timer=0.9011 mobility=0.0 desired before=2.729 after=0.000
+Defence stunned: timer=0.8983 mobility=0.0 desired before=2.743 after=0.000
+Defence stunned: timer=0.8956 mobility=0.0 desired before=2.759 after=0.000
+Defence stunned: timer=0.8928 mobility=0.0 desired before=2.778 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Stamina combo hit 2 on Defence (chance now 1.12, falloff 0.81)
+Stamina combo QUEUED hit 3, distance now 0.0306, interval 0.120, my vel 0.203, their vel 0.041
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.9361 mobility=0.0 desired before=3.176 after=0.000
+Defence stunned: timer=0.9333 mobility=0.0 desired before=3.200 after=0.000
+Defence stunned: timer=0.9306 mobility=0.0 desired before=3.225 after=0.000
+Defence stunned: timer=0.9278 mobility=0.0 desired before=3.250 after=0.000
+Defence stunned: timer=0.9250 mobility=0.0 desired before=3.275 after=0.000
+Defence stunned: timer=0.9222 mobility=0.0 desired before=3.300 after=0.000
+Defence stunned: timer=0.9194 mobility=0.0 desired before=3.318 after=0.000
+Defence stunned: timer=0.9167 mobility=0.0 desired before=3.337 after=0.000
+Defence stunned: timer=0.9139 mobility=0.0 desired before=3.355 after=0.000
+Defence stunned: timer=0.9111 mobility=0.0 desired before=3.374 after=0.000
+Defence stunned: timer=0.9083 mobility=0.0 desired before=3.392 after=0.000
+Defence stunned: timer=0.9056 mobility=0.0 desired before=3.411 after=0.000
+Defence stunned: timer=0.9028 mobility=0.0 desired before=3.430 after=0.000
+Defence stunned: timer=0.9000 mobility=0.0 desired before=3.449 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.8750 mobility=0.0 desired before=3.471 after=0.000
+Stamina combo broken: distance 0.0572, at r=0.1080, vel=0.173, target vel=0.102, intent=8, target intent=1, stun=0.875
+Defence stunned: timer=0.8722 mobility=0.0 desired before=3.486 after=0.000
+Defence stunned: timer=0.8694 mobility=0.0 desired before=3.502 after=0.000
+Defence stunned: timer=0.8667 mobility=0.0 desired before=3.517 after=0.000
+Defence stunned: timer=0.8639 mobility=0.0 desired before=3.532 after=0.000
+Defence stunned: timer=0.8611 mobility=0.0 desired before=3.548 after=0.000
+Defence stunned: timer=0.8583 mobility=0.0 desired before=3.564 after=0.000
+Defence stunned: timer=0.8556 mobility=0.0 desired before=3.580 after=0.000
+Defence stunned: timer=0.8528 mobility=0.0 desired before=3.596 after=0.000
+Defence stunned: timer=0.8500 mobility=0.0 desired before=3.612 after=0.000
+Defence stunned: timer=0.8472 mobility=0.0 desired before=3.628 after=0.000
+Defence stunned: timer=0.8444 mobility=0.0 desired before=3.644 after=0.000
+Defence stunned: timer=0.8417 mobility=0.0 desired before=3.660 after=0.000
+Defence stunned: timer=0.8389 mobility=0.0 desired before=3.677 after=0.000
+Defence stunned: timer=0.8361 mobility=0.0 desired before=3.693 after=0.000
+Defence stunned: timer=0.8333 mobility=0.0 desired before=3.710 after=0.000
+Defence stunned: timer=0.8306 mobility=0.0 desired before=3.727 after=0.000
+Defence stunned: timer=0.8278 mobility=0.0 desired before=3.744 after=0.000
+Defence stunned: timer=0.8250 mobility=0.0 desired before=3.761 after=0.000
+Defence stunned: timer=0.8222 mobility=0.0 desired before=3.779 after=0.000
+Defence stunned: timer=0.8194 mobility=0.0 desired before=3.796 after=0.000
+Defence stunned: timer=0.8167 mobility=0.0 desired before=3.814 after=0.000
+Defence stunned: timer=0.8139 mobility=0.0 desired before=3.832 after=0.000
+Defence stunned: timer=0.8111 mobility=0.0 desired before=3.849 after=0.000
+Stamina combo broken: distance 0.0646, at r=0.0977, vel=0.163, target vel=0.088, intent=8, target intent=1, stun=0.811
+Defence stunned: timer=0.8083 mobility=0.0 desired before=3.867 after=0.000
+Defence stunned: timer=0.8056 mobility=0.0 desired before=3.886 after=0.000
+Defence stunned: timer=0.8028 mobility=0.0 desired before=3.904 after=0.000
+Defence stunned: timer=0.8000 mobility=0.0 desired before=3.922 after=0.000
+Defence stunned: timer=0.7972 mobility=0.0 desired before=3.941 after=0.000
+Defence stunned: timer=0.7944 mobility=0.0 desired before=3.959 after=0.000
+Defence stunned: timer=0.7917 mobility=0.0 desired before=3.978 after=0.000
+Defence stunned: timer=0.7889 mobility=0.0 desired before=3.997 after=0.000
+Defence stunned: timer=0.7861 mobility=0.0 desired before=4.016 after=0.000
+Defence stunned: timer=0.7833 mobility=0.0 desired before=4.035 after=0.000
+Defence stunned: timer=0.7806 mobility=0.0 desired before=4.054 after=0.000
+Defence stunned: timer=0.7778 mobility=0.0 desired before=4.073 after=0.000
+Defence stunned: timer=0.7750 mobility=0.0 desired before=4.092 after=0.000
+Defence stunned: timer=0.7722 mobility=0.0 desired before=4.111 after=0.000
+Defence stunned: timer=0.7694 mobility=0.0 desired before=4.131 after=0.000
+Defence stunned: timer=0.7667 mobility=0.0 desired before=4.151 after=0.000
+Defence stunned: timer=0.7639 mobility=0.0 desired before=4.170 after=0.000
+Defence stunned: timer=0.7611 mobility=0.0 desired before=4.190 after=0.000
+Defence stunned: timer=0.7583 mobility=0.0 desired before=4.210 after=0.000
+Defence stunned: timer=0.7556 mobility=0.0 desired before=4.230 after=0.000
+Defence stunned: timer=0.7528 mobility=0.0 desired before=4.251 after=0.000
+Defence stunned: timer=0.7500 mobility=0.0 desired before=4.271 after=0.000
+Defence stunned: timer=0.7472 mobility=0.0 desired before=4.291 after=0.000
+Stamina combo broken: distance 0.0677, at r=0.0883, vel=0.192, target vel=0.075, intent=8, target intent=1, stun=0.747
+Defence stunned: timer=0.7444 mobility=0.0 desired before=4.312 after=0.000
+Defence stunned: timer=0.7417 mobility=0.0 desired before=4.333 after=0.000
+Defence stunned: timer=0.7389 mobility=0.0 desired before=4.354 after=0.000
+Defence stunned: timer=0.7361 mobility=0.0 desired before=4.374 after=0.000
+Defence stunned: timer=0.7333 mobility=0.0 desired before=4.386 after=0.000
+Defence stunned: timer=0.7306 mobility=0.0 desired before=4.392 after=0.000
+Defence stunned: timer=0.7278 mobility=0.0 desired before=4.397 after=0.000
+Defence stunned: timer=0.7250 mobility=0.0 desired before=4.403 after=0.000
+Defence stunned: timer=0.7222 mobility=0.0 desired before=4.409 after=0.000
+Defence stunned: timer=0.7194 mobility=0.0 desired before=4.415 after=0.000
+Defence stunned: timer=0.7167 mobility=0.0 desired before=4.420 after=0.000
+Defence stunned: timer=0.7139 mobility=0.0 desired before=4.426 after=0.000
+Defence stunned: timer=0.7111 mobility=0.0 desired before=4.432 after=0.000
+Defence stunned: timer=0.7083 mobility=0.0 desired before=4.438 after=0.000
+Defence stunned: timer=0.7056 mobility=0.0 desired before=4.444 after=0.000
+Defence stunned: timer=0.7028 mobility=0.0 desired before=4.450 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Stamina combo broken: distance 0.0654, at r=0.0812, vel=0.273, target vel=0.067, intent=8, target intent=1, stun=0.683
+Defence stunned: timer=0.6778 mobility=0.0 desired before=4.379 after=0.000
+Defence stunned: timer=0.6750 mobility=0.0 desired before=4.383 after=0.000
+Defence stunned: timer=0.6722 mobility=0.0 desired before=4.387 after=0.000
+Defence stunned: timer=0.6694 mobility=0.0 desired before=4.392 after=0.000
+Defence stunned: timer=0.6667 mobility=0.0 desired before=4.396 after=0.000
+Defence stunned: timer=0.6639 mobility=0.0 desired before=4.401 after=0.000
+Defence stunned: timer=0.6611 mobility=0.0 desired before=4.406 after=0.000
+Defence stunned: timer=0.6583 mobility=0.0 desired before=4.411 after=0.000
+Defence stunned: timer=0.6556 mobility=0.0 desired before=4.416 after=0.000
+Defence stunned: timer=0.6528 mobility=0.0 desired before=4.421 after=0.000
+Defence stunned: timer=0.6500 mobility=0.0 desired before=4.426 after=0.000
+Defence stunned: timer=0.6472 mobility=0.0 desired before=4.431 after=0.000
+Defence stunned: timer=0.6444 mobility=0.0 desired before=4.436 after=0.000
+Defence stunned: timer=0.6417 mobility=0.0 desired before=4.442 after=0.000
+Defence stunned: timer=0.6389 mobility=0.0 desired before=4.447 after=0.000
+Defence stunned: timer=0.6361 mobility=0.0 desired before=4.452 after=0.000
+Defence stunned: timer=0.6333 mobility=0.0 desired before=4.458 after=0.000
+Defence stunned: timer=0.6306 mobility=0.0 desired before=4.463 after=0.000
+Defence stunned: timer=0.6278 mobility=0.0 desired before=4.469 after=0.000
+Defence stunned: timer=0.6250 mobility=0.0 desired before=4.474 after=0.000
+Defence stunned: timer=0.6222 mobility=0.0 desired before=4.479 after=0.000
+Defence stunned: timer=0.6194 mobility=0.0 desired before=4.484 after=0.000
+Stamina combo broken: distance 0.0565, at r=0.0837, vel=0.458, target vel=0.058, intent=8, target intent=1, stun=0.619
+Defence stunned: timer=0.6167 mobility=0.0 desired before=4.489 after=0.000
+Defence stunned: timer=0.6139 mobility=0.0 desired before=4.494 after=0.000
+Defence stunned: timer=0.6111 mobility=0.0 desired before=4.499 after=0.000
+Defence stunned: timer=0.6083 mobility=0.0 desired before=4.504 after=0.000
+Defence stunned: timer=0.6056 mobility=0.0 desired before=4.508 after=0.000
+Defence stunned: timer=0.6028 mobility=0.0 desired before=4.512 after=0.000
+Defence stunned: timer=0.6000 mobility=0.0 desired before=4.516 after=0.000
+Defence stunned: timer=0.5972 mobility=0.0 desired before=4.519 after=0.000
+Defence stunned: timer=0.5944 mobility=0.0 desired before=4.510 after=0.000
+Defence stunned: timer=0.5917 mobility=0.0 desired before=4.492 after=0.000
+Defence: no combo, velo 0.002 below 0.040
+Stamina combo self-kb suppressed to 0.0301
+Stamina combo QUEUED hit 4, distance now 0.0462, interval 0.120, my vel 0.413, their vel 0.011
+Defence wall snap: 0.1410 -> 0.1410
+Defence wall snap: 0.1411 -> 0.1411
+Defence took wall damage
+Defence stunned: timer=0.9194 mobility=0.0 desired before=3.810 after=0.000
+Defence stunned: timer=0.9167 mobility=0.0 desired before=3.787 after=0.000
+Defence stunned: timer=0.9139 mobility=0.0 desired before=3.765 after=0.000
+Defence stunned: timer=0.9111 mobility=0.0 desired before=3.745 after=0.000
+Defence stunned: timer=0.9083 mobility=0.0 desired before=3.728 after=0.000
+Defence wall snap: 0.1412 -> 0.1412
+Defence stunned: timer=0.8889 mobility=0.0 desired before=3.486 after=0.000
+Defence stunned: timer=0.8861 mobility=0.0 desired before=3.498 after=0.000
+Defence stunned: timer=0.8833 mobility=0.0 desired before=3.517 after=0.000
+Defence wall snap: 0.1412 -> 0.1412
+Stamina combo hit 4 on Defence (chance now 1.10, falloff 0.66)
+Stamina combo QUEUED hit 5, distance now 0.0089, interval 0.120, my vel 0.052, their vel 0.007
+Defence wall snap: 0.1412 -> 0.1412
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.9361 mobility=0.0 desired before=3.845 after=0.000
+Defence wall snap: 0.1412 -> 0.1412
+Defence stunned: timer=0.9167 mobility=0.0 desired before=3.828 after=0.000
+Defence stunned: timer=0.9139 mobility=0.0 desired before=3.853 after=0.000
+Defence stunned: timer=0.9111 mobility=0.0 desired before=3.880 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.8917 mobility=0.0 desired before=3.876 after=0.000
+Defence stunned: timer=0.8889 mobility=0.0 desired before=3.901 after=0.000
+Defence stunned: timer=0.8861 mobility=0.0 desired before=3.927 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Stamina combo hit 5 on Defence (chance now 1.09, falloff 0.59)
+Stamina combo QUEUED hit 6, distance now 0.0186, interval 0.120, my vel 0.095, their vel 0.018
+Defence wall snap: 0.1411 -> 0.1411
+Defence wall snap: 0.1412 -> 0.1412
+Defence stunned: timer=0.9361 mobility=0.0 desired before=3.836 after=0.000
+Defence stunned: timer=0.9333 mobility=0.0 desired before=3.849 after=0.000
+Defence stunned: timer=0.9306 mobility=0.0 desired before=3.861 after=0.000
+Defence stunned: timer=0.9278 mobility=0.0 desired before=3.873 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.9083 mobility=0.0 desired before=3.748 after=0.000
+Defence stunned: timer=0.9056 mobility=0.0 desired before=3.755 after=0.000
+Defence stunned: timer=0.9028 mobility=0.0 desired before=3.764 after=0.000
+Defence stunned: timer=0.9000 mobility=0.0 desired before=3.775 after=0.000
+Defence wall snap: 0.1412 -> 0.1412
+Defence stunned: timer=0.8806 mobility=0.0 desired before=3.677 after=0.000
+Defence stunned: timer=0.8778 mobility=0.0 desired before=3.696 after=0.000
+Defence stunned: timer=0.8750 mobility=0.0 desired before=3.718 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence took wall damage
+Stamina combo hit 6 on Defence (chance now 1.08, falloff 0.53)
+Defence wall snap: 0.1416 -> 0.1416
+Defence stunned: timer=0.8361 mobility=0.0 desired before=3.754 after=0.000
+Defence stunned: timer=0.8333 mobility=0.0 desired before=3.789 after=0.000
+Defence wall snap: 0.1412 -> 0.1412
+Defence stunned: timer=0.8139 mobility=0.0 desired before=3.831 after=0.000
+Defence stunned: timer=0.8111 mobility=0.0 desired before=3.866 after=0.000
+Defence stunned: timer=0.8083 mobility=0.0 desired before=3.903 after=0.000
+Defence stunned: timer=0.8056 mobility=0.0 desired before=3.943 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.7861 mobility=0.0 desired before=4.011 after=0.000
+Defence stunned: timer=0.7833 mobility=0.0 desired before=4.047 after=0.000
+Defence stunned: timer=0.7806 mobility=0.0 desired before=4.085 after=0.000
+Defence stunned: timer=0.7778 mobility=0.0 desired before=4.123 after=0.000
+Defence stunned: timer=0.7750 mobility=0.0 desired before=4.163 after=0.000
+Defence stunned: timer=0.7722 mobility=0.0 desired before=4.204 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.7500 mobility=0.0 desired before=4.315 after=0.000
+Defence stunned: timer=0.7472 mobility=0.0 desired before=4.348 after=0.000
+Defence stunned: timer=0.7444 mobility=0.0 desired before=4.381 after=0.000
+Defence stunned: timer=0.7417 mobility=0.0 desired before=4.414 after=0.000
+Defence stunned: timer=0.7389 mobility=0.0 desired before=4.437 after=0.000
+Defence stunned: timer=0.7361 mobility=0.0 desired before=4.446 after=0.000
+Defence stunned: timer=0.7333 mobility=0.0 desired before=4.456 after=0.000
+Defence stunned: timer=0.7306 mobility=0.0 desired before=4.465 after=0.000
+Defence stunned: timer=0.7278 mobility=0.0 desired before=4.474 after=0.000
+Defence stunned: timer=0.7250 mobility=0.0 desired before=4.484 after=0.000
+Defence stunned: timer=0.7222 mobility=0.0 desired before=4.493 after=0.000
+Defence stunned: timer=0.7194 mobility=0.0 desired before=4.503 after=0.000
+Defence stunned: timer=0.7167 mobility=0.0 desired before=4.512 after=0.000
+Defence stunned: timer=0.7139 mobility=0.0 desired before=4.522 after=0.000
+Defence stunned: timer=0.7111 mobility=0.0 desired before=4.531 after=0.000
+Defence stunned: timer=0.7083 mobility=0.0 desired before=4.541 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.6833 mobility=0.0 desired before=4.479 after=0.000
+Defence stunned: timer=0.6806 mobility=0.0 desired before=4.484 after=0.000
+Defence stunned: timer=0.6778 mobility=0.0 desired before=4.488 after=0.000
+Defence stunned: timer=0.6750 mobility=0.0 desired before=4.493 after=0.000
+Defence stunned: timer=0.6722 mobility=0.0 desired before=4.497 after=0.000
+Defence stunned: timer=0.6694 mobility=0.0 desired before=4.502 after=0.000
+Defence stunned: timer=0.6667 mobility=0.0 desired before=4.507 after=0.000
+Defence stunned: timer=0.6639 mobility=0.0 desired before=4.511 after=0.000
+Defence stunned: timer=0.6611 mobility=0.0 desired before=4.516 after=0.000
+Defence stunned: timer=0.6583 mobility=0.0 desired before=4.520 after=0.000
+Defence stunned: timer=0.6556 mobility=0.0 desired before=4.525 after=0.000
+Defence stunned: timer=0.6528 mobility=0.0 desired before=4.529 after=0.000
+Defence stunned: timer=0.6500 mobility=0.0 desired before=4.534 after=0.000
+Defence stunned: timer=0.6472 mobility=0.0 desired before=4.538 after=0.000
+Defence stunned: timer=0.6444 mobility=0.0 desired before=4.543 after=0.000
+Defence stunned: timer=0.6417 mobility=0.0 desired before=4.547 after=0.000
+Defence stunned: timer=0.6389 mobility=0.0 desired before=4.551 after=0.000
+Defence stunned: timer=0.6361 mobility=0.0 desired before=4.556 after=0.000
+Defence stunned: timer=0.6333 mobility=0.0 desired before=4.560 after=0.000
+Defence stunned: timer=0.6306 mobility=0.0 desired before=4.565 after=0.000
+Defence stunned: timer=0.6278 mobility=0.0 desired before=4.569 after=0.000
+Defence stunned: timer=0.6250 mobility=0.0 desired before=4.573 after=0.000
+Defence stunned: timer=0.6222 mobility=0.0 desired before=4.578 after=0.000
+Defence stunned: timer=0.6194 mobility=0.0 desired before=4.582 after=0.000
+Defence stunned: timer=0.6167 mobility=0.0 desired before=4.586 after=0.000
+Defence stunned: timer=0.6139 mobility=0.0 desired before=4.590 after=0.000
+Defence stunned: timer=0.6111 mobility=0.0 desired before=4.594 after=0.000
+Defence stunned: timer=0.5944 mobility=0.0 desired before=4.618 after=0.000
+Defence stunned: timer=0.5917 mobility=0.0 desired before=4.622 after=0.000
+Defence stunned: timer=0.5889 mobility=0.0 desired before=4.626 after=0.000
+Defence stunned: timer=0.5861 mobility=0.0 desired before=4.630 after=0.000
+Defence stunned: timer=0.5833 mobility=0.0 desired before=4.634 after=0.000
+Defence stunned: timer=0.5806 mobility=0.0 desired before=4.638 after=0.000
+Defence stunned: timer=0.5778 mobility=0.0 desired before=4.641 after=0.000
+Defence stunned: timer=0.5750 mobility=0.0 desired before=4.645 after=0.000
+Defence stunned: timer=0.5722 mobility=0.0 desired before=4.649 after=0.000
+Defence stunned: timer=0.5694 mobility=0.0 desired before=4.652 after=0.000
+Defence stunned: timer=0.5667 mobility=0.0 desired before=4.656 after=0.000
+Defence stunned: timer=0.5639 mobility=0.0 desired before=4.659 after=0.000
+Defence stunned: timer=0.5611 mobility=0.0 desired before=4.663 after=0.000
+Defence stunned: timer=0.5583 mobility=0.0 desired before=4.666 after=0.000
+Defence stunned: timer=0.5556 mobility=0.0 desired before=4.670 after=0.000
+Defence stunned: timer=0.5528 mobility=0.0 desired before=4.673 after=0.000
+Defence stunned: timer=0.5500 mobility=0.0 desired before=4.676 after=0.000
+Defence stunned: timer=0.5472 mobility=0.0 desired before=4.679 after=0.000
+Defence stunned: timer=0.5444 mobility=0.0 desired before=4.683 after=0.000
+Defence stunned: timer=0.5417 mobility=0.0 desired before=4.686 after=0.000
+Defence stunned: timer=0.5389 mobility=0.0 desired before=4.689 after=0.000
+Defence stunned: timer=0.5361 mobility=0.0 desired before=4.691 after=0.000
+Defence stunned: timer=0.5333 mobility=0.0 desired before=4.694 after=0.000
+Defence stunned: timer=0.5306 mobility=0.0 desired before=4.697 after=0.000
+Defence stunned: timer=0.5278 mobility=0.0 desired before=4.699 after=0.000
+Defence stunned: timer=0.5250 mobility=0.0 desired before=4.699 after=0.000
+Defence stunned: timer=0.5222 mobility=0.0 desired before=4.699 after=0.000
+Defence stunned: timer=0.5194 mobility=0.0 desired before=4.698 after=0.000
+Defence stunned: timer=0.5167 mobility=0.0 desired before=4.698 after=0.000
+Defence stunned: timer=0.5139 mobility=0.0 desired before=4.697 after=0.000
+Defence stunned: timer=0.5111 mobility=0.0 desired before=4.697 after=0.000
+Defence stunned: timer=0.5083 mobility=0.0 desired before=4.696 after=0.000
+Defence stunned: timer=0.5056 mobility=0.0 desired before=4.695 after=0.000
+Defence stunned: timer=0.5028 mobility=0.0 desired before=4.695 after=0.000
+Defence stunned: timer=0.5000 mobility=0.0 desired before=4.694 after=0.000
+Defence stunned: timer=0.4972 mobility=0.0 desired before=4.693 after=0.000
+Defence stunned: timer=0.4944 mobility=0.0 desired before=4.693 after=0.000
+Defence stunned: timer=0.4917 mobility=0.0 desired before=4.692 after=0.000
+Defence stunned: timer=0.4889 mobility=0.0 desired before=4.691 after=0.000
+Defence stunned: timer=0.4861 mobility=0.0 desired before=4.690 after=0.000
+Defence stunned: timer=0.4833 mobility=0.0 desired before=4.690 after=0.000
+Defence stunned: timer=0.4806 mobility=0.0 desired before=4.689 after=0.000
+Defence stunned: timer=0.4778 mobility=0.0 desired before=4.688 after=0.000
+Defence stunned: timer=0.4750 mobility=0.0 desired before=4.687 after=0.000
+Defence stunned: timer=0.4722 mobility=0.0 desired before=4.686 after=0.000
+Defence stunned: timer=0.4694 mobility=0.0 desired before=4.685 after=0.000
+Defence stunned: timer=0.4667 mobility=0.0 desired before=4.684 after=0.000
+Defence stunned: timer=0.4639 mobility=0.0 desired before=4.683 after=0.000
+Defence stunned: timer=0.4611 mobility=0.0 desired before=4.682 after=0.000
+Defence stunned: timer=0.4583 mobility=0.0 desired before=4.681 after=0.000
+Defence stunned: timer=0.4556 mobility=0.0 desired before=4.680 after=0.000
+Defence stunned: timer=0.4528 mobility=0.0 desired before=4.679 after=0.000
+Defence stunned: timer=0.4500 mobility=0.0 desired before=4.678 after=0.000
+Defence stunned: timer=0.4472 mobility=0.0 desired before=4.677 after=0.000
+Defence stunned: timer=0.4444 mobility=0.0 desired before=4.676 after=0.000
+Defence stunned: timer=0.4417 mobility=0.0 desired before=4.675 after=0.000
+Defence stunned: timer=0.4389 mobility=0.0 desired before=4.674 after=0.000
+Defence stunned: timer=0.4361 mobility=0.0 desired before=4.673 after=0.000
+Defence stunned: timer=0.4333 mobility=0.0 desired before=4.672 after=0.000
+Defence stunned: timer=0.4306 mobility=0.0 desired before=4.671 after=0.000
+Defence stunned: timer=0.4278 mobility=0.0 desired before=4.670 after=0.000
+Defence stunned: timer=0.4250 mobility=0.0 desired before=4.669 after=0.000
+Defence stunned: timer=0.4222 mobility=0.0 desired before=4.668 after=0.000
+Defence stunned: timer=0.4194 mobility=0.0 desired before=4.666 after=0.000
+Defence stunned: timer=0.4167 mobility=0.0 desired before=4.665 after=0.000
+Defence stunned: timer=0.4139 mobility=0.0 desired before=4.664 after=0.000
+Defence stunned: timer=0.4111 mobility=0.0 desired before=4.663 after=0.000
+Defence stunned: timer=0.4083 mobility=0.0 desired before=4.662 after=0.000
+Defence stunned: timer=0.4056 mobility=0.0 desired before=4.660 after=0.000
+Defence stunned: timer=0.4028 mobility=0.0 desired before=4.659 after=0.000
+Defence stunned: timer=0.4000 mobility=0.0 desired before=4.658 after=0.000
+Defence stunned: timer=0.3972 mobility=0.0 desired before=4.657 after=0.000
+Defence stunned: timer=0.3944 mobility=0.0 desired before=4.655 after=0.000
+Defence stunned: timer=0.3917 mobility=0.0 desired before=4.654 after=0.000
+Defence stunned: timer=0.3889 mobility=0.0 desired before=4.653 after=0.000
+Defence stunned: timer=0.3861 mobility=0.0 desired before=4.651 after=0.000
+Defence stunned: timer=0.3833 mobility=0.0 desired before=4.650 after=0.000
+Defence stunned: timer=0.3806 mobility=0.0 desired before=4.649 after=0.000
+Defence stunned: timer=0.3778 mobility=0.0 desired before=4.647 after=0.000
+Defence stunned: timer=0.3750 mobility=0.0 desired before=4.646 after=0.000
+Defence stunned: timer=0.3722 mobility=0.0 desired before=4.644 after=0.000
+Defence stunned: timer=0.3694 mobility=0.0 desired before=4.643 after=0.000
+Defence stunned: timer=0.3667 mobility=0.0 desired before=4.642 after=0.000
+Defence stunned: timer=0.3639 mobility=0.0 desired before=4.640 after=0.000
+Defence stunned: timer=0.3611 mobility=0.0 desired before=4.639 after=0.000
+Defence stunned: timer=0.3583 mobility=0.0 desired before=4.637 after=0.000
+Defence stunned: timer=0.3556 mobility=0.0 desired before=4.636 after=0.000
+Defence stunned: timer=0.3528 mobility=0.0 desired before=4.634 after=0.000
+Defence stunned: timer=0.3500 mobility=0.0 desired before=4.633 after=0.000
+Defence stunned: timer=0.3472 mobility=0.0 desired before=4.631 after=0.000
+Defence stunned: timer=0.3444 mobility=0.0 desired before=4.630 after=0.000
+Defence stunned: timer=0.3417 mobility=0.0 desired before=4.628 after=0.000
+Defence stunned: timer=0.3389 mobility=0.0 desired before=4.627 after=0.000
+Defence stunned: timer=0.3361 mobility=0.0 desired before=4.625 after=0.000
+Defence stunned: timer=0.3333 mobility=0.0 desired before=4.624 after=0.000
+Defence stunned: timer=0.3306 mobility=0.0 desired before=4.622 after=0.000
+Defence stunned: timer=0.3278 mobility=0.0 desired before=4.620 after=0.000
+Defence stunned: timer=0.3250 mobility=0.0 desired before=4.619 after=0.000
+Defence stunned: timer=0.3222 mobility=0.0 desired before=4.617 after=0.000
+Defence stunned: timer=0.3194 mobility=0.0 desired before=4.616 after=0.000
+Defence stunned: timer=0.3167 mobility=0.0 desired before=4.614 after=0.000
+Defence stunned: timer=0.3139 mobility=0.0 desired before=4.612 after=0.000
+Defence stunned: timer=0.3111 mobility=0.0 desired before=4.611 after=0.000
+Defence stunned: timer=0.3083 mobility=0.0 desired before=4.609 after=0.000
+Defence stunned: timer=0.3056 mobility=0.0 desired before=4.607 after=0.000
+Defence stunned: timer=0.3028 mobility=0.0 desired before=4.606 after=0.000
+Defence stunned: timer=0.3000 mobility=0.0 desired before=4.604 after=0.000
+Defence stunned: timer=0.2972 mobility=0.0 desired before=4.602 after=0.000
+Defence stunned: timer=0.2944 mobility=0.0 desired before=4.600 after=0.000
+Defence stunned: timer=0.2917 mobility=0.0 desired before=4.599 after=0.000
+Defence stunned: timer=0.2889 mobility=0.0 desired before=4.597 after=0.000
+Defence stunned: timer=0.2861 mobility=0.0 desired before=4.595 after=0.000
+Defence stunned: timer=0.2833 mobility=0.0 desired before=4.593 after=0.000
+Defence stunned: timer=0.2806 mobility=0.0 desired before=4.592 after=0.000
+Defence stunned: timer=0.2778 mobility=0.0 desired before=4.590 after=0.000
+Defence stunned: timer=0.2750 mobility=0.0 desired before=4.588 after=0.000
+Defence stunned: timer=0.2722 mobility=0.0 desired before=4.586 after=0.000
+Defence stunned: timer=0.2694 mobility=0.0 desired before=4.584 after=0.000
+Defence stunned: timer=0.2667 mobility=0.0 desired before=4.582 after=0.000
+Defence stunned: timer=0.2639 mobility=0.0 desired before=4.581 after=0.000
+Defence stunned: timer=0.2611 mobility=0.0 desired before=4.579 after=0.000
+Defence stunned: timer=0.2583 mobility=0.0 desired before=4.577 after=0.000
+Defence stunned: timer=0.2556 mobility=0.0 desired before=4.575 after=0.000
+Defence stunned: timer=0.2528 mobility=0.0 desired before=4.573 after=0.000
+Defence stunned: timer=0.2500 mobility=0.0 desired before=4.571 after=0.000
+Defence stunned: timer=0.2472 mobility=0.0 desired before=4.569 after=0.000
+Defence stunned: timer=0.2444 mobility=0.0 desired before=4.567 after=0.000
+Defence stunned: timer=0.2417 mobility=0.0 desired before=4.565 after=0.000
+Defence stunned: timer=0.2389 mobility=0.0 desired before=4.563 after=0.000
+Defence stunned: timer=0.2361 mobility=0.0 desired before=4.561 after=0.000
+Defence stunned: timer=0.2333 mobility=0.0 desired before=4.559 after=0.000
+Defence stunned: timer=0.2306 mobility=0.0 desired before=4.557 after=0.000
+Defence stunned: timer=0.2278 mobility=0.0 desired before=4.555 after=0.000
+Defence stunned: timer=0.2250 mobility=0.0 desired before=4.553 after=0.000
+Defence stunned: timer=0.2222 mobility=0.0 desired before=4.551 after=0.000
+Defence stunned: timer=0.2194 mobility=0.0 desired before=4.549 after=0.000
+Defence stunned: timer=0.2167 mobility=0.0 desired before=4.547 after=0.000
+Defence stunned: timer=0.2139 mobility=0.0 desired before=4.545 after=0.000
+Defence stunned: timer=0.2111 mobility=0.0 desired before=4.543 after=0.000
+Defence stunned: timer=0.2083 mobility=0.0 desired before=4.541 after=0.000
+Defence stunned: timer=0.2056 mobility=0.0 desired before=4.539 after=0.000
+Defence stunned: timer=0.2028 mobility=0.0 desired before=4.537 after=0.000
+Defence stunned: timer=0.2000 mobility=0.0 desired before=4.535 after=0.000
+Defence stunned: timer=0.1972 mobility=0.0 desired before=4.533 after=0.000
+Defence stunned: timer=0.1944 mobility=0.0 desired before=4.530 after=0.000
+Defence stunned: timer=0.1917 mobility=0.0 desired before=4.528 after=0.000
+Defence stunned: timer=0.1889 mobility=0.0 desired before=4.526 after=0.000
+Defence stunned: timer=0.1861 mobility=0.0 desired before=4.524 after=0.000
+Defence stunned: timer=0.1833 mobility=0.0 desired before=4.522 after=0.000
+Defence stunned: timer=0.1806 mobility=0.0 desired before=4.520 after=0.000
+Defence stunned: timer=0.1778 mobility=0.0 desired before=4.518 after=0.000
+Defence stunned: timer=0.1750 mobility=0.0 desired before=4.515 after=0.000
+Defence stunned: timer=0.1722 mobility=0.0 desired before=4.513 after=0.000
+Defence stunned: timer=0.1694 mobility=0.0 desired before=4.511 after=0.000
+Defence stunned: timer=0.1667 mobility=0.0 desired before=4.509 after=0.000
+Defence stunned: timer=0.1639 mobility=0.0 desired before=4.507 after=0.000
+Defence stunned: timer=0.1611 mobility=0.0 desired before=4.505 after=0.000
+Defence stunned: timer=0.1583 mobility=0.0 desired before=4.502 after=0.000
+Defence stunned: timer=0.1556 mobility=0.0 desired before=4.500 after=0.000
+Defence stunned: timer=0.1528 mobility=0.0 desired before=4.498 after=0.000
+Defence stunned: timer=0.1500 mobility=0.0 desired before=4.496 after=0.000
+Defence stunned: timer=0.1472 mobility=0.0 desired before=4.493 after=0.000
+Defence stunned: timer=0.1444 mobility=0.0 desired before=4.491 after=0.000
+Defence stunned: timer=0.1417 mobility=0.0 desired before=4.489 after=0.000
+Defence stunned: timer=0.1389 mobility=0.0 desired before=4.487 after=0.000
+Defence stunned: timer=0.1361 mobility=0.0 desired before=4.484 after=0.000
+Defence stunned: timer=0.1333 mobility=0.0 desired before=4.482 after=0.000
+Defence stunned: timer=0.1306 mobility=0.0 desired before=4.480 after=0.000
+Defence stunned: timer=0.1278 mobility=0.0 desired before=4.478 after=0.000
+Defence stunned: timer=0.1250 mobility=0.0 desired before=4.475 after=0.000
+Defence stunned: timer=0.1222 mobility=0.0 desired before=4.473 after=0.000
+Defence stunned: timer=0.1194 mobility=0.0 desired before=4.471 after=0.000
+Defence stunned: timer=0.1167 mobility=0.0 desired before=4.469 after=0.000
+Defence stunned: timer=0.1139 mobility=0.0 desired before=4.466 after=0.000
+Defence stunned: timer=0.1111 mobility=0.0 desired before=4.464 after=0.000
+Defence stunned: timer=0.1083 mobility=0.0 desired before=4.462 after=0.000
+Defence stunned: timer=0.1056 mobility=0.0 desired before=4.459 after=0.000
+Defence stunned: timer=0.1028 mobility=0.0 desired before=4.457 after=0.000
+Defence stunned: timer=0.1000 mobility=0.0 desired before=4.455 after=0.000
+Defence stunned: timer=0.0972 mobility=0.0 desired before=4.453 after=0.000
+Defence stunned: timer=0.0944 mobility=0.0 desired before=4.451 after=0.000
+Defence stunned: timer=0.0917 mobility=0.0 desired before=4.448 after=0.000
+Defence stunned: timer=0.0889 mobility=0.0 desired before=4.446 after=0.000
+Defence stunned: timer=0.0861 mobility=0.0 desired before=4.444 after=0.000
+Defence stunned: timer=0.0833 mobility=0.0 desired before=4.442 after=0.000
+Defence stunned: timer=0.0806 mobility=0.0 desired before=4.440 after=0.000
+Defence stunned: timer=0.0778 mobility=0.0 desired before=4.438 after=0.000
+Defence stunned: timer=0.0750 mobility=0.0 desired before=4.436 after=0.000
+Defence stunned: timer=0.0722 mobility=0.0 desired before=4.434 after=0.000
+Defence stunned: timer=0.0694 mobility=0.0 desired before=4.432 after=0.000
+Defence stunned: timer=0.0667 mobility=0.0 desired before=4.430 after=0.000
+Defence stunned: timer=0.0639 mobility=0.0 desired before=4.428 after=0.000
+Defence stunned: timer=0.0611 mobility=0.0 desired before=4.426 after=0.000
+Defence stunned: timer=0.0583 mobility=0.0 desired before=4.424 after=0.000
+Defence stunned: timer=0.0556 mobility=0.0 desired before=4.422 after=0.000
+Defence stunned: timer=0.0528 mobility=0.0 desired before=4.421 after=0.000
+Defence stunned: timer=0.0500 mobility=0.0 desired before=4.419 after=0.000
+Defence stunned: timer=0.0472 mobility=0.0 desired before=4.417 after=0.000
+Defence stunned: timer=0.0444 mobility=0.0 desired before=4.415 after=0.000
+Defence stunned: timer=0.0417 mobility=0.0 desired before=4.414 after=0.000
+Defence stunned: timer=0.0389 mobility=0.0 desired before=4.412 after=0.000
+Defence stunned: timer=0.0361 mobility=0.0 desired before=4.411 after=0.000
+Defence stunned: timer=0.0333 mobility=0.0 desired before=4.409 after=0.000
+Defence stunned: timer=0.0306 mobility=0.0 desired before=4.408 after=0.000
+Defence stunned: timer=0.0278 mobility=0.0 desired before=4.407 after=0.000
+Defence stunned: timer=0.0250 mobility=0.0 desired before=4.405 after=0.000
+Defence stunned: timer=0.0222 mobility=0.0 desired before=4.404 after=0.000
+Defence stunned: timer=0.0194 mobility=0.0 desired before=4.403 after=0.000
+Defence stunned: timer=0.0167 mobility=0.0 desired before=4.401 after=0.000
+Defence stunned: timer=0.0139 mobility=0.0 desired before=4.400 after=0.000
+Defence stunned: timer=0.0111 mobility=0.0 desired before=4.399 after=0.000
+Defence stunned: timer=0.0083 mobility=0.0 desired before=4.397 after=0.000
+Defence stunned: timer=0.0056 mobility=0.0 desired before=4.396 after=0.000
+Defence stunned: timer=0.0028 mobility=0.0 desired before=4.395 after=0.000
+Defence stunned: timer=0.0000 mobility=0.0 desired before=4.394 after=0.000
+Defence: combo eligible, chance 0.09
+Stamina: combo eligible, chance 1.14
+Stamina combo QUEUED hit 1, distance now 0.0458, interval 0.120, my vel 0.073, their vel 0.026
+  -> freezing for 0.064s
+Defence stunned: timer=0.8886 mobility=0.0 desired before=4.916 after=0.000
+Defence wall snap: 0.1525 -> 0.1525
+Defence took wall damage
+Stamina combo broken: distance 0.0936, at r=0.1144, vel=0.267, target vel=0.413, intent=8, target intent=2, stun=0.875
+Defence stunned: timer=0.8136 mobility=0.0 desired before=4.898 after=0.000
+Defence wall snap: 0.1434 -> 0.1434
+Stamina combo broken: distance 0.0958, at r=0.1051, vel=0.372, target vel=0.401, intent=8, target intent=2, stun=0.811
+Defence stunned: timer=0.7747 mobility=0.0 desired before=4.870 after=0.000
+Defence stunned: timer=0.7719 mobility=0.0 desired before=4.882 after=0.000
+Defence stunned: timer=0.7692 mobility=0.0 desired before=4.895 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.7469 mobility=0.0 desired before=4.816 after=0.000
+Stamina combo broken: distance 0.0909, at r=0.0962, vel=0.462, target vel=0.389, intent=8, target intent=2, stun=0.747
+Defence stunned: timer=0.7442 mobility=0.0 desired before=4.822 after=0.000
+Defence stunned: timer=0.7414 mobility=0.0 desired before=4.830 after=0.000
+Defence stunned: timer=0.7386 mobility=0.0 desired before=4.838 after=0.000
+Defence stunned: timer=0.7358 mobility=0.0 desired before=4.847 after=0.000
+Defence stunned: timer=0.7331 mobility=0.0 desired before=4.856 after=0.000
+Defence stunned: timer=0.7303 mobility=0.0 desired before=4.867 after=0.000
+Defence stunned: timer=0.7275 mobility=0.0 desired before=4.878 after=0.000
+Defence stunned: timer=0.7247 mobility=0.0 desired before=4.889 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.7025 mobility=0.0 desired before=4.816 after=0.000
+Defence stunned: timer=0.6997 mobility=0.0 desired before=4.822 after=0.000
+Defence stunned: timer=0.6969 mobility=0.0 desired before=4.829 after=0.000
+Defence stunned: timer=0.6942 mobility=0.0 desired before=4.836 after=0.000
+Defence stunned: timer=0.6914 mobility=0.0 desired before=4.844 after=0.000
+Defence stunned: timer=0.6886 mobility=0.0 desired before=4.853 after=0.000
+Defence stunned: timer=0.6858 mobility=0.0 desired before=4.862 after=0.000
+Defence stunned: timer=0.6831 mobility=0.0 desired before=4.872 after=0.000
+Stamina combo broken: distance 0.0768, at r=0.0911, vel=0.602, target vel=0.352, intent=8, target intent=2, stun=0.683
+Defence stunned: timer=0.6803 mobility=0.0 desired before=4.883 after=0.000
+Defence stunned: timer=0.6775 mobility=0.0 desired before=4.895 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.6553 mobility=0.0 desired before=4.823 after=0.000
+Defence stunned: timer=0.6525 mobility=0.0 desired before=4.829 after=0.000
+Defence stunned: timer=0.6497 mobility=0.0 desired before=4.836 after=0.000
+Defence stunned: timer=0.6469 mobility=0.0 desired before=4.845 after=0.000
+Defence stunned: timer=0.6442 mobility=0.0 desired before=4.854 after=0.000
+Defence stunned: timer=0.6414 mobility=0.0 desired before=4.864 after=0.000
+Defence stunned: timer=0.6386 mobility=0.0 desired before=4.875 after=0.000
+Defence stunned: timer=0.6358 mobility=0.0 desired before=4.548 after=0.000
+Defence stunned: timer=0.6331 mobility=0.0 desired before=4.555 after=0.000
+Defence stunned: timer=0.6303 mobility=0.0 desired before=4.562 after=0.000
+Defence stunned: timer=0.6275 mobility=0.0 desired before=4.570 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence: no combo, velo -0.061 below 0.040
+Stamina combo self-kb suppressed to 0.0253
+Stamina combo QUEUED hit 2, distance now 0.0464, interval 0.120, my vel 0.995, their vel 0.064
+  -> freezing for 0.043s
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.9367 mobility=0.0 desired before=4.448 after=0.000
+Defence stunned: timer=0.9339 mobility=0.0 desired before=4.453 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.9144 mobility=0.0 desired before=4.256 after=0.000
+Defence stunned: timer=0.9117 mobility=0.0 desired before=4.246 after=0.000
+Defence stunned: timer=0.9089 mobility=0.0 desired before=4.234 after=0.000
+Defence stunned: timer=0.9061 mobility=0.0 desired before=4.220 after=0.000
+Defence stunned: timer=0.9033 mobility=0.0 desired before=4.205 after=0.000
+Defence stunned: timer=0.9006 mobility=0.0 desired before=4.189 after=0.000
+Defence stunned: timer=0.8978 mobility=0.0 desired before=4.171 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.8783 mobility=0.0 desired before=3.846 after=0.000
+Defence stunned: timer=0.8756 mobility=0.0 desired before=3.823 after=0.000
+Stamina combo hit 2 on Defence (chance now 1.12, falloff 0.81)
+Stamina combo QUEUED hit 3, distance now 0.0174, interval 0.120, my vel 0.415, their vel 0.011
+Defence wall snap: 0.1411 -> 0.1411
+Defence took wall damage
+Defence wall snap: 0.1412 -> 0.1412
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.9250 mobility=0.0 desired before=3.663 after=0.000
+Defence stunned: timer=0.9222 mobility=0.0 desired before=3.682 after=0.000
+Defence stunned: timer=0.9194 mobility=0.0 desired before=3.702 after=0.000
+Defence stunned: timer=0.9167 mobility=0.0 desired before=3.723 after=0.000
+Defence stunned: timer=0.9139 mobility=0.0 desired before=3.746 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.8944 mobility=0.0 desired before=3.721 after=0.000
+Defence stunned: timer=0.8917 mobility=0.0 desired before=3.742 after=0.000
+Defence stunned: timer=0.8889 mobility=0.0 desired before=3.765 after=0.000
+Defence stunned: timer=0.8861 mobility=0.0 desired before=3.788 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Stamina combo hit 3 on Defence (chance now 1.11, falloff 0.73)
+Stamina combo QUEUED hit 4, distance now 0.0194, interval 0.120, my vel 0.110, their vel 0.032
+Defence wall snap: 0.1410 -> 0.1410
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.9361 mobility=0.0 desired before=3.828 after=0.000
+Defence stunned: timer=0.9333 mobility=0.0 desired before=3.847 after=0.000
+Defence stunned: timer=0.9306 mobility=0.0 desired before=3.866 after=0.000
+Defence stunned: timer=0.9278 mobility=0.0 desired before=3.887 after=0.000
+Defence stunned: timer=0.9250 mobility=0.0 desired before=3.907 after=0.000
+Defence wall snap: 0.1412 -> 0.1412
+Defence stunned: timer=0.9056 mobility=0.0 desired before=3.828 after=0.000
+Defence stunned: timer=0.9028 mobility=0.0 desired before=3.839 after=0.000
+Defence stunned: timer=0.9000 mobility=0.0 desired before=3.850 after=0.000
+Defence stunned: timer=0.8972 mobility=0.0 desired before=3.862 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.8778 mobility=0.0 desired before=3.773 after=0.000
+Defence stunned: timer=0.8750 mobility=0.0 desired before=3.788 after=0.000
+Stamina combo hit 4 on Defence (chance now 1.10, falloff 0.66)
+Stamina combo QUEUED hit 5, distance now 0.0159, interval 0.120, my vel 0.278, their vel 0.028
+Defence wall snap: 0.1411 -> 0.1411
+Defence wall snap: 0.1412 -> 0.1412
+Defence wall snap: 0.1412 -> 0.1412
+Defence stunned: timer=0.9250 mobility=0.0 desired before=3.731 after=0.000
+Defence stunned: timer=0.9222 mobility=0.0 desired before=3.753 after=0.000
+Defence stunned: timer=0.9194 mobility=0.0 desired before=3.776 after=0.000
+Defence stunned: timer=0.9167 mobility=0.0 desired before=3.799 after=0.000
+Defence wall snap: 0.1412 -> 0.1412
+Defence took wall damage
+Defence stunned: timer=0.8972 mobility=0.0 desired before=3.771 after=0.000
+Defence stunned: timer=0.8944 mobility=0.0 desired before=3.791 after=0.000
+Defence stunned: timer=0.8917 mobility=0.0 desired before=3.812 after=0.000
+Defence stunned: timer=0.8889 mobility=0.0 desired before=3.834 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Stamina combo hit 5 on Defence (chance now 1.09, falloff 0.59)
+Stamina combo QUEUED hit 6, distance now 0.0204, interval 0.120, my vel 0.054, their vel 0.017
+Defence wall snap: 0.1411 -> 0.1411
+Defence wall snap: 0.1412 -> 0.1412
+Defence stunned: timer=0.9333 mobility=0.0 desired before=3.857 after=0.000
+Defence stunned: timer=0.9306 mobility=0.0 desired before=3.869 after=0.000
+Defence stunned: timer=0.9278 mobility=0.0 desired before=3.880 after=0.000
+Defence stunned: timer=0.9250 mobility=0.0 desired before=3.892 after=0.000
+Defence stunned: timer=0.9222 mobility=0.0 desired before=3.903 after=0.000
+Defence stunned: timer=0.9194 mobility=0.0 desired before=3.915 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.9000 mobility=0.0 desired before=3.799 after=0.000
+Defence stunned: timer=0.8972 mobility=0.0 desired before=3.808 after=0.000
+Defence stunned: timer=0.8944 mobility=0.0 desired before=3.819 after=0.000
+Defence stunned: timer=0.8917 mobility=0.0 desired before=3.833 after=0.000
+Defence stunned: timer=0.8889 mobility=0.0 desired before=3.849 after=0.000
+Defence wall snap: 0.1412 -> 0.1412
+Stamina combo hit 6 on Defence (chance now 1.08, falloff 0.53)
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.8528 mobility=0.0 desired before=3.967 after=0.000
+Defence stunned: timer=0.8500 mobility=0.0 desired before=4.010 after=0.000
+Defence stunned: timer=0.8472 mobility=0.0 desired before=4.054 after=0.000
+Defence stunned: timer=0.8444 mobility=0.0 desired before=4.099 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.8250 mobility=0.0 desired before=4.252 after=0.000
+Defence stunned: timer=0.8222 mobility=0.0 desired before=4.291 after=0.000
+Defence stunned: timer=0.8194 mobility=0.0 desired before=4.331 after=0.000
+Defence stunned: timer=0.8167 mobility=0.0 desired before=4.371 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.7972 mobility=0.0 desired before=4.476 after=0.000
+Defence stunned: timer=0.7944 mobility=0.0 desired before=4.506 after=0.000
+Defence stunned: timer=0.7917 mobility=0.0 desired before=4.537 after=0.000
+Defence stunned: timer=0.7889 mobility=0.0 desired before=4.567 after=0.000
+Defence stunned: timer=0.7861 mobility=0.0 desired before=4.597 after=0.000
+Defence stunned: timer=0.7833 mobility=0.0 desired before=4.628 after=0.000
+Defence stunned: timer=0.7806 mobility=0.0 desired before=4.658 after=0.000
+Defence stunned: timer=0.7778 mobility=0.0 desired before=4.688 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.7556 mobility=0.0 desired before=4.731 after=0.000
+Defence stunned: timer=0.7528 mobility=0.0 desired before=4.737 after=0.000
+Defence stunned: timer=0.7500 mobility=0.0 desired before=4.743 after=0.000
+Defence stunned: timer=0.7472 mobility=0.0 desired before=4.749 after=0.000
+Defence stunned: timer=0.7444 mobility=0.0 desired before=4.755 after=0.000
+Defence stunned: timer=0.7417 mobility=0.0 desired before=4.761 after=0.000
+Defence stunned: timer=0.7389 mobility=0.0 desired before=4.766 after=0.000
+Defence stunned: timer=0.7361 mobility=0.0 desired before=4.772 after=0.000
+Defence stunned: timer=0.7333 mobility=0.0 desired before=4.777 after=0.000
+Defence stunned: timer=0.7306 mobility=0.0 desired before=4.783 after=0.000
+Defence stunned: timer=0.7278 mobility=0.0 desired before=4.788 after=0.000
+Defence stunned: timer=0.7250 mobility=0.0 desired before=4.793 after=0.000
+Defence stunned: timer=0.7222 mobility=0.0 desired before=4.798 after=0.000
+Defence stunned: timer=0.7194 mobility=0.0 desired before=4.803 after=0.000
+Defence stunned: timer=0.7167 mobility=0.0 desired before=4.808 after=0.000
+Defence stunned: timer=0.7139 mobility=0.0 desired before=4.813 after=0.000
+Defence stunned: timer=0.7111 mobility=0.0 desired before=4.818 after=0.000
+Defence stunned: timer=0.7083 mobility=0.0 desired before=4.822 after=0.000
+Defence stunned: timer=0.7056 mobility=0.0 desired before=4.826 after=0.000
+Defence stunned: timer=0.7028 mobility=0.0 desired before=4.831 after=0.000
+Defence stunned: timer=0.7000 mobility=0.0 desired before=4.835 after=0.000
+Defence stunned: timer=0.6972 mobility=0.0 desired before=4.839 after=0.000
+Defence stunned: timer=0.6944 mobility=0.0 desired before=4.843 after=0.000
+Defence stunned: timer=0.6917 mobility=0.0 desired before=4.847 after=0.000
+Defence stunned: timer=0.6889 mobility=0.0 desired before=4.851 after=0.000
+Defence stunned: timer=0.6861 mobility=0.0 desired before=4.854 after=0.000
+Defence stunned: timer=0.6833 mobility=0.0 desired before=4.858 after=0.000
+Defence stunned: timer=0.6806 mobility=0.0 desired before=4.862 after=0.000
+Defence stunned: timer=0.6778 mobility=0.0 desired before=4.865 after=0.000
+Defence stunned: timer=0.6750 mobility=0.0 desired before=4.869 after=0.000
+Defence stunned: timer=0.6722 mobility=0.0 desired before=4.872 after=0.000
+Defence stunned: timer=0.6694 mobility=0.0 desired before=4.875 after=0.000
+Defence stunned: timer=0.6667 mobility=0.0 desired before=4.878 after=0.000
+Defence stunned: timer=0.6639 mobility=0.0 desired before=4.882 after=0.000
+Defence stunned: timer=0.6611 mobility=0.0 desired before=4.885 after=0.000
+Defence stunned: timer=0.6583 mobility=0.0 desired before=4.888 after=0.000
+Defence stunned: timer=0.6556 mobility=0.0 desired before=4.891 after=0.000
+Defence stunned: timer=0.6528 mobility=0.0 desired before=4.893 after=0.000
+Defence stunned: timer=0.6500 mobility=0.0 desired before=4.896 after=0.000
+Defence stunned: timer=0.6472 mobility=0.0 desired before=4.899 after=0.000
+Defence stunned: timer=0.6444 mobility=0.0 desired before=4.902 after=0.000
+Defence stunned: timer=0.6417 mobility=0.0 desired before=4.905 after=0.000
+Defence stunned: timer=0.6389 mobility=0.0 desired before=4.907 after=0.000
+Defence stunned: timer=0.6361 mobility=0.0 desired before=4.910 after=0.000
+Defence stunned: timer=0.6333 mobility=0.0 desired before=4.913 after=0.000
+Defence stunned: timer=0.6306 mobility=0.0 desired before=4.915 after=0.000
+Defence stunned: timer=0.6278 mobility=0.0 desired before=4.918 after=0.000
+Defence stunned: timer=0.6250 mobility=0.0 desired before=4.920 after=0.000
+Defence stunned: timer=0.6222 mobility=0.0 desired before=4.923 after=0.000
+Defence stunned: timer=0.6194 mobility=0.0 desired before=4.925 after=0.000
+Defence stunned: timer=0.6167 mobility=0.0 desired before=4.928 after=0.000
+Defence stunned: timer=0.6139 mobility=0.0 desired before=4.930 after=0.000
+Defence stunned: timer=0.6111 mobility=0.0 desired before=4.933 after=0.000
+Defence stunned: timer=0.6083 mobility=0.0 desired before=4.935 after=0.000
+Defence stunned: timer=0.6056 mobility=0.0 desired before=4.937 after=0.000
+Defence stunned: timer=0.6028 mobility=0.0 desired before=4.940 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.5778 mobility=0.0 desired before=4.842 after=0.000
+Defence stunned: timer=0.5750 mobility=0.0 desired before=4.843 after=0.000
+Defence stunned: timer=0.5722 mobility=0.0 desired before=4.843 after=0.000
+Defence stunned: timer=0.5694 mobility=0.0 desired before=4.843 after=0.000
+Defence stunned: timer=0.5667 mobility=0.0 desired before=4.844 after=0.000
+Defence stunned: timer=0.5639 mobility=0.0 desired before=4.844 after=0.000
+Defence stunned: timer=0.5611 mobility=0.0 desired before=4.845 after=0.000
+Defence stunned: timer=0.5583 mobility=0.0 desired before=4.845 after=0.000
+Defence stunned: timer=0.5556 mobility=0.0 desired before=4.845 after=0.000
+Defence stunned: timer=0.5528 mobility=0.0 desired before=4.846 after=0.000
+Defence stunned: timer=0.5500 mobility=0.0 desired before=4.846 after=0.000
+Defence stunned: timer=0.5472 mobility=0.0 desired before=4.846 after=0.000
+Defence stunned: timer=0.5444 mobility=0.0 desired before=4.847 after=0.000
+Defence stunned: timer=0.5417 mobility=0.0 desired before=4.847 after=0.000
+Defence stunned: timer=0.5389 mobility=0.0 desired before=4.848 after=0.000
+Defence stunned: timer=0.5361 mobility=0.0 desired before=4.848 after=0.000
+Defence stunned: timer=0.5333 mobility=0.0 desired before=4.848 after=0.000
+Defence stunned: timer=0.5306 mobility=0.0 desired before=4.848 after=0.000
+Defence stunned: timer=0.5278 mobility=0.0 desired before=4.848 after=0.000
+Defence stunned: timer=0.5250 mobility=0.0 desired before=4.848 after=0.000
+Defence stunned: timer=0.5222 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.5194 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.5167 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.5139 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.5111 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.5083 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.5056 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.5028 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.5000 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.4972 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.4944 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.4917 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.4889 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.4861 mobility=0.0 desired before=4.849 after=0.000
+Defence stunned: timer=0.4833 mobility=0.0 desired before=4.850 after=0.000
+Defence stunned: timer=0.4806 mobility=0.0 desired before=4.850 after=0.000
+Defence stunned: timer=0.4778 mobility=0.0 desired before=4.850 after=0.000
+Defence stunned: timer=0.4750 mobility=0.0 desired before=4.850 after=0.000
+Defence stunned: timer=0.4722 mobility=0.0 desired before=4.850 after=0.000
+Defence stunned: timer=0.4694 mobility=0.0 desired before=4.850 after=0.000
+Defence stunned: timer=0.4667 mobility=0.0 desired before=4.850 after=0.000
+Defence stunned: timer=0.4639 mobility=0.0 desired before=4.850 after=0.000
+Defence stunned: timer=0.4611 mobility=0.0 desired before=4.851 after=0.000
+Defence stunned: timer=0.4583 mobility=0.0 desired before=4.851 after=0.000
+Defence stunned: timer=0.4556 mobility=0.0 desired before=4.851 after=0.000
+Defence stunned: timer=0.4528 mobility=0.0 desired before=4.851 after=0.000
+Defence stunned: timer=0.4500 mobility=0.0 desired before=4.851 after=0.000
+Defence stunned: timer=0.4472 mobility=0.0 desired before=4.851 after=0.000
+Defence stunned: timer=0.4444 mobility=0.0 desired before=4.852 after=0.000
+Defence stunned: timer=0.4417 mobility=0.0 desired before=4.852 after=0.000
+Defence stunned: timer=0.4389 mobility=0.0 desired before=4.852 after=0.000
+Defence stunned: timer=0.4361 mobility=0.0 desired before=4.852 after=0.000
+Defence stunned: timer=0.4333 mobility=0.0 desired before=4.852 after=0.000
+Defence stunned: timer=0.4306 mobility=0.0 desired before=4.852 after=0.000
+Defence stunned: timer=0.4278 mobility=0.0 desired before=4.853 after=0.000
+Defence stunned: timer=0.4250 mobility=0.0 desired before=4.853 after=0.000
+Defence stunned: timer=0.4222 mobility=0.0 desired before=4.853 after=0.000
+Defence stunned: timer=0.4194 mobility=0.0 desired before=4.853 after=0.000
+Defence stunned: timer=0.4167 mobility=0.0 desired before=4.853 after=0.000
+Defence stunned: timer=0.4139 mobility=0.0 desired before=4.854 after=0.000
+Defence stunned: timer=0.4111 mobility=0.0 desired before=4.854 after=0.000
+Defence stunned: timer=0.4083 mobility=0.0 desired before=4.854 after=0.000
+Defence stunned: timer=0.4056 mobility=0.0 desired before=4.854 after=0.000
+Defence stunned: timer=0.4028 mobility=0.0 desired before=4.854 after=0.000
+Defence stunned: timer=0.4000 mobility=0.0 desired before=4.855 after=0.000
+Defence stunned: timer=0.3972 mobility=0.0 desired before=4.855 after=0.000
+Defence stunned: timer=0.3944 mobility=0.0 desired before=4.855 after=0.000
+Defence stunned: timer=0.3917 mobility=0.0 desired before=4.855 after=0.000
+Defence stunned: timer=0.3889 mobility=0.0 desired before=4.855 after=0.000
+Defence stunned: timer=0.3861 mobility=0.0 desired before=4.856 after=0.000
+Defence stunned: timer=0.3833 mobility=0.0 desired before=4.856 after=0.000
+Defence stunned: timer=0.3806 mobility=0.0 desired before=4.856 after=0.000
+Defence stunned: timer=0.3778 mobility=0.0 desired before=4.856 after=0.000
+Defence stunned: timer=0.3750 mobility=0.0 desired before=4.857 after=0.000
+Defence stunned: timer=0.3722 mobility=0.0 desired before=4.857 after=0.000
+Defence stunned: timer=0.3694 mobility=0.0 desired before=4.857 after=0.000
+Defence stunned: timer=0.3667 mobility=0.0 desired before=4.857 after=0.000
+Defence stunned: timer=0.3639 mobility=0.0 desired before=4.858 after=0.000
+Defence stunned: timer=0.3611 mobility=0.0 desired before=4.858 after=0.000
+Defence stunned: timer=0.3583 mobility=0.0 desired before=4.858 after=0.000
+Defence stunned: timer=0.3556 mobility=0.0 desired before=4.858 after=0.000
+Defence stunned: timer=0.3528 mobility=0.0 desired before=4.858 after=0.000
+Defence stunned: timer=0.3500 mobility=0.0 desired before=4.859 after=0.000
+Defence stunned: timer=0.3472 mobility=0.0 desired before=4.859 after=0.000
+Defence stunned: timer=0.3444 mobility=0.0 desired before=4.859 after=0.000
+Defence stunned: timer=0.3417 mobility=0.0 desired before=4.859 after=0.000
+Defence stunned: timer=0.3389 mobility=0.0 desired before=4.860 after=0.000
+Defence stunned: timer=0.3361 mobility=0.0 desired before=4.860 after=0.000
+Defence stunned: timer=0.3333 mobility=0.0 desired before=4.860 after=0.000
+Defence stunned: timer=0.3306 mobility=0.0 desired before=4.860 after=0.000
+Defence stunned: timer=0.3278 mobility=0.0 desired before=4.861 after=0.000
+Defence stunned: timer=0.3250 mobility=0.0 desired before=4.861 after=0.000
+Defence stunned: timer=0.3222 mobility=0.0 desired before=4.861 after=0.000
+Defence stunned: timer=0.3194 mobility=0.0 desired before=4.861 after=0.000
+Defence stunned: timer=0.3167 mobility=0.0 desired before=4.862 after=0.000
+Defence stunned: timer=0.3139 mobility=0.0 desired before=4.862 after=0.000
+Defence stunned: timer=0.3111 mobility=0.0 desired before=4.862 after=0.000
+Defence stunned: timer=0.3083 mobility=0.0 desired before=4.862 after=0.000
+Defence stunned: timer=0.3056 mobility=0.0 desired before=4.863 after=0.000
+Defence stunned: timer=0.3028 mobility=0.0 desired before=4.863 after=0.000
+Defence stunned: timer=0.3000 mobility=0.0 desired before=4.863 after=0.000
+Defence stunned: timer=0.2972 mobility=0.0 desired before=4.863 after=0.000
+Defence stunned: timer=0.2944 mobility=0.0 desired before=4.864 after=0.000
+Defence stunned: timer=0.2917 mobility=0.0 desired before=4.864 after=0.000
+Defence stunned: timer=0.2889 mobility=0.0 desired before=4.864 after=0.000
+Defence stunned: timer=0.2861 mobility=0.0 desired before=4.864 after=0.000
+Defence stunned: timer=0.2833 mobility=0.0 desired before=4.865 after=0.000
+Defence stunned: timer=0.2806 mobility=0.0 desired before=4.865 after=0.000
+Defence stunned: timer=0.2778 mobility=0.0 desired before=4.865 after=0.000
+Defence stunned: timer=0.2750 mobility=0.0 desired before=4.865 after=0.000
+Defence stunned: timer=0.2722 mobility=0.0 desired before=4.866 after=0.000
+Defence stunned: timer=0.2694 mobility=0.0 desired before=4.866 after=0.000
+Defence stunned: timer=0.2667 mobility=0.0 desired before=4.866 after=0.000
+Defence stunned: timer=0.2639 mobility=0.0 desired before=4.866 after=0.000
+Defence stunned: timer=0.2611 mobility=0.0 desired before=4.867 after=0.000
+Defence stunned: timer=0.2583 mobility=0.0 desired before=4.867 after=0.000
+Defence stunned: timer=0.2556 mobility=0.0 desired before=4.867 after=0.000
+Defence stunned: timer=0.2528 mobility=0.0 desired before=4.867 after=0.000
+Defence stunned: timer=0.2500 mobility=0.0 desired before=4.868 after=0.000
+Defence stunned: timer=0.2472 mobility=0.0 desired before=4.868 after=0.000
+Defence stunned: timer=0.2444 mobility=0.0 desired before=4.868 after=0.000
+Defence stunned: timer=0.2417 mobility=0.0 desired before=4.869 after=0.000
+Defence stunned: timer=0.2389 mobility=0.0 desired before=4.869 after=0.000
+Defence stunned: timer=0.2361 mobility=0.0 desired before=4.869 after=0.000
+Defence stunned: timer=0.2333 mobility=0.0 desired before=4.869 after=0.000
+Defence stunned: timer=0.2306 mobility=0.0 desired before=4.869 after=0.000
+Defence stunned: timer=0.2278 mobility=0.0 desired before=4.870 after=0.000
+Defence stunned: timer=0.2250 mobility=0.0 desired before=4.870 after=0.000
+Defence stunned: timer=0.2222 mobility=0.0 desired before=4.870 after=0.000
+Defence stunned: timer=0.2194 mobility=0.0 desired before=4.870 after=0.000
+Defence stunned: timer=0.2167 mobility=0.0 desired before=4.871 after=0.000
+Defence stunned: timer=0.2139 mobility=0.0 desired before=4.871 after=0.000
+Defence stunned: timer=0.2111 mobility=0.0 desired before=4.871 after=0.000
+Defence stunned: timer=0.2083 mobility=0.0 desired before=4.871 after=0.000
+Defence stunned: timer=0.2056 mobility=0.0 desired before=4.872 after=0.000
+Defence stunned: timer=0.2028 mobility=0.0 desired before=4.872 after=0.000
+Defence stunned: timer=0.2000 mobility=0.0 desired before=4.872 after=0.000
+Defence stunned: timer=0.1972 mobility=0.0 desired before=4.872 after=0.000
+Defence stunned: timer=0.1944 mobility=0.0 desired before=4.873 after=0.000
+Defence stunned: timer=0.1917 mobility=0.0 desired before=4.873 after=0.000
+Defence stunned: timer=0.1889 mobility=0.0 desired before=4.873 after=0.000
+Defence stunned: timer=0.1861 mobility=0.0 desired before=4.873 after=0.000
+Defence stunned: timer=0.1833 mobility=0.0 desired before=4.874 after=0.000
+Defence stunned: timer=0.1806 mobility=0.0 desired before=4.874 after=0.000
+Defence stunned: timer=0.1778 mobility=0.0 desired before=4.874 after=0.000
+Defence stunned: timer=0.1750 mobility=0.0 desired before=4.874 after=0.000
+Defence stunned: timer=0.1722 mobility=0.0 desired before=4.874 after=0.000
+Defence stunned: timer=0.1694 mobility=0.0 desired before=4.875 after=0.000
+Defence stunned: timer=0.1667 mobility=0.0 desired before=4.875 after=0.000
+Defence stunned: timer=0.1639 mobility=0.0 desired before=4.875 after=0.000
+Defence stunned: timer=0.1611 mobility=0.0 desired before=4.875 after=0.000
+Defence stunned: timer=0.1583 mobility=0.0 desired before=4.876 after=0.000
+Defence stunned: timer=0.1556 mobility=0.0 desired before=4.876 after=0.000
+Defence stunned: timer=0.1528 mobility=0.0 desired before=4.876 after=0.000
+Defence stunned: timer=0.1500 mobility=0.0 desired before=4.876 after=0.000
+Defence stunned: timer=0.1472 mobility=0.0 desired before=4.876 after=0.000
+Defence stunned: timer=0.1444 mobility=0.0 desired before=4.877 after=0.000
+Defence stunned: timer=0.1417 mobility=0.0 desired before=4.877 after=0.000
+Defence stunned: timer=0.1389 mobility=0.0 desired before=4.877 after=0.000
+Defence stunned: timer=0.1361 mobility=0.0 desired before=4.877 after=0.000
+Defence stunned: timer=0.1333 mobility=0.0 desired before=4.877 after=0.000
+Defence stunned: timer=0.1306 mobility=0.0 desired before=4.878 after=0.000
+Defence stunned: timer=0.1278 mobility=0.0 desired before=4.878 after=0.000
+Defence stunned: timer=0.1250 mobility=0.0 desired before=4.878 after=0.000
+Defence stunned: timer=0.1222 mobility=0.0 desired before=4.878 after=0.000
+Defence stunned: timer=0.1194 mobility=0.0 desired before=4.878 after=0.000
+Defence stunned: timer=0.1167 mobility=0.0 desired before=4.879 after=0.000
+Defence stunned: timer=0.1139 mobility=0.0 desired before=4.879 after=0.000
+Defence stunned: timer=0.1111 mobility=0.0 desired before=4.879 after=0.000
+Defence stunned: timer=0.1083 mobility=0.0 desired before=4.879 after=0.000
+Defence stunned: timer=0.1056 mobility=0.0 desired before=4.879 after=0.000
+Defence stunned: timer=0.1028 mobility=0.0 desired before=4.879 after=0.000
+Defence stunned: timer=0.1000 mobility=0.0 desired before=4.880 after=0.000
+Defence stunned: timer=0.0972 mobility=0.0 desired before=4.880 after=0.000
+Defence stunned: timer=0.0944 mobility=0.0 desired before=4.880 after=0.000
+Defence stunned: timer=0.0917 mobility=0.0 desired before=4.880 after=0.000
+Defence stunned: timer=0.0889 mobility=0.0 desired before=4.880 after=0.000
+Defence stunned: timer=0.0861 mobility=0.0 desired before=4.880 after=0.000
+Defence stunned: timer=0.0833 mobility=0.0 desired before=4.881 after=0.000
+Defence stunned: timer=0.0806 mobility=0.0 desired before=4.881 after=0.000
+Defence stunned: timer=0.0778 mobility=0.0 desired before=4.881 after=0.000
+Defence stunned: timer=0.0750 mobility=0.0 desired before=4.881 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.0500 mobility=0.0 desired before=4.776 after=0.000
+Defence stunned: timer=0.0472 mobility=0.0 desired before=4.776 after=0.000
+Defence stunned: timer=0.0444 mobility=0.0 desired before=4.775 after=0.000
+Defence stunned: timer=0.0417 mobility=0.0 desired before=4.775 after=0.000
+Defence stunned: timer=0.0389 mobility=0.0 desired before=4.774 after=0.000
+Defence stunned: timer=0.0361 mobility=0.0 desired before=4.774 after=0.000
+Defence stunned: timer=0.0333 mobility=0.0 desired before=4.773 after=0.000
+Defence stunned: timer=0.0306 mobility=0.0 desired before=4.773 after=0.000
+Defence stunned: timer=0.0278 mobility=0.0 desired before=4.772 after=0.000
+Defence stunned: timer=0.0250 mobility=0.0 desired before=4.772 after=0.000
+Defence stunned: timer=0.0222 mobility=0.0 desired before=4.771 after=0.000
+Defence stunned: timer=0.0194 mobility=0.0 desired before=4.771 after=0.000
+Defence stunned: timer=0.0167 mobility=0.0 desired before=4.770 after=0.000
+Defence stunned: timer=0.0139 mobility=0.0 desired before=4.770 after=0.000
+Defence stunned: timer=0.0111 mobility=0.0 desired before=4.769 after=0.000
+Defence stunned: timer=0.0083 mobility=0.0 desired before=4.769 after=0.000
+Defence stunned: timer=0.0056 mobility=0.0 desired before=4.768 after=0.000
+Defence stunned: timer=0.0028 mobility=0.0 desired before=4.768 after=0.000
+Defence stunned: timer=0.0000 mobility=0.0 desired before=4.767 after=0.000
+Defence: combo eligible, chance 0.09
+Stamina: combo eligible, chance 1.14
+Stamina combo QUEUED hit 1, distance now 0.0463, interval 0.120, my vel 0.267, their vel 0.047
+Stamina combo broken: distance 0.1187, at r=0.0807, vel=0.267, target vel=0.320, intent=8, target intent=1, stun=0.875
+Defence stunned: timer=0.8111 mobility=0.0 desired before=0.504 after=0.000
+Defence stunned: timer=0.8083 mobility=0.0 desired before=0.507 after=0.000
+Defence stunned: timer=0.8056 mobility=0.0 desired before=0.511 after=0.000
+Defence stunned: timer=0.8028 mobility=0.0 desired before=0.514 after=0.000
+Defence stunned: timer=0.8000 mobility=0.0 desired before=0.518 after=0.000
+Defence stunned: timer=0.7972 mobility=0.0 desired before=0.522 after=0.000
+Defence stunned: timer=0.7944 mobility=0.0 desired before=0.526 after=0.000
+Defence stunned: timer=0.7917 mobility=0.0 desired before=0.530 after=0.000
+Defence stunned: timer=0.7889 mobility=0.0 desired before=0.534 after=0.000
+Defence stunned: timer=0.7861 mobility=0.0 desired before=0.538 after=0.000
+Defence stunned: timer=0.7833 mobility=0.0 desired before=0.542 after=0.000
+Defence stunned: timer=0.7806 mobility=0.0 desired before=0.632 after=0.000
+Defence stunned: timer=0.7778 mobility=0.0 desired before=0.747 after=0.000
+Defence stunned: timer=0.7750 mobility=0.0 desired before=0.864 after=0.000
+Defence stunned: timer=0.7722 mobility=0.0 desired before=0.981 after=0.000
+Defence stunned: timer=0.7694 mobility=0.0 desired before=1.099 after=0.000
+Defence stunned: timer=0.7667 mobility=0.0 desired before=1.217 after=0.000
+Defence stunned: timer=0.7639 mobility=0.0 desired before=1.335 after=0.000
+Defence stunned: timer=0.7611 mobility=0.0 desired before=1.453 after=0.000
+Defence stunned: timer=0.7583 mobility=0.0 desired before=1.571 after=0.000
+Defence stunned: timer=0.7556 mobility=0.0 desired before=1.689 after=0.000
+Defence stunned: timer=0.7528 mobility=0.0 desired before=1.807 after=0.000
+Defence stunned: timer=0.7500 mobility=0.0 desired before=1.925 after=0.000
+Defence stunned: timer=0.7472 mobility=0.0 desired before=2.043 after=0.000
+Defence stunned: timer=0.7444 mobility=0.0 desired before=2.161 after=0.000
+Defence stunned: timer=0.7417 mobility=0.0 desired before=2.278 after=0.000
+Defence stunned: timer=0.7389 mobility=0.0 desired before=2.396 after=0.000
+Defence stunned: timer=0.7361 mobility=0.0 desired before=2.513 after=0.000
+Defence stunned: timer=0.7333 mobility=0.0 desired before=2.631 after=0.000
+Defence stunned: timer=0.7306 mobility=0.0 desired before=2.748 after=0.000
+Defence stunned: timer=0.7278 mobility=0.0 desired before=2.864 after=0.000
+Defence stunned: timer=0.7250 mobility=0.0 desired before=2.981 after=0.000
+Defence stunned: timer=0.7222 mobility=0.0 desired before=3.098 after=0.000
+Defence stunned: timer=0.7194 mobility=0.0 desired before=3.214 after=0.000
+Defence stunned: timer=0.7167 mobility=0.0 desired before=3.330 after=0.000
+Defence stunned: timer=0.7139 mobility=0.0 desired before=3.446 after=0.000
+Defence stunned: timer=0.7111 mobility=0.0 desired before=3.561 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence took wall damage
+Defence stunned: timer=0.7056 mobility=0.0 desired before=3.558 after=0.000
+Defence stunned: timer=0.7028 mobility=0.0 desired before=3.564 after=0.000
+Defence stunned: timer=0.7000 mobility=0.0 desired before=3.570 after=0.000
+Defence stunned: timer=0.6972 mobility=0.0 desired before=3.577 after=0.000
+Defence stunned: timer=0.6944 mobility=0.0 desired before=3.584 after=0.000
+Defence stunned: timer=0.6917 mobility=0.0 desired before=3.591 after=0.000
+Defence stunned: timer=0.6889 mobility=0.0 desired before=3.599 after=0.000
+Defence stunned: timer=0.6861 mobility=0.0 desired before=3.606 after=0.000
+Defence stunned: timer=0.6833 mobility=0.0 desired before=3.614 after=0.000
+Defence stunned: timer=0.6806 mobility=0.0 desired before=3.622 after=0.000
+Defence stunned: timer=0.6778 mobility=0.0 desired before=3.630 after=0.000
+Defence stunned: timer=0.6750 mobility=0.0 desired before=3.639 after=0.000
+Defence stunned: timer=0.6722 mobility=0.0 desired before=3.647 after=0.000
+Defence stunned: timer=0.6694 mobility=0.0 desired before=3.656 after=0.000
+Defence stunned: timer=0.6667 mobility=0.0 desired before=3.665 after=0.000
+Defence stunned: timer=0.6639 mobility=0.0 desired before=3.674 after=0.000
+Defence stunned: timer=0.6611 mobility=0.0 desired before=3.684 after=0.000
+Defence stunned: timer=0.6583 mobility=0.0 desired before=3.693 after=0.000
+Defence stunned: timer=0.6556 mobility=0.0 desired before=3.703 after=0.000
+Defence stunned: timer=0.6528 mobility=0.0 desired before=3.713 after=0.000
+Defence stunned: timer=0.6500 mobility=0.0 desired before=3.723 after=0.000
+Defence stunned: timer=0.6472 mobility=0.0 desired before=3.734 after=0.000
+Defence stunned: timer=0.6444 mobility=0.0 desired before=3.744 after=0.000
+Defence stunned: timer=0.6417 mobility=0.0 desired before=3.755 after=0.000
+Defence stunned: timer=0.6389 mobility=0.0 desired before=3.766 after=0.000
+Defence stunned: timer=0.6361 mobility=0.0 desired before=3.777 after=0.000
+Defence stunned: timer=0.6333 mobility=0.0 desired before=3.789 after=0.000
+Defence stunned: timer=0.6306 mobility=0.0 desired before=3.800 after=0.000
+Defence stunned: timer=0.6278 mobility=0.0 desired before=3.812 after=0.000
+Defence stunned: timer=0.6250 mobility=0.0 desired before=3.824 after=0.000
+Defence stunned: timer=0.6222 mobility=0.0 desired before=3.836 after=0.000
+Defence stunned: timer=0.6194 mobility=0.0 desired before=3.848 after=0.000
+Defence stunned: timer=0.6167 mobility=0.0 desired before=3.860 after=0.000
+Defence stunned: timer=0.6139 mobility=0.0 desired before=3.873 after=0.000
+Defence stunned: timer=0.6111 mobility=0.0 desired before=3.886 after=0.000
+Defence stunned: timer=0.6083 mobility=0.0 desired before=3.899 after=0.000
+Defence stunned: timer=0.6056 mobility=0.0 desired before=3.912 after=0.000
+Defence stunned: timer=0.6028 mobility=0.0 desired before=3.925 after=0.000
+Defence stunned: timer=0.6000 mobility=0.0 desired before=3.939 after=0.000
+Defence stunned: timer=0.5972 mobility=0.0 desired before=3.952 after=0.000
+Defence stunned: timer=0.5944 mobility=0.0 desired before=3.966 after=0.000
+Defence stunned: timer=0.5917 mobility=0.0 desired before=3.980 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.5667 mobility=0.0 desired before=3.973 after=0.000
+Defence stunned: timer=0.5639 mobility=0.0 desired before=3.985 after=0.000
+Defence stunned: timer=0.5611 mobility=0.0 desired before=3.996 after=0.000
+Defence stunned: timer=0.5583 mobility=0.0 desired before=4.008 after=0.000
+Defence stunned: timer=0.5556 mobility=0.0 desired before=4.020 after=0.000
+Defence stunned: timer=0.5528 mobility=0.0 desired before=4.032 after=0.000
+Defence stunned: timer=0.5500 mobility=0.0 desired before=4.044 after=0.000
+Defence stunned: timer=0.5472 mobility=0.0 desired before=4.056 after=0.000
+Defence stunned: timer=0.5444 mobility=0.0 desired before=4.069 after=0.000
+Defence stunned: timer=0.5417 mobility=0.0 desired before=4.082 after=0.000
+Defence stunned: timer=0.5389 mobility=0.0 desired before=4.094 after=0.000
+Defence stunned: timer=0.5361 mobility=0.0 desired before=4.107 after=0.000
+Defence stunned: timer=0.5333 mobility=0.0 desired before=4.121 after=0.000
+Defence stunned: timer=0.5306 mobility=0.0 desired before=4.134 after=0.000
+Defence stunned: timer=0.5278 mobility=0.0 desired before=4.148 after=0.000
+Defence stunned: timer=0.5250 mobility=0.0 desired before=4.161 after=0.000
+Defence stunned: timer=0.5222 mobility=0.0 desired before=4.175 after=0.000
+Defence stunned: timer=0.5194 mobility=0.0 desired before=4.189 after=0.000
+Defence stunned: timer=0.5167 mobility=0.0 desired before=4.203 after=0.000
+Defence stunned: timer=0.5139 mobility=0.0 desired before=4.218 after=0.000
+Defence stunned: timer=0.5111 mobility=0.0 desired before=4.232 after=0.000
+Defence stunned: timer=0.5083 mobility=0.0 desired before=4.247 after=0.000
+Defence stunned: timer=0.5056 mobility=0.0 desired before=4.262 after=0.000
+Defence stunned: timer=0.5028 mobility=0.0 desired before=4.277 after=0.000
+Defence stunned: timer=0.5000 mobility=0.0 desired before=4.292 after=0.000
+Defence stunned: timer=0.4972 mobility=0.0 desired before=4.307 after=0.000
+Defence stunned: timer=0.4944 mobility=0.0 desired before=4.322 after=0.000
+Defence stunned: timer=0.4917 mobility=0.0 desired before=4.338 after=0.000
+Defence stunned: timer=0.4889 mobility=0.0 desired before=4.354 after=0.000
+Defence stunned: timer=0.4861 mobility=0.0 desired before=4.370 after=0.000
+Defence stunned: timer=0.4833 mobility=0.0 desired before=4.386 after=0.000
+Defence stunned: timer=0.4806 mobility=0.0 desired before=4.402 after=0.000
+Defence stunned: timer=0.4778 mobility=0.0 desired before=4.418 after=0.000
+Defence stunned: timer=0.4750 mobility=0.0 desired before=4.435 after=0.000
+Defence stunned: timer=0.4722 mobility=0.0 desired before=4.451 after=0.000
+Defence stunned: timer=0.4694 mobility=0.0 desired before=4.468 after=0.000
+Defence stunned: timer=0.4667 mobility=0.0 desired before=4.485 after=0.000
+Defence stunned: timer=0.4639 mobility=0.0 desired before=4.502 after=0.000
+Defence stunned: timer=0.4611 mobility=0.0 desired before=4.519 after=0.000
+Defence stunned: timer=0.4583 mobility=0.0 desired before=4.536 after=0.000
+Defence stunned: timer=0.4556 mobility=0.0 desired before=4.554 after=0.000
+Defence stunned: timer=0.4528 mobility=0.0 desired before=4.571 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.4278 mobility=0.0 desired before=4.606 after=0.000
+Defence stunned: timer=0.4250 mobility=0.0 desired before=4.621 after=0.000
+Defence stunned: timer=0.4222 mobility=0.0 desired before=4.637 after=0.000
+Defence stunned: timer=0.4194 mobility=0.0 desired before=4.652 after=0.000
+Defence stunned: timer=0.4167 mobility=0.0 desired before=4.668 after=0.000
+Defence stunned: timer=0.4139 mobility=0.0 desired before=4.684 after=0.000
+Defence stunned: timer=0.4111 mobility=0.0 desired before=4.701 after=0.000
+Defence stunned: timer=0.4083 mobility=0.0 desired before=4.717 after=0.000
+Defence stunned: timer=0.4056 mobility=0.0 desired before=4.733 after=0.000
+Defence stunned: timer=0.4028 mobility=0.0 desired before=4.750 after=0.000
+Defence stunned: timer=0.4000 mobility=0.0 desired before=4.767 after=0.000
+Defence stunned: timer=0.3972 mobility=0.0 desired before=4.784 after=0.000
+Defence stunned: timer=0.3944 mobility=0.0 desired before=4.785 after=0.000
+Defence stunned: timer=0.3917 mobility=0.0 desired before=4.787 after=0.000
+Defence stunned: timer=0.3889 mobility=0.0 desired before=4.788 after=0.000
+Defence stunned: timer=0.3861 mobility=0.0 desired before=4.790 after=0.000
+Defence stunned: timer=0.3833 mobility=0.0 desired before=4.791 after=0.000
+Defence stunned: timer=0.3806 mobility=0.0 desired before=4.793 after=0.000
+Defence stunned: timer=0.3778 mobility=0.0 desired before=4.795 after=0.000
+Defence stunned: timer=0.3750 mobility=0.0 desired before=4.797 after=0.000
+Defence stunned: timer=0.3722 mobility=0.0 desired before=4.799 after=0.000
+Defence stunned: timer=0.3694 mobility=0.0 desired before=4.800 after=0.000
+Defence stunned: timer=0.3667 mobility=0.0 desired before=4.802 after=0.000
+Defence stunned: timer=0.3639 mobility=0.0 desired before=4.804 after=0.000
+Defence stunned: timer=0.3611 mobility=0.0 desired before=4.806 after=0.000
+Defence stunned: timer=0.3583 mobility=0.0 desired before=4.809 after=0.000
+Defence stunned: timer=0.3556 mobility=0.0 desired before=4.811 after=0.000
+Defence stunned: timer=0.3528 mobility=0.0 desired before=4.813 after=0.000
+Defence stunned: timer=0.3500 mobility=0.0 desired before=4.815 after=0.000
+Defence stunned: timer=0.3472 mobility=0.0 desired before=4.817 after=0.000
+Defence stunned: timer=0.3444 mobility=0.0 desired before=4.820 after=0.000
+Defence stunned: timer=0.3417 mobility=0.0 desired before=4.822 after=0.000
+Defence stunned: timer=0.3389 mobility=0.0 desired before=4.825 after=0.000
+Defence stunned: timer=0.3361 mobility=0.0 desired before=4.827 after=0.000
+Defence stunned: timer=0.3333 mobility=0.0 desired before=4.829 after=0.000
+Defence stunned: timer=0.3306 mobility=0.0 desired before=4.832 after=0.000
+Defence stunned: timer=0.3278 mobility=0.0 desired before=4.835 after=0.000
+Defence stunned: timer=0.3250 mobility=0.0 desired before=4.837 after=0.000
+Defence stunned: timer=0.3222 mobility=0.0 desired before=4.840 after=0.000
+Defence stunned: timer=0.3194 mobility=0.0 desired before=4.842 after=0.000
+Defence stunned: timer=0.3167 mobility=0.0 desired before=4.845 after=0.000
+Defence stunned: timer=0.3139 mobility=0.0 desired before=4.848 after=0.000
+Defence stunned: timer=0.3111 mobility=0.0 desired before=4.851 after=0.000
+Defence stunned: timer=0.3083 mobility=0.0 desired before=4.853 after=0.000
+Defence stunned: timer=0.3056 mobility=0.0 desired before=4.856 after=0.000
+Defence stunned: timer=0.3028 mobility=0.0 desired before=4.859 after=0.000
+Defence stunned: timer=0.3000 mobility=0.0 desired before=4.862 after=0.000
+Defence stunned: timer=0.2972 mobility=0.0 desired before=4.865 after=0.000
+Defence stunned: timer=0.2944 mobility=0.0 desired before=4.868 after=0.000
+Defence stunned: timer=0.2917 mobility=0.0 desired before=4.871 after=0.000
+Defence stunned: timer=0.2889 mobility=0.0 desired before=4.874 after=0.000
+Defence stunned: timer=0.2861 mobility=0.0 desired before=4.877 after=0.000
+Defence stunned: timer=0.2833 mobility=0.0 desired before=4.880 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.2583 mobility=0.0 desired before=4.785 after=0.000
+Defence stunned: timer=0.2556 mobility=0.0 desired before=4.785 after=0.000
+Defence stunned: timer=0.2528 mobility=0.0 desired before=4.786 after=0.000
+Defence stunned: timer=0.2500 mobility=0.0 desired before=4.787 after=0.000
+Defence stunned: timer=0.2472 mobility=0.0 desired before=4.787 after=0.000
+Defence stunned: timer=0.2444 mobility=0.0 desired before=4.788 after=0.000
+Defence stunned: timer=0.2417 mobility=0.0 desired before=4.789 after=0.000
+Defence stunned: timer=0.2389 mobility=0.0 desired before=4.789 after=0.000
+Defence stunned: timer=0.2361 mobility=0.0 desired before=4.790 after=0.000
+Defence stunned: timer=0.2333 mobility=0.0 desired before=4.791 after=0.000
+Defence stunned: timer=0.2306 mobility=0.0 desired before=4.792 after=0.000
+Defence stunned: timer=0.2278 mobility=0.0 desired before=4.793 after=0.000
+Defence stunned: timer=0.2250 mobility=0.0 desired before=4.794 after=0.000
+Defence stunned: timer=0.2222 mobility=0.0 desired before=4.795 after=0.000
+Defence stunned: timer=0.2194 mobility=0.0 desired before=4.796 after=0.000
+Defence stunned: timer=0.2167 mobility=0.0 desired before=4.797 after=0.000
+Defence stunned: timer=0.2139 mobility=0.0 desired before=4.798 after=0.000
+Defence stunned: timer=0.2111 mobility=0.0 desired before=4.799 after=0.000
+Defence stunned: timer=0.2083 mobility=0.0 desired before=4.800 after=0.000
+Defence stunned: timer=0.2056 mobility=0.0 desired before=4.801 after=0.000
+Defence stunned: timer=0.2028 mobility=0.0 desired before=4.802 after=0.000
+Defence stunned: timer=0.2000 mobility=0.0 desired before=4.803 after=0.000
+Defence stunned: timer=0.1972 mobility=0.0 desired before=4.804 after=0.000
+Defence stunned: timer=0.1944 mobility=0.0 desired before=4.804 after=0.000
+Defence stunned: timer=0.1917 mobility=0.0 desired before=4.805 after=0.000
+Defence stunned: timer=0.1889 mobility=0.0 desired before=4.806 after=0.000
+Defence stunned: timer=0.1861 mobility=0.0 desired before=4.807 after=0.000
+Defence stunned: timer=0.1833 mobility=0.0 desired before=4.807 after=0.000
+Defence stunned: timer=0.1806 mobility=0.0 desired before=4.808 after=0.000
+Defence stunned: timer=0.1778 mobility=0.0 desired before=4.809 after=0.000
+Defence stunned: timer=0.1750 mobility=0.0 desired before=4.810 after=0.000
+Defence stunned: timer=0.1722 mobility=0.0 desired before=4.811 after=0.000
+Defence stunned: timer=0.1694 mobility=0.0 desired before=4.812 after=0.000
+Defence stunned: timer=0.1667 mobility=0.0 desired before=4.813 after=0.000
+Defence stunned: timer=0.1639 mobility=0.0 desired before=4.814 after=0.000
+Defence stunned: timer=0.1611 mobility=0.0 desired before=4.814 after=0.000
+Defence stunned: timer=0.1583 mobility=0.0 desired before=4.815 after=0.000
+Defence stunned: timer=0.1556 mobility=0.0 desired before=4.816 after=0.000
+Defence stunned: timer=0.1528 mobility=0.0 desired before=4.817 after=0.000
+Defence stunned: timer=0.1500 mobility=0.0 desired before=4.818 after=0.000
+Defence stunned: timer=0.1472 mobility=0.0 desired before=4.819 after=0.000
+Defence stunned: timer=0.1444 mobility=0.0 desired before=4.820 after=0.000
+Defence stunned: timer=0.1417 mobility=0.0 desired before=4.821 after=0.000
+Defence stunned: timer=0.1389 mobility=0.0 desired before=4.822 after=0.000
+Defence stunned: timer=0.1361 mobility=0.0 desired before=4.823 after=0.000
+Defence stunned: timer=0.1333 mobility=0.0 desired before=4.824 after=0.000
+Defence stunned: timer=0.1306 mobility=0.0 desired before=4.825 after=0.000
+Defence stunned: timer=0.1278 mobility=0.0 desired before=4.826 after=0.000
+Defence stunned: timer=0.1250 mobility=0.0 desired before=4.827 after=0.000
+Defence stunned: timer=0.1222 mobility=0.0 desired before=4.828 after=0.000
+Defence stunned: timer=0.1194 mobility=0.0 desired before=4.829 after=0.000
+Defence stunned: timer=0.1167 mobility=0.0 desired before=4.830 after=0.000
+Defence stunned: timer=0.1139 mobility=0.0 desired before=4.831 after=0.000
+Defence stunned: timer=0.1111 mobility=0.0 desired before=4.831 after=0.000
+Defence stunned: timer=0.1083 mobility=0.0 desired before=4.832 after=0.000
+Defence stunned: timer=0.1056 mobility=0.0 desired before=4.833 after=0.000
+Defence stunned: timer=0.1028 mobility=0.0 desired before=4.834 after=0.000
+Defence stunned: timer=0.1000 mobility=0.0 desired before=4.835 after=0.000
+Defence stunned: timer=0.0972 mobility=0.0 desired before=4.836 after=0.000
+Defence stunned: timer=0.0944 mobility=0.0 desired before=4.837 after=0.000
+Defence stunned: timer=0.0917 mobility=0.0 desired before=4.838 after=0.000
+Defence stunned: timer=0.0889 mobility=0.0 desired before=4.839 after=0.000
+Defence stunned: timer=0.0861 mobility=0.0 desired before=4.839 after=0.000
+Defence stunned: timer=0.0833 mobility=0.0 desired before=4.840 after=0.000
+Defence stunned: timer=0.0806 mobility=0.0 desired before=4.841 after=0.000
+Defence stunned: timer=0.0778 mobility=0.0 desired before=4.842 after=0.000
+Defence stunned: timer=0.0750 mobility=0.0 desired before=4.843 after=0.000
+Defence stunned: timer=0.0722 mobility=0.0 desired before=4.844 after=0.000
+Defence stunned: timer=0.0694 mobility=0.0 desired before=4.844 after=0.000
+Defence stunned: timer=0.0667 mobility=0.0 desired before=4.845 after=0.000
+Defence stunned: timer=0.0639 mobility=0.0 desired before=4.846 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.0389 mobility=0.0 desired before=4.732 after=0.000
+Defence stunned: timer=0.0361 mobility=0.0 desired before=4.730 after=0.000
+Defence stunned: timer=0.0333 mobility=0.0 desired before=4.728 after=0.000
+Defence stunned: timer=0.0306 mobility=0.0 desired before=4.727 after=0.000
+Defence stunned: timer=0.0278 mobility=0.0 desired before=4.725 after=0.000
+Defence stunned: timer=0.0250 mobility=0.0 desired before=4.724 after=0.000
+Defence stunned: timer=0.0222 mobility=0.0 desired before=4.722 after=0.000
+Defence stunned: timer=0.0194 mobility=0.0 desired before=4.720 after=0.000
+Defence stunned: timer=0.0167 mobility=0.0 desired before=4.719 after=0.000
+Defence stunned: timer=0.0139 mobility=0.0 desired before=4.717 after=0.000
+Defence stunned: timer=0.0111 mobility=0.0 desired before=4.715 after=0.000
+Defence stunned: timer=0.0083 mobility=0.0 desired before=4.713 after=0.000
+Defence stunned: timer=0.0056 mobility=0.0 desired before=4.712 after=0.000
+Defence stunned: timer=0.0028 mobility=0.0 desired before=4.710 after=0.000
+Defence stunned: timer=0.0000 mobility=0.0 desired before=4.708 after=0.000
+Defence: no combo, velo 0.017 below 0.040
+Stamina: combo eligible, chance 1.14
+Stamina combo QUEUED hit 1, distance now 0.0465, interval 0.120, my vel 0.218, their vel 0.033
+  -> freezing for 0.043s
+Defence stunned: timer=0.8781 mobility=0.0 desired before=1.722 after=0.000
+Defence stunned: timer=0.8753 mobility=0.0 desired before=1.723 after=0.000
+Stamina combo broken: distance 0.0766, at r=0.0890, vel=0.393, target vel=0.458, intent=8, target intent=2, stun=0.875
+Defence stunned: timer=0.8725 mobility=0.0 desired before=1.724 after=0.000
+Defence stunned: timer=0.8697 mobility=0.0 desired before=1.724 after=0.000
+Defence stunned: timer=0.8669 mobility=0.0 desired before=1.725 after=0.000
+Defence stunned: timer=0.8642 mobility=0.0 desired before=1.726 after=0.000
+Defence stunned: timer=0.8614 mobility=0.0 desired before=1.727 after=0.000
+Defence stunned: timer=0.8586 mobility=0.0 desired before=1.728 after=0.000
+Defence stunned: timer=0.8558 mobility=0.0 desired before=1.742 after=0.000
+Defence stunned: timer=0.8531 mobility=0.0 desired before=1.836 after=0.000
+Defence stunned: timer=0.8503 mobility=0.0 desired before=1.931 after=0.000
+Defence stunned: timer=0.8475 mobility=0.0 desired before=2.025 after=0.000
+Defence stunned: timer=0.8447 mobility=0.0 desired before=2.120 after=0.000
+Defence stunned: timer=0.8419 mobility=0.0 desired before=2.215 after=0.000
+Defence stunned: timer=0.8392 mobility=0.0 desired before=2.311 after=0.000
+Defence stunned: timer=0.8364 mobility=0.0 desired before=2.406 after=0.000
+Defence stunned: timer=0.8336 mobility=0.0 desired before=2.502 after=0.000
+Defence stunned: timer=0.8308 mobility=0.0 desired before=2.598 after=0.000
+Defence stunned: timer=0.8281 mobility=0.0 desired before=2.694 after=0.000
+Defence stunned: timer=0.8253 mobility=0.0 desired before=2.790 after=0.000
+Defence stunned: timer=0.8225 mobility=0.0 desired before=2.886 after=0.000
+Defence stunned: timer=0.8197 mobility=0.0 desired before=2.983 after=0.000
+Defence stunned: timer=0.8169 mobility=0.0 desired before=3.079 after=0.000
+Defence stunned: timer=0.8142 mobility=0.0 desired before=3.176 after=0.000
+Defence stunned: timer=0.8114 mobility=0.0 desired before=3.273 after=0.000
+Stamina combo broken: distance 0.0743, at r=0.0829, vel=0.552, target vel=0.420, intent=8, target intent=2, stun=0.811
+Defence stunned: timer=0.8086 mobility=0.0 desired before=3.369 after=0.000
+Defence stunned: timer=0.8058 mobility=0.0 desired before=3.466 after=0.000
+Defence stunned: timer=0.8031 mobility=0.0 desired before=3.563 after=0.000
+Defence stunned: timer=0.8003 mobility=0.0 desired before=3.660 after=0.000
+Defence stunned: timer=0.7975 mobility=0.0 desired before=3.757 after=0.000
+Defence stunned: timer=0.7947 mobility=0.0 desired before=3.854 after=0.000
+Defence stunned: timer=0.7919 mobility=0.0 desired before=3.951 after=0.000
+Defence stunned: timer=0.7892 mobility=0.0 desired before=4.048 after=0.000
+Defence stunned: timer=0.7864 mobility=0.0 desired before=4.145 after=0.000
+Defence stunned: timer=0.7836 mobility=0.0 desired before=4.242 after=0.000
+Defence stunned: timer=0.7808 mobility=0.0 desired before=4.340 after=0.000
+Defence stunned: timer=0.7781 mobility=0.0 desired before=4.437 after=0.000
+Defence stunned: timer=0.7753 mobility=0.0 desired before=4.535 after=0.000
+Defence stunned: timer=0.7725 mobility=0.0 desired before=4.632 after=0.000
+Defence stunned: timer=0.7697 mobility=0.0 desired before=4.730 after=0.000
+Defence wall snap: 0.1415 -> 0.1415
+Defence took wall damage
+Defence stunned: timer=0.7503 mobility=0.0 desired before=4.685 after=0.000
+Defence stunned: timer=0.7475 mobility=0.0 desired before=4.448 after=0.000
+Stamina combo broken: distance 0.0552, at r=0.0865, vel=0.903, target vel=0.204, intent=8, target intent=2, stun=0.748
+Defence stunned: timer=0.7447 mobility=0.0 desired before=4.449 after=0.000
+Defence stunned: timer=0.7419 mobility=0.0 desired before=4.450 after=0.000
+Defence stunned: timer=0.7392 mobility=0.0 desired before=4.451 after=0.000
+Defence stunned: timer=0.7364 mobility=0.0 desired before=4.452 after=0.000
+Defence stunned: timer=0.7336 mobility=0.0 desired before=4.454 after=0.000
+Defence stunned: timer=0.7308 mobility=0.0 desired before=4.442 after=0.000
+Defence stunned: timer=0.7281 mobility=0.0 desired before=4.430 after=0.000
+Defence: no combo, velo 0.001 below 0.040
+Stamina combo self-kb suppressed to 0.0198
+Stamina combo QUEUED hit 2, distance now 0.0457, interval 0.120, my vel 0.771, their vel 0.040
+  -> freezing for 0.038s
+Defence wall snap: 0.1410 -> 0.1410
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.9229 mobility=0.0 desired before=3.962 after=0.000
+Defence stunned: timer=0.9201 mobility=0.0 desired before=3.944 after=0.000
+Defence stunned: timer=0.9174 mobility=0.0 desired before=3.924 after=0.000
+Defence stunned: timer=0.9146 mobility=0.0 desired before=3.905 after=0.000
+Defence stunned: timer=0.9118 mobility=0.0 desired before=3.886 after=0.000
+Defence stunned: timer=0.9090 mobility=0.0 desired before=3.867 after=0.000
+Defence stunned: timer=0.9062 mobility=0.0 desired before=3.849 after=0.000
+Defence stunned: timer=0.9035 mobility=0.0 desired before=3.833 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.8840 mobility=0.0 desired before=3.666 after=0.000
+Defence stunned: timer=0.8813 mobility=0.0 desired before=3.688 after=0.000
+Defence stunned: timer=0.8785 mobility=0.0 desired before=3.714 after=0.000
+Defence stunned: timer=0.8757 mobility=0.0 desired before=3.745 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Stamina combo hit 2 on Defence (chance now 1.12, falloff 0.81)
+Stamina combo QUEUED hit 3, distance now 0.0139, interval 0.120, my vel 0.305, their vel 0.001
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.9639 mobility=0.0 desired before=3.793 after=0.000
+Defence stunned: timer=0.9611 mobility=0.0 desired before=3.800 after=0.000
+Defence stunned: timer=0.9583 mobility=0.0 desired before=3.808 after=0.000
+Defence stunned: timer=0.9556 mobility=0.0 desired before=3.817 after=0.000
+Defence stunned: timer=0.9528 mobility=0.0 desired before=3.827 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.9333 mobility=0.0 desired before=3.772 after=0.000
+Defence stunned: timer=0.9306 mobility=0.0 desired before=3.784 after=0.000
+Defence stunned: timer=0.9278 mobility=0.0 desired before=3.798 after=0.000
+Defence stunned: timer=0.9250 mobility=0.0 desired before=3.813 after=0.000
+Defence wall snap: 0.1412 -> 0.1412
+Defence stunned: timer=0.9056 mobility=0.0 desired before=3.763 after=0.000
+Defence stunned: timer=0.9028 mobility=0.0 desired before=3.777 after=0.000
+Defence stunned: timer=0.9000 mobility=0.0 desired before=3.793 after=0.000
+Defence stunned: timer=0.8972 mobility=0.0 desired before=3.810 after=0.000
+Defence wall snap: 0.1412 -> 0.1412
+Defence stunned: timer=0.8778 mobility=0.0 desired before=3.762 after=0.000
+Defence stunned: timer=0.8750 mobility=0.0 desired before=3.778 after=0.000
+Stamina combo hit 3 on Defence (chance now 1.11, falloff 0.73)
+Stamina combo QUEUED hit 4, distance now 0.0189, interval 0.120, my vel 0.129, their vel 0.027
+Defence wall snap: 0.1411 -> 0.1411
+Defence wall snap: 0.1412 -> 0.1412
+Defence took wall damage
+Defence stunned: timer=0.9361 mobility=0.0 desired before=3.905 after=0.000
+Defence wall snap: 0.1412 -> 0.1412
+Defence stunned: timer=0.9167 mobility=0.0 desired before=3.847 after=0.000
+Defence stunned: timer=0.9139 mobility=0.0 desired before=3.860 after=0.000
+Defence stunned: timer=0.9111 mobility=0.0 desired before=3.873 after=0.000
+Defence stunned: timer=0.9083 mobility=0.0 desired before=3.886 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.8917 mobility=0.0 desired before=3.808 after=0.000
+Defence stunned: timer=0.8889 mobility=0.0 desired before=3.818 after=0.000
+Defence stunned: timer=0.8861 mobility=0.0 desired before=3.828 after=0.000
+Defence stunned: timer=0.8833 mobility=0.0 desired before=3.839 after=0.000
+Defence stunned: timer=0.8806 mobility=0.0 desired before=3.851 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Stamina combo hit 4 on Defence (chance now 1.10, falloff 0.66)
+Stamina combo QUEUED hit 5, distance now 0.0141, interval 0.120, my vel 0.100, their vel 0.013
+Defence wall snap: 0.1412 -> 0.1412
+Defence wall snap: 0.1412 -> 0.1412
+Defence stunned: timer=0.9361 mobility=0.0 desired before=3.885 after=0.000
+Defence stunned: timer=0.9333 mobility=0.0 desired before=3.903 after=0.000
+Defence stunned: timer=0.9306 mobility=0.0 desired before=3.922 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.9139 mobility=0.0 desired before=3.876 after=0.000
+Defence stunned: timer=0.9111 mobility=0.0 desired before=3.892 after=0.000
+Defence stunned: timer=0.9083 mobility=0.0 desired before=3.908 after=0.000
+Defence stunned: timer=0.9056 mobility=0.0 desired before=3.924 after=0.000
+Defence stunned: timer=0.9028 mobility=0.0 desired before=3.940 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence stunned: timer=0.8833 mobility=0.0 desired before=3.904 after=0.000
+Defence stunned: timer=0.8806 mobility=0.0 desired before=3.921 after=0.000
+Defence stunned: timer=0.8778 mobility=0.0 desired before=3.939 after=0.000
+Defence stunned: timer=0.8750 mobility=0.0 desired before=3.957 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Stamina combo hit 5 on Defence (chance now 1.09, falloff 0.59)
+Stamina combo QUEUED hit 6, distance now 0.0176, interval 0.120, my vel 0.041, their vel 0.002
+Defence wall snap: 0.1411 -> 0.1411
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.9361 mobility=0.0 desired before=3.956 after=0.000
+Defence stunned: timer=0.9333 mobility=0.0 desired before=3.968 after=0.000
+Defence stunned: timer=0.9306 mobility=0.0 desired before=3.979 after=0.000
+Defence stunned: timer=0.9278 mobility=0.0 desired before=3.992 after=0.000
+Defence stunned: timer=0.9250 mobility=0.0 desired before=4.004 after=0.000
+Defence wall snap: 0.1410 -> 0.1410
+Defence stunned: timer=0.9083 mobility=0.0 desired before=3.945 after=0.000
+Defence stunned: timer=0.9056 mobility=0.0 desired before=3.959 after=0.000
+Defence stunned: timer=0.9028 mobility=0.0 desired before=3.973 after=0.000
+Defence stunned: timer=0.9000 mobility=0.0 desired before=3.987 after=0.000
+Defence stunned: timer=0.8972 mobility=0.0 desired before=4.002 after=0.000
+Defence wall snap: 0.1411 -> 0.1411
+Defence took wall damage
+Defence wall snap: 0.1411 -> 0.1411
+Winner: Stamina
+freezing; states: [5, 2]

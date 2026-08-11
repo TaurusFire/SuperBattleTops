@@ -166,10 +166,10 @@ var spin_display_scale := 1.0
 ## Constant inward pull standing in for the bowl's curvature, as a multiple of
 ## move_speed at the rim. Applies everywhere, so keep it modest — a large value
 ## flattens the usable arena rather than just discouraging the edge.
-@export var slope_strength = 0.4
+@export var slope_strength = 0.5
 
 ## Radius, as a fraction of the arena, beyond which a top counts as loitering.
-@export_range(0.0, 1.0) var loiter_radius_frac = 0.5
+@export_range(0.0, 1.0) var loiter_radius_frac = 0.45
 
 ## Seconds at the edge before the inward pull reaches full strength.
 @export var loiter_patience = 0.5
@@ -248,14 +248,15 @@ var _wall_contact := false
 @export_range(0.0, 1.0) var combo_aggression_weight := 0.9
 ## Each successive hit multiplies the chance by this, so long combos are rare
 ## without needing a hard cap.
-@export_range(0.1, 1.0) var combo_chance_decay := 0.9
+@export_range(0.1, 1.0) var combo_chance_decay := 0.99
 ## Seconds between hits in a combo.
-@export var combo_interval := 0.3
+@export var combo_interval := 0.12
 ## Power of each follow-up relative to the first. 1.0 keeps every hit at full
 ## strength; lower makes a combo taper.
 @export_range(0.2, 1.0) var combo_falloff := 0.9
 ## Hard ceiling, as a safety net rather than a design constraint.
-@export_range(0.0, 1.0) var combo_knockback_scale := 0.1
+@export_range(0.0, 1.0) var combo_knockback_scale := 0.05
+@export var combo_finisher_scale = 2.0
 @export var combo_max_hits := 6
 ## Seconds the target is held after each combo hit, so the flurry stays in
 ## contact. Suppressing knockback isn't enough on its own — the target simply
@@ -263,13 +264,15 @@ var _wall_contact := false
 @export var combo_stun_time := 1
 ## Speed multiplier while pressing a combo. Modest — the target is stunned, so
 ## this only needs to close the small gap each hit opens.
-@export var combo_press_speed = 2
+@export var combo_press_speed = 3
 ## Movement retained while stunned. A little reads better than a total freeze.
 @export_range(0.0, 1.0) var combo_stun_mobility = 0.00
 ## How much knockback the attacker absorbs while pressing a combo. Its intent
 ## keeps it aimed at the target, but without this the recoil physically throws
 ## it back and the flurry becomes a chase.
-@export_range(0.0, 1.0) var combo_self_knockback = 0.1
+@export_range(0.0, 1.0) var combo_self_knockback = 0.15
+@export var combo_pursuit_range = 0.10
+
 var _combo_target: Top
 var _combo_timer := 0.0
 var _combo_index := 0      
@@ -451,10 +454,15 @@ func _update_active(delta: float) -> void:
 	if not _airborne and _wall_recoil_timer <= 0.0:
 		var desired = _desired_velocity()
 		if _stun_timer > 0.0:
+			print("%s stunned: timer=%.4f mobility=%s desired before=%.3f after=%.3f" % [
+				display_name(), _stun_timer, combo_stun_mobility,
+				desired.length(), (desired * combo_stun_mobility).length()])
 			desired = desired * combo_stun_mobility + _separation() * move_speed
 		var responsiveness = base_responsiveness * pow(rpm_ratio, 0.4)
 		if intent == Intent.COUNTERING:
 			responsiveness = 10
+		elif intent == Intent.COMBO:
+			responsiveness = 15
 		elif intent == Intent.ABILITY and ability is KamikazeAbility:
 			responsiveness = (ability as KamikazeAbility).agility
 		_velocity = _velocity.lerp(desired, clamp(responsiveness * delta, 0.0, 1.0))
@@ -462,7 +470,9 @@ func _update_active(delta: float) -> void:
 		
 		# Separation still applies during recoil, or a pair knocked into each
 		# other has nothing to break them apart.
-		_velocity += _separation() * move_speed * delta * 4.0
+		_wall_recoil_timer = max(_wall_recoil_timer - delta, 0.0)
+		if intent != Intent.COMBO:
+			_velocity += _separation() * move_speed * delta * 4.0
 
 	_apply_velocity(delta)
 	_apply_wall_collision()
@@ -502,7 +512,13 @@ func _desired_velocity() -> Vector2:
 	var pull = _centre_pull()
 		
 	var d = _horizontal_pos().distance_to(arena_centre)
-
+	
+	if intent == Intent.COMBO:
+		var overlap = _separation()
+		if _horizontal_pos().distance_to(_combo_target._horizontal_pos())\
+			 < (radius + _combo_target.radius) * 0.6:
+			return _clamp_to_arena(iv + _wall_avoidance() + overlap * speed)
+	
 	return _clamp_to_arena(iv + wa + sep + slope + pull)
 
 
@@ -756,7 +772,8 @@ func _update_intent(delta: float) -> void:
 		return
 
 	# Only try to read a charge when we aren't already committed to something.
-	if intent in [Intent.CLOSING, Intent.ORBITING] \
+	if _stun_timer <= 0.0 and target._stun_timer <= 0.0 \
+		and intent in [Intent.CLOSING, Intent.ORBITING] \
 			and randf() < dodge_skill * delta * 6.0:
 		var slip = _incoming_charge(target)
 		if slip != Vector2.ZERO:
@@ -941,10 +958,17 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	var dominance_mult = 1.0 + (dominance - 0.5) * 2.0 * dominance_influence
 
 	var weight_factor = weight / (weight + opponent.weight)
+	
+	var continuing = _roll_combo(opponent, velo_bonus)
 	var base_term = base_knockback * pow(kb_power, 0.5) * weight_factor * 0.75
 	var applied = base_term * dominance_mult * momentum_mult * strike
-	if _combo_index > 0:
+	if _combo_index > 0 and continuing:
+		# Mid-flurry: keep the pair in contact.
 		applied *= combo_knockback_scale
+	elif _combo_index > 0:
+		# The finisher — the suppressed knockback of the whole combo, delivered
+		# at once.
+		applied *= combo_finisher_scale
 	
 	#print(
 		#"\nAttacker: ", self.display_name(),
@@ -970,12 +994,16 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 		vert_bias = ability.vertical_bias(self)
 	
 	last_knockback_dealt = applied
+	_maybe_continue_combo(opponent, velo_bonus)
 	opponent._receive_kb(applied, dir, vert_bias)
+	
+	if not continuing:
+		_end_combo()
 	
 	if ability is KamikazeAbility:
 		(ability as KamikazeAbility).on_hit_landed(self)
 		
-	_maybe_continue_combo(opponent, velo_bonus)
+
 
 
 ## Applies damage that has already had defence accounted for.
@@ -992,7 +1020,8 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 	knockback = knockback / (20.0 * (weight / 0.18))
 	if _combo_index > 0:
 		knockback *= combo_self_knockback
-
+		print("%s combo self-kb suppressed to %.4f" % [display_name(), knockback])
+		
 	_velocity += dir * knockback / vertical_bias
 
 	# Lower RPM means a top less settled on its foot, so it pops higher.
@@ -1030,11 +1059,14 @@ func _apply_wall_collision() -> void:
 	if dist < limit:
 		_wall_contact = false
 		return
+	var before = _horizontal_pos()
+	print("%s wall snap: %.4f -> %.4f" % [display_name(), before.distance_to(arena_centre), _horizontal_pos().distance_to(arena_centre)])
 	
 	var outward_speed := _velocity.dot(normal)
+	var bounce = 0.0 if (_combo_index > 0 or _stun_timer > 0.0) else wall_bounce
 	if outward_speed > 0.05:
 		var tangential = _velocity - normal * outward_speed
-		var rebound = -normal * outward_speed * wall_bounce
+		var rebound = -normal * outward_speed * bounce
 		_velocity = tangential + rebound
 
 		# Cooldown rather than a contact flag: a top bouncing off and back
@@ -1091,6 +1123,33 @@ func _maybe_continue_combo(opponent: Top, velo_bonus: float) -> void:
 	_combo_target = opponent
 	_combo_timer = combo_interval
 	opponent._apply_stun(combo_stun_time)
+	print("%s combo QUEUED hit %d, distance now %.4f, interval %.3f, my vel %.3f, their vel %.3f" % [
+		display_name(), _combo_index,
+		_horizontal_pos().distance_to(opponent._horizontal_pos()),
+		combo_interval, _velocity.length(), opponent._velocity.length()])
+
+func _roll_combo(opponent: Top, velo_bonus: float) -> bool:
+	if _combo_index >= combo_max_hits:
+		return false
+	if opponent.current_state != State.ACTIVE:
+		return false
+
+	if _combo_index == 0:
+		if velo_bonus < combo_speed_threshold:
+			return false
+		var aggression_scale = 1.0 + (aggression - 0.5) * 2.0 * combo_aggression_weight
+		_combo_chance = min(combo_base_chance * aggression_scale, 1.0)
+		_combo_velo_bonus = velo_bonus
+
+	if randf() >= _combo_chance:
+		return false
+
+	_combo_index += 1
+	_combo_chance *= combo_chance_decay
+	_combo_target = opponent
+	_combo_timer = combo_interval
+	opponent._apply_stun(combo_stun_time)
+	return true
 
 ## Delivers a queued follow-up. The hits land without the tops separating, so
 ## the viewer reads one contact with several impacts rather than a sequence of
@@ -1098,8 +1157,8 @@ func _maybe_continue_combo(opponent: Top, velo_bonus: float) -> void:
 func _update_combo(delta: float) -> void:
 	if _combo_index <= 0:
 		return
-	_combo_timer -= delta
 	if _combo_timer > 0.0:
+		_combo_timer -= delta
 		return
 
 	if _combo_target == null or _combo_target.current_state != State.ACTIVE:
@@ -1107,10 +1166,14 @@ func _update_combo(delta: float) -> void:
 		return
 	# Lost them: a combo is a flurry at contact, not a pursuit.
 	var d := _horizontal_pos().distance_to(_combo_target._horizontal_pos())
-	if d > (radius + _combo_target.radius) * 2.2:
-		print("%s combo broken: distance %.4f, at r=%.4f, vel=%.3f, target vel=%.3f" % [
+	if d > (radius + _combo_target.radius) * 1.15:
+		print("%s combo broken: distance %.4f, at r=%.4f, vel=%.3f, target vel=%.3f, intent=%d, target intent=%d, stun=%.3f" % [
 			display_name(), d, _horizontal_pos().distance_to(arena_centre),
-			_velocity.length(), _combo_target._velocity.length()])
+			_velocity.length(), _combo_target._velocity.length(),
+			intent, _combo_target.intent, _combo_target._stun_timer])
+		if d < combo_pursuit_range:
+			_combo_timer = combo_interval * 0.5
+			return
 		_end_combo()
 		return
 
@@ -1125,9 +1188,7 @@ func _update_combo(delta: float) -> void:
 		manager.report_combo_hit(self, struck, depth)
 
 func _end_combo() -> void:
-	if _combo_index > 0 and _combo_target != null:
-		var dir = (_combo_target._horizontal_pos() - _horizontal_pos()).normalized()
-		_combo_target._receive_kb(last_knockback_dealt * float(_combo_index) * 0.5, dir)
+	if _combo_index > 0:
 		_begin_orbiting()
 	_combo_index = 0
 	_combo_target = null
@@ -1135,6 +1196,7 @@ func _end_combo() -> void:
 
 func _apply_stun(duration: float) -> void:
 	_stun_timer = max(_stun_timer, duration)
+	_velocity *= 0.2
 # ══════════════════════════════════════════════════════════════════════════
 #  VERTICAL
 # ══════════════════════════════════════════════════════════════════════════
