@@ -19,6 +19,7 @@ extends Node
 @export var hitstop_reference_knockback := 30
 @export var hitstop_threshold := 0.4
 @export var hitstop_overrun := 2.0
+@export var hitstop_combo_step = 0.35
 @export_range(0.2, 3.0) var hitstop_curve := 1.4
 var _hitstop_remaining := 0.0
 var _hitstop_end_msec := 0
@@ -73,6 +74,7 @@ func _ready() -> void:
 		)
 		top.opponents = tops.filter(func(t): return t != top)
 		top.entered_dying.connect(_on_top_entered_dying)
+		top.manager = self
 
 	# Must precede the intro: the sequencer reads each top's position as the
 	# destination it flies to.
@@ -180,7 +182,7 @@ func _arrange_tops() -> void:
 		# countdown then holds it there, so a mismatch shows as a snap.
 		var surface := top._surface_y_at(pos.x, pos.y)
 		top.global_position = Vector3(pos.x, surface + top.drop_height, pos.y)
-		
+
 
 func _resolve_collision(a: Top, b: Top) -> void:
 	var a_pos := Vector2(a.global_position.x, a.global_position.z)
@@ -211,7 +213,8 @@ func _resolve_collision(a: Top, b: Top) -> void:
 	
 	_trigger_hitstop(
 		max(a.last_damage_dealt, b.last_damage_dealt),
-		max(a.last_knockback_dealt, b.last_knockback_dealt)
+		max(a.last_knockback_dealt, b.last_knockback_dealt),
+		max(a._combo_index, b._combo_index)
 	)
 
 
@@ -244,8 +247,17 @@ func _begin_slowmo() -> void:
 		return
 	Engine.time_scale = slowmo_scale
 
+func report_combo_hit(attacker: Top, target: Top, depth: int) -> void:
+	if attacker == null or target == null:
+		return
+	collision_occurred.emit(attacker, target)
+	_trigger_hitstop(
+		attacker.last_damage_dealt,
+		attacker.last_knockback_dealt,
+		depth
+	)
 
-func _trigger_hitstop(damage:float, knockback: float) -> void:
+func _trigger_hitstop(damage: float, knockback: float, combo_depth = 0) -> void:
 	if phase == Phase.COUNTDOWN or phase == Phase.ENDED:
 		return
 	var strength := (
@@ -257,6 +269,7 @@ func _trigger_hitstop(damage:float, knockback: float) -> void:
 	var shaped := pow(clamp(strength, 0.0, hitstop_overrun), hitstop_curve)
 	var duration := hitstop_max_duration * shaped
 	
+	duration *= 1.0 + hitstop_combo_step * float(combo_depth)
 	print("  -> freezing for %.3fs" % duration)
 	_hitstop_end_msec = Time.get_ticks_msec() + int(duration * 1000.0)
 	Engine.time_scale = 0.05

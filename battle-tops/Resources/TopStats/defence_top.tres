@@ -31,6 +31,7 @@ base_damage = 40.0
 defence = 45.0
 weight = 0.23
 move_speed = 0.6
+aggression = 0.0
 dodge_skill = 0.7
 base_responsiveness = 3.0
 metadata/_custom_type_script = "uid://t37dunmlguwa"

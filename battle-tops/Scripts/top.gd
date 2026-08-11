@@ -41,6 +41,7 @@ var intent: Intent = Intent.CLOSING
 
 @onready var spin_visual: MeshInstance3D = $OrientationPivot/TopMesh
 @onready var orientation_pivot: Node3D = $OrientationPivot
+var manager: GameManager
 
 ## Derived from the mesh AABB in _ready, so it tracks whatever the resource
 ## supplied rather than needing to be kept in sync by hand.
@@ -217,7 +218,7 @@ var _wall_contact := false
 
 @export_group('Spawning')
 @export var drop_duration = 0.6
-@export var drop_height = 0.1
+@export var drop_height := 0.1
 
 @export_group('Wobble')
 @export var max_wobble_angle = 0.4
@@ -244,17 +245,17 @@ var _wall_contact := false
 @export_range(0.0, 1.0) var combo_base_chance := 0.9
 ## How much aggression moves that chance. At 0.5, an aggression-1.0 fighter
 ## gets 1.5x the base chance and an aggression-0 fighter 0.5x.
-@export_range(0.0, 1.0) var combo_aggression_weight := 0.5
+@export_range(0.0, 1.0) var combo_aggression_weight := 0.9
 ## Each successive hit multiplies the chance by this, so long combos are rare
 ## without needing a hard cap.
 @export_range(0.1, 1.0) var combo_chance_decay := 0.9
 ## Seconds between hits in a combo.
-@export var combo_interval := 0.15
+@export var combo_interval := 0.3
 ## Power of each follow-up relative to the first. 1.0 keeps every hit at full
 ## strength; lower makes a combo taper.
 @export_range(0.2, 1.0) var combo_falloff := 0.9
 ## Hard ceiling, as a safety net rather than a design constraint.
-@export_range(0.0, 1.0) var combo_knockback_scale := 0.05
+@export_range(0.0, 1.0) var combo_knockback_scale := 0.1
 @export var combo_max_hits := 6
 ## Seconds the target is held after each combo hit, so the flurry stays in
 ## contact. Suppressing knockback isn't enough on its own — the target simply
@@ -264,7 +265,11 @@ var _wall_contact := false
 ## this only needs to close the small gap each hit opens.
 @export var combo_press_speed = 2
 ## Movement retained while stunned. A little reads better than a total freeze.
-@export_range(0.0, 1.0) var combo_stun_mobility = 0.05
+@export_range(0.0, 1.0) var combo_stun_mobility = 0.00
+## How much knockback the attacker absorbs while pressing a combo. Its intent
+## keeps it aimed at the target, but without this the recoil physically throws
+## it back and the flurry becomes a chase.
+@export_range(0.0, 1.0) var combo_self_knockback = 0.1
 var _combo_target: Top
 var _combo_timer := 0.0
 var _combo_index := 0      
@@ -446,7 +451,7 @@ func _update_active(delta: float) -> void:
 	if not _airborne and _wall_recoil_timer <= 0.0:
 		var desired = _desired_velocity()
 		if _stun_timer > 0.0:
-			desired *= combo_stun_mobility
+			desired = desired * combo_stun_mobility + _separation() * move_speed
 		var responsiveness = base_responsiveness * pow(rpm_ratio, 0.4)
 		if intent == Intent.COUNTERING:
 			responsiveness = 10
@@ -985,8 +990,11 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 	# Parenthesised deliberately: without them this divides by 20 and then
 	# multiplies by the weight ratio, so heavier tops take more knockback.
 	knockback = knockback / (20.0 * (weight / 0.18))
-	#print(self.display_name(), ' knockback received: ', knockback)
+	if _combo_index > 0:
+		knockback *= combo_self_knockback
+
 	_velocity += dir * knockback / vertical_bias
+
 	# Lower RPM means a top less settled on its foot, so it pops higher.
 	var stability = pow(clamp(rpm_ratio, 0.0, 1.0), vertical_mult_curve)
 	var vert_mult = lerpf(vertical_mult_low_rpm, vertical_mult_high_rpm, stability)
@@ -1007,9 +1015,7 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 	
 	if _combo_index <= 0:
 		_wall_recoil_timer = max(_wall_recoil_timer, contact_recoil_time)
-	# Coast on the knockback rather than steering straight back in, which is
-	# what lets two closing tops lock together.
-	_wall_recoil_timer = max(_wall_recoil_timer, contact_recoil_time)
+
 
 
 func _apply_wall_collision() -> void:
@@ -1102,7 +1108,9 @@ func _update_combo(delta: float) -> void:
 	# Lost them: a combo is a flurry at contact, not a pursuit.
 	var d := _horizontal_pos().distance_to(_combo_target._horizontal_pos())
 	if d > (radius + _combo_target.radius) * 2.2:
-		print("%s combo broken: distance %.4f" % [display_name(), d])
+		print("%s combo broken: distance %.4f, at r=%.4f, vel=%.3f, target vel=%.3f" % [
+			display_name(), d, _horizontal_pos().distance_to(arena_centre),
+			_velocity.length(), _combo_target._velocity.length()])
 		_end_combo()
 		return
 
@@ -1110,7 +1118,11 @@ func _update_combo(delta: float) -> void:
 	print("%s combo hit %d on %s (chance now %.2f, falloff %.2f)" % [
 		display_name(), _combo_index, _combo_target.display_name(),
 		_combo_chance, pow(combo_falloff, float(_combo_index))])
-	attack(_combo_target, _combo_velo_bonus)
+	var struck = _combo_target
+	var depth = _combo_index
+	attack(struck, _combo_velo_bonus)
+	if manager != null:
+		manager.report_combo_hit(self, struck, depth)
 
 func _end_combo() -> void:
 	if _combo_index > 0 and _combo_target != null:

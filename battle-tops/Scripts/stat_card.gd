@@ -148,10 +148,6 @@ func _rate_all(top: Top) -> Array:
 			"stars": StatDisplayConfig.rate(max(value, 0.0), e.per_half_star, e.max_stars),
 			"max": e.max_stars,
 		})
-		print("%s %s: raw=%.2f -> %.1f stars (per_half=%.2f)" % [
-			top.display_name(), e.label, raw,
-			StatDisplayConfig.rate(max(value, 0.0), e.per_half_star, e.max_stars),
-			e.per_half_star])
 	return out
 
 
