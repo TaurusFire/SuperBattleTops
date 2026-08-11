@@ -46,7 +46,7 @@ var _window_deaths: Array[Top] = []
 
 var _in_contact := {}
 
-var countdown_seconds := 3.0
+var countdown_seconds := 2.0
 var time_remaining := 0.0
 
 enum Phase { INTRO, COUNTDOWN, FIGHTING, ENDING, ENDED } 

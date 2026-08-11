@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_4itja")
 label = "STA"
-stat_property = "rpm_base_decay_rate"
+stat_property = ""
+derived = 1
 per_half_star = 8.0
-invert = true
 invert_baseline = 80.0
 metadata/_custom_type_script = "uid://1mprwdka0ogo"

@@ -29,7 +29,7 @@ signal finished
 @export_range(0.0, 1.0) var overlap := 0.8
 ## Stillness after the last top settles, before the countdown starts.
 @export var settle_time := 0.4
-@export_range(0.05, 1.0) var apex_spin_scale := 0.25
+@export_range(0.05, 1.0) var apex_spin_scale := 0.05
 
 @export_group('Path')
 ## Distance in front of the camera at the apex. Small enough to fill frame.
@@ -37,7 +37,7 @@ signal finished
 ## Sideways offset at the apex, toward the top's gauge side.
 @export var apex_lateral := 0.05
 ## How high above the camera's look direction the apex sits.
-@export var apex_lift := 0.01
+@export var apex_lift := -0.01
 ## How far behind the camera the top starts.
 @export var start_behind := 0.25
 ## Sideways offset at the start, on the side opposite the gauge.
@@ -85,8 +85,7 @@ func begin() -> void:
 	_elapsed = 0.0
 	_running = true
 	set_process(true)
-	print("intro.begin: ... is_processing=%s process_mode=%d tree_paused=%s" % [
-		is_processing(), process_mode, get_tree().paused])
+
 
 
 func _process(delta: float) -> void:

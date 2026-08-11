@@ -6,5 +6,4 @@
 script = ExtResource("1_2tbqa")
 label = "DMG"
 stat_property = "base_damage"
-per_half_star = 20.0
 metadata/_custom_type_script = "uid://1mprwdka0ogo"

@@ -25,6 +25,7 @@ signal stopped(top: Top)
 signal entered_dying(top: Top)
 signal dodged(top: Top)
 signal ability_triggered(top: Top, ability: Ability)
+signal combo_hit(top: Top, target: Top, index: int)
 
 var current_state: State = State.INTRO
 var intent: Intent = Intent.CLOSING
@@ -80,14 +81,14 @@ var ability: Ability
 
 @export_group('Combat')
 ## Reference RPM the power curves are measured against.
-@export var ref_rpm = 3000.0
+@export var ref_rpm = 2500.0
 ## Fraction of knockback converted to an upward hop.
 @export var vertical_fraction = 0.25
 ## How much the RPM advantage swings knockback. At 0 it's ignored; the
 ## multiplier is centred on 1.0 so changing this never shifts the baseline.
 @export var dominance_influence = 0.3
 ## What a stationary or retreating hit is worth relative to a full charge.
-@export var min_momentum_mult = 0.4
+@export var min_momentum_mult = 0.2
 ## Random scatter on knockback direction, in radians, scaled down by momentum
 ## so heavy hits stay decisive and glancing ones vary.
 @export var knockback_scatter = 1.1
@@ -120,8 +121,8 @@ var spin_display_scale := 1.0
 
 @export_group('Engagement')
 ## Orbit duration at aggression 0 and 1 respectively.
-@export var orbit_time_max = 1.4
-@export var orbit_time_min = 0.7
+@export var orbit_time_max = 1.8
+@export var orbit_time_min = 1.1
 ## Recovery duration at aggression 0 and 1, scaled by how hard the hit was.
 @export var recover_time_max = 2.0
 @export var recover_time_min = 1.2
@@ -164,10 +165,10 @@ var spin_display_scale := 1.0
 ## Constant inward pull standing in for the bowl's curvature, as a multiple of
 ## move_speed at the rim. Applies everywhere, so keep it modest — a large value
 ## flattens the usable arena rather than just discouraging the edge.
-@export var slope_strength = 0.5
+@export var slope_strength = 0.4
 
 ## Radius, as a fraction of the arena, beyond which a top counts as loitering.
-@export_range(0.0, 1.0) var loiter_radius_frac = 0.4
+@export_range(0.0, 1.0) var loiter_radius_frac = 0.5
 
 ## Seconds at the edge before the inward pull reaches full strength.
 @export var loiter_patience = 0.5
@@ -192,12 +193,12 @@ var spin_display_scale := 1.0
 ## Seconds before another dodge is possible, so it stays a moment.
 @export var dodge_cooldown_time = 1
 ## Seconds of counter-attack after a successful slip.
-@export var counter_duration = 0.35
+@export var counter_duration = 0.45
 ## Speed multiplier while countering.
-@export var counter_speed = 2.75
+@export var counter_speed = 2.5
 ## How far the slip angles backward along the opponent's approach rather than
 ## purely sideways. 0 is a pure sidestep; higher ends up behind the charge.
-@export_range(0.0, 1.5) var dodge_back_bias := 0.2
+@export_range(0.0, 1.5) var dodge_back_bias := 0.25
 @export var counter_abandon_range = 0.15
 
 @export_group('Wall')
@@ -235,6 +236,39 @@ var _wall_contact := false
 @export var ko_drag = 0.4
 @export var ko_kill_depth = 0.5
 
+@export_group('Combo')
+## Closing speed needed for a hit to be combo-eligible. Below this the top
+## isn't committed enough to follow up.
+@export var combo_speed_threshold := 0.06
+## Chance of a follow-up after the first hit, before aggression scales it.
+@export_range(0.0, 1.0) var combo_base_chance := 0.9
+## How much aggression moves that chance. At 0.5, an aggression-1.0 fighter
+## gets 1.5x the base chance and an aggression-0 fighter 0.5x.
+@export_range(0.0, 1.0) var combo_aggression_weight := 0.5
+## Each successive hit multiplies the chance by this, so long combos are rare
+## without needing a hard cap.
+@export_range(0.1, 1.0) var combo_chance_decay := 0.7
+## Seconds between hits in a combo.
+@export var combo_interval := 0.15
+## Power of each follow-up relative to the first. 1.0 keeps every hit at full
+## strength; lower makes a combo taper.
+@export_range(0.2, 1.0) var combo_falloff := 0.9
+## Hard ceiling, as a safety net rather than a design constraint.
+@export_range(0.0, 1.0) var combo_knockback_scale := 0.05
+@export var combo_max_hits := 6
+## Seconds the target is held after each combo hit, so the flurry stays in
+## contact. Suppressing knockback isn't enough on its own — the target simply
+## steers away under its own power.
+@export var combo_stun_time := 1
+## Movement retained while stunned. Zero pins them completely; a little
+## movement reads better than a total freeze.
+@export_range(0.0, 1.0) var combo_stun_mobility := 0.05
+var _combo_target: Top
+var _combo_timer := 0.0
+var _combo_index := 0      
+var _combo_chance := 0.0
+var _combo_velo_bonus := 0.0
+var _stun_timer := 0.0
 
 # ══════════════════════════════════════════════════════════════════════════
 #  RUNTIME STATE
@@ -294,7 +328,6 @@ var last_knockback_dealt = 0.0
 
 var rpm_ratio: float:
 	get: return current_rpm / max(initial_rpm, 1.0)
-
 
 # ══════════════════════════════════════════════════════════════════════════
 #  SETUP
@@ -402,12 +435,16 @@ func _update_active(delta: float) -> void:
 
 	_update_loiter(delta)
 	_update_intent(delta)
+	_update_combo(delta)
 	
 	_wall_recoil_timer = max(_wall_recoil_timer - delta, 0.0)
 	_wall_damage_timer = max(_wall_damage_timer - delta, 0.0)
-	
+	_stun_timer = max(_stun_timer - delta, 0.0)
+
 	if not _airborne and _wall_recoil_timer <= 0.0:
 		var desired = _desired_velocity()
+		if _stun_timer > 0.0:
+			desired *= combo_stun_mobility
 		var responsiveness = base_responsiveness * pow(rpm_ratio, 0.3)
 		if intent == Intent.COUNTERING:
 			responsiveness = 10
@@ -845,17 +882,17 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	if ability != null:
 		attack_rpm = ability.attack_rpm(self)
 		strike = ability.strike_multiplier(self)
-
+	strike *= pow(combo_falloff, float(_combo_index))
 	
 	# Momentum: a charging top lands a full hit, a stationary or retreating one
 	# only glances. This is what makes aggression pay.
-	var momentum = clamp(velo_bonus / velo_reference, 0.0, 1.1)
+	var momentum = clamp(velo_bonus / velo_reference, 0.0, 1.3)
 	var momentum_mult = lerpf(min_momentum_mult, 1.0, momentum)
 
 	# --- Damage -----------------------------------------------------------
 	# Front-loaded: the exponent gives a high-RPM top a real early advantage
 	# without collapsing damage to nothing at the tail.
-	var power = pow((attack_rpm + ref_rpm) / ref_rpm, 0.8)
+	var power = pow((attack_rpm + ref_rpm) / ref_rpm, 1)
 	var adj_damage = base_damage * power * momentum_mult * strike
 	
 	# Defence subtracts, but never below a fraction of the raw hit — so a
@@ -886,8 +923,10 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	var dominance_mult = 1.0 + (dominance - 0.5) * 2.0 * dominance_influence
 
 	var weight_factor = weight / (weight + opponent.weight)
-	var base_term = base_knockback * pow(kb_power, 0.35) * weight_factor * 0.75
+	var base_term = base_knockback * pow(kb_power, 0.5) * weight_factor * 0.75
 	var applied = base_term * dominance_mult * momentum_mult * strike
+	if _combo_index > 0:
+		applied *= combo_knockback_scale
 	
 	#print(
 		#"\nAttacker: ", self.display_name(),
@@ -917,6 +956,8 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	
 	if ability is KamikazeAbility:
 		(ability as KamikazeAbility).on_hit_landed(self)
+		
+	_maybe_continue_combo(opponent, velo_bonus)
 
 
 ## Applies damage that has already had defence accounted for.
@@ -997,6 +1038,75 @@ func _apply_wall_collision() -> void:
 	global_position.x = arena_centre.x + normal.x * inset
 	global_position.z = arena_centre.y + normal.y * inset
 
+## Rolls for a follow-up hit. The chance decays with each successive hit, so a
+## long combo is the compound product of several rolls — rare without a cap
+## having to enforce it.
+func _maybe_continue_combo(opponent: Top, velo_bonus: float) -> void:
+	if _combo_index >= combo_max_hits:
+		_end_combo()
+		return
+	if opponent.current_state != State.ACTIVE:
+		_end_combo()
+		return
+
+	# Only a committed approach earns a follow-up. A top that was drifting or
+	# retreating when it connected has nothing to press with.
+	if _combo_index == 0:
+		if velo_bonus < combo_speed_threshold:
+			print("%s: no combo, velo %.3f below %.3f" % [
+				display_name(), velo_bonus, combo_speed_threshold])
+			return
+		var aggression_scale = 1.0 + (aggression - 0.5) * 2.0 * combo_aggression_weight
+		_combo_chance = combo_base_chance * aggression_scale
+		_combo_velo_bonus = velo_bonus
+		print("%s: combo eligible, chance %.2f" % [display_name(), _combo_chance])
+
+	if randf() >= _combo_chance:
+		_end_combo()
+		return
+
+	_combo_index += 1
+	_combo_chance *= combo_chance_decay
+	_combo_target = opponent
+	_combo_timer = combo_interval
+	opponent._apply_stun(combo_stun_time)
+
+## Delivers a queued follow-up. The hits land without the tops separating, so
+## the viewer reads one contact with several impacts rather than a sequence of
+## approaches — which is what makes a flurry legible at this scale.
+func _update_combo(delta: float) -> void:
+	if _combo_index <= 0:
+		return
+	_combo_timer -= delta
+	if _combo_timer > 0.0:
+		return
+
+	if _combo_target == null or _combo_target.current_state != State.ACTIVE:
+		_end_combo()
+		return
+	# Lost them: a combo is a flurry at contact, not a pursuit.
+	var d := _horizontal_pos().distance_to(_combo_target._horizontal_pos())
+	if d > (radius + _combo_target.radius) * 2.2:
+		print("%s combo broken: distance %.4f" % [display_name(), d])
+		_end_combo()
+		return
+
+	combo_hit.emit(self, _combo_target, _combo_index)
+	print("%s combo hit %d on %s (chance now %.2f, falloff %.2f)" % [
+		display_name(), _combo_index, _combo_target.display_name(),
+		_combo_chance, pow(combo_falloff, float(_combo_index))])
+	attack(_combo_target, _combo_velo_bonus)
+
+func _end_combo() -> void:
+	if _combo_index > 0 and _combo_target != null:
+		var dir := (_combo_target._horizontal_pos() - _horizontal_pos()).normalized()
+		_combo_target._receive_kb(last_knockback_dealt * float(_combo_index) * 0.5, dir)
+	_combo_index = 0
+	_combo_target = null
+	_combo_timer = 0.0
+
+func _apply_stun(duration: float) -> void:
+	_stun_timer = max(_stun_timer, duration)
 # ══════════════════════════════════════════════════════════════════════════
 #  VERTICAL
 # ══════════════════════════════════════════════════════════════════════════
