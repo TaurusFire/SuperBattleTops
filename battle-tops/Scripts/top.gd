@@ -19,7 +19,7 @@ enum State { INTRO, COUNTDOWN, ACTIVE, DYING, KNOCKED_OUT, STOPPED }
 
 ## What a top is trying to do right now. CLOSING persists until a collision
 ## interrupts it; the others run on `_intent_timer`.
-enum Intent { CLOSING, ORBITING, RECOVERING, IDLE, DODGING, COUNTERING, FLEEING, ABILITY }
+enum Intent { CLOSING, ORBITING, RECOVERING, IDLE, DODGING, COUNTERING, FLEEING, ABILITY, COMBO }
 
 signal stopped(top: Top)
 signal entered_dying(top: Top)
@@ -239,7 +239,7 @@ var _wall_contact := false
 @export_group('Combo')
 ## Closing speed needed for a hit to be combo-eligible. Below this the top
 ## isn't committed enough to follow up.
-@export var combo_speed_threshold := 0.06
+@export var combo_speed_threshold := 0.04
 ## Chance of a follow-up after the first hit, before aggression scales it.
 @export_range(0.0, 1.0) var combo_base_chance := 0.9
 ## How much aggression moves that chance. At 0.5, an aggression-1.0 fighter
@@ -247,7 +247,7 @@ var _wall_contact := false
 @export_range(0.0, 1.0) var combo_aggression_weight := 0.5
 ## Each successive hit multiplies the chance by this, so long combos are rare
 ## without needing a hard cap.
-@export_range(0.1, 1.0) var combo_chance_decay := 0.7
+@export_range(0.1, 1.0) var combo_chance_decay := 0.9
 ## Seconds between hits in a combo.
 @export var combo_interval := 0.15
 ## Power of each follow-up relative to the first. 1.0 keeps every hit at full
@@ -260,9 +260,11 @@ var _wall_contact := false
 ## contact. Suppressing knockback isn't enough on its own — the target simply
 ## steers away under its own power.
 @export var combo_stun_time := 1
-## Movement retained while stunned. Zero pins them completely; a little
-## movement reads better than a total freeze.
-@export_range(0.0, 1.0) var combo_stun_mobility := 0.05
+## Speed multiplier while pressing a combo. Modest — the target is stunned, so
+## this only needs to close the small gap each hit opens.
+@export var combo_press_speed = 2
+## Movement retained while stunned. A little reads better than a total freeze.
+@export_range(0.0, 1.0) var combo_stun_mobility = 0.05
 var _combo_target: Top
 var _combo_timer := 0.0
 var _combo_index := 0      
@@ -445,7 +447,7 @@ func _update_active(delta: float) -> void:
 		var desired = _desired_velocity()
 		if _stun_timer > 0.0:
 			desired *= combo_stun_mobility
-		var responsiveness = base_responsiveness * pow(rpm_ratio, 0.3)
+		var responsiveness = base_responsiveness * pow(rpm_ratio, 0.4)
 		if intent == Intent.COUNTERING:
 			responsiveness = 10
 		elif intent == Intent.ABILITY and ability is KamikazeAbility:
@@ -519,7 +521,14 @@ func _intent_velocity(speed: float) -> Vector2:
 			var curve_amount = approach_curve * (1.0 - aggression * 0.5)
 			var curve = curve_amount * clamp(dist / max(orbit_radius, 0.001), 0.0, 1.0)
 			return (toward + tangent * curve).normalized() * speed
-
+		
+		Intent.COMBO:
+			var ct = _combo_target if _combo_target != null else target
+			var to_ct = ct._horizontal_pos() - _horizontal_pos()
+			if to_ct.length() < 0.0001:
+				return _velocity
+			return to_ct.normalized() * speed * combo_press_speed
+		
 		Intent.ORBITING:
 			# Circle at orbit_radius: tangential motion plus a radial nudge
 			# proportional to how far off that distance we currently are.
@@ -725,7 +734,11 @@ func _update_intent(delta: float) -> void:
 	if ability != null and ability.controls_movement(self):
 		intent = Intent.ABILITY
 		return
-		
+	
+	if _combo_index > 0:
+		intent = Intent.COMBO
+		return
+	
 	var target = _nearest_opponent()
 	if target == null:
 		intent = Intent.IDLE
@@ -984,14 +997,16 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 	var severity = clamp(knockback / recover_reference, 0.0, 1.0)
 	# A fleeing top stays fleeing — being hit is exactly why it's running, and
 	# dropping to ORBITING would send it back toward its attacker.
-	if ability != null and ability.controls_movement(self):
-		pass                        # nothing breaks an ability charge
+	if intent == Intent.COMBO or (ability != null and ability.controls_movement(self)):
+		pass
 	elif not _should_flee():
 		if severity > recover_threshold:
 			_begin_recovering(severity)
 		else:
 			_begin_orbiting()
-
+	
+	if _combo_index <= 0:
+		_wall_recoil_timer = max(_wall_recoil_timer, contact_recoil_time)
 	# Coast on the knockback rather than steering straight back in, which is
 	# what lets two closing tops lock together.
 	_wall_recoil_timer = max(_wall_recoil_timer, contact_recoil_time)
@@ -1099,8 +1114,9 @@ func _update_combo(delta: float) -> void:
 
 func _end_combo() -> void:
 	if _combo_index > 0 and _combo_target != null:
-		var dir := (_combo_target._horizontal_pos() - _horizontal_pos()).normalized()
+		var dir = (_combo_target._horizontal_pos() - _horizontal_pos()).normalized()
 		_combo_target._receive_kb(last_knockback_dealt * float(_combo_index) * 0.5, dir)
+		_begin_orbiting()
 	_combo_index = 0
 	_combo_target = null
 	_combo_timer = 0.0
