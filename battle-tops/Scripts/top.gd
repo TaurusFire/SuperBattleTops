@@ -272,7 +272,7 @@ var _wall_contact := false
 ## it back and the flurry becomes a chase.
 @export_range(0.0, 1.0) var combo_self_knockback = 0.15
 @export var combo_pursuit_range = 0.10
-
+@export var combo_stun_margin = 1.5
 var _combo_target: Top
 var _combo_timer := 0.0
 var _combo_index := 0      
@@ -998,6 +998,10 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	opponent._receive_kb(applied, dir, vert_bias)
 	
 	if not continuing:
+		if _combo_index > 0:
+			# Released on the finisher: the launch should send a top that can
+			# react, not a limp one.
+			opponent._stun_timer = 0.0
 		_end_combo()
 	
 	if ability is KamikazeAbility:
@@ -1148,7 +1152,7 @@ func _roll_combo(opponent: Top, velo_bonus: float) -> bool:
 	_combo_chance *= combo_chance_decay
 	_combo_target = opponent
 	_combo_timer = combo_interval
-	opponent._apply_stun(combo_stun_time)
+	opponent._apply_stun(combo_interval * combo_stun_margin)
 	return true
 
 ## Delivers a queued follow-up. The hits land without the tops separating, so
@@ -1189,6 +1193,8 @@ func _update_combo(delta: float) -> void:
 
 func _end_combo() -> void:
 	if _combo_index > 0:
+		if _combo_target != null:
+			_combo_target._stun_timer = 0.0
 		_begin_orbiting()
 	_combo_index = 0
 	_combo_target = null
