@@ -238,47 +238,32 @@ var _wall_contact := false
 @export var ko_kill_depth = 0.5
 
 @export_group('Combo')
-## Closing speed needed for a hit to be combo-eligible. Below this the top
-## isn't committed enough to follow up.
-@export var combo_speed_threshold := 0.04
-## Chance of a follow-up after the first hit, before aggression scales it.
-@export_range(0.0, 1.0) var combo_base_chance := 0.9
-## How much aggression moves that chance. At 0.5, an aggression-1.0 fighter
-## gets 1.5x the base chance and an aggression-0 fighter 0.5x.
-@export_range(0.0, 1.0) var combo_aggression_weight := 0.9
-## Each successive hit multiplies the chance by this, so long combos are rare
-## without needing a hard cap.
-@export_range(0.1, 1.0) var combo_chance_decay := 0.99
-## Seconds between hits in a combo.
-@export var combo_interval := 0.12
-## Power of each follow-up relative to the first. 1.0 keeps every hit at full
-## strength; lower makes a combo taper.
-@export_range(0.2, 1.0) var combo_falloff := 0.9
-## Hard ceiling, as a safety net rather than a design constraint.
-@export_range(0.0, 1.0) var combo_knockback_scale := 0.05
-@export var combo_finisher_scale = 2.0
-@export var combo_max_hits := 6
-## Seconds the target is held after each combo hit, so the flurry stays in
-## contact. Suppressing knockback isn't enough on its own — the target simply
-## steers away under its own power.
-@export var combo_stun_time := 1
-## Speed multiplier while pressing a combo. Modest — the target is stunned, so
-## this only needs to close the small gap each hit opens.
-@export var combo_press_speed = 3
-## Movement retained while stunned. A little reads better than a total freeze.
-@export_range(0.0, 1.0) var combo_stun_mobility = 0.00
-## How much knockback the attacker absorbs while pressing a combo. Its intent
-## keeps it aimed at the target, but without this the recoil physically throws
-## it back and the flurry becomes a chase.
-@export_range(0.0, 1.0) var combo_self_knockback = 0.15
-@export var combo_pursuit_range = 0.10
-@export var combo_stun_margin = 1.5
-var _combo_target: Top
-var _combo_timer := 0.0
-var _combo_index := 0      
-var _combo_chance := 0.0
-var _combo_velo_bonus := 0.0
-var _stun_timer := 0.0
+## Closing speed a hit needs to be combo-eligible.
+@export var combo_speed_threshold = 0.04
+## Chance of the first extra hit, before aggression scales it.
+@export_range(0.0, 1.0) var combo_base_chance = 0.35
+## How much aggression moves that chance.
+@export_range(0.0, 1.0) var combo_aggression_weight = 0.5
+## Each additional hit multiplies the chance by this, so long combos are rare
+## without a cap having to enforce it.
+@export_range(0.1, 1.0) var combo_chance_decay = 0.55
+@export var combo_max_hits = 5
+
+@export_subgroup('Rhythm')
+## Seconds spent pulling back before each strike.
+@export var combo_reel_time = 0.07
+## Seconds spent driving in. Reel plus advance is one hit's cycle.
+@export var combo_advance_time = 0.06
+## How far back the attacker pulls, as a multiple of combined radii.
+@export var combo_reel_distance = 1.9
+
+@export_subgroup('Force')
+## Damage multiplier on each intermediate hit.
+@export var combo_hit_damage = 0.6
+## Knockback on intermediate hits. Near zero so the pair stay in place.
+@export_range(0.0, 1.0) var combo_hit_knockback = 0.05
+## Damage and knockback multiplier on the finisher.
+@export var combo_finisher_scale = 2.2
 
 # ══════════════════════════════════════════════════════════════════════════
 #  RUNTIME STATE
@@ -335,6 +320,14 @@ var countdown_duration = 3.0
 # Read by the manager and the VFX after each collision.
 var last_damage_dealt = 0.0
 var last_knockback_dealt = 0.0
+
+# Combos
+var _combo_target: Top
+var _combo_remaining = 0        # hits still to land, finisher included
+var _combo_phase_timer = 0.0
+var _combo_reeling = false
+var _combo_anchor = Vector2.ZERO   # where the reel pulls back to
+var _stun_timer := 0.0
 
 var rpm_ratio: float:
 	get: return current_rpm / max(initial_rpm, 1.0)
@@ -928,7 +921,16 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	# Front-loaded: the exponent gives a high-RPM top a real early advantage
 	# without collapsing damage to nothing at the tail.
 	var power = pow((attack_rpm + ref_rpm) / ref_rpm, 1)
-	var adj_damage = base_damage * power * momentum_mult * strike
+	
+	# Intermediate hits chip and hold position; the finisher carries the whole
+	# flurry's force. Known in advance because the length was rolled up front.
+	var in_combo = _combo_remaining > 0
+	var is_finisher = _combo_remaining == 1
+
+	var adj_damage = base_damage * power * momentum_mult
+	if in_combo:
+		adj_damage *= combo_finisher_scale if is_finisher else combo_hit_damage
+	
 	
 	# Defence subtracts, but never below a fraction of the raw hit — so a
 	# strong attacker always chips a tanky defender.
@@ -959,16 +961,10 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 
 	var weight_factor = weight / (weight + opponent.weight)
 	
-	var continuing = _roll_combo(opponent, velo_bonus)
 	var base_term = base_knockback * pow(kb_power, 0.5) * weight_factor * 0.75
 	var applied = base_term * dominance_mult * momentum_mult * strike
-	if _combo_index > 0 and continuing:
-		# Mid-flurry: keep the pair in contact.
-		applied *= combo_knockback_scale
-	elif _combo_index > 0:
-		# The finisher — the suppressed knockback of the whole combo, delivered
-		# at once.
-		applied *= combo_finisher_scale
+	if in_combo:
+		applied *= combo_finisher_scale if is_finisher else combo_hit_knockback
 	
 	#print(
 		#"\nAttacker: ", self.display_name(),
@@ -994,15 +990,13 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 		vert_bias = ability.vertical_bias(self)
 	
 	last_knockback_dealt = applied
-	_maybe_continue_combo(opponent, velo_bonus)
 	opponent._receive_kb(applied, dir, vert_bias)
 	
-	if not continuing:
-		if _combo_index > 0:
-			# Released on the finisher: the launch should send a top that can
-			# react, not a limp one.
-			opponent._stun_timer = 0.0
-		_end_combo()
+	# Only a fresh collision starts a flurry; hits within one don't re-roll.
+	if _combo_remaining <= 0:
+		var length = _roll_combo_length(velo_bonus)
+		if length > 0:
+			_begin_combo(opponent, length)
 	
 	if ability is KamikazeAbility:
 		(ability as KamikazeAbility).on_hit_landed(self)
@@ -1095,110 +1089,93 @@ func _apply_wall_collision() -> void:
 	global_position.x = arena_centre.x + normal.x * inset
 	global_position.z = arena_centre.y + normal.y * inset
 
-## Rolls for a follow-up hit. The chance decays with each successive hit, so a
-## long combo is the compound product of several rolls — rare without a cap
-## having to enforce it.
-func _maybe_continue_combo(opponent: Top, velo_bonus: float) -> void:
-	if _combo_index >= combo_max_hits:
-		_end_combo()
-		return
-	if opponent.current_state != State.ACTIVE:
-		_end_combo()
-		return
 
-	# Only a committed approach earns a follow-up. A top that was drifting or
-	# retreating when it connected has nothing to press with.
-	if _combo_index == 0:
-		if velo_bonus < combo_speed_threshold:
-			print("%s: no combo, velo %.3f below %.3f" % [
-				display_name(), velo_bonus, combo_speed_threshold])
-			return
-		var aggression_scale = 1.0 + (aggression - 0.5) * 2.0 * combo_aggression_weight
-		_combo_chance = combo_base_chance * aggression_scale
-		_combo_velo_bonus = velo_bonus
-		print("%s: combo eligible, chance %.2f" % [display_name(), _combo_chance])
+func _roll_combo_length(velo_bonus: float) -> int:
+	if velo_bonus < combo_speed_threshold:
+		return 0
+	var aggression_scale = 1.0 + (aggression - 0.5) * 2.0 * combo_aggression_weight
+	var chance = min(combo_base_chance * aggression_scale, 1.0)
+	var length = 0
+	while length < combo_max_hits and randf() < chance:
+		length += 1
+		chance *= combo_chance_decay
+	return length
 
-	if randf() >= _combo_chance:
-		_end_combo()
-		return
 
-	_combo_index += 1
-	_combo_chance *= combo_chance_decay
+func _begin_combo(opponent: Top, length: int) -> void:
 	_combo_target = opponent
-	_combo_timer = combo_interval
-	opponent._apply_stun(combo_stun_time)
-	print("%s combo QUEUED hit %d, distance now %.4f, interval %.3f, my vel %.3f, their vel %.3f" % [
-		display_name(), _combo_index,
-		_horizontal_pos().distance_to(opponent._horizontal_pos()),
-		combo_interval, _velocity.length(), opponent._velocity.length()])
+	_combo_remaining = length
+	_combo_reeling = true
+	_combo_phase_timer = combo_reel_time
+	intent = Intent.COMBO
+	# Held for the whole flurry, released by the finisher.
+	opponent._apply_stun(float(length) * (combo_reel_time + combo_advance_time) + 0.05)
 
-func _roll_combo(opponent: Top, velo_bonus: float) -> bool:
-	if _combo_index >= combo_max_hits:
-		return false
-	if opponent.current_state != State.ACTIVE:
-		return false
 
-	if _combo_index == 0:
-		if velo_bonus < combo_speed_threshold:
-			return false
-		var aggression_scale = 1.0 + (aggression - 0.5) * 2.0 * combo_aggression_weight
-		_combo_chance = min(combo_base_chance * aggression_scale, 1.0)
-		_combo_velo_bonus = velo_bonus
-
-	if randf() >= _combo_chance:
-		return false
-
-	_combo_index += 1
-	_combo_chance *= combo_chance_decay
-	_combo_target = opponent
-	_combo_timer = combo_interval
-	opponent._apply_stun(combo_interval * combo_stun_margin)
-	return true
-
-## Delivers a queued follow-up. The hits land without the tops separating, so
-## the viewer reads one contact with several impacts rather than a sequence of
-## approaches — which is what makes a flurry legible at this scale.
+## Drives the flurry. Position is scripted rather than steered: a combo is
+## choreography, and every attempt to express it through the force system ended
+## with separation or wall bounce pulling the attacker off its target.
 func _update_combo(delta: float) -> void:
-	if _combo_index <= 0:
-		return
-	if _combo_timer > 0.0:
-		_combo_timer -= delta
-		return
-
 	if _combo_target == null or _combo_target.current_state != State.ACTIVE:
 		_end_combo()
 		return
-	# Lost them: a combo is a flurry at contact, not a pursuit.
-	var d := _horizontal_pos().distance_to(_combo_target._horizontal_pos())
-	if d > (radius + _combo_target.radius) * 1.15:
-		print("%s combo broken: distance %.4f, at r=%.4f, vel=%.3f, target vel=%.3f, intent=%d, target intent=%d, stun=%.3f" % [
-			display_name(), d, _horizontal_pos().distance_to(arena_centre),
-			_velocity.length(), _combo_target._velocity.length(),
-			intent, _combo_target.intent, _combo_target._stun_timer])
-		if d < combo_pursuit_range:
-			_combo_timer = combo_interval * 0.5
-			return
-		_end_combo()
+
+	_combo_phase_timer -= delta
+	var to_target = _combo_target._horizontal_pos() - _horizontal_pos()
+	var contact = (radius + _combo_target.radius)
+
+	if _combo_reeling:
+		# Pull back from wherever the last hit left us.
+		var t = 1.0 - clamp(_combo_phase_timer / combo_reel_time, 0.0, 1.0)
+		var dir = to_target.normalized() if to_target.length() > 0.0001 else Vector2.RIGHT
+		var back = _combo_target._horizontal_pos() - dir * contact * combo_reel_distance
+		_set_horizontal(_combo_anchor.lerp(back, ease(t, 0.4)))
+		if _combo_phase_timer <= 0.0:
+			_combo_reeling = false
+			_combo_phase_timer = combo_advance_time
+			_combo_anchor = _horizontal_pos()
 		return
 
-	combo_hit.emit(self, _combo_target, _combo_index)
-	print("%s combo hit %d on %s (chance now %.2f, falloff %.2f)" % [
-		display_name(), _combo_index, _combo_target.display_name(),
-		_combo_chance, pow(combo_falloff, float(_combo_index))])
+	# Driving in. The strike lands when the advance completes.
+	var t = 1.0 - clamp(_combo_phase_timer / combo_advance_time, 0.0, 1.0)
+	var dir = to_target.normalized() if to_target.length() > 0.0001 else Vector2.RIGHT
+	var strike_pos = _combo_target._horizontal_pos() - dir * contact * 0.95
+	_set_horizontal(_combo_anchor.lerp(strike_pos, ease(t, 2.2)))
+
+	if _combo_phase_timer > 0.0:
+		return
+
+	_land_combo_hit()
+
+func _land_combo_hit() -> void:
 	var struck = _combo_target
-	var depth = _combo_index
-	attack(struck, _combo_velo_bonus)
+	var is_finisher = _combo_remaining <= 1
+
+	combo_hit.emit(self, struck, _combo_remaining)
+	attack(struck, combo_speed_threshold)
 	if manager != null:
-		manager.report_combo_hit(self, struck, depth)
+		manager.report_combo_hit(self, struck, _combo_remaining)
+
+	_combo_remaining -= 1
+	if is_finisher:
+		_end_combo()
+	else:
+		_combo_reeling = true
+		_combo_phase_timer = combo_reel_time
+		_combo_anchor = _horizontal_pos()
+
+func _set_horizontal(p: Vector2) -> void:
+	global_position.x = p.x
+	global_position.z = p.y
+	_velocity = Vector2.ZERO
 
 func _end_combo() -> void:
-	if _combo_index > 0:
-		if _combo_target != null:
-			_combo_target._stun_timer = 0.0
-		_begin_orbiting()
-	_combo_index = 0
+	if _combo_target != null:
+		_combo_target._stun_timer = 0.0
 	_combo_target = null
-	_combo_timer = 0.0
+	_combo_remaining = 0
+	_combo_reeling = false
+	_begin_orbiting()
 
 func _apply_stun(duration: float) -> void:
 	_stun_timer = max(_stun_timer, duration)
