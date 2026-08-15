@@ -438,34 +438,34 @@ func _update_active(delta: float) -> void:
 
 	_update_loiter(delta)
 	_update_intent(delta)
-	_update_combo(delta)
-	
+
 	_wall_recoil_timer = max(_wall_recoil_timer - delta, 0.0)
 	_wall_damage_timer = max(_wall_damage_timer - delta, 0.0)
 	_stun_timer = max(_stun_timer - delta, 0.0)
 
+	# A combo scripts its own position, so it takes over from the force system
+	# entirely — every attempt to express it through steering ended with
+	# separation or wall bounce pulling the attacker off its target.
+	if _combo_remaining > 0:
+		_update_combo(delta)
+		_apply_wall_collision()
+		return
+
 	if not _airborne and _wall_recoil_timer <= 0.0:
 		var desired = _desired_velocity()
 		if _stun_timer > 0.0:
-			print("%s stunned: timer=%.4f mobility=%s desired before=%.3f after=%.3f" % [
-				display_name(), _stun_timer, combo_stun_mobility,
-				desired.length(), (desired * combo_stun_mobility).length()])
-			desired = desired * combo_stun_mobility + _separation() * move_speed
+			# Held: separation still applies so the pair can't interpenetrate,
+			# but the top can't act.
+			desired = _separation() * move_speed
 		var responsiveness = base_responsiveness * pow(rpm_ratio, 0.4)
 		if intent == Intent.COUNTERING:
 			responsiveness = 10
-		elif intent == Intent.COMBO:
-			responsiveness = 15
 		elif intent == Intent.ABILITY and ability is KamikazeAbility:
 			responsiveness = (ability as KamikazeAbility).agility
 		_velocity = _velocity.lerp(desired, clamp(responsiveness * delta, 0.0, 1.0))
 	else:
-		
-		# Separation still applies during recoil, or a pair knocked into each
-		# other has nothing to break them apart.
-		_wall_recoil_timer = max(_wall_recoil_timer - delta, 0.0)
-		if intent != Intent.COMBO:
-			_velocity += _separation() * move_speed * delta * 4.0
+		_velocity += _separation() * move_speed * delta * 4.0
+
 
 	_apply_velocity(delta)
 	_apply_wall_collision()
@@ -506,12 +506,6 @@ func _desired_velocity() -> Vector2:
 		
 	var d = _horizontal_pos().distance_to(arena_centre)
 	
-	if intent == Intent.COMBO:
-		var overlap = _separation()
-		if _horizontal_pos().distance_to(_combo_target._horizontal_pos())\
-			 < (radius + _combo_target.radius) * 0.6:
-			return _clamp_to_arena(iv + _wall_avoidance() + overlap * speed)
-	
 	return _clamp_to_arena(iv + wa + sep + slope + pull)
 
 
@@ -535,13 +529,6 @@ func _intent_velocity(speed: float) -> Vector2:
 			var curve_amount = approach_curve * (1.0 - aggression * 0.5)
 			var curve = curve_amount * clamp(dist / max(orbit_radius, 0.001), 0.0, 1.0)
 			return (toward + tangent * curve).normalized() * speed
-		
-		Intent.COMBO:
-			var ct = _combo_target if _combo_target != null else target
-			var to_ct = ct._horizontal_pos() - _horizontal_pos()
-			if to_ct.length() < 0.0001:
-				return _velocity
-			return to_ct.normalized() * speed * combo_press_speed
 		
 		Intent.ORBITING:
 			# Circle at orbit_radius: tangential motion plus a radial nudge
@@ -749,9 +736,6 @@ func _update_intent(delta: float) -> void:
 		intent = Intent.ABILITY
 		return
 	
-	if _combo_index > 0:
-		intent = Intent.COMBO
-		return
 	
 	var target = _nearest_opponent()
 	if target == null:
@@ -910,7 +894,6 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	if ability != null:
 		attack_rpm = ability.attack_rpm(self)
 		strike = ability.strike_multiplier(self)
-	strike *= pow(combo_falloff, float(_combo_index))
 	
 	# Momentum: a charging top lands a full hit, a stationary or retreating one
 	# only glances. This is what makes aggression pay.
@@ -1016,9 +999,7 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 	# Parenthesised deliberately: without them this divides by 20 and then
 	# multiplies by the weight ratio, so heavier tops take more knockback.
 	knockback = knockback / (20.0 * (weight / 0.18))
-	if _combo_index > 0:
-		knockback *= combo_self_knockback
-		print("%s combo self-kb suppressed to %.4f" % [display_name(), knockback])
+
 		
 	_velocity += dir * knockback / vertical_bias
 
@@ -1032,7 +1013,7 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 	var severity = clamp(knockback / recover_reference, 0.0, 1.0)
 	# A fleeing top stays fleeing — being hit is exactly why it's running, and
 	# dropping to ORBITING would send it back toward its attacker.
-	if intent == Intent.COMBO or (ability != null and ability.controls_movement(self)):
+	if (ability != null and ability.controls_movement(self)):
 		pass
 	elif not _should_flee():
 		if severity > recover_threshold:
@@ -1040,8 +1021,6 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 		else:
 			_begin_orbiting()
 	
-	if _combo_index <= 0:
-		_wall_recoil_timer = max(_wall_recoil_timer, contact_recoil_time)
 
 
 
@@ -1061,7 +1040,7 @@ func _apply_wall_collision() -> void:
 	print("%s wall snap: %.4f -> %.4f" % [display_name(), before.distance_to(arena_centre), _horizontal_pos().distance_to(arena_centre)])
 	
 	var outward_speed := _velocity.dot(normal)
-	var bounce = 0.0 if (_combo_index > 0 or _stun_timer > 0.0) else wall_bounce
+	var bounce = 0.0 if _stun_timer > 0.0 else wall_bounce
 	if outward_speed > 0.05:
 		var tangential = _velocity - normal * outward_speed
 		var rebound = -normal * outward_speed * bounce
