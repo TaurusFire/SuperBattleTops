@@ -20,6 +20,8 @@
 [ext_resource type="Script" uid="uid://cyyh86gto6xke" path="res://Scripts/intro_sequence.gd" id="18_346fj"]
 [ext_resource type="Script" uid="uid://bvghi1nb53vvq" path="res://Scripts/stat_card.gd" id="18_sxkr1"]
 [ext_resource type="Resource" uid="uid://b3027gvapw8qq" path="res://Resources/statdisplayconfig.tres" id="19_fq0cl"]
+[ext_resource type="Script" uid="uid://bglnepoge5p7t" path="res://Scripts/target_manager.gd" id="21_fq0cl"]
+[ext_resource type="PackedScene" uid="uid://dwj54do12gfkm" path="res://Scenes/target_marker.tscn" id="22_hwpts"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kln2b"]
 
@@ -167,3 +169,10 @@ hold_time = 0.8
 apex_lateral = 0.01
 apex_tilt = 0.0
 metadata/_custom_type_script = "uid://cyyh86gto6xke"
+
+[node name="TargetManager" type="Node" parent="." unique_id=1889606236 node_paths=PackedStringArray("manager")]
+script = ExtResource("21_fq0cl")
+manager = NodePath("../GameManager")
+marker_scene = ExtResource("22_hwpts")
+
+[node name="TargetMarker" parent="TargetManager" unique_id=1745481116 instance=ExtResource("22_hwpts")]

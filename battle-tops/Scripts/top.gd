@@ -26,6 +26,8 @@ signal entered_dying(top: Top)
 signal dodged(top: Top)
 signal ability_triggered(top: Top, ability: Ability)
 signal combo_hit(top: Top, target: Top, index: int)
+signal target_locked(top: Top, target: Top, tint: Color)
+signal target_released(top: Top)
 
 var current_state: State = State.INTRO
 var intent: Intent = Intent.CLOSING

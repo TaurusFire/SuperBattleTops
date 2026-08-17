@@ -22,6 +22,8 @@ enum Phase { DORMANT, TELEGRAPH, CHARGING, SPENDING }
 ## Keeps it ACTIVE through the collision so hitstop and sparks resolve, and
 ## gives the moment room to land before the fall begins.
 @export var spend_delay := 1.25
+## Tint for the targeting reticle.
+@export var marker_colour := Color(0.72, 0.32, 0.95)
 
 # Per-top state, keyed by instance — an ability resource is shared between
 # fighters that use it, so it cannot hold state in plain fields.
@@ -99,12 +101,14 @@ func _begin(top: Top) -> void:
 	_phase[top] = Phase.TELEGRAPH
 	_timer[top] = telegraph_time
 	top._velocity = Vector2.ZERO    # the pause makes the charge read as sudden
+	top.target_locked.emit(top, t, marker_colour)
 	top.ability_triggered.emit(top, self)
 
 
 func _expire(top: Top) -> void:
 	# Spent, win or lose: the strike costs everything that was left.
 	top.current_rpm = 0.0
+	top.target_released.emit(top)
 	_phase[top] = Phase.DORMANT
 	_target.erase(top)
 	_timer.erase(top)
