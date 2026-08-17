@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_knblu")
+trigger_rpm = 500.0
+strike_power = 5.0
 metadata/_custom_type_script = "uid://do24nda1r2x48"

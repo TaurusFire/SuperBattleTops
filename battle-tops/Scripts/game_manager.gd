@@ -15,8 +15,8 @@ extends Node
 
 @export_group('Hitstop')
 @export var hitstop_max_duration := 0.08
-@export var hitstop_reference_damage := 120
-@export var hitstop_reference_knockback := 30
+@export var hitstop_reference_damage := 90
+@export var hitstop_reference_knockback := 50
 @export var hitstop_threshold := 0.4
 @export var hitstop_overrun := 2.0
 @export var hitstop_combo_step = 0.35
@@ -214,7 +214,7 @@ func _resolve_collision(a: Top, b: Top) -> void:
 	_trigger_hitstop(
 		max(a.last_damage_dealt, b.last_damage_dealt),
 		max(a.last_knockback_dealt, b.last_knockback_dealt),
-		max(a._combo_index, b._combo_index)
+		0
 	)
 
 

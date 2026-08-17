@@ -7,7 +7,7 @@ extends Ability
 
 enum Phase { DORMANT, TELEGRAPH, CHARGING, SPENDING }
 
-@export var trigger_rpm := 300.0
+@export var trigger_rpm := 500.0
 ## Speed multiplier during the charge, against the top's own move_speed.
 @export var charge_speed := 2
 ## Seconds of flashing before the charge, so the viewer registers it coming.
@@ -16,7 +16,7 @@ enum Phase { DORMANT, TELEGRAPH, CHARGING, SPENDING }
 @export var window := 0.3
 ## How hard it tracks. High, so it doesn't miss through slow turning.
 @export var agility := 15
-@export var strike_power := 2.5
+@export var strike_power := 5
 @export var strike_vertical_bias := 2
 ## Seconds between the strike landing and the top giving up its remaining RPM.
 ## Keeps it ACTIVE through the collision so hitstop and sparks resolve, and

@@ -52,10 +52,10 @@ stats = ExtResource("17_0sclb")
 stats = ExtResource("14_h1m7h")
 
 [node name="Stam" parent="." unique_id=1632133170 instance=ExtResource("16_346fj")]
+visible = false
 stats = ExtResource("15_erwvk")
 
 [node name="Kam" parent="." unique_id=1078701170 instance=ExtResource("16_346fj")]
-visible = false
 stats = ExtResource("7_erwvk")
 
 [node name="Kam2" parent="." unique_id=1259181042 instance=ExtResource("16_346fj")]
@@ -100,7 +100,7 @@ environment = SubResource("Environment_pbw6q")
 [node name="GameManager" type="Node" parent="." unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
 script = ExtResource("5_pbw6q")
 arena = NodePath("../Arena")
-tops = [NodePath("../Def"), NodePath("../Stam")]
+tops = [NodePath("../Kam"), NodePath("../Def")]
 intro = NodePath("../IntroSequence")
 
 [node name="ClashSparks" type="Node3D" parent="." unique_id=860210630 node_paths=PackedStringArray("manager")]

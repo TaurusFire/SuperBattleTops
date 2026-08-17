@@ -82,14 +82,14 @@ var ability: Ability
 
 @export_group('Combat')
 ## Reference RPM the power curves are measured against.
-@export var ref_rpm = 2500.0
+@export var ref_rpm = 3000.0
 ## Fraction of knockback converted to an upward hop.
 @export var vertical_fraction = 0.25
 ## How much the RPM advantage swings knockback. At 0 it's ignored; the
 ## multiplier is centred on 1.0 so changing this never shifts the baseline.
 @export var dominance_influence = 0.3
 ## What a stationary or retreating hit is worth relative to a full charge.
-@export var min_momentum_mult = 0.2
+@export var min_momentum_mult = 0.25
 ## Random scatter on knockback direction, in radians, scaled down by momentum
 ## so heavy hits stay decisive and glancing ones vary.
 @export var knockback_scatter = 1.1
@@ -100,12 +100,12 @@ var ability: Ability
 @export var velo_reference = 0.2
 ## Vertical knockback multiplier at full RPM — a top spinning fast is settled
 ## on its foot and resists being launched.
-@export var vertical_mult_high_rpm = 0.4
+@export var vertical_mult_high_rpm = 0.5
 ## Multiplier as RPM approaches zero, when the top is barely gripping.
-@export var vertical_mult_low_rpm = 1.45
+@export var vertical_mult_low_rpm = 1.25
 ## Shape of the transition. Below 1 the rise starts early and eases in; above
 ## 1 it stays low through most of the match then climbs sharply near death.
-@export var vertical_mult_curve = 1.25
+@export var vertical_mult_curve = 1
 
 
 @export_group('RPM')
@@ -122,23 +122,32 @@ var spin_display_scale := 1.0
 
 @export_group('Engagement')
 ## Orbit duration at aggression 0 and 1 respectively.
-@export var orbit_time_max = 1.8
+@export var orbit_time_max = 1.6
 @export var orbit_time_min = 1.1
 ## Recovery duration at aggression 0 and 1, scaled by how hard the hit was.
-@export var recover_time_max = 2.0
+@export var recover_time_max = 1.6
 @export var recover_time_min = 1.2
 ## Knockback that earns a full-length recovery.
-@export var recover_reference = 0.6
+@export var recover_reference = 0.8
 ## Below this fraction of reference, a hit only triggers a brief orbit.
 @export var recover_threshold = 0.6
-@export var max_speed := 2.5
-
+@export var max_speed := 3.0
+## RPM at which a top moves at full `move_speed`. Shared across fighters, so a
+## top with more spin genuinely moves better — unlike rpm_ratio, which is
+## self-relative and makes a high-RPM top at 10% as slow as a low-RPM one.
+@export var speed_ref_rpm = 3000.0
+## Slowest a top can get, as a fraction of move_speed. Without a floor a
+## nearly-spent top becomes unwatchable.
+@export_range(0.0, 1.0) var min_speed_frac = 0.55
 
 @export_subgroup('Fleeing')
 ## RPM ratio below which a top stops seeking contact and tries to survive.
 ## Unlike RECOVERING this isn't a timed reaction to a hit — it persists for as
 ## long as the top is this badly hurt.
 @export_range(0.0, 1.0) var flee_threshold = 0.10
+## Aggression above which a fighter never flees, whatever its RPM. An
+## aggressive top has no retreat in it — losing simply means it dies swinging.
+@export_range(0.0, 1.0) var flee_aggression_cap = 0.75
 ## Hysteresis: the top only stops fleeing once it climbs back above
 ## `flee_threshold + flee_hysteresis`. Without it a top hovering right on the
 ## line flickers between fleeing and closing every frame.
@@ -156,8 +165,6 @@ var spin_display_scale := 1.0
 ## How much the approach arcs rather than charging straight in.
 @export_range(0.0, 1.5) var approach_curve = 0.3
 
-
-
 ## Minimum gap to hold, as a multiple of combined radii. Applies regardless of
 ## intent so tops can never settle inside each other.
 @export var separation_factor = 1.05
@@ -166,17 +173,13 @@ var spin_display_scale := 1.0
 ## Constant inward pull standing in for the bowl's curvature, as a multiple of
 ## move_speed at the rim. Applies everywhere, so keep it modest — a large value
 ## flattens the usable arena rather than just discouraging the edge.
-@export var slope_strength = 0.5
-
+@export var slope_strength = 0.4
 ## Radius, as a fraction of the arena, beyond which a top counts as loitering.
 @export_range(0.0, 1.0) var loiter_radius_frac = 0.45
-
 ## Seconds at the edge before the inward pull reaches full strength.
 @export var loiter_patience = 0.5
-
 ## Peak inward pull.
 @export var loiter_pull = 2
-
 ## How fast the timer unwinds once back inside. Higher forgets sooner.
 @export var loiter_recovery = 4
 
@@ -241,29 +244,33 @@ var _wall_contact := false
 ## Closing speed a hit needs to be combo-eligible.
 @export var combo_speed_threshold = 0.04
 ## Chance of the first extra hit, before aggression scales it.
-@export_range(0.0, 1.0) var combo_base_chance = 0.35
+@export_range(0.0, 1.0) var combo_base_chance = 0.4
 ## How much aggression moves that chance.
 @export_range(0.0, 1.0) var combo_aggression_weight = 0.5
 ## Each additional hit multiplies the chance by this, so long combos are rare
 ## without a cap having to enforce it.
-@export_range(0.1, 1.0) var combo_chance_decay = 0.55
+@export_range(0.1, 1.0) var combo_chance_decay = 0.4
 @export var combo_max_hits = 5
 
 @export_subgroup('Rhythm')
 ## Seconds spent pulling back before each strike.
-@export var combo_reel_time = 0.07
+@export var combo_reel_time = 0.08
 ## Seconds spent driving in. Reel plus advance is one hit's cycle.
 @export var combo_advance_time = 0.06
 ## How far back the attacker pulls, as a multiple of combined radii.
 @export var combo_reel_distance = 1.9
+## How far off the surface a top may be and still combo. The `_airborne` flag
+## is true the instant a hop begins, and every collision imparts some vertical
+## velocity — so the strict flag rules out almost every hit.
+@export var combo_ground_tolerance = 0.006
 
 @export_subgroup('Force')
 ## Damage multiplier on each intermediate hit.
-@export var combo_hit_damage = 0.6
+@export var combo_hit_damage = 0.25
 ## Knockback on intermediate hits. Near zero so the pair stay in place.
 @export_range(0.0, 1.0) var combo_hit_knockback = 0.05
 ## Damage and knockback multiplier on the finisher.
-@export var combo_finisher_scale = 2.2
+@export var combo_finisher_scale = 1.75
 
 # ══════════════════════════════════════════════════════════════════════════
 #  RUNTIME STATE
@@ -328,6 +335,7 @@ var _combo_phase_timer = 0.0
 var _combo_reeling = false
 var _combo_anchor = Vector2.ZERO   # where the reel pulls back to
 var _stun_timer := 0.0
+var _combo_length = 0
 
 var rpm_ratio: float:
 	get: return current_rpm / max(initial_rpm, 1.0)
@@ -457,7 +465,7 @@ func _update_active(delta: float) -> void:
 			# Held: separation still applies so the pair can't interpenetrate,
 			# but the top can't act.
 			desired = _separation() * move_speed
-		var responsiveness = base_responsiveness * pow(rpm_ratio, 0.4)
+		var responsiveness = base_responsiveness * pow(rpm_ratio, 0.2)
 		if intent == Intent.COUNTERING:
 			responsiveness = 10
 		elif intent == Intent.ABILITY and ability is KamikazeAbility:
@@ -495,7 +503,10 @@ func _horizontal_pos() -> Vector2:
 ## Everything the top wants to do this frame, summed: the intent's direction,
 ## plus two corrections that always apply regardless of intent.
 func _desired_velocity() -> Vector2:
-	var speed = move_speed * pow(rpm_ratio, 0.3)
+	
+	var spin_factor = clamp(pow(current_rpm / speed_ref_rpm, 0.2), min_speed_frac, 1.15)
+	var speed = move_speed * spin_factor
+	
 	if ability != null:
 		speed *= ability.speed_multiplier(self)
 	var iv := _intent_velocity(speed)
@@ -798,6 +809,9 @@ func _update_intent(delta: float) -> void:
 ## Hysteresis band, so a top sitting near the threshold doesn't flicker
 ## between fleeing and fighting on alternate frames.
 func _should_flee() -> bool:
+	if aggression > flee_aggression_cap:
+		return false
+	
 	var target := _nearest_opponent()
 	if target == null:
 		return false
@@ -943,12 +957,15 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	var dominance_mult = 1.0 + (dominance - 0.5) * 2.0 * dominance_influence
 
 	var weight_factor = weight / (weight + opponent.weight)
-	
+	var vert_bias := 1.0
+
 	var base_term = base_knockback * pow(kb_power, 0.5) * weight_factor * 0.75
 	var applied = base_term * dominance_mult * momentum_mult * strike
+	
 	if in_combo:
 		applied *= combo_finisher_scale if is_finisher else combo_hit_knockback
-	
+		if not is_finisher:
+			vert_bias = 0.0
 	#print(
 		#"\nAttacker: ", self.display_name(),
 		#"\nVelocity: ", self._velocity.length(),
@@ -968,7 +985,6 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	dir = dir.normalized() if dir.length() > 0.001 else Vector2.RIGHT
 	dir = dir.rotated(randf_range(-scatter, scatter))
 
-	var vert_bias := 1.0
 	if ability != null:
 		vert_bias = ability.vertical_bias(self)
 	
@@ -976,9 +992,9 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	opponent._receive_kb(applied, dir, vert_bias)
 	
 	# Only a fresh collision starts a flurry; hits within one don't re-roll.
-	if _combo_remaining <= 0:
+	if _combo_remaining <= 0 and _is_grounded() and opponent._is_grounded():
 		var length = _roll_combo_length(velo_bonus)
-		if length > 0:
+		if length >= 2:
 			_begin_combo(opponent, length)
 	
 	if ability is KamikazeAbility:
@@ -1000,13 +1016,14 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 	# multiplies by the weight ratio, so heavier tops take more knockback.
 	knockback = knockback / (20.0 * (weight / 0.18))
 
-		
-	_velocity += dir * knockback / vertical_bias
-
 	# Lower RPM means a top less settled on its foot, so it pops higher.
-	var stability = pow(clamp(rpm_ratio, 0.0, 1.0), vertical_mult_curve)
+	var stability = pow(clamp(current_rpm/1000, 0.0, 1.0), vertical_mult_curve)
 	var vert_mult = lerpf(vertical_mult_low_rpm, vertical_mult_high_rpm, stability)
-	_vertical_velocity += knockback * vertical_fraction * vert_mult * vertical_bias
+	if vertical_bias <= 0.0:
+		_velocity += dir * knockback
+	else:
+		_velocity += dir * knockback / vertical_bias
+		_vertical_velocity += knockback * vertical_fraction * vert_mult * vertical_bias
 
 	# A hard hit knocks a top onto the back foot; a light one just breaks the
 	# charge. This is what produces the clash-separate-clash rhythm.
@@ -1036,10 +1053,12 @@ func _apply_wall_collision() -> void:
 	if dist < limit:
 		_wall_contact = false
 		return
-	var before = _horizontal_pos()
-	print("%s wall snap: %.4f -> %.4f" % [display_name(), before.distance_to(arena_centre), _horizontal_pos().distance_to(arena_centre)])
+
+	if dist > knockout_radius:
+		_enter_knocked_out()
+		return
 	
-	var outward_speed := _velocity.dot(normal)
+	var outward_speed = _velocity.dot(normal)
 	var bounce = 0.0 if _stun_timer > 0.0 else wall_bounce
 	if outward_speed > 0.05:
 		var tangential = _velocity - normal * outward_speed
@@ -1082,8 +1101,10 @@ func _roll_combo_length(velo_bonus: float) -> int:
 
 
 func _begin_combo(opponent: Top, length: int) -> void:
+	_combo_anchor = _horizontal_pos()
 	_combo_target = opponent
 	_combo_remaining = length
+	_combo_length = length
 	_combo_reeling = true
 	_combo_phase_timer = combo_reel_time
 	intent = Intent.COMBO
@@ -1095,7 +1116,8 @@ func _begin_combo(opponent: Top, length: int) -> void:
 ## choreography, and every attempt to express it through the force system ended
 ## with separation or wall bounce pulling the attacker off its target.
 func _update_combo(delta: float) -> void:
-	if _combo_target == null or _combo_target.current_state != State.ACTIVE:
+	if _combo_target == null or _combo_target.current_state != State.ACTIVE \
+			or not _combo_target._is_grounded():
 		_end_combo()
 		return
 
@@ -1129,11 +1151,11 @@ func _update_combo(delta: float) -> void:
 func _land_combo_hit() -> void:
 	var struck = _combo_target
 	var is_finisher = _combo_remaining <= 1
-
+	var depth = _combo_length - _combo_remaining + 1
 	combo_hit.emit(self, struck, _combo_remaining)
-	attack(struck, combo_speed_threshold)
+	attack(struck, velo_reference)
 	if manager != null:
-		manager.report_combo_hit(self, struck, _combo_remaining)
+		manager.report_combo_hit(self, struck, depth)
 
 	_combo_remaining -= 1
 	if is_finisher:
@@ -1146,7 +1168,12 @@ func _land_combo_hit() -> void:
 func _set_horizontal(p: Vector2) -> void:
 	global_position.x = p.x
 	global_position.z = p.y
+	# Pinned to the surface: the choreography scripts horizontal position, so
+	# a top that goes airborne mid-flurry would arc away from its own strikes.
+	global_position.y = _surface_y_at(p.x, p.y)
 	_velocity = Vector2.ZERO
+	_vertical_velocity = 0.0
+	_airborne = false
 
 func _end_combo() -> void:
 	if _combo_target != null:
@@ -1159,6 +1186,12 @@ func _end_combo() -> void:
 func _apply_stun(duration: float) -> void:
 	_stun_timer = max(_stun_timer, duration)
 	_velocity *= 0.2
+	
+func _is_grounded() -> bool:
+	if not _airborne:
+		return true
+	return global_position.y - _surface_y_at(global_position.x, global_position.z) \
+		<= combo_ground_tolerance
 # ══════════════════════════════════════════════════════════════════════════
 #  VERTICAL
 # ══════════════════════════════════════════════════════════════════════════
@@ -1167,12 +1200,13 @@ func _update_vertical(delta: float) -> void:
 	var surface_y = _surface_y_at(global_position.x, global_position.z)
 	_vertical_velocity -= gravity * delta
 	var new_y = global_position.y + _vertical_velocity * delta
-	if new_y <= surface_y:
+	if new_y <= surface_y and _horizontal_pos().distance_to(arena_centre) <= wall_radius:
 		new_y = surface_y
 		_vertical_velocity = 0.0
 		_airborne = false
 	else:
 		_airborne = true
+
 	global_position.y = new_y
 
 
