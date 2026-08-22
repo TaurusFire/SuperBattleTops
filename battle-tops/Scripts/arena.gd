@@ -8,6 +8,7 @@ extends StaticBody3D
 @export var wall_bounce := 0.65
 @export var wall_damage := 100
 @export var gravity := 1.01
+@export var bowl_curve := 0.7   # the K in y = K·r²
 
 func _ready() -> void:
 	pass # Replace with function body.

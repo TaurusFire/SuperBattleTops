@@ -72,7 +72,8 @@ func _ready() -> void:
 			arena.wall_bounce,
 			arena.wall_damage,
 			arena.gravity,
-			arena.knockout_radius
+			arena.knockout_radius,
+			arena.bowl_curve
 		)
 		top.opponents = tops.filter(func(t): return t != top)
 		top.entered_dying.connect(_on_top_entered_dying)

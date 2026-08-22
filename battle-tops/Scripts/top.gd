@@ -176,18 +176,15 @@ var spin_display_scale := 1.0
 @export var separation_factor = 1.05
 @export var separation_strength = 2.0
 
-## Constant inward pull standing in for the bowl's curvature, as a multiple of
-## move_speed at the rim. Applies everywhere, so keep it modest — a large value
-## flattens the usable arena rather than just discouraging the edge.
-@export var slope_strength = 0.5
+@export var slope_scale := 20
 ## Radius, as a fraction of the arena, beyond which a top counts as loitering.
-@export_range(0.0, 1.0) var loiter_radius_frac = 0.4
+@export_range(0.0, 1.0) var loiter_radius_frac = 0.3
 ## Seconds at the edge before the inward pull reaches full strength.
 @export var loiter_patience = 1
 ## Peak inward pull.
 @export var loiter_pull = 4
 ## How fast the timer unwinds once back inside. Higher forgets sooner.
-@export var loiter_recovery = 5
+@export var loiter_recovery = 2
 
 
 @export_group('Dodging')
@@ -294,7 +291,7 @@ var wall_bounce: float
 var wall_damage: float
 var knockout_radius: float
 var gravity: float
-
+var bowl_curve: float
 var opponents: Array[Top] = []
 
 # Motion
@@ -400,7 +397,8 @@ func _set_arena(
 	arena_wall_bounce: float,
 	arena_wall_damage: float,
 	arena_gravity: float,
-	arena_knockout_radius: float
+	arena_knockout_radius: float,
+	arena_bowl_curve: float
 ) -> void:
 	arena_centre = centre
 	arena_radius = arena_r
@@ -409,7 +407,7 @@ func _set_arena(
 	wall_damage = arena_wall_damage
 	gravity = arena_gravity
 	knockout_radius = arena_knockout_radius
-
+	bowl_curve = arena_bowl_curve
 
 ## Name for display — the roster name, not the node name.
 func display_name() -> String:
@@ -452,6 +450,9 @@ func _update_active(delta: float) -> void:
 
 	_update_loiter(delta)
 	_update_intent(delta)
+	if not _airborne:
+		_apply_slope(delta)
+		_apply_loiter_pull(delta)
 
 	_wall_recoil_timer = max(_wall_recoil_timer - delta, 0.0)
 	_wall_damage_timer = max(_wall_damage_timer - delta, 0.0)
@@ -518,12 +519,9 @@ func _desired_velocity() -> Vector2:
 	var iv := _intent_velocity(speed)
 	var wa = _wall_avoidance()
 	var sep = _separation() * speed
-	var slope = _slope_force() * speed
-	var pull = _centre_pull()
-		
 	var d = _horizontal_pos().distance_to(arena_centre)
 	
-	return _clamp_to_arena(iv + wa + sep + slope + pull)
+	return _clamp_to_arena(iv + wa + sep)
 
 
 func _intent_velocity(speed: float) -> Vector2:
@@ -679,13 +677,29 @@ func _nearest_opponent() -> Top:
 ## hard stop in the last few centimetres, and the loiter pull catches the case
 ## neither handles — a top whose intent holds it out at the edge, where a
 ## constant force reaches equilibrium and stops correcting.
-func _slope_force() -> Vector2:
+func _apply_slope(delta: float) -> void:
 	var from_centre = _horizontal_pos() - arena_centre
 	var dist = from_centre.length()
-	if dist < 0.0001:
-		return Vector2.ZERO
-	return -from_centre.normalized() * (dist / arena_radius) * slope_strength
+	if dist < 0.001:
+		return
+	var accel = gravity * 2.0 * bowl_curve * dist
+	_velocity -= from_centre.normalized() * accel * delta * slope_scale
 
+func _apply_loiter_pull(delta: float) -> void:
+	if _loiter_time <= 0.0:
+		return
+	var inward = arena_centre - _horizontal_pos()
+	var dist = inward.length()
+	if dist < 0.001:
+		return
+
+	var dist_frac = clamp(dist / arena_radius, 0.0, 1.0)
+	# Ramp with distance as well as time: a hard threshold means a top just
+	# inside the line feels nothing while one just outside gets the full pull.
+	var depth = clamp((dist_frac - loiter_radius_frac) / max(1.0 - loiter_radius_frac, 0.001), 0.0, 1.0)
+	var t = _loiter_time / loiter_patience
+
+	_velocity += inward.normalized() * loiter_pull * t * t * depth * delta
 
 ## Tracks how long the top has spent out near the rim. Unlike wall avoidance,
 ## which only fires within a fixed margin of the limit, this catches a top
@@ -696,21 +710,6 @@ func _update_loiter(delta: float) -> void:
 		_loiter_time = min(_loiter_time + delta, loiter_patience)
 	else:
 		_loiter_time = max(_loiter_time - delta * loiter_recovery, 0.0)
-
-
-## Inward pull that builds the longer a top loiters at the edge, and relaxes
-## once it comes back in. Squared so it stays gentle at first and only becomes
-## insistent after a sustained stay.
-func _centre_pull() -> Vector2:
-	if _loiter_time <= 0.0:
-		return Vector2.ZERO
-	var t = _loiter_time / loiter_patience
-	var inward = arena_centre - _horizontal_pos()
-	var dist = inward.length()
-	if inward.length() < 0.0001:
-		return Vector2.ZERO
-	var closeness = clamp(dist / 0.03, 0.0, 1.0)
-	return inward.normalized() * 0.7 * loiter_pull * t * t * closeness
 
 
 func _clamp_to_arena(desired: Vector2) -> Vector2:
@@ -903,7 +902,7 @@ func _incoming_charge(target: Top) -> Vector2:
 
 	# Bias backward along their approach, so we end up behind the charge
 	# rather than beside it — a much better angle to counter from.
-	var back := -target._velocity.normalized()
+	var back = -target._velocity.normalized()
 	return (perp + back * dodge_back_bias).normalized()
 
 
