@@ -14,16 +14,18 @@ extends Node
 @export var slowmo_scale := 0.5
 
 @export_group('Hitstop')
-@export var hitstop_max_duration := 0.08
+@export var hitstop_max_duration := 0.06
+@export var hitstop_reference_tops := 2
 @export var hitstop_reference_damage := 90
 @export var hitstop_reference_knockback := 50
+@export var hitstop_min_duration := 0.02
 @export var hitstop_threshold := 0.4
 @export var hitstop_overrun := 2.0
 @export var hitstop_combo_step = 0.35
 @export_range(0.2, 3.0) var hitstop_curve := 1.4
 var _hitstop_remaining := 0.0
 var _hitstop_end_msec := 0
-
+var _hitstop_scaled_max := 0.08
 
 @export_group('Spawn Arrangement')
 ## Ring radius as a fraction of arena radius.
@@ -79,7 +81,10 @@ func _ready() -> void:
 	# Must precede the intro: the sequencer reads each top's position as the
 	# destination it flies to.
 	_arrange_tops()
-
+	
+	var scale = float(hitstop_reference_tops) / float(max(tops.size(), 1))
+	_hitstop_scaled_max = max(hitstop_max_duration * scale, hitstop_min_duration)
+	
 	if intro != null:
 		phase = Phase.INTRO
 		intro.finished.connect(_on_intro_finished)
@@ -270,7 +275,6 @@ func _trigger_hitstop(damage: float, knockback: float, combo_depth = 0) -> void:
 	var duration := hitstop_max_duration * shaped
 	
 	duration *= 1.0 + hitstop_combo_step * float(combo_depth)
-	print("  -> freezing for %.3fs" % duration)
 	_hitstop_end_msec = Time.get_ticks_msec() + int(duration * 1000.0)
 	Engine.time_scale = 0.05
 
@@ -306,7 +310,6 @@ func _end_match(winners: Array[Top]) -> void:
 
 func _freeze_after(delay: float) -> void:
 	await get_tree().create_timer(delay, true, false, true).timeout
-	print("freezing; states: ", tops.map(func(t): return t.current_state))
 	for t in tops:
 		if t.current_state == Top.State.ACTIVE:
 			t.freeze_in_place()

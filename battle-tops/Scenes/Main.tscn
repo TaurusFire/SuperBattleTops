@@ -22,6 +22,22 @@
 [ext_resource type="Resource" uid="uid://b3027gvapw8qq" path="res://Resources/statdisplayconfig.tres" id="19_fq0cl"]
 [ext_resource type="Script" uid="uid://bglnepoge5p7t" path="res://Scripts/target_manager.gd" id="21_fq0cl"]
 [ext_resource type="PackedScene" uid="uid://dwj54do12gfkm" path="res://Scenes/target_marker.tscn" id="22_hwpts"]
+[ext_resource type="Script" uid="uid://8qxptv2id3hf" path="res://Scripts/ability_sfx.gd" id="23_c4ay3"]
+[ext_resource type="AudioStream" uid="uid://bj8y5lhaale4p" path="res://Sounds/beep.wav" id="24_aht7i"]
+[ext_resource type="AudioStream" uid="uid://cvoutf0ot1rfe" path="res://Sounds/buzzer.mp3" id="25_5jffn"]
+[ext_resource type="Script" uid="uid://dcgiv3nc2u51b" path="res://Scripts/impact_sfx.gd" id="26_x3rx7"]
+[ext_resource type="AudioStream" uid="uid://1vait46xbfy6" path="res://Sounds/light_sound_1.wav" id="27_6heos"]
+[ext_resource type="AudioStream" uid="uid://b5iw6rbmju2f1" path="res://Sounds/light_sound_2.wav" id="28_vvnwx"]
+[ext_resource type="AudioStream" uid="uid://c6yithhr1noh3" path="res://Sounds/mid_sound_1.wav" id="29_btbly"]
+[ext_resource type="AudioStream" uid="uid://53ewyyfxwroq" path="res://Sounds/mid_sound_2.wav" id="30_vs04g"]
+[ext_resource type="AudioStream" uid="uid://cmhffk8ouu8r0" path="res://Sounds/heavy_sound_1.wav" id="31_6ehlx"]
+[ext_resource type="AudioStream" uid="uid://i3e7u6guotf" path="res://Sounds/Voices/countdown_one_v2.wav" id="34_6heos"]
+[ext_resource type="AudioStream" uid="uid://dcfnfpnsgolaf" path="res://Sounds/wall_hit_wood.ogg" id="35_d8m2u"]
+[ext_resource type="Script" uid="uid://dl5wa6iqjxkl3" path="res://Scripts/countdown_sfx.gd" id="36_vs04g"]
+[ext_resource type="Script" uid="uid://dpw8yxst6yi7c" path="res://Scripts/intro_sfx.gd" id="37_btbly"]
+[ext_resource type="AudioStream" uid="uid://b7cmsxgcpb1tu" path="res://Sounds/Voices/countdown_two.wav" id="38_utia5"]
+[ext_resource type="AudioStream" uid="uid://c3govj300hi7y" path="res://Sounds/basic_woosh_1_v2.wav" id="38_vs04g"]
+[ext_resource type="AudioStream" uid="uid://ejpusefio6xj" path="res://Sounds/Voices/countdown_go.wav" id="39_f7hdo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kln2b"]
 
@@ -51,25 +67,17 @@ visible = false
 stats = ExtResource("17_0sclb")
 
 [node name="Def" parent="." unique_id=1788708962 instance=ExtResource("16_346fj")]
+visible = false
 stats = ExtResource("14_h1m7h")
 
 [node name="Stam" parent="." unique_id=1632133170 instance=ExtResource("16_346fj")]
-visible = false
 stats = ExtResource("15_erwvk")
 
 [node name="Kam" parent="." unique_id=1078701170 instance=ExtResource("16_346fj")]
-stats = ExtResource("7_erwvk")
-
-[node name="Kam2" parent="." unique_id=1259181042 instance=ExtResource("16_346fj")]
-visible = false
-stats = ExtResource("7_erwvk")
-
-[node name="Kam3" parent="." unique_id=1233186677 instance=ExtResource("16_346fj")]
 visible = false
 stats = ExtResource("7_erwvk")
 
 [node name="Spe" parent="." unique_id=1313620997 instance=ExtResource("16_346fj")]
-visible = false
 stats = ExtResource("8_2w5on")
 
 [node name="CameraRig" type="Node3D" parent="." unique_id=2087369725 node_paths=PackedStringArray("manager", "arena")]
@@ -102,7 +110,7 @@ environment = SubResource("Environment_pbw6q")
 [node name="GameManager" type="Node" parent="." unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
 script = ExtResource("5_pbw6q")
 arena = NodePath("../Arena")
-tops = [NodePath("../Kam"), NodePath("../Def")]
+tops = [NodePath("../Stam"), NodePath("../Spe")]
 intro = NodePath("../IntroSequence")
 
 [node name="ClashSparks" type="Node3D" parent="." unique_id=860210630 node_paths=PackedStringArray("manager")]
@@ -176,3 +184,32 @@ manager = NodePath("../GameManager")
 marker_scene = ExtResource("22_hwpts")
 
 [node name="TargetMarker" parent="TargetManager" unique_id=1745481116 instance=ExtResource("22_hwpts")]
+colour = Color(0.50418437, 0.09923769, 0.6980477, 1)
+
+[node name="AbilitySfx" type="Node" parent="." unique_id=1366805111 node_paths=PackedStringArray("manager")]
+script = ExtResource("23_c4ay3")
+manager = NodePath("../GameManager")
+lock_click = ExtResource("24_aht7i")
+lock_buzzer = ExtResource("25_5jffn")
+lock_volume_db = -7.0
+metadata/_custom_type_script = "uid://8qxptv2id3hf"
+
+[node name="ImpactSfx" type="Node" parent="." unique_id=1315393626 node_paths=PackedStringArray("manager")]
+script = ExtResource("26_x3rx7")
+manager = NodePath("../GameManager")
+clash_sounds = Array[AudioStream]([ExtResource("27_6heos"), ExtResource("28_vvnwx"), ExtResource("29_btbly"), ExtResource("30_vs04g"), ExtResource("31_6ehlx")])
+wall_sounds = Array[AudioStream]([ExtResource("35_d8m2u")])
+metadata/_custom_type_script = "uid://dcgiv3nc2u51b"
+
+[node name="CountdownSfx" type="Node" parent="." unique_id=1937449196 node_paths=PackedStringArray("manager")]
+script = ExtResource("36_vs04g")
+manager = NodePath("../GameManager")
+number_clips = Array[AudioStream]([null, ExtResource("34_6heos"), ExtResource("38_utia5")])
+go_clip = ExtResource("39_f7hdo")
+metadata/_custom_type_script = "uid://dl5wa6iqjxkl3"
+
+[node name="IntroSfx" type="Node" parent="." unique_id=215950619 node_paths=PackedStringArray("intro")]
+script = ExtResource("37_btbly")
+intro = NodePath("../IntroSequence")
+whoosh = Array[AudioStream]([ExtResource("38_vs04g")])
+metadata/_custom_type_script = "uid://dpw8yxst6yi7c"

@@ -6,5 +6,5 @@
 script = ExtResource("1_4yarb")
 label = "DEF"
 stat_property = "defence"
-per_half_star = 5.5
+per_half_star = 5.0
 metadata/_custom_type_script = "uid://1mprwdka0ogo"

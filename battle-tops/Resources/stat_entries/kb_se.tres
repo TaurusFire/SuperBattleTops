@@ -5,5 +5,4 @@
 [resource]
 script = ExtResource("1_ogb1c")
 label = "PWR"
-per_half_star = 5.0
 metadata/_custom_type_script = "uid://1mprwdka0ogo"

@@ -7,7 +7,7 @@ extends Ability
 
 enum Phase { DORMANT, TELEGRAPH, CHARGING, SPENDING }
 
-@export var trigger_rpm := 500.0
+@export var trigger_rpm := 1000.0
 ## Speed multiplier during the charge, against the top's own move_speed.
 @export var charge_speed := 2
 ## Seconds of flashing before the charge, so the viewer registers it coming.
@@ -15,15 +15,16 @@ enum Phase { DORMANT, TELEGRAPH, CHARGING, SPENDING }
 ## Seconds the charge lasts before the top expires regardless of outcome.
 @export var window := 0.3
 ## How hard it tracks. High, so it doesn't miss through slow turning.
-@export var agility := 15
-@export var strike_power := 5
+@export var agility := 20
+@export var strike_power := 10
 @export var strike_vertical_bias := 2
 ## Seconds between the strike landing and the top giving up its remaining RPM.
 ## Keeps it ACTIVE through the collision so hitstop and sparks resolve, and
 ## gives the moment room to land before the fall begins.
-@export var spend_delay := 1.25
+@export var spend_delay := 1
 ## Tint for the targeting reticle.
-@export var marker_colour := Color(0.72, 0.32, 0.95)
+@export var marker_colour := Color(0.514, 0.103, 0.713, 1.0)
+@export_range(0.0, 0.5) var retarget_margin := 0.15
 
 # Per-top state, keyed by instance — an ability resource is shared between
 # fighters that use it, so it cannot hold state in plain fields.
@@ -56,9 +57,35 @@ func tick(top: Top, delta: float) -> void:
 		return
 
 	if p == Phase.TELEGRAPH:
+		# The target isn't committed until the charge starts: whoever is
+		# nearest when the telegraph ends is who gets hit, so the reticle
+		# hunts rather than sitting still.
+		var current: Top = _target.get(top, null)
+		var nearest := top._nearest_opponent()
+
+		if nearest != null and nearest != current:
+			var switch := true
+			if current != null and current.current_state == Top.State.ACTIVE:
+				var here := top._horizontal_pos()
+				var d_new := here.distance_to(nearest._horizontal_pos())
+				var d_old := here.distance_to(current._horizontal_pos())
+				switch = d_new < d_old * (1.0 - retarget_margin)
+			if switch:
+				var first := current == null
+				_target[top] = nearest
+				if first:
+					top.target_locked.emit(top, nearest, marker_colour)
+				else:
+					top.target_retargeted.emit(top, nearest)
+
 		if _timer[top] <= 0.0:
+			if _target.get(top, null) == null:
+				_expire(top)
+				return
 			_phase[top] = Phase.CHARGING
 			_timer[top] = window
+			# Committed now — a distinct cue for the moment it settles.
+			top.target_committed.emit(top, _target[top])
 		return
 
 	# Charging: expire when the window closes or the target is gone.
@@ -97,6 +124,7 @@ func _begin(top: Top) -> void:
 	if t == null:
 		print("[%s] kamikaze: no target, dying normally" % top.display_name())
 		return
+	top._end_combo()
 	_target[top] = t
 	_phase[top] = Phase.TELEGRAPH
 	_timer[top] = telegraph_time

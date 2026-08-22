@@ -10,6 +10,7 @@ extends Node
 ## for the rest of the match.
 
 signal top_introduced(top: Top, index: int)
+signal top_approaching(top: Top, index: int)
 signal top_departed(top: Top, index: int)
 signal finished
 
@@ -78,6 +79,7 @@ func begin() -> void:
 			"start_time": i * step,
 			"gauge_right": gauge_right,
 			"home": top.global_position,
+			"approaching": false,
 			"announced": false,
 			"departed": false,
 		})
@@ -129,6 +131,9 @@ func _advance(e: Dictionary) -> bool:
 	var apex := _apex_point(e)
 
 	if t < approach_time:
+		if not e["approaching"]:
+			e["approaching"] = true
+			top_approaching.emit(top, e["index"])
 		var u := t / approach_time
 		# Ease out, so it decelerates into the hold rather than arriving flat.
 		var eased := 1.0 - pow(1.0 - u, 3.0)

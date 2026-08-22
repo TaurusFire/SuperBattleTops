@@ -7,6 +7,6 @@ script = ExtResource("1_4itja")
 label = "STA"
 stat_property = ""
 derived = 1
-per_half_star = 8.0
+per_half_star = 8.75
 invert_baseline = 80.0
 metadata/_custom_type_script = "uid://1mprwdka0ogo"

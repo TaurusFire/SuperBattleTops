@@ -27,7 +27,11 @@ signal dodged(top: Top)
 signal ability_triggered(top: Top, ability: Ability)
 signal combo_hit(top: Top, target: Top, index: int)
 signal target_locked(top: Top, target: Top, tint: Color)
+signal target_retargeted(top: Top, target: Top)
+
 signal target_released(top: Top)
+signal wall_hit(top: Top, force: float)
+signal target_committed(top: Top, target: Top)
 
 var current_state: State = State.INTRO
 var intent: Intent = Intent.CLOSING
@@ -84,17 +88,17 @@ var ability: Ability
 
 @export_group('Combat')
 ## Reference RPM the power curves are measured against.
-@export var ref_rpm = 3000.0
+@export var ref_rpm = 6000.0
 ## Fraction of knockback converted to an upward hop.
 @export var vertical_fraction = 0.25
 ## How much the RPM advantage swings knockback. At 0 it's ignored; the
 ## multiplier is centred on 1.0 so changing this never shifts the baseline.
-@export var dominance_influence = 0.3
+@export var dominance_influence = 0.25
 ## What a stationary or retreating hit is worth relative to a full charge.
-@export var min_momentum_mult = 0.25
+@export var min_momentum_mult = 0.2
 ## Random scatter on knockback direction, in radians, scaled down by momentum
 ## so heavy hits stay decisive and glancing ones vary.
-@export var knockback_scatter = 1.1
+@export var knockback_scatter = 1.2
 ## Floor on damage as a fraction of the raw hit, so defence can never fully
 ## negate an attack and no matchup becomes unwinnable.
 @export_range(0.0, 1.0) var min_damage_frac = 0.7
@@ -102,12 +106,12 @@ var ability: Ability
 @export var velo_reference = 0.2
 ## Vertical knockback multiplier at full RPM — a top spinning fast is settled
 ## on its foot and resists being launched.
-@export var vertical_mult_high_rpm = 0.5
+@export var vertical_mult_high_rpm = 0.25
 ## Multiplier as RPM approaches zero, when the top is barely gripping.
-@export var vertical_mult_low_rpm = 1.25
+@export var vertical_mult_low_rpm = 1.5
 ## Shape of the transition. Below 1 the rise starts early and eases in; above
 ## 1 it stays low through most of the match then climbs sharply near death.
-@export var vertical_mult_curve = 1
+@export var vertical_mult_curve = 1.1
 
 
 @export_group('RPM')
@@ -124,29 +128,29 @@ var spin_display_scale := 1.0
 
 @export_group('Engagement')
 ## Orbit duration at aggression 0 and 1 respectively.
-@export var orbit_time_max = 1.6
-@export var orbit_time_min = 1.1
+@export var orbit_time_max = 1.1
+@export var orbit_time_min = 0.7
 ## Recovery duration at aggression 0 and 1, scaled by how hard the hit was.
-@export var recover_time_max = 1.6
-@export var recover_time_min = 1.2
+@export var recover_time_max = 1.1
+@export var recover_time_min = 0.7
 ## Knockback that earns a full-length recovery.
-@export var recover_reference = 0.8
+@export var recover_reference = 1.0
 ## Below this fraction of reference, a hit only triggers a brief orbit.
-@export var recover_threshold = 0.6
-@export var max_speed := 3.0
+@export var recover_threshold = 0.7
+@export var max_speed := 8.0
 ## RPM at which a top moves at full `move_speed`. Shared across fighters, so a
 ## top with more spin genuinely moves better — unlike rpm_ratio, which is
 ## self-relative and makes a high-RPM top at 10% as slow as a low-RPM one.
-@export var speed_ref_rpm = 3000.0
+@export var speed_ref_rpm = 5000.0
 ## Slowest a top can get, as a fraction of move_speed. Without a floor a
 ## nearly-spent top becomes unwatchable.
-@export_range(0.0, 1.0) var min_speed_frac = 0.55
+@export_range(0.0, 1.0) var min_speed_frac = 0.6
 
 @export_subgroup('Fleeing')
 ## RPM ratio below which a top stops seeking contact and tries to survive.
 ## Unlike RECOVERING this isn't a timed reaction to a hit — it persists for as
 ## long as the top is this badly hurt.
-@export_range(0.0, 1.0) var flee_threshold = 0.10
+@export_range(0.0, 1.0) var flee_threshold = 0.01
 ## Aggression above which a fighter never flees, whatever its RPM. An
 ## aggressive top has no retreat in it — losing simply means it dies swinging.
 @export_range(0.0, 1.0) var flee_aggression_cap = 0.75
@@ -158,14 +162,14 @@ var spin_display_scale := 1.0
 @export var flee_distance = 0.10
 ## Speed multiplier while fleeing. Above 1 so a desperate top can actually
 ## escape rather than being run down immediately.
-@export var flee_speed = 1.5
+@export var flee_speed = 1.25
 ## How strongly it favours circling over running directly away. Pure retreat
 ## backs into the wall; some tangential motion keeps it mobile.
-@export_range(0.0, 1.0) var flee_tangent = 0.1
+@export_range(0.0, 1.0) var flee_tangent = 0.5
 
 
 ## How much the approach arcs rather than charging straight in.
-@export_range(0.0, 1.5) var approach_curve = 0.3
+@export_range(0.0, 1.5) var approach_curve = 0.2
 
 ## Minimum gap to hold, as a multiple of combined radii. Applies regardless of
 ## intent so tops can never settle inside each other.
@@ -175,15 +179,15 @@ var spin_display_scale := 1.0
 ## Constant inward pull standing in for the bowl's curvature, as a multiple of
 ## move_speed at the rim. Applies everywhere, so keep it modest — a large value
 ## flattens the usable arena rather than just discouraging the edge.
-@export var slope_strength = 0.4
+@export var slope_strength = 0.5
 ## Radius, as a fraction of the arena, beyond which a top counts as loitering.
-@export_range(0.0, 1.0) var loiter_radius_frac = 0.45
+@export_range(0.0, 1.0) var loiter_radius_frac = 0.4
 ## Seconds at the edge before the inward pull reaches full strength.
-@export var loiter_patience = 0.5
+@export var loiter_patience = 1
 ## Peak inward pull.
-@export var loiter_pull = 2
+@export var loiter_pull = 4
 ## How fast the timer unwinds once back inside. Higher forgets sooner.
-@export var loiter_recovery = 4
+@export var loiter_recovery = 5
 
 
 @export_group('Dodging')
@@ -193,9 +197,9 @@ var spin_display_scale := 1.0
 ## approaches; higher demands a dead-straight charge.
 @export var dodge_alignment = 0.6
 ## Seconds of lateral burst.
-@export var dodge_duration = 0.15
+@export var dodge_duration = 0.10
 ## Speed multiplier during the slip.
-@export var dodge_speed = 1.2
+@export var dodge_speed = 1.1
 ## Seconds before another dodge is possible, so it stays a moment.
 @export var dodge_cooldown_time = 1
 ## Seconds of counter-attack after a successful slip.
@@ -209,15 +213,15 @@ var spin_display_scale := 1.0
 
 @export_group('Wall')
 ## Steering suspension after a wall bounce, so it reads as a ping not a guide.
-@export var wall_recoil_time = 0.1
+@export var wall_recoil_time = 0.05
 ## Steering suspension after a top-on-top hit, so a pair can't lock together.
 @export var contact_recoil_time = 0.12
 @export var wall_bounce_scatter := 0.4
 ## Inward steering near the rim, so intents pointing outward don't pin a top
 ## against the wall.
-@export var wall_avoid_strength = 3.0
-@export var wall_avoid_range = 0.03
-@export var wall_damage_cooldown := 0.3
+@export var wall_avoid_strength = 0.0
+@export var wall_avoid_range = 0.00
+@export var wall_damage_cooldown := 0.33
 var _wall_damage_timer := 0.0
 var _wall_contact := false
 
@@ -246,12 +250,12 @@ var _wall_contact := false
 ## Closing speed a hit needs to be combo-eligible.
 @export var combo_speed_threshold = 0.04
 ## Chance of the first extra hit, before aggression scales it.
-@export_range(0.0, 1.0) var combo_base_chance = 0.4
+@export_range(0.0, 1.0) var combo_base_chance = 0.5
 ## How much aggression moves that chance.
-@export_range(0.0, 1.0) var combo_aggression_weight = 0.5
+@export_range(0.0, 1.0) var combo_aggression_weight = 0.65
 ## Each additional hit multiplies the chance by this, so long combos are rare
 ## without a cap having to enforce it.
-@export_range(0.1, 1.0) var combo_chance_decay = 0.4
+@export_range(0.1, 1.0) var combo_chance_decay = 0.65
 @export var combo_max_hits = 5
 
 @export_subgroup('Rhythm')
@@ -268,11 +272,11 @@ var _wall_contact := false
 
 @export_subgroup('Force')
 ## Damage multiplier on each intermediate hit.
-@export var combo_hit_damage = 0.25
+@export var combo_hit_damage = 0.55
 ## Knockback on intermediate hits. Near zero so the pair stay in place.
 @export_range(0.0, 1.0) var combo_hit_knockback = 0.05
 ## Damage and knockback multiplier on the finisher.
-@export var combo_finisher_scale = 1.75
+@export var combo_finisher_scale = 2
 
 # ══════════════════════════════════════════════════════════════════════════
 #  RUNTIME STATE
@@ -506,7 +510,7 @@ func _horizontal_pos() -> Vector2:
 ## plus two corrections that always apply regardless of intent.
 func _desired_velocity() -> Vector2:
 	
-	var spin_factor = clamp(pow(current_rpm / speed_ref_rpm, 0.2), min_speed_frac, 1.15)
+	var spin_factor = clamp(pow(current_rpm + 2000 / speed_ref_rpm, 0.2), min_speed_frac, 1.2)
 	var speed = move_speed * spin_factor
 	
 	if ability != null:
@@ -568,17 +572,25 @@ func _intent_velocity(speed: float) -> Vector2:
 			return _ability_velocity(speed, target)
 		
 		Intent.FLEEING:
-			# Keep away without simply running: a blend of retreat and orbit,
-			# so the top stays mobile and doesn't reverse into the wall. The
-			# radial part reverses sign once it's further out than
-			# `flee_distance`, so it holds a ring rather than fleeing forever.
 			var away = -toward
 			var flee_tan = Vector2(-toward.y, toward.x) * _orbit_dir
 			var gap_error = clamp((flee_distance - dist) / max(flee_distance, 0.001), -1.0, 1.0)
 			var radial_flee = away * gap_error
-			var inward_bias = (arena_centre - _horizontal_pos()).normalized() * 0.35
-			return (radial_flee * (1.0 - flee_tangent)
-				+ flee_tan * flee_tangent
+
+			# Run straight when there's room, curve when the wall is close —
+			# a pure retreat backs into the rim and gets pinned there, which
+			# is a worse outcome than circling.
+			var from_centre = _horizontal_pos() - arena_centre
+			var room = 1.0 - clamp(from_centre.length() / max(wall_radius - radius, 0.001), 0.0, 1.0)
+			var tangent_mix = lerpf(flee_tangent, flee_tangent * 0.15, room)
+
+			var inward_bias = Vector2.ZERO
+			if from_centre.length() > 0.001:
+				var inward_weight = clamp(from_centre.length() / (arena_radius * 0.3), 0.0, 1.0)
+				inward_bias = -from_centre.normalized() * inward_weight * 0.35
+
+			return (radial_flee * (1.0 - tangent_mix)
+				+ flee_tan * tangent_mix
 				+ inward_bias).normalized() * speed * flee_speed
 
 		Intent.RECOVERING:
@@ -824,7 +836,7 @@ func _should_flee() -> bool:
 	if rpm_ratio >= band:
 		return false
 	# Only run from someone who can still finish you.
-	return target.current_rpm > current_rpm * 2
+	return target.current_rpm > current_rpm * 1.5
 
 
 func _begin_fleeing() -> void:
@@ -913,13 +925,13 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	
 	# Momentum: a charging top lands a full hit, a stationary or retreating one
 	# only glances. This is what makes aggression pay.
-	var momentum = clamp(velo_bonus / velo_reference, 0.0, 1.3)
+	var momentum = clamp(velo_bonus / velo_reference, 0.0, 1.5)
 	var momentum_mult = lerpf(min_momentum_mult, 1.0, momentum)
 
 	# --- Damage -----------------------------------------------------------
 	# Front-loaded: the exponent gives a high-RPM top a real early advantage
 	# without collapsing damage to nothing at the tail.
-	var power = pow((attack_rpm + ref_rpm) / ref_rpm, 1)
+	var power = pow((attack_rpm + ref_rpm + 3000) / ref_rpm, 1)
 	
 	# Intermediate hits chip and hold position; the finisher carries the whole
 	# flurry's force. Known in advance because the length was rolled up front.
@@ -993,10 +1005,11 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	last_knockback_dealt = applied
 	opponent._receive_kb(applied, dir, vert_bias)
 	
+	var ability_strike = ability != null and ability.controls_movement(self)
 	# Only a fresh collision starts a flurry; hits within one don't re-roll.
-	if _combo_remaining <= 0 and _is_grounded() and opponent._is_grounded():
+	if _combo_remaining <= 0 and not ability_strike:
 		var length = _roll_combo_length(velo_bonus)
-		if length >= 2:
+		if length >= 2 and _is_grounded() and opponent._is_grounded():
 			_begin_combo(opponent, length)
 	
 	if ability is KamikazeAbility:
@@ -1016,10 +1029,10 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 		ability.on_collision(self)
 	# Parenthesised deliberately: without them this divides by 20 and then
 	# multiplies by the weight ratio, so heavier tops take more knockback.
-	knockback = knockback / (20.0 * (weight / 0.18))
+	knockback = knockback / (20.0 * (weight / 0.17))
 
 	# Lower RPM means a top less settled on its foot, so it pops higher.
-	var stability = pow(clamp(current_rpm/1000, 0.0, 1.0), vertical_mult_curve)
+	var stability = pow(clamp(current_rpm/1000, 0.0, 1.1), vertical_mult_curve)
 	var vert_mult = lerpf(vertical_mult_low_rpm, vertical_mult_high_rpm, stability)
 	if vertical_bias <= 0.0:
 		_velocity += dir * knockback
@@ -1030,6 +1043,8 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 	# A hard hit knocks a top onto the back foot; a light one just breaks the
 	# charge. This is what produces the clash-separate-clash rhythm.
 	var severity = clamp(knockback / recover_reference, 0.0, 1.0)
+	print(knockback, " ", recover_reference, " ", knockback / recover_reference, " ", severity)
+
 	# A fleeing top stays fleeing — being hit is exactly why it's running, and
 	# dropping to ORBITING would send it back toward its attacker.
 	if (ability != null and ability.controls_movement(self)):
@@ -1070,10 +1085,10 @@ func _apply_wall_collision() -> void:
 		# Cooldown rather than a contact flag: a top bouncing off and back
 		# re-arms the flag each time, so gating on fresh contact alone lets
 		# repeated glancing impacts drain it dry.
-		if _wall_damage_timer <= 0.0:
-			_receive_dmg(wall_damage)
-			print(display_name(), ' took wall damage')
+		if not _wall_contact and _wall_damage_timer <= 0.0:
+			_receive_dmg(wall_damage - defence * 0.5)
 			_wall_damage_timer = wall_damage_cooldown
+			wall_hit.emit(self, outward_speed)
 			
 	elif outward_speed > 0.0:
 		_velocity -= normal * outward_speed
@@ -1326,6 +1341,7 @@ func _enter_dying() -> void:
 	# Pick up from whatever lean the wobble had reached, so the fall is
 	# continuous rather than snapping upright first.
 	_topple_start_lean = max_wobble_angle * _wobble_amount()
+	target_released.emit(self)
 	entered_dying.emit(self)
 
 
@@ -1351,6 +1367,9 @@ func _update_topple(delta: float) -> void:
 func _enter_knocked_out() -> void:
 	current_state = State.KNOCKED_OUT
 	current_rpm = 0.0
+	# Any ability targeting is void now — release the reticle rather than
+	# leaving it tracking from a top that's out of the arena.
+	target_released.emit(self)
 	entered_dying.emit(self)
 
 
