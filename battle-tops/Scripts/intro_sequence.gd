@@ -22,7 +22,7 @@ signal finished
 ## Seconds arcing in from behind the camera to the apex.
 @export var approach_time := 0.5
 ## Seconds held near the lens while the stats are readable.
-@export var hold_time := 0.5
+@export var hold_time := 1.6
 ## Seconds travelling from the apex out to the hover point.
 @export var depart_time := 0.5
 ## How far into one top's departure the next begins its approach. At 0 they're

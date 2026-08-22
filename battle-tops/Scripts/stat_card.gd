@@ -41,14 +41,14 @@ var _anchor = Vector2.ZERO
 @export var fade_out := 0.18
 ## How far the card slides in from its side, in pixels.
 @export var slide := 70.0
-@export var star_fill_time := 0.15
+@export var star_fill_time := 0.35
 ## Delay between consecutive rows starting, so they cascade.
-@export var star_row_stagger = 0.07
+@export var star_row_stagger = 0.12
 ## How long the glow lingers behind the filling edge.
-@export var star_glow_time = 0.25
+@export var star_glow_time = 0.5
 @export var star_glow_colour = Color(1.0, 0.96, 0.72)
 ## Peak size multiplier on a star as it fills.
-@export var star_pop = 1.45
+@export var star_pop = 1.6
 var _reveal_time = 0.0
 
 

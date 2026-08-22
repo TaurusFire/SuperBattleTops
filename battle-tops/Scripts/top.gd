@@ -19,7 +19,7 @@ enum State { INTRO, COUNTDOWN, ACTIVE, DYING, KNOCKED_OUT, STOPPED }
 
 ## What a top is trying to do right now. CLOSING persists until a collision
 ## interrupts it; the others run on `_intent_timer`.
-enum Intent { CLOSING, ORBITING, RECOVERING, IDLE, DODGING, COUNTERING, FLEEING, ABILITY, COMBO }
+enum Intent { CLOSING, RECOVERING, IDLE, DODGING, COUNTERING, FLEEING, ABILITY, COMBO }
 
 signal stopped(top: Top)
 signal entered_dying(top: Top)
@@ -72,7 +72,6 @@ var weight: float
 # Engagement
 var move_speed = 0.55
 var aggression = 0.5
-var orbit_radius = 0.07
 var dodge_skill = 0.3
 var base_responsiveness = 2.0
 
@@ -88,12 +87,13 @@ var ability: Ability
 
 @export_group('Combat')
 ## Reference RPM the power curves are measured against.
-@export var ref_rpm = 6000.0
+@export var ref_rpm = 10000.0
 ## Fraction of knockback converted to an upward hop.
 @export var vertical_fraction = 0.25
 ## How much the RPM advantage swings knockback. At 0 it's ignored; the
 ## multiplier is centred on 1.0 so changing this never shifts the baseline.
-@export var dominance_influence = 0.25
+@export var dominance_influence = 0.2
+@export var dominance_vertical_bias = 1.00
 ## What a stationary or retreating hit is worth relative to a full charge.
 @export var min_momentum_mult = 0.2
 ## Random scatter on knockback direction, in radians, scaled down by momentum
@@ -127,12 +127,10 @@ var ability: Ability
 var spin_display_scale := 1.0
 
 @export_group('Engagement')
-## Orbit duration at aggression 0 and 1 respectively.
-@export var orbit_time_max = 1.1
-@export var orbit_time_min = 0.7
 ## Recovery duration at aggression 0 and 1, scaled by how hard the hit was.
 @export var recover_time_max = 1.1
 @export var recover_time_min = 0.7
+@export var approach_curve_range = 0.07
 ## Knockback that earns a full-length recovery.
 @export var recover_reference = 1.0
 ## Below this fraction of reference, a hit only triggers a brief orbit.
@@ -141,10 +139,26 @@ var spin_display_scale := 1.0
 ## RPM at which a top moves at full `move_speed`. Shared across fighters, so a
 ## top with more spin genuinely moves better — unlike rpm_ratio, which is
 ## self-relative and makes a high-RPM top at 10% as slow as a low-RPM one.
-@export var speed_ref_rpm = 5000.0
+@export var speed_ref_rpm = 9000.0
 ## Slowest a top can get, as a fraction of move_speed. Without a floor a
 ## nearly-spent top becomes unwatchable.
-@export_range(0.0, 1.0) var min_speed_frac = 0.6
+@export_range(0.0, 1.0) var min_speed_frac = 0.5
+## How much the approach arcs rather than charging straight in.
+@export_range(0.0, 1.5) var approach_curve = 0.2
+## Minimum gap to hold, as a multiple of combined radii. Applies regardless of
+## intent so tops can never settle inside each other.
+@export var separation_factor = 1.05
+@export var separation_strength = 2.0
+@export var slope_scale := 30
+## Radius, as a fraction of the arena, beyond which a top counts as loitering.
+@export_range(0.0, 1.0) var loiter_radius_frac = 0.4
+## Seconds at the edge before the inward pull reaches full strength.
+@export var loiter_patience = 0.5
+## Peak inward pull.
+@export var loiter_pull = 4
+## How fast the timer unwinds once back inside. Higher forgets sooner.
+@export var loiter_recovery = 2
+
 
 @export_subgroup('Fleeing')
 ## RPM ratio below which a top stops seeking contact and tries to survive.
@@ -166,25 +180,6 @@ var spin_display_scale := 1.0
 ## How strongly it favours circling over running directly away. Pure retreat
 ## backs into the wall; some tangential motion keeps it mobile.
 @export_range(0.0, 1.0) var flee_tangent = 0.5
-
-
-## How much the approach arcs rather than charging straight in.
-@export_range(0.0, 1.5) var approach_curve = 0.2
-
-## Minimum gap to hold, as a multiple of combined radii. Applies regardless of
-## intent so tops can never settle inside each other.
-@export var separation_factor = 1.05
-@export var separation_strength = 2.0
-
-@export var slope_scale := 20
-## Radius, as a fraction of the arena, beyond which a top counts as loitering.
-@export_range(0.0, 1.0) var loiter_radius_frac = 0.3
-## Seconds at the edge before the inward pull reaches full strength.
-@export var loiter_patience = 1
-## Peak inward pull.
-@export var loiter_pull = 4
-## How fast the timer unwinds once back inside. Higher forgets sooner.
-@export var loiter_recovery = 2
 
 
 @export_group('Dodging')
@@ -209,11 +204,16 @@ var spin_display_scale := 1.0
 @export var counter_abandon_range = 0.15
 
 @export_group('Wall')
+## How strongly motion along the rim is damped, per second. Only the
+## tangential component: a top should still be able to leave the wall freely,
+## it just shouldn't be able to race around it.
+@export var rim_drag = 8.0
+## Distance inside the limit at which the drag begins.
+@export var rim_drag_range = 0.075
 ## Steering suspension after a wall bounce, so it reads as a ping not a guide.
 @export var wall_recoil_time = 0.05
 ## Steering suspension after a top-on-top hit, so a pair can't lock together.
 @export var contact_recoil_time = 0.12
-@export var wall_bounce_scatter := 0.4
 ## Inward steering near the rim, so intents pointing outward don't pin a top
 ## against the wall.
 @export var wall_avoid_strength = 0.0
@@ -249,10 +249,10 @@ var _wall_contact := false
 ## Chance of the first extra hit, before aggression scales it.
 @export_range(0.0, 1.0) var combo_base_chance = 0.5
 ## How much aggression moves that chance.
-@export_range(0.0, 1.0) var combo_aggression_weight = 0.65
+@export_range(0.0, 1.0) var combo_aggression_weight = 0.6
 ## Each additional hit multiplies the chance by this, so long combos are rare
 ## without a cap having to enforce it.
-@export_range(0.1, 1.0) var combo_chance_decay = 0.65
+@export_range(0.1, 1.0) var combo_chance_decay = 0.5
 @export var combo_max_hits = 5
 
 @export_subgroup('Rhythm')
@@ -269,7 +269,7 @@ var _wall_contact := false
 
 @export_subgroup('Force')
 ## Damage multiplier on each intermediate hit.
-@export var combo_hit_damage = 0.55
+@export var combo_hit_damage = 0.4
 ## Knockback on intermediate hits. Near zero so the pair stay in place.
 @export_range(0.0, 1.0) var combo_hit_knockback = 0.05
 ## Damage and knockback multiplier on the finisher.
@@ -310,7 +310,7 @@ var _loiter_time = 0.0
 
 # Intent
 var _intent_timer = 0.0
-var _orbit_dir = 1.0
+var _arc_dir = 1.0
 var _dodge_dir_vec = Vector2.ZERO
 var _dodge_cooldown = 0.0
 
@@ -379,7 +379,6 @@ func _apply_stats() -> void:
 
 	move_speed = stats.move_speed
 	aggression = stats.aggression
-	orbit_radius = stats.orbit_radius
 	dodge_skill = stats.dodge_skill
 	base_responsiveness = stats.base_responsiveness
 
@@ -453,7 +452,8 @@ func _update_active(delta: float) -> void:
 	if not _airborne:
 		_apply_slope(delta)
 		_apply_loiter_pull(delta)
-
+		_apply_rim_drag(delta)
+	
 	_wall_recoil_timer = max(_wall_recoil_timer - delta, 0.0)
 	_wall_damage_timer = max(_wall_damage_timer - delta, 0.0)
 	_stun_timer = max(_stun_timer - delta, 0.0)
@@ -511,7 +511,7 @@ func _horizontal_pos() -> Vector2:
 ## plus two corrections that always apply regardless of intent.
 func _desired_velocity() -> Vector2:
 	
-	var spin_factor = clamp(pow(current_rpm + 2000 / speed_ref_rpm, 0.2), min_speed_frac, 1.2)
+	var spin_factor = clamp(pow(current_rpm + 4000 / speed_ref_rpm, 0.2), min_speed_frac, 1.2)
 	var speed = move_speed * spin_factor
 	
 	if ability != null:
@@ -540,19 +540,10 @@ func _intent_velocity(speed: float) -> Vector2:
 			# Arc in rather than charging straight, so tops meet off-axis and
 			# glance rather than colliding dead-centre every time. The lateral
 			# component fades with distance, so the top commits at the end.
-			var tangent = Vector2(-toward.y, toward.x) * _orbit_dir
+			var tangent = Vector2(-toward.y, toward.x) * _arc_dir
 			var curve_amount = approach_curve * (1.0 - aggression * 0.5)
-			var curve = curve_amount * clamp(dist / max(orbit_radius, 0.001), 0.0, 1.0)
+			var curve = curve_amount * clamp(dist / max(approach_curve_range, 0.001), 0.0, 1.0)
 			return (toward + tangent * curve).normalized() * speed
-		
-		Intent.ORBITING:
-			# Circle at orbit_radius: tangential motion plus a radial nudge
-			# proportional to how far off that distance we currently are.
-			var tangent = Vector2(-toward.y, toward.x) * _orbit_dir
-			var radial_error = (dist - orbit_radius) / max(orbit_radius, 0.001)
-			var radial = toward * clamp(radial_error, -1.0, 1.0)
-			return (tangent + radial * 0.6).normalized() * speed
-
 		Intent.DODGING:
 			# Pure lateral burst — the opponent's momentum carries them past.
 			return _dodge_dir_vec * move_speed * dodge_speed
@@ -571,7 +562,7 @@ func _intent_velocity(speed: float) -> Vector2:
 		
 		Intent.FLEEING:
 			var away = -toward
-			var flee_tan = Vector2(-toward.y, toward.x) * _orbit_dir
+			var flee_tan = Vector2(-toward.y, toward.x) * _arc_dir
 			var gap_error = clamp((flee_distance - dist) / max(flee_distance, 0.001), -1.0, 1.0)
 			var radial_flee = away * gap_error
 
@@ -696,7 +687,8 @@ func _apply_loiter_pull(delta: float) -> void:
 	var dist_frac = clamp(dist / arena_radius, 0.0, 1.0)
 	# Ramp with distance as well as time: a hard threshold means a top just
 	# inside the line feels nothing while one just outside gets the full pull.
-	var depth = clamp((dist_frac - loiter_radius_frac) / max(1.0 - loiter_radius_frac, 0.001), 0.0, 1.0)
+	var max_frac = (wall_radius - radius) / arena_radius
+	var depth = clamp((dist_frac - loiter_radius_frac) / max(max_frac - loiter_radius_frac, 0.001), 0.0, 1.0)
 	var t = _loiter_time / loiter_patience
 
 	_velocity += inward.normalized() * loiter_pull * t * t * depth * delta
@@ -710,8 +702,7 @@ func _update_loiter(delta: float) -> void:
 		_loiter_time = min(_loiter_time + delta, loiter_patience)
 	else:
 		_loiter_time = max(_loiter_time - delta * loiter_recovery, 0.0)
-
-
+	
 func _clamp_to_arena(desired: Vector2) -> Vector2:
 	var from_centre := _horizontal_pos() - arena_centre
 	var dist := from_centre.length()
@@ -723,6 +714,23 @@ func _clamp_to_arena(desired: Vector2) -> Vector2:
 	if outward <= 0.0:
 		return desired
 	return desired - normal * outward
+
+func _apply_rim_drag(delta: float) -> void:
+	if _airborne:
+		return
+	var from_centre = _horizontal_pos() - arena_centre
+	var dist = from_centre.length()
+	var limit = wall_radius - radius
+	var margin = limit - dist
+	if margin > rim_drag_range or dist < 0.001:
+		return
+
+	var closeness = 1.0 - clamp(margin / rim_drag_range, 0.0, 1.0)
+	var normal = from_centre / dist
+	var radial = normal * _velocity.dot(normal)
+	var tangential = _velocity - radial
+	tangential = tangential.lerp(Vector2.ZERO, clamp(rim_drag * closeness * delta, 0.0, 1.0))
+	_velocity = radial + tangential
 
 ## Movement while an ability has control. Only Kamikaze exists so far; when
 ## there are more, this dispatches on the ability type.
@@ -774,8 +782,8 @@ func _update_intent(delta: float) -> void:
 
 	# Only try to read a charge when we aren't already committed to something.
 	if _stun_timer <= 0.0 and target._stun_timer <= 0.0 \
-		and intent in [Intent.CLOSING, Intent.ORBITING] \
-			and randf() < dodge_skill * delta * 6.0:
+		and intent in [Intent.CLOSING, Intent.RECOVERING] \
+			and randf() < dodge_skill * delta * 15.0:
 		var slip = _incoming_charge(target)
 		if slip != Vector2.ZERO:
 			_begin_dodging(slip, target)
@@ -797,7 +805,7 @@ func _update_intent(delta: float) -> void:
 
 			_counter_target = null
 			_velocity *= 0.15
-			_begin_orbiting()
+			_begin_closing()
 		return
 	
 	# Fleeing overrides the ordinary cycle: a top this badly hurt shouldn't be
@@ -840,7 +848,7 @@ func _should_flee() -> bool:
 
 func _begin_fleeing() -> void:
 	intent = Intent.FLEEING
-	_orbit_dir = 1.0 if randf() < 0.5 else -1.0
+	_arc_dir = 1.0 if randf() < 0.5 else -1.0
 	# No timer: this persists for as long as the RPM condition holds.
 	_intent_timer = 0.0
 
@@ -848,14 +856,7 @@ func _begin_fleeing() -> void:
 func _begin_closing() -> void:
 	intent = Intent.CLOSING
 	_intent_timer = 0.0
-	_orbit_dir = 1.0 if randf() < 0.5 else -1.0
-
-
-func _begin_orbiting() -> void:
-	intent = Intent.ORBITING
-	_orbit_dir = 1.0 if randf() < 0.5 else -1.0
-	_intent_timer = lerpf(orbit_time_max, orbit_time_min, aggression)
-
+	_arc_dir = 1.0 if randf() < 0.5 else -1.0
 
 func _begin_recovering(severity: float) -> void:
 	intent = Intent.RECOVERING
@@ -930,7 +931,7 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	# --- Damage -----------------------------------------------------------
 	# Front-loaded: the exponent gives a high-RPM top a real early advantage
 	# without collapsing damage to nothing at the tail.
-	var power = pow((attack_rpm + ref_rpm + 3000) / ref_rpm, 1)
+	var power = pow((attack_rpm + ref_rpm + 4500) / ref_rpm, 1)
 	
 	# Intermediate hits chip and hold position; the finisher carries the whole
 	# flurry's force. Known in advance because the length was rolled up front.
@@ -964,14 +965,24 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	# --- Knockback --------------------------------------------------------
 	# Its own, flatter power curve: knockback is the spectacle, and shouldn't
 	# collapse late the way damage does.
-	var kb_power = (attack_rpm + ref_rpm) / ref_rpm
+	var kb_power = (attack_rpm + ref_rpm + 3000) / ref_rpm
 	var total_rpm = attack_rpm + opponent.current_rpm
 	var dominance = attack_rpm / total_rpm if total_rpm > 0.0 else 0.5
 	var dominance_mult = 1.0 + (dominance - 0.5) * 2.0 * dominance_influence
 
 	var weight_factor = weight / (weight + opponent.weight)
+	
 	var vert_bias := 1.0
-
+	
+	if ability != null:
+		vert_bias = ability.vertical_bias(self)
+		
+	# A clear RPM advantage sends the opponent up rather than along. Evenly
+	# matched tops (dominance 0.5) are unaffected, so this widens the gap
+	# between a decisive hit and a trade without changing the baseline.
+	vert_bias *= 1.0 + (dominance - 0.5) * 2.0 * dominance_vertical_bias
+	vert_bias = max(vert_bias, 0.4)
+	
 	var base_term = base_knockback * pow(kb_power, 0.5) * weight_factor * 0.75
 	var applied = base_term * dominance_mult * momentum_mult * strike
 	
@@ -1026,12 +1037,11 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 	
 	if ability != null:
 		ability.on_collision(self)
-	# Parenthesised deliberately: without them this divides by 20 and then
-	# multiplies by the weight ratio, so heavier tops take more knockback.
+
 	knockback = knockback / (20.0 * (weight / 0.17))
 
 	# Lower RPM means a top less settled on its foot, so it pops higher.
-	var stability = pow(clamp(current_rpm/1000, 0.0, 1.1), vertical_mult_curve)
+	var stability = pow(clamp(current_rpm/1500, 0.0, 1.1), vertical_mult_curve)
 	var vert_mult = lerpf(vertical_mult_low_rpm, vertical_mult_high_rpm, stability)
 	if vertical_bias <= 0.0:
 		_velocity += dir * knockback
@@ -1042,7 +1052,6 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 	# A hard hit knocks a top onto the back foot; a light one just breaks the
 	# charge. This is what produces the clash-separate-clash rhythm.
 	var severity = clamp(knockback / recover_reference, 0.0, 1.0)
-	print(knockback, " ", recover_reference, " ", knockback / recover_reference, " ", severity)
 
 	# A fleeing top stays fleeing — being hit is exactly why it's running, and
 	# dropping to ORBITING would send it back toward its attacker.
@@ -1052,7 +1061,7 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 		if severity > recover_threshold:
 			_begin_recovering(severity)
 		else:
-			_begin_orbiting()
+			_begin_closing()
 	
 
 
@@ -1197,7 +1206,7 @@ func _end_combo() -> void:
 	_combo_target = null
 	_combo_remaining = 0
 	_combo_reeling = false
-	_begin_orbiting()
+	_begin_closing()
 
 func _apply_stun(duration: float) -> void:
 	_stun_timer = max(_stun_timer, duration)
@@ -1329,7 +1338,7 @@ func begin_match() -> void:
 	current_state = State.ACTIVE
 	# Stagger the opening so the first clash isn't identical every match.
 	if randf() > aggression:
-		_begin_orbiting()
+		_begin_closing()
 	else:
 		_begin_closing()
 

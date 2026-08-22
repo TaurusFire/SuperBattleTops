@@ -23,7 +23,7 @@ extends Node
 @export_group('References')
 @export var knockback_reference := 50.0
 @export var damage_reference := 110.0
-@export_range(0.3, 2.0) var clash_curve := 0.45
+@export_range(0.3, 2.0) var clash_curve := 0.5
 
 @export_group('Wall')
 ## Ordered weakest to strongest, same as the clash set.
@@ -81,12 +81,12 @@ func _on_clash(a: Top, b: Top) -> void:
 	var spread = clash_spread * clamp(edge, 0.0, 1.0)
 	var pick = int(round(ideal + randf_range(-spread, spread)))
 	
-	pick = clamp(pick, 0, clash_sounds.size() - 1)
+	pick = clamp(pick, 0, clash_sounds.size() - 1) 
 
-	print("clash sfx: strength=%.2f pick=%d of %d, kb=%.1f dmg=%.1f" % [
-		strength, pick, clash_sounds.size(),
-		max(a.last_knockback_dealt, b.last_knockback_dealt),
-		max(a.last_damage_dealt, b.last_damage_dealt)])
+	#print("clash sfx: strength=%.2f pick=%d of %d, kb=%.1f dmg=%.1f" % [
+		#strength, pick, clash_sounds.size(),
+		#max(a.last_knockback_dealt, b.last_knockback_dealt),
+		#max(a.last_damage_dealt, b.last_damage_dealt)])
 	
 	# Volume follows the same curve, so the mix reinforces the sample choice
 	# rather than flattening it.

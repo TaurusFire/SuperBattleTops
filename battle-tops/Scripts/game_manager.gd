@@ -15,17 +15,14 @@ extends Node
 
 @export_group('Hitstop')
 @export var hitstop_max_duration := 0.06
-@export var hitstop_reference_tops := 2
-@export var hitstop_reference_damage := 90
+@export var hitstop_reference_damage := 100
 @export var hitstop_reference_knockback := 50
 @export var hitstop_min_duration := 0.02
 @export var hitstop_threshold := 0.4
 @export var hitstop_overrun := 2.0
 @export var hitstop_combo_step = 0.35
 @export_range(0.2, 3.0) var hitstop_curve := 1.4
-var _hitstop_remaining := 0.0
 var _hitstop_end_msec := 0
-var _hitstop_scaled_max := 0.08
 
 @export_group('Spawn Arrangement')
 ## Ring radius as a fraction of arena radius.
@@ -83,8 +80,10 @@ func _ready() -> void:
 	# destination it flies to.
 	_arrange_tops()
 	
-	var scale = float(hitstop_reference_tops) / float(max(tops.size(), 1))
-	_hitstop_scaled_max = max(hitstop_max_duration * scale, hitstop_min_duration)
+	if tops.size() == 3:
+		hitstop_max_duration = 0.04
+	elif tops.size() >= 4:
+		hitstop_max_duration = 0.02
 	
 	if intro != null:
 		phase = Phase.INTRO

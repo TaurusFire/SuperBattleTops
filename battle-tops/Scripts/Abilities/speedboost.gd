@@ -8,7 +8,7 @@ extends Ability
 ## Speed added per collision, as a fraction of the top's base move speed.
 @export var gain_per_hit := 0.25
 ## Ceiling on the accumulated bonus, as a fraction of base move speed.
-@export var max_bonus := 5
+@export var max_bonus := 8
 ## How much of the bonus bleeds away per second without contact.
 @export var decay_per_second := 0.1
 ## Seconds after a clash before the bonus starts decaying.

@@ -28,11 +28,11 @@ var _distance := 0.5
 
 @export_group('Impact')
 ## Peak positional shake at reference knockback, in world units.
-@export var shake_max := 0.003
+@export var shake_max := 0.004
 ## How fast shake decays. Higher = snappier.
 @export var shake_decay := 8.0
 ## Shake oscillation speed.
-@export var shake_frequency := 35.0
+@export var shake_frequency := 40.0
 ## How far the camera lunges toward the focus at reference knockback.
 @export var punch_max := 0.05
 ## How fast the punch springs back.

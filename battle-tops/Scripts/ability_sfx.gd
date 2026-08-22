@@ -13,10 +13,10 @@ extends Node
 @export var lock_click_volume_db := -6.0
 ## Follows shortly after, as the charge builds.
 @export var lock_buzzer: AudioStream
-@export var lock_delay := 0.95
+@export var lock_delay := 0.8
 @export var lock_volume_db := -6.0
 ## How long the buzzer sounds. Zero plays the whole file.
-@export var lock_buzzer_duration := 1.0
+@export var lock_buzzer_duration := 0.9
 ## Fade at the end, in seconds. Cutting a tone dead produces an audible click,
 ## so even a very short ramp is worth having.
 @export var lock_buzzer_fade := 0.04

@@ -47,8 +47,6 @@ extends Resource
 ## How readily this fighter seeks contact. Higher means shorter orbits, quicker
 ## recoveries, and more direct approaches — attack high, defence low.
 @export var aggression := 0.5
-## Preferred distance from the opponent while circling.
-@export var orbit_radius := 0.07
 @export var dodge_skill := 0.3
 @export var base_responsiveness := 5.0
 

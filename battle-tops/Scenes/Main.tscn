@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://c6yithhr1noh3" path="res://Sounds/mid_sound_1.wav" id="29_btbly"]
 [ext_resource type="AudioStream" uid="uid://53ewyyfxwroq" path="res://Sounds/mid_sound_2.wav" id="30_vs04g"]
 [ext_resource type="AudioStream" uid="uid://cmhffk8ouu8r0" path="res://Sounds/heavy_sound_1.wav" id="31_6ehlx"]
+[ext_resource type="AudioStream" uid="uid://c7jsv3itnok6v" path="res://Sounds/mid_sound_3.wav" id="31_vs04g"]
 [ext_resource type="AudioStream" uid="uid://i3e7u6guotf" path="res://Sounds/Voices/countdown_one_v2.wav" id="34_6heos"]
 [ext_resource type="AudioStream" uid="uid://dcfnfpnsgolaf" path="res://Sounds/wall_hit_wood.ogg" id="35_d8m2u"]
 [ext_resource type="Script" uid="uid://dl5wa6iqjxkl3" path="res://Scripts/countdown_sfx.gd" id="36_vs04g"]
@@ -56,6 +57,12 @@ glow_bloom = 0.1
 
 [node name="Main" type="Node3D" unique_id=963593362]
 
+[node name="GameManager" type="Node" parent="." unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
+script = ExtResource("5_pbw6q")
+arena = NodePath("../Arena")
+tops = [NodePath("../Stam"), NodePath("../Def")]
+intro = NodePath("../IntroSequence")
+
 [node name="Arena" parent="." unique_id=1258390969 instance=ExtResource("1_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1273575e-05, -0.0001745522, 0.00017187744)
 collision_layer = 4
@@ -67,7 +74,6 @@ visible = false
 stats = ExtResource("17_0sclb")
 
 [node name="Def" parent="." unique_id=1788708962 instance=ExtResource("16_346fj")]
-visible = false
 stats = ExtResource("14_h1m7h")
 
 [node name="Stam" parent="." unique_id=1632133170 instance=ExtResource("16_346fj")]
@@ -78,6 +84,7 @@ visible = false
 stats = ExtResource("7_erwvk")
 
 [node name="Spe" parent="." unique_id=1313620997 instance=ExtResource("16_346fj")]
+visible = false
 stats = ExtResource("8_2w5on")
 
 [node name="CameraRig" type="Node3D" parent="." unique_id=2087369725 node_paths=PackedStringArray("manager", "arena")]
@@ -106,12 +113,6 @@ directional_shadow_max_distance = 2.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2043798271]
 environment = SubResource("Environment_pbw6q")
-
-[node name="GameManager" type="Node" parent="." unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
-script = ExtResource("5_pbw6q")
-arena = NodePath("../Arena")
-tops = [NodePath("../Stam"), NodePath("../Spe")]
-intro = NodePath("../IntroSequence")
 
 [node name="ClashSparks" type="Node3D" parent="." unique_id=860210630 node_paths=PackedStringArray("manager")]
 script = ExtResource("14_1p5hy")
@@ -173,7 +174,6 @@ manager = NodePath("../GameManager")
 arena = NodePath("../Arena")
 camera = NodePath("../CameraRig")
 approach_time = 0.15
-hold_time = 0.8
 apex_lateral = 0.01
 apex_tilt = 0.0
 metadata/_custom_type_script = "uid://cyyh86gto6xke"
@@ -197,7 +197,7 @@ metadata/_custom_type_script = "uid://8qxptv2id3hf"
 [node name="ImpactSfx" type="Node" parent="." unique_id=1315393626 node_paths=PackedStringArray("manager")]
 script = ExtResource("26_x3rx7")
 manager = NodePath("../GameManager")
-clash_sounds = Array[AudioStream]([ExtResource("27_6heos"), ExtResource("28_vvnwx"), ExtResource("29_btbly"), ExtResource("30_vs04g"), ExtResource("31_6ehlx")])
+clash_sounds = Array[AudioStream]([ExtResource("27_6heos"), ExtResource("28_vvnwx"), ExtResource("29_btbly"), ExtResource("30_vs04g"), ExtResource("31_vs04g"), ExtResource("31_6ehlx")])
 wall_sounds = Array[AudioStream]([ExtResource("35_d8m2u")])
 metadata/_custom_type_script = "uid://dcgiv3nc2u51b"
 
