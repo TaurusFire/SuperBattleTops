@@ -1076,15 +1076,18 @@ func _projects_knockout() -> bool:
 	if _vertical_velocity <= 0.0:
 		return false
 
-	# Time until it falls back to the height it left from.
-	var air_time = 2.0 * _vertical_velocity / max(gravity, 0.001)
-	# Peak height reached, against the wall it has to clear.
-	var peak = global_position.y + (_vertical_velocity * _vertical_velocity) / (2.0 * max(gravity, 0.001))
+	var g = max(gravity, 0.001)
+	var peak = global_position.y + (_vertical_velocity * _vertical_velocity) / (2.0 * g)
+	var air_time = 2.0 * _vertical_velocity / g
+	var projected = _horizontal_pos() + _velocity * air_time
+	var reach = projected.distance_to(arena_centre)
+
+	print("KO proj: vv=%.3f peak=%.4f (need %.4f) reach=%.4f (need %.4f)" % [
+		_vertical_velocity, peak, arena_centre.y + wall_top_height, reach, knockout_radius])
+
 	if peak < arena_centre.y + wall_top_height:
 		return false
-
-	var projected = _horizontal_pos() + _velocity * air_time
-	return projected.distance_to(arena_centre) > knockout_radius
+	return reach > knockout_radius
 
 func _apply_wall_collision() -> void:
 	if _airborne:

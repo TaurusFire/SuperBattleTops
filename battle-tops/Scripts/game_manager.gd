@@ -119,8 +119,14 @@ func _process(delta: float) -> void:
 	if _hitstop_end_msec > 0:
 		if Time.get_ticks_msec() >= _hitstop_end_msec:
 			_hitstop_end_msec = 0
-			# Restore to slow-mo if the match has already been decided.
-			Engine.time_scale = slowmo_scale if phase == Phase.ENDING else 1.0
+			if phase == Phase.ENDING:
+				Engine.time_scale = slowmo_scale
+			elif _deciding_end_msec > Time.get_ticks_msec():
+				# A deciding blow is still playing out — resume into its
+				# slowdown rather than back to full speed.
+				Engine.time_scale = deciding_blow_scale
+			else:
+				Engine.time_scale = 1.0
 		return
 	
 	if _deciding_end_msec > 0 and Time.get_ticks_msec() >= _deciding_end_msec:
@@ -196,10 +202,12 @@ func _check_deciding_blow(victim: Top, _attacker: Top) -> void:
 
 
 func _begin_deciding_slowmo() -> void:
-	if _hitstop_end_msec > 0:
-		return          # let the freeze land first
-	Engine.time_scale = deciding_blow_scale
+	# Deliberately doesn't bail on an active hitstop: the deciding blow is
+	# itself a collision, so a freeze is always running when this fires. The
+	# slowdown is what time resumes *to* once the freeze lifts.
 	_deciding_end_msec = Time.get_ticks_msec() + int(deciding_blow_time * 1000.0)
+	if _hitstop_end_msec <= 0:
+		Engine.time_scale = deciding_blow_scale
 
 func _start_match() -> void:
 	phase = Phase.FIGHTING

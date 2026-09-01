@@ -139,10 +139,6 @@ func _on_collision(a: Top, b: Top) -> void:
 	var strength: float = clamp(raw, 0.0, 1.0)
 	var overrun: float = clamp(raw, 1.0, overrun_max)
 	
-	if _ko_pending:
-		overrun = min(overrun * knockout_overrun, overrun_max * knockout_overrun)
-		_ko_pending = false
-	
 	var a_pos := Vector3(a.global_position.x, 0.0, a.global_position.z)
 	var b_pos := Vector3(b.global_position.x, 0.0, b.global_position.z)
 	var to_b := b_pos - a_pos
