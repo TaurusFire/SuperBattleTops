@@ -32,6 +32,15 @@ extends Node3D
 ## the glow threshold, which is what makes them bloom.
 @export var hot_energy := 2.2
 
+@export_group('Knockout')
+## Extra multiplier on the burst when a hit is projected to send a top out.
+@export var knockout_overrun = 2.0
+## Sparks turn red on a projected knockout — a different hue rather than
+## merely more of them, so the moment is distinguishable at a glance.
+@export var knockout_colour := Color(1.0, 0.22, 0.12)
+@export var knockout_energy = 2.6
+var _ko_pending := false
+
 var _particles: GPUParticles3D
 
 func _ready() -> void:
@@ -57,6 +66,7 @@ func _ready() -> void:
 	_particles.material_override = mat
 	
 	manager.collision_occurred.connect(_on_collision)
+	manager.knockout_projected.connect(_on_knockout_projected)
 
 
 func _make_process_material() -> ParticleProcessMaterial:
@@ -129,6 +139,10 @@ func _on_collision(a: Top, b: Top) -> void:
 	var strength: float = clamp(raw, 0.0, 1.0)
 	var overrun: float = clamp(raw, 1.0, overrun_max)
 	
+	if _ko_pending:
+		overrun = min(overrun * knockout_overrun, overrun_max * knockout_overrun)
+		_ko_pending = false
+	
 	var a_pos := Vector3(a.global_position.x, 0.0, a.global_position.z)
 	var b_pos := Vector3(b.global_position.x, 0.0, b.global_position.z)
 	var to_b := b_pos - a_pos
@@ -139,18 +153,21 @@ func _on_collision(a: Top, b: Top) -> void:
 	global_position = contact
 
 	# 0 at the reference, 1 at overrun_max — how far past "a solid hit" this was.
-	var heat := inverse_lerp(1.0, overrun_max, overrun)
-	heat = clamp(heat, 0.0, 1.0)
+	var heat = clamp(inverse_lerp(1.0, overrun_max, overrun), 0.0, 1.0)
+	var col: Color
 
-	var col := spark_colour.lerp(spark_colour_hot, heat)
-	# Push the intensity past 1 so the brightest hits cross the glow threshold
-	# and bloom, rather than just being pale.
-	col = col * lerpf(1.0, hot_energy, heat)
+	if _ko_pending:
+		overrun = min(overrun * knockout_overrun, overrun_max * knockout_overrun)
+		col = knockout_colour * knockout_energy
+		_ko_pending = false
+	else:
+		col = spark_colour.lerp(spark_colour_hot, heat)
+		col = col * lerpf(1.0, hot_energy, heat)
 
-	var mat := _particles.material_override as StandardMaterial3D
+	var mat = _particles.material_override as StandardMaterial3D
 	mat.albedo_color = col
 
-	var pm := _particles.process_material as ParticleProcessMaterial
+	var pm = _particles.process_material as ParticleProcessMaterial
 	pm.color = col
 	pm.initial_velocity_min = min_speed * overrun
 	pm.initial_velocity_max = max_speed * overrun
@@ -158,3 +175,8 @@ func _on_collision(a: Top, b: Top) -> void:
 	_particles.draw_pass_1.size = Vector2(spark_size, spark_size) * overrun
 	_particles.amount_ratio = clamp(strength, 0.15, 1.0)
 	_particles.restart()
+
+func _on_knockout_projected(_top: Top, _attacker: Top) -> void:
+	# Set just before the collision signal resolves, so the burst that follows
+	# is scaled up.
+	_ko_pending = true

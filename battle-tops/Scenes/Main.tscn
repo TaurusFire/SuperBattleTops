@@ -39,6 +39,7 @@
 [ext_resource type="AudioStream" uid="uid://b7cmsxgcpb1tu" path="res://Sounds/Voices/countdown_two.wav" id="38_utia5"]
 [ext_resource type="AudioStream" uid="uid://c3govj300hi7y" path="res://Sounds/basic_woosh_1_v2.wav" id="38_vs04g"]
 [ext_resource type="AudioStream" uid="uid://ejpusefio6xj" path="res://Sounds/Voices/countdown_go.wav" id="39_f7hdo"]
+[ext_resource type="Script" uid="uid://q0wit3jk86o" path="res://Scripts/dodge_flash.gd" id="40_6ehlx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kln2b"]
 
@@ -60,7 +61,7 @@ glow_bloom = 0.1
 [node name="GameManager" type="Node" parent="." unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
 script = ExtResource("5_pbw6q")
 arena = NodePath("../Arena")
-tops = [NodePath("../Stam"), NodePath("../Def")]
+tops = [NodePath("../Spe"), NodePath("../Def")]
 intro = NodePath("../IntroSequence")
 
 [node name="Arena" parent="." unique_id=1258390969 instance=ExtResource("1_kln2b")]
@@ -77,6 +78,7 @@ stats = ExtResource("17_0sclb")
 stats = ExtResource("14_h1m7h")
 
 [node name="Stam" parent="." unique_id=1632133170 instance=ExtResource("16_346fj")]
+visible = false
 stats = ExtResource("15_erwvk")
 
 [node name="Kam" parent="." unique_id=1078701170 instance=ExtResource("16_346fj")]
@@ -84,7 +86,6 @@ visible = false
 stats = ExtResource("7_erwvk")
 
 [node name="Spe" parent="." unique_id=1313620997 instance=ExtResource("16_346fj")]
-visible = false
 stats = ExtResource("8_2w5on")
 
 [node name="CameraRig" type="Node3D" parent="." unique_id=2087369725 node_paths=PackedStringArray("manager", "arena")]
@@ -213,3 +214,8 @@ script = ExtResource("37_btbly")
 intro = NodePath("../IntroSequence")
 whoosh = Array[AudioStream]([ExtResource("38_vs04g")])
 metadata/_custom_type_script = "uid://dpw8yxst6yi7c"
+
+[node name="DodgeFlash" type="Node" parent="." unique_id=1447048858 node_paths=PackedStringArray("manager")]
+script = ExtResource("40_6ehlx")
+manager = NodePath("../GameManager")
+metadata/_custom_type_script = "uid://q0wit3jk86o"

@@ -1,6 +1,9 @@
 class_name GameManager
 extends Node
 
+signal knockout_projected(top: Top, attacker: Top)
+
+
 @export var arena: Arena
 @export var tops: Array[Top]
 @export var intro: IntroSequence
@@ -35,6 +38,13 @@ var _hitstop_end_msec := 0
 ## Deaths within this window of each other count as a draw.
 @export var tie_window := 0.1
 @export var freeze_delay := 1.5
+## Time scale when a hit looks like it will decide the match.
+@export var deciding_blow_scale = 0.8
+## Seconds the slowdown lasts.
+@export var deciding_blow_time = 0.9
+## RPM below which a hit counts as potentially lethal.
+@export var lethal_rpm_margin = 0.0
+var _deciding_end_msec = 0
 var _first_stop_msec := 0
 var _pending_end := false
 var _window_deaths: Array[Top] = []
@@ -70,10 +80,12 @@ func _ready() -> void:
 			arena.wall_damage,
 			arena.gravity,
 			arena.knockout_radius,
-			arena.bowl_curve
+			arena.bowl_curve,
+			arena.wall_top_height
 		)
 		top.opponents = tops.filter(func(t): return t != top)
 		top.entered_dying.connect(_on_top_entered_dying)
+		top.knockout_incoming.connect(_on_knockout_projected)
 		top.manager = self
 
 	# Must precede the intro: the sequencer reads each top's position as the
@@ -110,6 +122,11 @@ func _process(delta: float) -> void:
 			# Restore to slow-mo if the match has already been decided.
 			Engine.time_scale = slowmo_scale if phase == Phase.ENDING else 1.0
 		return
+	
+	if _deciding_end_msec > 0 and Time.get_ticks_msec() >= _deciding_end_msec:
+		_deciding_end_msec = 0
+		if phase == Phase.FIGHTING:
+			Engine.time_scale = 1.0
 		
 	if _pending_end:
 		if Time.get_ticks_msec() - _first_stop_msec >= int(tie_window * 1000.0):
@@ -166,6 +183,24 @@ func _check_collisions() -> void:
 			elif horizontal > threshold or vertical > vertical_threshold:
 				_in_contact[key] = false
 
+## A hit that looks like it will end the match gets a slowdown — but only in a
+## final pair, since with three tops still in play no single blow decides
+## anything.
+func _check_deciding_blow(victim: Top, _attacker: Top) -> void:
+	if phase != Phase.FIGHTING:
+		return
+	var alive = tops.filter(func(t): return t.current_state == Top.State.ACTIVE)
+	if alive.size() > 2:
+		return
+	_begin_deciding_slowmo()
+
+
+func _begin_deciding_slowmo() -> void:
+	if _hitstop_end_msec > 0:
+		return          # let the freeze land first
+	Engine.time_scale = deciding_blow_scale
+	_deciding_end_msec = Time.get_ticks_msec() + int(deciding_blow_time * 1000.0)
+
 func _start_match() -> void:
 	phase = Phase.FIGHTING
 	for top in tops:
@@ -188,6 +223,9 @@ func _arrange_tops() -> void:
 		var surface := top._surface_y_at(pos.x, pos.y)
 		top.global_position = Vector3(pos.x, surface + top.drop_height, pos.y)
 
+func _on_knockout_projected(top: Top, attacker: Top) -> void:
+	knockout_projected.emit(top, attacker)
+	_check_deciding_blow(top, attacker)
 
 func _resolve_collision(a: Top, b: Top) -> void:
 	var a_pos := Vector2(a.global_position.x, a.global_position.z)

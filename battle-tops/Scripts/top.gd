@@ -28,7 +28,7 @@ signal ability_triggered(top: Top, ability: Ability)
 signal combo_hit(top: Top, target: Top, index: int)
 signal target_locked(top: Top, target: Top, tint: Color)
 signal target_retargeted(top: Top, target: Top)
-
+signal knockout_incoming(top: Top, attacker: Top)
 signal target_released(top: Top)
 signal wall_hit(top: Top, force: float)
 signal target_committed(top: Top, target: Top)
@@ -128,8 +128,8 @@ var spin_display_scale := 1.0
 
 @export_group('Engagement')
 ## Recovery duration at aggression 0 and 1, scaled by how hard the hit was.
-@export var recover_time_max = 1.1
-@export var recover_time_min = 0.7
+@export var recover_time_max = 0.8
+@export var recover_time_min = 0.4
 @export var approach_curve_range = 0.07
 ## Knockback that earns a full-length recovery.
 @export var recover_reference = 1.0
@@ -184,23 +184,23 @@ var spin_display_scale := 1.0
 
 @export_group('Dodging')
 ## Distance at which an incoming charge can be read and slipped.
-@export var dodge_trigger_range = 0.07
+@export var dodge_trigger_range = 0.08
 ## Cosine threshold on how head-on the approach must be. Lower catches arcing
 ## approaches; higher demands a dead-straight charge.
 @export var dodge_alignment = 0.6
 ## Seconds of lateral burst.
-@export var dodge_duration = 0.10
+@export var dodge_duration = 0.05
 ## Speed multiplier during the slip.
-@export var dodge_speed = 1.1
+@export var dodge_speed = 2
 ## Seconds before another dodge is possible, so it stays a moment.
-@export var dodge_cooldown_time = 1
+@export var dodge_cooldown_time = 2
 ## Seconds of counter-attack after a successful slip.
 @export var counter_duration = 0.45
 ## Speed multiplier while countering.
 @export var counter_speed = 2.5
 ## How far the slip angles backward along the opponent's approach rather than
 ## purely sideways. 0 is a pure sidestep; higher ends up behind the charge.
-@export_range(0.0, 1.5) var dodge_back_bias := 0.25
+@export_range(0.0, 1.5) var dodge_back_bias := 0.1
 @export var counter_abandon_range = 0.15
 
 @export_group('Wall')
@@ -290,6 +290,7 @@ var wall_radius: float
 var wall_bounce: float
 var wall_damage: float
 var knockout_radius: float
+var wall_top_height: float
 var gravity: float
 var bowl_curve: float
 var opponents: Array[Top] = []
@@ -397,7 +398,8 @@ func _set_arena(
 	arena_wall_damage: float,
 	arena_gravity: float,
 	arena_knockout_radius: float,
-	arena_bowl_curve: float
+	arena_bowl_curve: float,
+	arena_wall_height: float
 ) -> void:
 	arena_centre = centre
 	arena_radius = arena_r
@@ -407,6 +409,7 @@ func _set_arena(
 	gravity = arena_gravity
 	knockout_radius = arena_knockout_radius
 	bowl_curve = arena_bowl_curve
+	wall_top_height = arena_wall_height
 
 ## Name for display — the roster name, not the node name.
 func display_name() -> String:
@@ -782,7 +785,7 @@ func _update_intent(delta: float) -> void:
 
 	# Only try to read a charge when we aren't already committed to something.
 	if _stun_timer <= 0.0 and target._stun_timer <= 0.0 \
-		and intent in [Intent.CLOSING, Intent.RECOVERING] \
+		and intent in [Intent.CLOSING] \
 			and randf() < dodge_skill * delta * 15.0:
 		var slip = _incoming_charge(target)
 		if slip != Vector2.ZERO:
@@ -961,6 +964,8 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 		#"\nDamage Dealt: ", dmg_dealt,
 		#"\nReceiver: ", opponent.display_name()
 	#)
+	if opponent.current_rpm <= opponent.dead_rpm and manager != null:
+		manager._check_deciding_blow(opponent, self)
 	
 	# --- Knockback --------------------------------------------------------
 	# Its own, flatter power curve: knockback is the spectacle, and shouldn't
@@ -1013,7 +1018,7 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 		vert_bias = ability.vertical_bias(self)
 	
 	last_knockback_dealt = applied
-	opponent._receive_kb(applied, dir, vert_bias)
+	opponent._receive_kb(applied, dir, vert_bias, self)
 	
 	var ability_strike = ability != null and ability.controls_movement(self)
 	# Only a fresh collision starts a flurry; hits within one don't re-roll.
@@ -1033,7 +1038,7 @@ func _receive_dmg(dmg: float) -> void:
 	current_rpm = max(current_rpm - dmg, 0.0)
 
 
-func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
+func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0, attacker: Top=null) -> void:
 	
 	if ability != null:
 		ability.on_collision(self)
@@ -1063,8 +1068,23 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0) -> void:
 		else:
 			_begin_closing()
 	
+	if _projects_knockout():
+		print("Knockout projected")
+		knockout_incoming.emit(self, attacker)
 
+func _projects_knockout() -> bool:
+	if _vertical_velocity <= 0.0:
+		return false
 
+	# Time until it falls back to the height it left from.
+	var air_time = 2.0 * _vertical_velocity / max(gravity, 0.001)
+	# Peak height reached, against the wall it has to clear.
+	var peak = global_position.y + (_vertical_velocity * _vertical_velocity) / (2.0 * max(gravity, 0.001))
+	if peak < arena_centre.y + wall_top_height:
+		return false
+
+	var projected = _horizontal_pos() + _velocity * air_time
+	return projected.distance_to(arena_centre) > knockout_radius
 
 func _apply_wall_collision() -> void:
 	if _airborne:
