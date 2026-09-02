@@ -32,6 +32,7 @@ signal knockout_incoming(top: Top, attacker: Top)
 signal target_released(top: Top)
 signal wall_hit(top: Top, force: float)
 signal target_committed(top: Top, target: Top)
+signal knocked_out(top: Top)
 
 var current_state: State = State.INTRO
 var intent: Intent = Intent.CLOSING
@@ -128,8 +129,8 @@ var spin_display_scale := 1.0
 
 @export_group('Engagement')
 ## Recovery duration at aggression 0 and 1, scaled by how hard the hit was.
-@export var recover_time_max = 0.8
-@export var recover_time_min = 0.4
+@export var recover_time_max = 0.5
+@export var recover_time_min = 0.2
 @export var approach_curve_range = 0.07
 ## Knockback that earns a full-length recovery.
 @export var recover_reference = 1.0
@@ -242,6 +243,7 @@ var _wall_contact := false
 @export_group('Knockout')
 @export var ko_drag = 0.4
 @export var ko_kill_depth = 0.5
+@export var ko_confidence = 1.8
 
 @export_group('Combo')
 ## Closing speed a hit needs to be combo-eligible.
@@ -1076,18 +1078,26 @@ func _projects_knockout() -> bool:
 	if _vertical_velocity <= 0.0:
 		return false
 
+	var from_centre = _horizontal_pos() - arena_centre
+	if from_centre.length() < 0.001:
+		return false
+
+	# Heading inward can't leave, however high it goes.
+	if _velocity.dot(from_centre.normalized()) <= 0.0:
+		return false
+
 	var g = max(gravity, 0.001)
 	var peak = global_position.y + (_vertical_velocity * _vertical_velocity) / (2.0 * g)
-	var air_time = 2.0 * _vertical_velocity / g
-	var projected = _horizontal_pos() + _velocity * air_time
-	var reach = projected.distance_to(arena_centre)
-
-	print("KO proj: vv=%.3f peak=%.4f (need %.4f) reach=%.4f (need %.4f)" % [
-		_vertical_velocity, peak, arena_centre.y + wall_top_height, reach, knockout_radius])
-
-	if peak < arena_centre.y + wall_top_height:
+	
+	print("KO proj: peak=%.4f need=%.4f (wall %.4f x conf %.2f)" % [
+		peak, arena_centre.y + wall_top_height * ko_confidence, wall_top_height, ko_confidence])
+		
+	if peak < arena_centre.y + wall_top_height * ko_confidence:
 		return false
-	return reach > knockout_radius
+
+	var air_time = 2.0 * _vertical_velocity / g
+	var landing = _horizontal_pos() + _velocity * air_time
+	return landing.distance_to(arena_centre) > knockout_radius
 
 func _apply_wall_collision() -> void:
 	if _airborne:
@@ -1401,6 +1411,7 @@ func _enter_knocked_out() -> void:
 	# Any ability targeting is void now — release the reticle rather than
 	# leaving it tracking from a top that's out of the arena.
 	target_released.emit(self)
+	knocked_out.emit(self)
 	entered_dying.emit(self)
 
 

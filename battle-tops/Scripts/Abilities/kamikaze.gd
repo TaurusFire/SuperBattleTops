@@ -7,11 +7,11 @@ extends Ability
 
 enum Phase { DORMANT, TELEGRAPH, CHARGING, SPENDING }
 
-@export var trigger_rpm := 1500.0
+@export var trigger_rpm := 2000.0
 ## Speed multiplier during the charge, against the top's own move_speed.
 @export var charge_speed := 10
 ## Seconds of flashing before the charge, so the viewer registers it coming.
-@export var telegraph_time := 1.25
+@export var telegraph_time := 1.1
 ## Seconds the charge lasts before the top expires regardless of outcome.
 @export var window := 0.5
 ## How hard it tracks. High, so it doesn't miss through slow turning.

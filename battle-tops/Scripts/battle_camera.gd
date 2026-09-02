@@ -44,12 +44,30 @@ var _shake := 0.0
 var _punch := 0.0
 var _shake_time := 0.0
 
+@export_group('Knockout Zoom')
+@export var ko_zoom_enabled := true
+## Distance during the emphasis. Tighter than distance_min, so the framing
+## snaps in rather than merely closing a little.
+@export var ko_distance := 0.2
+## How fast the camera closes in — quick enough to read as a reaction.
+@export var ko_zoom_speed := 12.0
+## How fast it releases afterwards. Slower, so the pull-back is a settle
+## rather than a snap.
+@export var ko_release_speed := 8
+## Seconds the push holds. Match this to the manager's deciding_blow_time, or
+## the zoom and the slowdown end at different moments and read as two separate
+## effects rather than one.
+@export var ko_hold : float
+var _ko_timer := 0.0
 
 func _ready() -> void:
 	_cam.transform = Transform3D.IDENTITY
 	_focus = Vector3(arena.centre.x, look_height, arena.centre.y)
 	_distance = distance
+	ko_hold = manager.deciding_blow_time
 	manager.collision_occurred.connect(_on_collision)
+	manager.knockout_projected.connect(_on_knockout_projected)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -57,6 +75,11 @@ func _process(delta: float) -> void:
 
 	var target_focus := Vector3(arena.centre.x, look_height, arena.centre.y)
 	var target_distance := distance_max
+
+	if _ko_timer > 0.0:
+		# Wall-clock: the slowdown accompanying this would otherwise stretch
+		# the hold along with everything else.
+		_ko_timer -= delta / max(Engine.time_scale, 0.05)
 
 	if not living.is_empty():
 		var sum := Vector2.ZERO
@@ -77,7 +100,13 @@ func _process(delta: float) -> void:
 			target_focus = centre + from_centre.normalized() * leash
 
 	_focus = _focus.lerp(target_focus, clamp(focus_lerp * delta, 0.0, 1.0))
-	_distance = lerp(_distance, target_distance, clamp(distance_lerp * delta, 0.0, 1.0))
+
+	if _ko_timer > 0.0:
+		_distance = lerp(_distance, ko_distance, clamp(ko_zoom_speed * delta, 0.0, 1.0))
+	else:
+		var rate = ko_release_speed if _distance < distance_min else distance_lerp
+		_distance = lerp(_distance, target_distance, clamp(rate * delta, 0.0, 1.0))
+
 	_place(_focus, _distance)
 	_update_impact(delta)
 	
@@ -121,3 +150,7 @@ func _update_impact(delta: float) -> void:
 	offset.z = -punch_max * _punch
 
 	_cam.position = offset
+
+func _on_knockout_projected(_top: Top, _attacker: Top) -> void:
+	if ko_zoom_enabled:
+		_ko_timer = ko_hold

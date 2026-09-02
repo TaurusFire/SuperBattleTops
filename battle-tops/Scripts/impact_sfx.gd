@@ -42,8 +42,30 @@ extends Node
 ## cut each hit off with the next.
 @export var pool_size := 5
 
+
 var _pool: Array[AudioStreamPlayer] = []
 var _next := 0
+
+@export_group('Knockout')
+## Plays when a hit is projected to send a top out. A low sustained note under
+## the slowdown, so the moment has weight rather than just being slower.
+@export var doom_sting: AudioStream
+@export var doom_volume_db := -1.0
+## Fade at the end, so it doesn't cut abruptly when the slowdown lifts.
+@export var doom_fade := 0.2
+## How long it sounds. Match the manager's deciding_blow_time, or the audio
+## and the slowdown end at different moments.
+@export var doom_duration := 1.4
+## Announced when a knockout ends the match. Only for the deciding one — a
+## call on every knockout in a three-way would flatten the moment.
+@export var ko_call: AudioStream
+@export var ko_call_volume_db := -20
+## Delay so the call lands as the top clears the rim rather than racing it.
+@export var ko_call_delay := 0.00
+@export var voice_pitch := 0.85
+var _ko_player: AudioStreamPlayer
+var _doom_player: AudioStreamPlayer
+var _doom_tween: Tween
 
 
 func _ready() -> void:
@@ -54,22 +76,31 @@ func _ready() -> void:
 		p.bus = bus
 		add_child(p)
 		_pool.append(p)
-
+	# Its own player rather than the pool: the sting is sustained, and a clash
+	# landing a moment later would claim a pooled player and cut it off.
+	_doom_player = AudioStreamPlayer.new()
+	_doom_player.bus = bus
+	add_child(_doom_player)
+	
 	manager.collision_occurred.connect(_on_clash)
+	manager.knockout_projected.connect(_on_knockout_projected)
+
+	_ko_player = AudioStreamPlayer.new()
+	_ko_player.bus = bus
+	add_child(_ko_player)
+
 	for top in manager.tops:
 		top.wall_hit.connect(_on_wall_hit)
+		top.knocked_out.connect(_on_knocked_out)
 
 
 func _on_clash(a: Top, b: Top) -> void:
 	if clash_sounds.is_empty():
 		return
 	
-
 	var kb = pow(max(a.last_knockback_dealt, b.last_knockback_dealt) / knockback_reference, 0.6)
 	var dmg = max(a.last_damage_dealt, b.last_damage_dealt) / damage_reference
 	var strength = kb * knockback_weight + dmg * (1.0 - knockback_weight)
-	
-
 	
 	var t = clamp(strength / clash_reference, 0.0, 1.0)
 	var ideal = pow(t, clash_curve) * float(clash_sounds.size() - 1)
@@ -94,6 +125,22 @@ func _on_clash(a: Top, b: Top) -> void:
 
 	_play_one(clash_sounds[pick], db)
 
+func _on_knocked_out(_top: Top) -> void:
+	if ko_call == null:
+		return
+	# Only when it settles the match: everyone else is already out or on their
+	# way, so this knockout is the one that ends it.
+	var still_in = manager.tops.filter(func(t):
+		return t.current_state == Top.State.ACTIVE)
+	if still_in.size() > 1:
+		return
+
+	if ko_call_delay > 0.0:
+		await get_tree().create_timer(ko_call_delay, true, false, true).timeout
+	_ko_player.stream = ko_call
+	_ko_player.pitch_scale = voice_pitch
+	_ko_player.volume_db = ko_call_volume_db
+	_ko_player.play()
 
 func _on_wall_hit(_top: Top, force: float) -> void:
 	if wall_sounds.is_empty():
@@ -112,3 +159,33 @@ func _play_one(stream: AudioStream, db: float) -> void:
 	p.volume_db = db
 	p.pitch_scale = 1.0 + randf_range(-pitch_variance, pitch_variance)
 	p.play()
+	
+func _on_knockout_projected(_top: Top, _attacker: Top) -> void:
+	if doom_sting == null:
+		return
+	
+	for t in manager.tops:
+		if t.current_state == Top.State.KNOCKED_OUT:
+			return
+	if _doom_tween != null and _doom_tween.is_valid():
+		_doom_tween.kill()
+	_doom_player.stream = doom_sting
+	_doom_player.volume_db = doom_volume_db
+	_doom_player.play()
+
+	var hold = max(doom_duration - doom_fade, 0.0)
+	if hold > 0.0:
+		await get_tree().create_timer(hold, true, false, true).timeout
+	
+
+	for t in manager.tops:
+		if t.current_state in [Top.State.KNOCKED_OUT, Top.State.DYING]:
+			return
+	if manager.phase in [GameManager.Phase.ENDING, GameManager.Phase.ENDED]:
+		return
+
+	_doom_tween = create_tween()
+	_doom_tween.tween_property(_doom_player, "volume_db", -60.0, doom_fade)
+	await _doom_tween.finished
+	_doom_player.stop()
+	_doom_player.volume_db = doom_volume_db

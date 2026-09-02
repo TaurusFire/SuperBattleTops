@@ -26,8 +26,8 @@ var _name_outline: Label
 @export var arc_start_degrees := 90.0
 ## How far it sweeps. 260 leaves a gap at the bottom for the readout.
 @export var arc_sweep_degrees := -245.0
-@export var radius := 90.0
-@export var thickness := 30.0
+@export var radius := 100.0
+@export var thickness := 35.0
 ## Flip the sweep, so gauges on the right of the screen mirror those on the left.
 @export var mirrored := false
 ## Arc smoothness. Higher costs more but curves better at large radii.
@@ -63,8 +63,8 @@ var _name_outline: Label
 ## Surface overrides, since materials assigned on the world MeshInstance3D
 ## don't travel with the Mesh resource itself.
 @export var model_materials: Array[Material] = []
-@export var model_pixels := 175
-@export var model_spin_speed := 2.4
+@export var model_pixels := 200
+@export var model_spin_speed := 3
 @export var model_tilt_degrees := -20.0
 ## Orthogonal camera extent. Smaller frames the top more tightly.
 @export var model_zoom := 0.062
@@ -72,7 +72,7 @@ var _name_outline: Label
 @export_group("Readout")
 @export var show_readout := true
 @export var readout_font: Font
-@export var readout_size := 40
+@export var readout_size := 45
 @export var readout_colour := Color(1, 1, 1)
 @export var readout_shader: Shader
 @export var readout_top_colour := Color(0.997, 0.84, 0.0, 1.0)

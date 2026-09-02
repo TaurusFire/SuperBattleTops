@@ -39,11 +39,11 @@ var _hitstop_end_msec := 0
 @export var tie_window := 0.1
 @export var freeze_delay := 1.5
 ## Time scale when a hit looks like it will decide the match.
-@export var deciding_blow_scale = 0.8
+@export var deciding_blow_scale = 0.1
 ## Seconds the slowdown lasts.
-@export var deciding_blow_time = 0.9
+@export var deciding_blow_time = 0.5
 ## RPM below which a hit counts as potentially lethal.
-@export var lethal_rpm_margin = 0.0
+@export var lethal_rpm_margin = 50.0
 var _deciding_end_msec = 0
 var _first_stop_msec := 0
 var _pending_end := false
@@ -56,7 +56,7 @@ var _window_deaths: Array[Top] = []
 
 var _in_contact := {}
 
-var countdown_seconds := 2.0
+var countdown_seconds := 3.0
 var time_remaining := 0.0
 
 enum Phase { INTRO, COUNTDOWN, FIGHTING, ENDING, ENDED } 
@@ -193,18 +193,18 @@ func _check_collisions() -> void:
 ## final pair, since with three tops still in play no single blow decides
 ## anything.
 func _check_deciding_blow(victim: Top, _attacker: Top) -> void:
+	var alive = tops.filter(func(t): return t.current_state == Top.State.ACTIVE)
+	print("deciding check: phase=%d alive=%d victim=%s" % [phase, alive.size(), victim.display_name()])
 	if phase != Phase.FIGHTING:
 		return
-	var alive = tops.filter(func(t): return t.current_state == Top.State.ACTIVE)
 	if alive.size() > 2:
 		return
 	_begin_deciding_slowmo()
 
 
 func _begin_deciding_slowmo() -> void:
-	# Deliberately doesn't bail on an active hitstop: the deciding blow is
-	# itself a collision, so a freeze is always running when this fires. The
-	# slowdown is what time resumes *to* once the freeze lifts.
+	print("deciding slowmo armed, hitstop active=%s, scale now %.2f" % [
+		_hitstop_end_msec > 0, Engine.time_scale])
 	_deciding_end_msec = Time.get_ticks_msec() + int(deciding_blow_time * 1000.0)
 	if _hitstop_end_msec <= 0:
 		Engine.time_scale = deciding_blow_scale
@@ -350,7 +350,8 @@ func _end_match(winners: Array[Top]) -> void:
 	else:
 		var names := winners.map(func(t): return t.name)
 		print("Draw between: ", ", ".join(names))
-
+		
+	print("match ended at %d" % Time.get_ticks_msec())
 	match_ended.emit(winners)
 	_freeze_after(freeze_delay)
 

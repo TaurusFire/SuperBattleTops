@@ -5,7 +5,7 @@ extends BannerText
 @export var manager: GameManager
 ## Seconds to wait after the match resolves before the banner appears, so the
 ## topple has time to play out.
-@export var result_delay := 0.4
+@export var result_delay := 1.6
 @export var result_hold := 1.5
 @export var result_font_size := 96
 @export var draw_text := "DRAW"

@@ -19,9 +19,10 @@ extends Control
 @export_group("Animation")
 @export var punch_scale := 2.2
 @export var punch_speed := 9.0
+@export var fade_in_time := 0.0
 @export var fade_time := 0.28
 
-
+@export_range(0.0, 1.0) var vertical_anchor := 0.5
 
 var _label: Label
 var _label_outline: Label
@@ -42,13 +43,13 @@ func _ready() -> void:
 ## Pass `size_override` to use a different font size for this message.
 func show_text(text: String, hold: float, settle_scale := 1.0,
 			   size_override := -1) -> void:
-	var s := size_override if size_override > 0 else font_size
+	var s = size_override if size_override > 0 else font_size
 	for l in [_label, _label_outline]:
 		l.text = text
 		l.add_theme_font_size_override("font_size", s)
 	_settle_scale = settle_scale
 	_scale = punch_scale
-	_alpha = 1.0
+	_alpha = 0.0 if fade_in_time > 0.0 else 1.0
 	_timer = 0.0
 	_active_hold = hold
 	visible = true
@@ -90,7 +91,10 @@ func _process(delta: float) -> void:
 
 	_timer += delta
 	_scale = lerpf(_scale, _settle_scale, clamp(punch_speed * delta, 0.0, 1.0))
-
+	
+	if fade_in_time > 0.0 and _timer < fade_in_time:
+		_alpha = clamp(_timer / fade_in_time, 0.0, 1.0)
+	
 	var fade_start := _active_hold - fade_time
 	if _timer > fade_start:
 		_alpha = clamp(1.0 - (_timer - fade_start) / fade_time, 0.0, 1.0)
@@ -103,7 +107,7 @@ func _process(delta: float) -> void:
 
 func _apply() -> void:
 	var rect := Vector2(size.x, float(_label.get_theme_font_size("font_size")) * 1.5)
-	var pos := Vector2(0.0, size.y * 0.5 - rect.y * 0.5)
+	var pos := Vector2(0.0, size.y * vertical_anchor - rect.y * 0.5)
 
 	for l in [_label, _label_outline]:
 		l.size = rect
