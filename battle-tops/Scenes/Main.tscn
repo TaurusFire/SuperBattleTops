@@ -70,7 +70,7 @@ glow_bloom = 0.1
 [node name="GameManager" type="Node" parent="." unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
 script = ExtResource("5_pbw6q")
 arena = NodePath("../Arena")
-tops = [NodePath("../Att"), NodePath("../Def"), NodePath("../Stam")]
+tops = [NodePath("../Def"), NodePath("../Stam")]
 intro = NodePath("../IntroSequence")
 
 [node name="Arena" parent="." unique_id=1258390969 instance=ExtResource("1_kln2b")]
@@ -80,6 +80,7 @@ script = ExtResource("2_jw32o")
 
 [node name="Att" parent="." unique_id=2088087833 instance=ExtResource("16_346fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05456163, 0)
+visible = false
 stats = ExtResource("17_0sclb")
 
 [node name="Def" parent="." unique_id=1788708962 instance=ExtResource("16_346fj")]
@@ -127,10 +128,11 @@ environment = SubResource("Environment_pbw6q")
 script = ExtResource("14_1p5hy")
 manager = NodePath("../GameManager")
 
-[node name="GaugePanel" type="CanvasLayer" parent="." unique_id=621190517 node_paths=PackedStringArray("manager")]
+[node name="GaugePanel" type="CanvasLayer" parent="." unique_id=621190517 node_paths=PackedStringArray("manager", "intro")]
 script = ExtResource("15_h1m7h")
 manager = NodePath("../GameManager")
 gauge_scene = ExtResource("16_erwvk")
+intro = NodePath("../IntroSequence")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1595222250]
 
@@ -146,7 +148,7 @@ manager = NodePath("../../GameManager")
 font = ExtResource("17_346fj")
 shader = ExtResource("18_0sclb")
 
-[node name="ResultDisplay" type="Control" parent="UI" unique_id=1205491703 node_paths=PackedStringArray("manager")]
+[node name="ResultDisplay" type="Control" parent="UI" unique_id=1205491703 node_paths=PackedStringArray("manager", "finish_display")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,6 +157,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("17_2w5on")
 manager = NodePath("../../GameManager")
+finish_display = NodePath("../FinishDisplay")
 font = ExtResource("17_346fj")
 shader = ExtResource("18_0sclb")
 top_colour = Color(0, 0.6076555, 0.6562108, 1)
@@ -249,7 +252,7 @@ clash_sounds = Array[AudioStream]([ExtResource("27_6heos"), ExtResource("28_vvnw
 wall_sounds = Array[AudioStream]([ExtResource("35_d8m2u")])
 doom_sting = ExtResource("34_utia5")
 ko_call = ExtResource("37_lac6x")
-ko_bell = ExtResource("38_off7b")
+finish_bell = ExtResource("38_off7b")
 game_call = ExtResource("39_off7b")
 game_call_delay = 0.0
 metadata/_custom_type_script = "uid://dcgiv3nc2u51b"

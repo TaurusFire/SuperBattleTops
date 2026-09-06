@@ -7,6 +7,9 @@ extends CanvasLayer
 
 @export var manager: GameManager
 @export var gauge_scene: PackedScene
+@export var intro: IntroSequence
+
+
 @export var gauge_size := Vector2(180, 180)
 ## Inset from the screen edges.
 ## Horizontal inset for the first row.
@@ -22,6 +25,7 @@ extends CanvasLayer
 
 
 var _gauges: Array[RPMGauge] = []
+var _by_top := {}
 
 func _ready() -> void:
 	assert(manager != null, "GaugePanel needs the manager assigned.")
@@ -41,9 +45,19 @@ func _rebuild() -> void:
 		# Even indices go left, odd go right; each pair starts a new row.
 		var is_right := (i % 2) == 1
 		var row := i / 2
-		_gauges.append(_make_gauge(valid[i], is_right, row))
+		var g = _make_gauge(valid[i], is_right, row)
+		_gauges.append(g)
+		_by_top[valid[i]] = g
+		if intro != null:
+			g.hide_until_entrance(is_right)
 
+	if intro != null:
+		intro.top_introduced.connect(_on_top_introduced)
 
+func _on_top_introduced(top: Top, _index: int) -> void:
+	if _by_top.has(top):
+		_by_top[top].enter()
+	
 func _make_gauge(top: Top, is_right: bool, row: int) -> RPMGauge:
 	var g: RPMGauge = gauge_scene.instantiate()
 

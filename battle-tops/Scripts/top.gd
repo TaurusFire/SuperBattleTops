@@ -88,7 +88,7 @@ var ability: Ability
 
 @export_group('Combat')
 ## Reference RPM the power curves are measured against.
-@export var ref_rpm = 10000.0
+@export var ref_rpm = 9000.0
 ## Fraction of knockback converted to an upward hop.
 @export var vertical_fraction = 0.25
 ## How much the RPM advantage swings knockback. At 0 it's ignored; the
@@ -113,7 +113,7 @@ var ability: Ability
 ## Shape of the transition. Below 1 the rise starts early and eases in; above
 ## 1 it stays low through most of the match then climbs sharply near death.
 @export var vertical_mult_curve = 1.1
-@export_range(0.0, 1.0) var attacker_recoil = 0.3
+@export_range(0.0, 1.0) var attacker_recoil = 0.4
 
 @export_group('RPM')
 ## The threshold at which a top is beaten.
@@ -150,13 +150,13 @@ var spin_display_scale := 1.0
 ## intent so tops can never settle inside each other.
 @export var separation_factor = 1.05
 @export var separation_strength = 2.0
-@export var slope_scale := 30
+@export var slope_scale := 20
 ## Radius, as a fraction of the arena, beyond which a top counts as loitering.
-@export_range(0.0, 1.0) var loiter_radius_frac = 0.4
+@export_range(0.0, 1.0) var loiter_radius_frac = 0.6
 ## Seconds at the edge before the inward pull reaches full strength.
 @export var loiter_patience = 0.5
 ## Peak inward pull.
-@export var loiter_pull = 4
+@export var loiter_pull = 2
 ## How fast the timer unwinds once back inside. Higher forgets sooner.
 @export var loiter_recovery = 2
 
@@ -190,7 +190,7 @@ var _reposition_target = Vector2.ZERO
 ## line flickers between fleeing and closing every frame.
 @export var flee_hysteresis = 0.05
 ## Distance it tries to keep from the nearest opponent.
-@export var flee_distance = 0.10
+@export var flee_distance = 0.05
 ## Speed multiplier while fleeing. Above 1 so a desperate top can actually
 ## escape rather than being run down immediately.
 @export var flee_speed = 1.1
@@ -270,7 +270,7 @@ var _wall_contact := false
 @export_range(0.0, 1.0) var combo_aggression_weight = 0.6
 ## Each additional hit multiplies the chance by this, so long combos are rare
 ## without a cap having to enforce it.
-@export_range(0.1, 1.0) var combo_chance_decay = 0.35
+@export_range(0.1, 1.0) var combo_chance_decay = 0.4
 @export var combo_max_hits = 5
 
 @export_subgroup('Rhythm')

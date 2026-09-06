@@ -107,6 +107,16 @@ var _rpm_caption_outline: Label
 @export var marker_overhang := 5.0
 @export var marker_outline := Color(0, 0, 0, 0.9)
 
+@export_group("Entrance")
+## Seconds the gauge takes to slide into place.
+@export var entrance_time := 0.35
+## How far it starts outside its resting position, in pixels.
+@export var entrance_offset := 220.0
+var _entrance := 1.0        # 1 is fully off-screen, 0 is settled
+var _entering := false
+var _rest_position := Vector2.ZERO
+var _entrance_dir := 1.0
+
 var _fill := 1.0
 var _chip := 1.0
 var _chip_timer := 0.0
@@ -286,6 +296,17 @@ func _build_readout() -> void:
 	add_child(_rpm_caption)
 
 func _process(delta: float) -> void:
+	if _entering:
+		_entrance = max(_entrance - delta / max(entrance_time, 0.001), 0.0)
+		# Ease out, so it decelerates into place rather than arriving flat.
+		var eased = _entrance * _entrance
+		position = _rest_position + Vector2(entrance_offset * _entrance_dir * eased, 0.0)
+		modulate.a = 1.0 - eased
+		if _entrance <= 0.0:
+			_entering = false
+			position = _rest_position
+			modulate.a = 1.0
+			
 	if top == null:
 		return
 
@@ -551,6 +572,21 @@ func _configure_caption(l: Label) -> void:
 		l.add_theme_font_override("font", readout_font)
 	l.add_theme_font_size_override("font_size", int(readout_size * rpm_text_scale))
 
+func hide_until_entrance(from_right: bool) -> void:
+	visible = false
+	_entrance = 1.0
+	_entering = false
+	_entrance_dir = 1.0 if from_right else -1.0
+
+
+## Slides in from the side it sits on.
+func enter() -> void:
+	_rest_position = position
+	_entering = true
+	_entrance = 1.0
+	visible = true
+	
+	
 ## A tick across the arc at `frac` along the sweep, marking where an ability
 ## will fire. Drawn as its own small band so it follows the taper and the
 ## chamfer the same way the fill does.

@@ -5,6 +5,8 @@ extends BannerText
 ## for the clip: a knockout and a spin-out are different endings, and naming
 ## which one happened lands harder than going straight to the winner.
 
+signal finish_shown
+
 @export_group("Finish")
 @export var manager: GameManager
 @export var ko_text := "K.O.!"
@@ -24,7 +26,7 @@ func _ready() -> void:
 	assert(manager != null, "FinishDisplay: manager is unassigned.")
 	for top in manager.tops:
 		top.knocked_out.connect(_on_knocked_out)
-		top.entered_dying.connect(_on_entered_dying)
+		top.stopped.connect(_on_stopped)
 
 
 func _on_knocked_out(_top: Top) -> void:
@@ -33,7 +35,7 @@ func _on_knocked_out(_top: Top) -> void:
 	_announce(ko_text, ko_top_colour, ko_bottom_colour)
 
 
-func _on_entered_dying(top: Top) -> void:
+func _on_stopped(top: Top) -> void:
 	# entered_dying also fires for knockouts, which have their own call.
 	if top.current_state == Top.State.KNOCKED_OUT:
 		return
@@ -45,9 +47,9 @@ func _on_entered_dying(top: Top) -> void:
 ## True when at most one top is still fighting — so this is the ending, not
 ## just an elimination partway through a three-way.
 func _is_final() -> bool:
-	var still_in = manager.tops.filter(func(t):
-		return t.current_state == Top.State.ACTIVE)
-	return still_in.size() <= 1
+	var alive = manager.tops.filter(func(t):
+		return t.current_state not in [Top.State.STOPPED, Top.State.KNOCKED_OUT])
+	return alive.size() <= 1
 
 
 func _announce(text: String, top_col: Color, bottom_col: Color) -> void:
@@ -56,3 +58,6 @@ func _announce(text: String, top_col: Color, bottom_col: Color) -> void:
 	_announced = true
 	set_colours(top_col, bottom_col)
 	show_text(text, finish_hold, 1.0, finish_font_size)
+
+	await get_tree().create_timer(finish_hold, true, false, true).timeout
+	finish_shown.emit()

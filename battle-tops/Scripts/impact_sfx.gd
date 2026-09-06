@@ -65,11 +65,11 @@ var _next := 0
 @export var voice_pitch := 1
 ## Rings under the K.O. call. A bell has a long tail, so it needs its own
 ## player — sharing with the voice would have each cut the other off.
-@export var ko_bell: AudioStream
-@export var ko_bell_volume_db := -3.0
+@export var finish_bell: AudioStream
+@export var finish_bell_volume_db := -3.0
 ## Delay relative to the call. Slightly ahead reads as the bell triggering the
 ## announcement rather than echoing it.
-@export var ko_bell_delay := 0.0
+@export var finish_bell_delay := 0.0
 
 @export_group('Finish')
 ## Called when the last top spins out rather than being knocked out.
@@ -124,11 +124,12 @@ func _on_stopped(top: Top) -> void:
 		return t.current_state == Top.State.ACTIVE)
 	if still_in.size() > 1:
 		return
+
+	_finish_called = true
+	_ring_bell()
+	
 	if game_call == null:
 		return
-	_finish_called = true
-
-
 	if game_call_delay > 0.0:
 		await get_tree().create_timer(game_call_delay, true, false, true).timeout
 	_game_player.stream = game_call
@@ -169,8 +170,7 @@ func _on_clash(a: Top, b: Top) -> void:
 func _on_knocked_out(_top: Top) -> void:
 	if _finish_called:
 		return
-	if ko_call == null:
-		return
+
 	# Only when it settles the match: everyone else is already out or on their
 	# way, so this knockout is the one that ends it.
 	var still_in = manager.tops.filter(func(t):
@@ -179,8 +179,10 @@ func _on_knocked_out(_top: Top) -> void:
 		return
 	
 	_finish_called = true
-
-
+	_ring_bell()
+		
+	if ko_call == null:
+		return
 	if ko_call_delay > 0.0:
 		await get_tree().create_timer(ko_call_delay, true, false, true).timeout
 	_ko_player.stream = ko_call
@@ -235,3 +237,10 @@ func _on_knockout_projected(_top: Top, _attacker: Top) -> void:
 	await _doom_tween.finished
 	_doom_player.stop()
 	_doom_player.volume_db = doom_volume_db
+	
+func _ring_bell() -> void:
+	if finish_bell == null:
+		return
+	_bell_player.stream = finish_bell
+	_bell_player.volume_db = finish_bell_volume_db
+	_bell_player.play()
