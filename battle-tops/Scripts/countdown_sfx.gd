@@ -28,8 +28,8 @@ var _beep_player: AudioStreamPlayer
 ## Pitch multiplier on the voice clips. Above 1 raises and shortens, below
 ## lowers and lengthens — Godot doesn't separate the two, so large shifts
 ## change the delivery's pace as well as its tone.
-@export_range(0.5, 2.0) var count_pitch := 0.8
-@export_range(0.5, 2.0) var go_pitch := 0.95
+@export_range(0.5, 2.0) var count_pitch := 1
+@export_range(0.5, 2.0) var go_pitch := 1
 
 
 func _ready() -> void:

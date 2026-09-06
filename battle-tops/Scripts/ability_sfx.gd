@@ -10,11 +10,11 @@ extends Node
 @export_group('Lock-On')
 ## Plays the instant the crosshair appears.
 @export var lock_click: AudioStream
-@export var lock_click_volume_db := -7.0
+@export var lock_click_volume_db := -10.0
 ## Follows shortly after, as the charge builds.
 @export var lock_buzzer: AudioStream
 @export var lock_delay := 0.8
-@export var lock_volume_db := -7.0
+@export var lock_volume_db := -10.0
 ## How long the buzzer sounds. Zero plays the whole file.
 @export var lock_buzzer_duration := 0.75
 ## Fade at the end, in seconds. Cutting a tone dead produces an audible click,

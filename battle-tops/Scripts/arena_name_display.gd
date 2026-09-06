@@ -8,13 +8,13 @@ extends BannerText
 @export_group("Arena Name")
 @export var manager: GameManager
 @export var arena: Arena
-@export var name_font_size := 62
+@export var name_font_size := 60
 ## Fraction of the screen height the name sits at. Above 0.5 is below centre.
 @export_range(0.0, 1.0) var vertical_position := 0.78
 @export var name_top_colour := Color(0.96, 0.97, 1.0)
 @export var name_bottom_colour := Color(0.62, 0.66, 0.78)
 ## Held for most of the countdown, then faded before "GO".
-@export var name_hold := 2.4
+@export var name_hold := 2.2
 
 
 func _ready() -> void:

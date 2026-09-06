@@ -50,23 +50,39 @@ var _next := 0
 ## Plays when a hit is projected to send a top out. A low sustained note under
 ## the slowdown, so the moment has weight rather than just being slower.
 @export var doom_sting: AudioStream
-@export var doom_volume_db := -1.0
+@export var doom_volume_db := -8.0
 ## Fade at the end, so it doesn't cut abruptly when the slowdown lifts.
 @export var doom_fade := 0.2
 ## How long it sounds. Match the manager's deciding_blow_time, or the audio
 ## and the slowdown end at different moments.
-@export var doom_duration := 1.4
+@export var doom_duration := 1.2
 ## Announced when a knockout ends the match. Only for the deciding one — a
 ## call on every knockout in a three-way would flatten the moment.
 @export var ko_call: AudioStream
 @export var ko_call_volume_db := -20
 ## Delay so the call lands as the top clears the rim rather than racing it.
 @export var ko_call_delay := 0.00
-@export var voice_pitch := 0.85
+@export var voice_pitch := 1
+## Rings under the K.O. call. A bell has a long tail, so it needs its own
+## player — sharing with the voice would have each cut the other off.
+@export var ko_bell: AudioStream
+@export var ko_bell_volume_db := -3.0
+## Delay relative to the call. Slightly ahead reads as the bell triggering the
+## announcement rather than echoing it.
+@export var ko_bell_delay := 0.0
+
+@export_group('Finish')
+## Called when the last top spins out rather than being knocked out.
+@export var game_call: AudioStream
+@export var game_call_volume_db := 0.0
+@export var game_call_delay := 0.25
+
+var _game_player: AudioStreamPlayer
+var _bell_player: AudioStreamPlayer
 var _ko_player: AudioStreamPlayer
 var _doom_player: AudioStreamPlayer
 var _doom_tween: Tween
-
+var _finish_called := false
 
 func _ready() -> void:
 	assert(manager != null, "ImpactSfx: manager is unassigned.")
@@ -89,10 +105,35 @@ func _ready() -> void:
 	_ko_player.bus = bus
 	add_child(_ko_player)
 
+	_game_player = AudioStreamPlayer.new()
+	_game_player.bus = bus
+	add_child(_game_player)
+	
 	for top in manager.tops:
 		top.wall_hit.connect(_on_wall_hit)
 		top.knocked_out.connect(_on_knocked_out)
+		top.stopped.connect(_on_stopped)
 
+func _on_stopped(top: Top) -> void:
+	# entered_dying also fires for knockouts, which have their own call.
+	if _finish_called:
+		return
+	if top.current_state == Top.State.KNOCKED_OUT:
+		return
+	var still_in = manager.tops.filter(func(t):
+		return t.current_state == Top.State.ACTIVE)
+	if still_in.size() > 1:
+		return
+	if game_call == null:
+		return
+	_finish_called = true
+
+
+	if game_call_delay > 0.0:
+		await get_tree().create_timer(game_call_delay, true, false, true).timeout
+	_game_player.stream = game_call
+	_game_player.volume_db = game_call_volume_db
+	_game_player.play()
 
 func _on_clash(a: Top, b: Top) -> void:
 	if clash_sounds.is_empty():
@@ -126,6 +167,8 @@ func _on_clash(a: Top, b: Top) -> void:
 	_play_one(clash_sounds[pick], db)
 
 func _on_knocked_out(_top: Top) -> void:
+	if _finish_called:
+		return
 	if ko_call == null:
 		return
 	# Only when it settles the match: everyone else is already out or on their
@@ -134,6 +177,9 @@ func _on_knocked_out(_top: Top) -> void:
 		return t.current_state == Top.State.ACTIVE)
 	if still_in.size() > 1:
 		return
+	
+	_finish_called = true
+
 
 	if ko_call_delay > 0.0:
 		await get_tree().create_timer(ko_call_delay, true, false, true).timeout

@@ -48,7 +48,7 @@ extends Resource
 ## recoveries, and more direct approaches — attack high, defence low.
 @export var aggression := 0.5
 @export var dodge_skill := 0.3
-@export var base_responsiveness := 5.0
+@export var base_responsiveness := 3.0
 
 @export_group("Idle")
 ## Only used once there's nobody left to fight — the ring this top circles

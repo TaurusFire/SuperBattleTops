@@ -8,7 +8,7 @@ extends BannerText
 @export_group("Finish")
 @export var manager: GameManager
 @export var ko_text := "K.O.!"
-@export var game_text := "GAME"
+@export var game_text := "GAME!"
 @export var finish_hold := 1.4
 @export var finish_font_size := 150
 @export var ko_top_colour := Color(1.0, 0.85, 0.25)

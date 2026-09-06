@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://hhwc26udl2x6"
-path="res://.godot/imported/countdown_one_v3.wav-ebae6cae1e426891a174d13185171cfc.sample"
+path="res://.godot/imported/countdown_one_v3.wav-0f3da1673b6ee1f5bd554540d6412d68.sample"
 
 [deps]
 
-source_file="res://Sounds/countdown_one_v3.wav"
-dest_files=["res://.godot/imported/countdown_one_v3.wav-ebae6cae1e426891a174d13185171cfc.sample"]
+source_file="res://Sounds/Voices/countdown_one_v3.wav"
+dest_files=["res://.godot/imported/countdown_one_v3.wav-0f3da1673b6ee1f5bd554540d6412d68.sample"]
 
 [params]
 

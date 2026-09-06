@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://t37dunmlguwa" path="res://Scripts/top_stats.gd" id="2_3toy4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xdy8"]
-albedo_color = Color(1, 0.33551362, 0.2695955, 1)
+albedo_color = Color(0.9469146, 0.004914968, 8.085966e-06, 1)
 roughness = 0.35
 clearcoat_enabled = true
 clearcoat = 0.5
@@ -26,7 +26,7 @@ initial_rpm = 12000.0
 rpm_base_decay_rate = 70.0
 rpm_decay_frac = 0.02
 base_knockback = 50.0
-base_damage = 70.0
+base_damage = 80.0
 defence = 15.0
 weight = 0.14
 move_speed = 0.9

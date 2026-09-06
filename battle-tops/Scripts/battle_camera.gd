@@ -48,12 +48,12 @@ var _shake_time := 0.0
 @export var ko_zoom_enabled := true
 ## Distance during the emphasis. Tighter than distance_min, so the framing
 ## snaps in rather than merely closing a little.
-@export var ko_distance := 0.2
+@export var ko_distance := 0.25
 ## How fast the camera closes in — quick enough to read as a reaction.
-@export var ko_zoom_speed := 12.0
+@export var ko_zoom_speed := 10.0
 ## How fast it releases afterwards. Slower, so the pull-back is a settle
 ## rather than a snap.
-@export var ko_release_speed := 8
+@export var ko_release_speed := 10
 ## Seconds the push holds. Match this to the manager's deciding_blow_time, or
 ## the zoom and the slowdown end at different moments and read as two separate
 ## effects rather than one.

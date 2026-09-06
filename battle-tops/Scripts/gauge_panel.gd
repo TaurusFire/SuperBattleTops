@@ -10,10 +10,10 @@ extends CanvasLayer
 @export var gauge_size := Vector2(180, 180)
 ## Inset from the screen edges.
 ## Horizontal inset for the first row.
-@export var margin_x_top := 188.0
+@export var margin_x_top := 240.0
 ## Horizontal inset for rows below the first. Larger values pull the lower
 ## gauges inward, away from the screen edges.
-@export var margin_x_lower := 78.0
+@export var margin_x_lower := 120.0
 ## Distance from the top of the screen.
 @export var margin_y := 180.0
 @export var row_spacing := 75.0

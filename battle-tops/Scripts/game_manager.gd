@@ -11,7 +11,6 @@ signal knockout_projected(top: Top, attacker: Top)
 # collisions
 @export var collision_radius := 0.08
 @export var separation_radius := 0.11
-@export var velocity_weight := 0.8
 
 # game over
 @export var slowmo_scale := 0.5
@@ -93,7 +92,7 @@ func _ready() -> void:
 	_arrange_tops()
 	
 	if tops.size() == 3:
-		hitstop_max_duration = 0.04
+		hitstop_max_duration = 0.06
 	elif tops.size() >= 4:
 		hitstop_max_duration = 0.02
 	
@@ -243,8 +242,8 @@ func _resolve_collision(a: Top, b: Top) -> void:
 	dir_ab = dir_ab.normalized() if dir_ab.length() > 0.001 else Vector2.RIGHT
 	var dir_ba := -dir_ab
 
-	var a_bonus = a._velocity.dot(dir_ab) * velocity_weight
-	var b_bonus = b._velocity.dot(dir_ba) * velocity_weight
+	var a_bonus = a._velocity.dot(dir_ab) 
+	var b_bonus = b._velocity.dot(dir_ba) 
 	
 	a.attack(b, a_bonus)
 	b.attack(a, b_bonus)
