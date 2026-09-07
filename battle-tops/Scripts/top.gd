@@ -88,7 +88,7 @@ var ability: Ability
 
 @export_group('Combat')
 ## Reference RPM the power curves are measured against.
-@export var ref_rpm = 9000.0
+@export var ref_rpm = 6000.0
 ## Fraction of knockback converted to an upward hop.
 @export var vertical_fraction = 0.25
 ## How much the RPM advantage swings knockback. At 0 it's ignored; the
@@ -139,7 +139,7 @@ var spin_display_scale := 1.0
 ## RPM at which a top moves at full `move_speed`. Shared across fighters, so a
 ## top with more spin genuinely moves better — unlike rpm_ratio, which is
 ## self-relative and makes a high-RPM top at 10% as slow as a low-RPM one.
-@export var speed_ref_rpm = 8000.0
+@export var speed_ref_rpm = 5000.0
 ## Slowest a top can get, as a fraction of move_speed. Without a floor a
 ## nearly-spent top becomes unwatchable.
 @export_range(0.0, 1.0) var min_speed_frac = 0.05
@@ -594,7 +594,7 @@ func _horizontal_pos() -> Vector2:
 ## plus two corrections that always apply regardless of intent.
 func _desired_velocity() -> Vector2:
 	
-	var spin_factor = clamp(pow(current_rpm + 4000/ speed_ref_rpm, 0.3), min_speed_frac, 1.8)
+	var spin_factor = clamp(pow(current_rpm + 2000/ speed_ref_rpm, 0.3), min_speed_frac, 1.8)
 	var speed = move_speed * spin_factor
 	
 	if ability != null:
@@ -1065,7 +1065,7 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	# --- Damage -----------------------------------------------------------
 	# Front-loaded: the exponent gives a high-RPM top a real early advantage
 	# without collapsing damage to nothing at the tail.
-	var power = pow((attack_rpm + ref_rpm + 4000) / ref_rpm, 1)
+	var power = pow((attack_rpm + ref_rpm + 2000) / ref_rpm, 1)
 	
 	# Intermediate hits chip and hold position; the finisher carries the whole
 	# flurry's force. Known in advance because the length was rolled up front.

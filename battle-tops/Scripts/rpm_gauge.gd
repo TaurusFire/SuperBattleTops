@@ -109,16 +109,18 @@ var _rpm_caption_outline: Label
 
 @export_group("Score")
 @export var show_score := true
-## Rounds needed to win, so the empty pips are drawn. Set by the panel from
-## the match manager rather than duplicated here.
 @export var score_target := 2
-@export var pip_radius := 9.0
+@export var pip_radius := 12.0
 @export var pip_gap := 8.0
-## Offset from the gauge centre. Below the arc, above the readout.
-@export var pip_y_offset := 96.0
-@export var pip_empty := Color(0.16, 0.17, 0.20, 0.9)
-@export var pip_outline := Color(0, 0, 0, 0.9)
-@export var pip_outline_width := 2.5
+## Offset from the gauge centre, in pixels.
+@export var pip_offset := Vector2(-45.0, 100.0)
+## Angle the row runs at, in degrees. 0 is horizontal; positive tilts the row
+## down to the right, so a diagonal run can follow the arc's sweep rather than
+## cutting across it.
+@export var pip_angle_degrees := -3.0
+@export var pip_empty := Color(0.146, 0.156, 0.184, 0.9)
+@export var pip_outline := Color(0.03, 0.03, 0.04, 0.95)
+@export var pip_outline_width := 3
 var _score := 0
 
 @export_group("Entrance")
@@ -464,7 +466,7 @@ func _draw() -> void:
 		if glow_enabled:
 			_draw_leading_glow(c, a0, sweep, half)
 	
-	if show_score and score_target > 0:
+	if show_score and score_target > 1:
 		_draw_pips(c)
 	
 	if marker_enabled and top != null and top.ability != null:
@@ -524,23 +526,34 @@ func _draw_leading_glow(centre: Vector2, from_angle: float,
 			PackedColorArray([c0, c0, c1, c1])
 		)
 
-## Round wins, in the fighter's own colour. Sits under the arc so the gauge
-## reads as one block: who this is, how much spin is left, how close to
-## winning the match.
 func _draw_pips(centre: Vector2) -> void:
-	var filled := top.stats.name_colour if top != null and top.stats != null \
+	var filled = top.stats.name_colour if top != null and top.stats != null \
 		else Color(1, 1, 1)
 
-	var span := float(score_target) * (pip_radius * 2.0) \
-		+ float(score_target - 1) * pip_gap
-	var start_x := centre.x - span * 0.5 + pip_radius
+	# Lay the row along a rotated axis rather than horizontally, so it can be
+	# angled to follow the gauge's arc.
+	var ang = deg_to_rad(pip_angle_degrees)
+	var axis = Vector2(cos(ang), sin(ang))
+	if mirrored:
+		# Mirror the tilt with the gauge, so a pair leans symmetrically.
+		axis.x = -axis.x
+
+	var step = pip_radius * 2.0 + pip_gap
+	var span = float(score_target - 1) * step
+	var offset = pip_offset
+	if mirrored:
+		offset.x = -offset.x
+
+	var start = centre + offset - axis * span * 0.5
 
 	for i in score_target:
-		var at := Vector2(start_x + float(i) * (pip_radius * 2.0 + pip_gap),
-						  centre.y + pip_y_offset)
+		var at = start + axis * float(i) * step
+		# Fill from the end nearest the screen centre outward, so both gauges
+		# build toward the edges and the pair reads symmetrically.
+		var rank = i if mirrored else (score_target - 1 - i)
 		if pip_outline_width > 0.0:
 			draw_circle(at, pip_radius + pip_outline_width, pip_outline)
-		draw_circle(at, pip_radius, filled if i < _score else pip_empty)
+		draw_circle(at, pip_radius, filled if rank < _score else pip_empty)
 
 ## Draws an annular band from the arc start through `portion` of the sweep.
 ## `colour_fn` receives 0..1 along the drawn portion.

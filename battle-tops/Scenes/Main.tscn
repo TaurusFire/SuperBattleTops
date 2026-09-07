@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://bj8y5lhaale4p" path="res://Sounds/beep.wav" id="24_aht7i"]
 [ext_resource type="Script" uid="uid://dpwaisanpgvpi" path="res://Scripts/round_result_display.gd" id="24_semxg"]
 [ext_resource type="AudioStream" uid="uid://cvoutf0ot1rfe" path="res://Sounds/buzzer.mp3" id="25_5jffn"]
+[ext_resource type="Script" uid="uid://f0we7jinrdal" path="res://Scripts/round_indicator.gd" id="25_ep8v8"]
 [ext_resource type="Script" uid="uid://dcgiv3nc2u51b" path="res://Scripts/impact_sfx.gd" id="26_x3rx7"]
 [ext_resource type="AudioStream" uid="uid://1vait46xbfy6" path="res://Sounds/light_sound_1.wav" id="27_6heos"]
 [ext_resource type="AudioStream" uid="uid://b5iw6rbmju2f1" path="res://Sounds/light_sound_2.wav" id="28_vvnwx"]
@@ -73,6 +74,7 @@ glow_bloom = 0.1
 [node name="MatchManager" type="Node" parent="." unique_id=1435912766 node_paths=PackedStringArray("manager")]
 script = ExtResource("1_lfh1j")
 manager = NodePath("GameManager")
+between_rounds = 2.0
 metadata/_custom_type_script = "uid://coqcr74hpq7hm"
 
 [node name="GameManager" type="Node" parent="MatchManager" unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
@@ -255,6 +257,22 @@ match_manager = NodePath("../../MatchManager")
 font = ExtResource("17_346fj")
 shader = ExtResource("18_0sclb")
 metadata/_custom_type_script = "uid://dpwaisanpgvpi"
+
+[node name="RoundIndicator" type="Control" parent="UI" unique_id=1417442833 node_paths=PackedStringArray("match_manager")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("25_ep8v8")
+match_manager = NodePath("../../MatchManager")
+font = ExtResource("17_346fj")
+shader = ExtResource("18_0sclb")
+metadata/_custom_type_script = "uid://f0we7jinrdal"
+metadata/_edit_use_anchors_ = true
 
 [node name="IntroSequence" type="Node" parent="." unique_id=1116842354 node_paths=PackedStringArray("manager", "arena", "camera")]
 script = ExtResource("18_346fj")

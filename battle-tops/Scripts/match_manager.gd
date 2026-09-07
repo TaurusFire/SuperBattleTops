@@ -16,6 +16,7 @@ signal match_complete(winners: Array[Top], scores: Dictionary)
 ## Pause between a round's result and the next beginning. Kept short — a gap
 ## is where a viewer scrolls away.
 @export var between_rounds := 2.2
+@export var round_announce_pause := 0.0
 
 var scores := {}
 var round_number := 0
@@ -39,7 +40,14 @@ func register_manager() -> void:
 func _begin_round() -> void:
 	round_number += 1
 	round_starting.emit(round_number, scores)
-	manager.start_round(first_countdown if round_number == 1 else later_countdown)
+
+	if round_number == 1 and manager.intro != null:
+		manager.play_intro(first_countdown)
+		return
+
+	if round_number > 1 and round_announce_pause > 0.0:
+		await get_tree().create_timer(round_announce_pause, true, false, true).timeout
+	manager.start_round(later_countdown)
 
 
 func _on_round_ended(winners: Array[Top]) -> void:
