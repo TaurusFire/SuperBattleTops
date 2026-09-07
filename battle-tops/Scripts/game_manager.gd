@@ -57,6 +57,7 @@ var _window_deaths: Array[Top] = []
 
 var _in_contact := {}
 
+var _intro_countdown := 3.0
 var countdown_seconds := 3.0
 var time_remaining := 0.0
 
@@ -118,7 +119,18 @@ func start_round(countdown_length: float) -> void:
 		top.reset_for_round()
 	_arrange_tops()
 	_start_countdown()
-	
+
+
+## Plays the fly-in, then starts the first round. Separated so the match
+## manager can run it once before round one rather than before every round.
+func play_intro(countdown_length := -1.0) -> void:
+	_intro_countdown = countdown_length if countdown_length > 0.0 else countdown_seconds
+	_arrange_tops()
+	phase = Phase.INTRO
+	if not intro.finished.is_connected(_on_intro_finished):
+		intro.finished.connect(_on_intro_finished)
+	intro.begin()
+
 func _on_intro_finished() -> void:
 	_start_countdown()
 

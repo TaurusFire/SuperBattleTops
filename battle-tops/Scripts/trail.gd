@@ -99,7 +99,7 @@ func _current_pos() -> Vector3:
 
 
 func _record_point() -> void:
-	var speed := top._velocity.length()
+	var speed = top._velocity.length()
 	_points.append({
 		"pos": _current_pos(),
 		"age": 0.0,
