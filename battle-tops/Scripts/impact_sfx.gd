@@ -109,6 +109,10 @@ func _ready() -> void:
 	_game_player.bus = bus
 	add_child(_game_player)
 	
+	_bell_player = AudioStreamPlayer.new()
+	_bell_player.bus = bus
+	add_child(_bell_player)
+	
 	for top in manager.tops:
 		top.wall_hit.connect(_on_wall_hit)
 		top.knocked_out.connect(_on_knocked_out)

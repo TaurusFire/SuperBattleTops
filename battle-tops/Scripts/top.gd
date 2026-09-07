@@ -93,10 +93,10 @@ var ability: Ability
 @export var vertical_fraction = 0.25
 ## How much the RPM advantage swings knockback. At 0 it's ignored; the
 ## multiplier is centred on 1.0 so changing this never shifts the baseline.
-@export var dominance_influence = 0.1
+@export var dominance_influence = 0.2
 @export var dominance_vertical_bias = 1.00
 ## What a stationary or retreating hit is worth relative to a full charge.
-@export var min_momentum_mult = 0.25
+@export var min_momentum_mult = 0.2
 ## Random scatter on knockback direction, in radians, scaled down by momentum
 ## so heavy hits stay decisive and glancing ones vary.
 @export var knockback_scatter = 1.2
@@ -104,7 +104,7 @@ var ability: Ability
 ## negate an attack and no matchup becomes unwinnable.
 @export_range(0.0, 1.0) var min_damage_frac = 0.7
 ## Closing speed that earns full momentum credit.
-@export var velo_reference = 0.9
+@export var velo_reference = 1.2
 ## Vertical knockback multiplier at full RPM — a top spinning fast is settled
 ## on its foot and resists being launched.
 @export var vertical_mult_high_rpm = 0.25
@@ -129,9 +129,8 @@ var spin_display_scale := 1.0
 
 @export_group('Engagement')
 ## Recovery duration at aggression 0 and 1, scaled by how hard the hit was.
-@export var recover_time_max = 1.2
-@export var recover_time_min = 0.6
-@export var approach_curve_range = 0.07
+@export var recover_time_max = 0.8
+@export var recover_time_min = 0.2
 ## Knockback that earns a full-length recovery.
 @export var recover_reference = 2.0
 ## Below this fraction of reference, a hit only triggers a brief orbit.
@@ -140,21 +139,22 @@ var spin_display_scale := 1.0
 ## RPM at which a top moves at full `move_speed`. Shared across fighters, so a
 ## top with more spin genuinely moves better — unlike rpm_ratio, which is
 ## self-relative and makes a high-RPM top at 10% as slow as a low-RPM one.
-@export var speed_ref_rpm = 10000.0
+@export var speed_ref_rpm = 8000.0
 ## Slowest a top can get, as a fraction of move_speed. Without a floor a
 ## nearly-spent top becomes unwatchable.
-@export_range(0.0, 1.0) var min_speed_frac = 0.25
+@export_range(0.0, 1.0) var min_speed_frac = 0.05
 ## How much the approach arcs rather than charging straight in.
-@export_range(0.0, 1.5) var approach_curve = 0.25
+@export_range(0.0, 1.5) var approach_curve = 0.5
+@export var approach_curve_range = 0.07
 ## Minimum gap to hold, as a multiple of combined radii. Applies regardless of
 ## intent so tops can never settle inside each other.
 @export var separation_factor = 1.05
 @export var separation_strength = 2.0
 @export var slope_scale := 20
 ## Radius, as a fraction of the arena, beyond which a top counts as loitering.
-@export_range(0.0, 1.0) var loiter_radius_frac = 0.6
+@export_range(0.0, 1.0) var loiter_radius_frac = 0.75
 ## Seconds at the edge before the inward pull reaches full strength.
-@export var loiter_patience = 0.5
+@export var loiter_patience = 4
 ## Peak inward pull.
 @export var loiter_pull = 2
 ## How fast the timer unwinds once back inside. Higher forgets sooner.
@@ -162,20 +162,28 @@ var spin_display_scale := 1.0
 
 @export_subgroup('Repositioning')
 ## Chance of repositioning rather than closing when a recovery ends.
-@export_range(0.0, 1.0) var reposition_chance = 0.75
+@export_range(0.0, 1.0) var attack_reposition_chance = 0.6
+@export_range(0.0, 1.0) var recovery_reposition_chance = 0.8
 ## Duration range, before aggression scales it.
-@export var reposition_time_min = 0.5
-@export var reposition_time_max = 1.0
+@export var reposition_time_min = 0.4
+@export var reposition_time_max = 3
 ## Where it heads, as a fraction of the arena radius. Moderate, so it resets
 ## toward open space rather than to the rim or the dead centre.
-@export_range(0.0, 1.0) var reposition_radius_frac = 0.7
+@export_range(0.0, 1.0) var reposition_radius_frac = 0.6
 ## Angular scatter around the point opposite the opponent, in radians.
 @export var reposition_spread = 1.0
 ## How close counts as arrived.
-@export var reposition_arrive_dist = 0.03
-@export var reposition_speed = 1.5
+@export var reposition_arrive_dist = 0.02
+@export var reposition_speed = 1
+## How much the path to the reset point bows sideways. A straight line reads
+## as a retreat; a curve reads as circling round to a new angle, which suits
+## the hit-and-run better.
+@export_range(0.0, 1.5) var reposition_curve = 0.7
+## Distance over which the curve fades out, so the top straightens as it
+## arrives rather than swinging past.
+@export var reposition_curve_range = 0.06
 var _reposition_target = Vector2.ZERO
-
+var _reposition_dir = 1.0
 
 @export_subgroup('Fleeing')
 ## RPM ratio below which a top stops seeking contact and tries to survive.
@@ -190,10 +198,10 @@ var _reposition_target = Vector2.ZERO
 ## line flickers between fleeing and closing every frame.
 @export var flee_hysteresis = 0.05
 ## Distance it tries to keep from the nearest opponent.
-@export var flee_distance = 0.05
+@export var flee_distance = 0.15
 ## Speed multiplier while fleeing. Above 1 so a desperate top can actually
 ## escape rather than being run down immediately.
-@export var flee_speed = 1.1
+@export var flee_speed = 1.2
 ## How strongly it favours circling over running directly away. Pure retreat
 ## backs into the wall; some tangential motion keeps it mobile.
 @export_range(0.0, 1.0) var flee_tangent = 0.25
@@ -230,7 +238,7 @@ var _reposition_target = Vector2.ZERO
 ## Steering suspension after a wall bounce, so it reads as a ping not a guide.
 @export var wall_recoil_time = 0.05
 ## Steering suspension after a top-on-top hit, so a pair can't lock together.
-@export var contact_recoil_time = 0.12
+@export var contact_recoil_time = 0.2
 ## Inward steering near the rim, so intents pointing outward don't pin a top
 ## against the wall.
 @export var wall_avoid_strength = 0.0
@@ -238,6 +246,24 @@ var _reposition_target = Vector2.ZERO
 @export var wall_damage_cooldown := 0.33
 var _wall_damage_timer := 0.0
 var _wall_contact := false
+
+@export_subgroup('Approach')
+@export var charge_duration = 4.0
+## Chance an approach is a committed charge rather than a probe. Scaled by
+## aggression, so an attacker commits more often than a defender.
+@export_range(0.0, 1.0) var commit_chance = 0.2
+@export_range(0.0, 1.0) var commit_aggression_weight = 0.5
+## Speed multiplier for each kind. A probe is slower and arcs wide; a charge
+## drives in fast and straight.
+@export var probe_speed = 0.7
+@export var charge_speed_mult = 1.25
+## Curve multiplier for each. A probe sweeps; a charge barely deviates.
+@export var probe_curve = 1.4
+@export var charge_curve = 0.3
+## A probe breaks off after this long without contact, so a top isn't left
+## drifting toward an opponent it never meant to reach.
+@export var probe_duration = 2
+var _committed = false
 
 @export_group('Spawning')
 @export var drop_duration = 0.6
@@ -258,16 +284,16 @@ var _wall_contact := false
 
 @export_group('Knockout')
 @export var ko_drag = 0.4
-@export var ko_kill_depth = 0.5
-@export var ko_confidence = 1.7
+@export var ko_kill_depth = 0.2
+@export var ko_confidence = 1.1
 
 @export_group('Combo')
 ## Closing speed a hit needs to be combo-eligible.
 @export var combo_speed_threshold = 0.04
 ## Chance of the first extra hit, before aggression scales it.
-@export_range(0.0, 1.0) var combo_base_chance = 0.35
+@export_range(0.0, 1.0) var combo_base_chance = 0.45
 ## How much aggression moves that chance.
-@export_range(0.0, 1.0) var combo_aggression_weight = 0.6
+@export_range(0.0, 1.0) var combo_aggression_weight = 0.55
 ## Each additional hit multiplies the chance by this, so long combos are rare
 ## without a cap having to enforce it.
 @export_range(0.1, 1.0) var combo_chance_decay = 0.4
@@ -287,7 +313,7 @@ var _wall_contact := false
 
 @export_subgroup('Force')
 ## Damage multiplier on each intermediate hit.
-@export var combo_hit_damage = 0.4
+@export var combo_hit_damage = 0.5
 ## Knockback on intermediate hits. Near zero so the pair stay in place.
 @export_range(0.0, 1.0) var combo_hit_knockback = 0.05
 ## Damage and knockback multiplier on the finisher.
@@ -509,6 +535,42 @@ func _update_active(delta: float) -> void:
 	if _airborne and _horizontal_pos().distance_to(arena_centre) > knockout_radius:
 		_enter_knocked_out()
 
+## Returns the top to its opening state for a new round. Everything the match
+## accumulated has to go, or a fighter carries momentum, stun or a half-built
+## combo into a round it should start clean.
+func reset_for_round() -> void:
+	current_rpm = initial_rpm
+	current_state = State.COUNTDOWN
+
+	_velocity = Vector2.ZERO
+	_vertical_velocity = 0.0
+	_airborne = false
+	_spin_frozen = false
+
+	intent = Intent.CLOSING
+	_intent_timer = 0.0
+	_stun_timer = 0.0
+	_wall_recoil_timer = 0.0
+	_wall_damage_timer = 0.0
+	_wall_contact = false
+	_loiter_time = 0.0
+
+	_combo_target = null
+	_combo_remaining = 0
+	_combo_length = 0
+	_combo_phase_timer = 0.0
+	_combo_reeling = false
+
+	_counter_target = null
+	_dodge_cooldown = 0.0
+
+	last_damage_dealt = 0.0
+	last_knockback_dealt = 0.0
+
+	orientation_pivot.basis = Basis()
+	if ability != null:
+		ability.reset(self)
+		
 
 func _apply_velocity(delta: float) -> void:
 	if _velocity.length() > max_speed:
@@ -532,7 +594,7 @@ func _horizontal_pos() -> Vector2:
 ## plus two corrections that always apply regardless of intent.
 func _desired_velocity() -> Vector2:
 	
-	var spin_factor = clamp(pow(current_rpm + 3000 / speed_ref_rpm, 0.3), min_speed_frac, 1.2)
+	var spin_factor = clamp(pow(current_rpm + 4000/ speed_ref_rpm, 0.3), min_speed_frac, 1.8)
 	var speed = move_speed * spin_factor
 	
 	if ability != null:
@@ -558,20 +620,24 @@ func _intent_velocity(speed: float) -> Vector2:
 
 	match intent:
 		Intent.CLOSING:
-			# Arc in rather than charging straight, so tops meet off-axis and
-			# glance rather than colliding dead-centre every time. The lateral
-			# component fades with distance, so the top commits at the end.
 			var tangent = Vector2(-toward.y, toward.x) * _arc_dir
 			var curve_amount = approach_curve * (1.0 - aggression * 0.5)
+			curve_amount *= charge_curve if _committed else probe_curve
 			var curve = curve_amount * clamp(dist / max(approach_curve_range, 0.001), 0.0, 1.0)
-			return (toward + tangent * curve).normalized() * speed
+			var pace = charge_speed_mult if _committed else probe_speed
+			return (toward + tangent * curve).normalized() * speed * pace
 		Intent.REPOSITIONING:
 			var to_spot = _reposition_target - _horizontal_pos()
-			if to_spot.length() < reposition_arrive_dist:
-				# Arrived early — no point loitering on the mark.
+			var spot_dist = to_spot.length()
+			if spot_dist < reposition_arrive_dist:
 				_intent_timer = 0.0
 				return _velocity * 0.5
-			return to_spot.normalized() * speed * reposition_speed
+			var spot_dir = to_spot / spot_dist
+			# Bow the path, fading out as it nears the mark so the top settles
+			# on the spot rather than swinging past it.
+			var tangent = Vector2(-spot_dir.y, spot_dir.x) * _reposition_dir
+			var bow = reposition_curve * clamp(spot_dist / max(reposition_curve_range, 0.001), 0.0, 1.0)
+			return (spot_dir + tangent * bow).normalized() * speed * reposition_speed
 		Intent.DODGING:
 			# Pure lateral burst — the opponent's momentum carries them past.
 			return _dodge_dir_vec * move_speed * dodge_speed
@@ -605,7 +671,11 @@ func _intent_velocity(speed: float) -> Vector2:
 			if from_centre.length() > 0.001:
 				var inward_weight = clamp(from_centre.length() / (arena_radius * 0.3), 0.0, 1.0)
 				inward_bias = -from_centre.normalized() * inward_weight * 0.35
-
+			
+			print("%s fleeing: rpm=%.0f speed=%.3f (base %.3f) vs %s at %.3f" % [
+				display_name(), current_rpm, speed * flee_speed, move_speed,
+				target.display_name(), target._velocity.length()])
+			
 			return (radial_flee * (1.0 - tangent_mix)
 				+ flee_tan * tangent_mix
 				+ inward_bias).normalized() * speed * flee_speed
@@ -851,14 +921,14 @@ func _update_intent(delta: float) -> void:
 
 	# An expired orbit or recovery returns to the hunt. CLOSING has no timer —
 	# it persists until a collision interrupts it.
-	if intent == Intent.IDLE or (intent != Intent.CLOSING and _intent_timer <= 0.0):
-		# A recovery sometimes flows into a reset rather than straight back
-		# into the fight, which spaces the clashes out and pulls tops off the
-		# rim they were knocked toward.
-		if intent == Intent.RECOVERING and randf() < reposition_chance:
+	if intent == Intent.IDLE or _intent_timer <= 0.0:
+		if intent == Intent.RECOVERING and randf() < recovery_reposition_chance:
+			_begin_repositioning()
+		elif intent == Intent.CLOSING and not _committed:
 			_begin_repositioning()
 		else:
 			_begin_closing()
+			
 
 
 ## Hysteresis band, so a top sitting near the threshold doesn't flicker
@@ -884,6 +954,7 @@ func _should_flee() -> bool:
 ## reset rather than more chasing.
 func _begin_repositioning() -> void:
 	intent = Intent.REPOSITIONING
+	_reposition_dir = 1.0 if randf() < 0.5 else -1.0
 
 	var away_dir = Vector2.RIGHT
 	var opponent = _nearest_opponent()
@@ -908,8 +979,16 @@ func _begin_fleeing() -> void:
 
 func _begin_closing() -> void:
 	intent = Intent.CLOSING
-	_intent_timer = 0.0
 	_arc_dir = 1.0 if randf() < 0.5 else -1.0
+
+	# Decided once, at the start: a top that commits mid-approach reads as
+	# indecisive, and the whole point is that some runs are real and some
+	# are feints the opponent can't distinguish until contact.
+	var scale = 1.0 + (aggression - 0.5) * 2.0 * commit_aggression_weight
+	_committed = randf() < clamp(commit_chance * scale, 0.0, 1.0)
+
+	# A charge runs until contact; a probe gives up and resets.
+	_intent_timer = charge_duration if _committed else probe_duration
 
 func _begin_recovering(severity: float) -> void:
 	intent = Intent.RECOVERING
@@ -1008,15 +1087,15 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	last_damage_dealt = dmg_dealt
 	opponent._receive_dmg(dmg_dealt)
 
-	print(
-		"\nAttacker: ", self.display_name(),
-		"\nVelocity: ", self._velocity.length(),
-		"\nMomentum: ", momentum,
-		"\nMomentum Mult: ", momentum_mult,
-		"\nAdjusted Damage: ", adj_damage,
-		"\nDamage Dealt: ", dmg_dealt,
-		"\nReceiver: ", opponent.display_name()
-	)
+	#print(
+		#"\nAttacker: ", self.display_name(),
+		#"\nVelocity: ", self._velocity.length(),
+		#"\nMomentum: ", momentum,
+		#"\nMomentum Mult: ", momentum_mult,
+		#"\nAdjusted Damage: ", adj_damage,
+		#"\nDamage Dealt: ", dmg_dealt,
+		#"\nReceiver: ", opponent.display_name()
+	#)
 
 	if opponent.current_rpm <= opponent.dead_rpm and manager != null:
 		manager._check_deciding_blow(opponent, self)
@@ -1049,17 +1128,18 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 		applied *= combo_finisher_scale if is_finisher else combo_hit_knockback
 		if not is_finisher:
 			vert_bias = 0.0
-	print(
-		"\nAttacker: ", self.display_name(),
-		"\nVelocity: ", self._velocity.length(),
-		"\nKB Power: ", kb_power,
-		"\nMomentum: ", momentum,
-		"\nMomentum Mult: ", momentum_mult,
-		"\nDominance Mult: ", dominance_mult,
-		"\nAdj KB 1: ", base_term,
-		"\nAdj KB 2: ", applied,
-		"\nReceiver: ", opponent.display_name()
-	)
+	#print(
+		#"\nAttacker: ", self.display_name(),
+		#"\nVelocity: ", self._velocity.length(),
+		#"\nKB Power: ", kb_power,
+		#"\nMomentum: ", momentum,
+		#"\nMomentum Mult: ", momentum_mult,
+		#"\nDominance Mult: ", dominance_mult,
+		#"\nAdj KB 1: ", base_term,
+		#"\nAdj KB 2: ", applied,
+		#"\nReceiver: ", opponent.display_name()
+	#)
+	
 	# --- Direction --------------------------------------------------------
 	# Scatter keeps clashes from all resolving along the same line. Scaled down
 	# by momentum so heavy hits drive through and glancing ones vary.
@@ -1079,6 +1159,10 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 		var recoil_force = applied / max(dominance_mult, 0.001)
 		recoil_force *= 1.0 + (0.5 - dominance) * 0.4
 		_recoil(recoil_force * attacker_recoil * back_ratio * 2.0, -dir)
+	
+	if _combo_remaining <= 0 and intent == Intent.CLOSING \
+			and randf() < attack_reposition_chance:
+		_begin_repositioning()
 	
 	var ability_strike = ability != null and ability.controls_movement(self)
 	# Only a fresh collision starts a flurry; hits within one don't re-roll.
@@ -1154,8 +1238,6 @@ func _projects_knockout() -> bool:
 	var g = max(gravity, 0.001)
 	var peak = global_position.y + (_vertical_velocity * _vertical_velocity) / (2.0 * g)
 	
-	print("KO proj: peak=%.4f need=%.4f (wall %.4f x conf %.2f)" % [
-		peak, arena_centre.y + wall_top_height * ko_confidence, wall_top_height, ko_confidence])
 		
 	if peak < arena_centre.y + wall_top_height * ko_confidence:
 		return false

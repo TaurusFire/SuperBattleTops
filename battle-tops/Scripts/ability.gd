@@ -34,6 +34,9 @@ func vertical_bias(_top: Top) -> float:
 	
 func gauge_marker(_top: Top) -> float:
 	return -1.0
+
+func reset(_top: Top) -> void:
+	pass
 	
 ## Multiplier applied to the top's movement speed. Lets a passive ability
 ## modify how the top moves without taking control of where it goes.

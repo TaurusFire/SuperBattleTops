@@ -10,7 +10,7 @@ extends Node3D
 @export_group('Scale')
 
 @export var knockback_reference := 12
-@export var damage_reference := 100
+@export var damage_reference := 70
 ## Particles at full strength. Weak hits emit proportionally fewer.
 @export var max_particles := 60
 ## Below this fraction of reference, no sparks at all.

@@ -28,7 +28,7 @@ var _distance := 0.5
 
 @export_group('Impact')
 ## Peak positional shake at reference knockback, in world units.
-@export var shake_max := 0.004
+@export var shake_max := 0.006
 ## How fast shake decays. Higher = snappier.
 @export var shake_decay := 8.0
 ## Shake oscillation speed.

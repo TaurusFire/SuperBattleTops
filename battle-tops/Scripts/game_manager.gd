@@ -2,6 +2,8 @@ class_name GameManager
 extends Node
 
 signal knockout_projected(top: Top, attacker: Top)
+signal round_ended(winners: Array[Top])
+var countdown_for_round := 3.0
 
 
 @export var arena: Arena
@@ -16,9 +18,9 @@ signal knockout_projected(top: Top, attacker: Top)
 @export var slowmo_scale := 0.5
 
 @export_group('Hitstop')
-@export var hitstop_max_duration := 0.06
-@export var hitstop_reference_damage := 100
-@export var hitstop_reference_knockback := 50
+@export var hitstop_max_duration := 0.08
+@export var hitstop_reference_damage := 75
+@export var hitstop_reference_knockback := 20
 @export var hitstop_min_duration := 0.02
 @export var hitstop_threshold := 0.4
 @export var hitstop_overrun := 2.0
@@ -86,23 +88,37 @@ func _ready() -> void:
 		top.entered_dying.connect(_on_top_entered_dying)
 		top.knockout_incoming.connect(_on_knockout_projected)
 		top.manager = self
-
-	# Must precede the intro: the sequencer reads each top's position as the
-	# destination it flies to.
-	_arrange_tops()
 	
 	if tops.size() == 3:
 		hitstop_max_duration = 0.06
 	elif tops.size() >= 4:
 		hitstop_max_duration = 0.02
 	
+	# The match manager drives us if one is present; otherwise run standalone.
+	if get_parent().has_method("register_manager"):
+		return
+	_arrange_tops()
 	if intro != null:
 		phase = Phase.INTRO
 		intro.finished.connect(_on_intro_finished)
 		intro.begin()
 	else:
-		_start_countdown()
+		start_round(countdown_seconds)
 
+## Begins a round. Called by the match manager, or by _ready when standalone.
+func start_round(countdown_length: float) -> void:
+	countdown_for_round = countdown_length
+	_pending_end = false
+	_window_deaths.clear()
+	_deciding_end_msec = 0
+	_hitstop_end_msec = 0
+	Engine.time_scale = 1.0
+
+	for top in tops:
+		top.reset_for_round()
+	_arrange_tops()
+	_start_countdown()
+	
 func _on_intro_finished() -> void:
 	_start_countdown()
 
@@ -313,6 +329,7 @@ func _trigger_hitstop(damage: float, knockback: float, combo_depth = 0) -> void:
 	var strength := (
 		(knockback / hitstop_reference_knockback) + (damage / hitstop_reference_damage)
 		)/2
+	print(knockback, " ", strength)
 	if strength < hitstop_threshold:
 		return
 	
@@ -350,7 +367,7 @@ func _end_match(winners: Array[Top]) -> void:
 		var names := winners.map(func(t): return t.name)
 		print("Draw between: ", ", ".join(names))
 		
-	print("match ended at %d" % Time.get_ticks_msec())
+	round_ended.emit(winners)
 	match_ended.emit(winners)
 	_freeze_after(freeze_delay)
 

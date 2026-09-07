@@ -8,6 +8,7 @@ extends BannerText
 signal finish_shown
 
 @export_group("Finish")
+@export var match_manager: MatchManager
 @export var manager: GameManager
 @export var ko_text := "K.O.!"
 @export var game_text := "GAME!"
@@ -27,7 +28,12 @@ func _ready() -> void:
 	for top in manager.tops:
 		top.knocked_out.connect(_on_knocked_out)
 		top.stopped.connect(_on_stopped)
+	if match_manager != null:
+		match_manager.round_starting.connect(_on_round_starting)
 
+
+func _on_round_starting(_round_number: int, _scores: Dictionary) -> void:
+	_announced = false
 
 func _on_knocked_out(_top: Top) -> void:
 	if not _is_final():

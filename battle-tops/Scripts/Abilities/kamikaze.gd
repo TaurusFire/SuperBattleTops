@@ -16,7 +16,7 @@ enum Phase { DORMANT, TELEGRAPH, CHARGING, SPENDING }
 @export var window := 0.5
 ## How hard it tracks. High, so it doesn't miss through slow turning.
 @export var agility := 10
-@export var strike_power := 25
+@export var strike_power := 20
 @export var strike_vertical_bias := 2
 ## Seconds between the strike landing and the top giving up its remaining RPM.
 ## Keeps it ACTIVE through the collision so hitstop and sparks resolve, and
@@ -32,6 +32,10 @@ var _phase := {}
 var _timer := {}
 var _target := {}
 
+func reset(top: Top) -> void:
+	_phase.erase(top)
+	_timer.erase(top)
+	_target.erase(top)
 
 func phase_of(top: Top) -> Phase:
 	return _phase.get(top, Phase.DORMANT)

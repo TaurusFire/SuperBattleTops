@@ -25,9 +25,9 @@ var _anchor = Vector2.ZERO
 @export var outline_size := 12
 @export var star_size := 40.0
 @export var star_gap := 6.0
-@export var star_filled := Color(1.0, 0.84, 0.28)
+@export var star_filled := Color(1.0, 0.884, 0.515, 1.0)
 @export var star_empty := Color(0.28, 0.29, 0.33, 0.85)
-@export var star_outline := Color(0, 0, 0, 0.9)
+@export var star_outline := Color(1.0, 1.0, 1.0, 0.9)
 @export var label_colour := Color(0.88, 0.90, 0.94)
 ## Outline thickness in pixels. Zero disables it.
 @export var star_outline_width = 5.0
@@ -45,10 +45,10 @@ var _anchor = Vector2.ZERO
 ## Delay between consecutive rows starting, so they cascade.
 @export var star_row_stagger = 0.12
 ## How long the glow lingers behind the filling edge.
-@export var star_glow_time = 1.5
-@export var star_glow_colour = Color(1.0, 0.956, 0.759, 1.0)
+@export var star_glow_time = 3.5
+@export var star_glow_colour = Color(1.0, 0.975, 0.858, 1.0)
 ## Peak size multiplier on a star as it fills.
-@export var star_pop = 1.6
+@export var star_pop = 1.1
 var _reveal_time = 0.0
 
 
@@ -209,40 +209,31 @@ func _draw() -> void:
 func _draw_stars(at: Vector2, stars: float, max_stars: int, row_index: int) -> void:
 	var row_start = star_row_stagger * float(row_index)
 	var elapsed = _reveal_time - row_start
-	# Progress measured in stars, so it maps directly onto the loop below.
 	var revealed = clamp(elapsed / max(star_fill_time, 0.001), 0.0, 1.0) * stars
 
 	for i in max_stars:
 		var centre = at + Vector2(i * (star_size + star_gap) + star_size * 0.5,
-								   star_size * 0.5)
+								  star_size * 0.5)
 		var filled = clamp(revealed - float(i), 0.0, 1.0)
 		var rated = stars - float(i)
 
-		# How recently this star finished filling, 1 at the moment it lands.
+		# Nothing drawn where there's no rating: an empty star is a slot
+		# waiting to be filled, which reads as a lower score than simply
+		# showing fewer stars.
+		if rated <= 0.0 or filled <= 0.001:
+			continue
+
 		var glow = 0.0
-		if filled >= 1.0 or (rated < 1.0 and filled >= rated and rated > 0.0):
-			var landed_at = row_start + (min(float(i) + 1.0, stars) / max(stars, 0.001)) * star_fill_time
-			glow = clamp(1.0 - (_reveal_time - landed_at) / max(star_glow_time, 0.001), 0.0, 1.0)
+		if filled >= 1.0 or (rated < 1.0 and filled >= rated):
+			glow = 1.0
 
 		var r = star_size * 0.5 * lerpf(1.0, star_pop, glow)
+		var portion = min(filled, max(rated, 0.0))
 
 		if star_outline_width > 0.0:
 			var oc = star_outline
 			oc.a *= _alpha
-			_star(centre, r + star_outline_width, oc, 1.0)
-
-		var empty = star_empty
-		empty.a *= _alpha
-		_star(centre, r, empty, 1.0)
-
-		if filled <= 0.001:
-			continue
-
-		# Fill to whichever is smaller: the rating, or how far the sweep has
-		# reached. So a half-star still animates from nothing to half.
-		var portion = min(filled, max(rated, 0.0))
-		if portion <= 0.001:
-			continue
+			_star(centre, r + star_outline_width, oc, min(portion, 1.0))
 
 		var col = star_filled.lerp(star_glow_colour, glow)
 		col.a *= _alpha

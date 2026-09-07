@@ -8,7 +8,7 @@ extends CanvasLayer
 @export var manager: GameManager
 @export var gauge_scene: PackedScene
 @export var intro: IntroSequence
-
+@export var match_manager: MatchManager
 
 @export var gauge_size := Vector2(180, 180)
 ## Inset from the screen edges.
@@ -50,9 +50,22 @@ func _rebuild() -> void:
 		_by_top[valid[i]] = g
 		if intro != null:
 			g.hide_until_entrance(is_right)
+		_by_top[valid[i]] = g
+		if match_manager != null:
+			g.set_score(0, match_manager.rounds_to_win)
+		if intro != null:
+			g.hide_until_entrance(is_right)
 
 	if intro != null:
 		intro.top_introduced.connect(_on_top_introduced)
+	if match_manager != null:
+		match_manager.round_starting.connect(_on_round_starting)
+
+
+func _on_round_starting(_round_number: int, scores: Dictionary) -> void:
+	for top in scores:
+		if _by_top.has(top):
+			_by_top[top].set_score(scores[top], match_manager.rounds_to_win)
 
 func _on_top_introduced(top: Top, _index: int) -> void:
 	if _by_top.has(top):

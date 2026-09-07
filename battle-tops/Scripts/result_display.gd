@@ -2,6 +2,7 @@ class_name ResultDisplay
 extends BannerText
 
 @export_group("Result")
+@export var match_manager: MatchManager
 @export var manager: GameManager
 ## Seconds to wait after the match resolves before the banner appears, so the
 ## topple has time to play out.
@@ -19,28 +20,29 @@ extends BannerText
 
 var _pending_winners: Array[Top] = []
 var _finish_done := false
+var _has_result := false
 
 func _ready() -> void:
 	super()
-	assert(manager != null, "ResultDisplay: manager is unassigned.")
-	manager.match_ended.connect(_on_match_ended)
+	assert(match_manager != null, "ResultDisplay: match_manager is unassigned.")
+	match_manager.match_complete.connect(_on_match_complete)
 	if finish_display != null:
 		finish_display.finish_shown.connect(_on_finish_shown)
 	else:
 		_finish_done = true
 
 
+
 func _on_finish_shown() -> void:
 	_finish_done = true
-	if not _pending_winners.is_empty():
+	if _has_result:
 		_show_result()
 
-
-func _on_match_ended(winners: Array[Top]) -> void:
+func _on_match_complete(winners: Array[Top], _scores: Dictionary) -> void:
 	_pending_winners = winners
+	_has_result = true
 	if _finish_done:
 		_show_result()
-
 
 func _show_result() -> void:
 	var winners = _pending_winners
