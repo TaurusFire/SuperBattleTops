@@ -12,7 +12,7 @@ signal finish_shown
 @export var manager: GameManager
 @export var ko_text := "K.O.!"
 @export var game_text := "GAME!"
-@export var finish_hold := 1.4
+@export var finish_hold := 2
 @export var finish_font_size := 150
 @export var ko_top_colour := Color(1.0, 0.85, 0.25)
 @export var ko_bottom_colour := Color(0.92, 0.28, 0.12)
@@ -20,6 +20,7 @@ signal finish_shown
 @export var game_bottom_colour := Color(0.55, 0.60, 0.72)
 
 var _announced := false
+var _knocked_out_tops := {}
 
 
 func _ready() -> void:
@@ -30,19 +31,26 @@ func _ready() -> void:
 		top.stopped.connect(_on_stopped)
 	if match_manager != null:
 		match_manager.round_starting.connect(_on_round_starting)
+		print("FD connected to round_starting on %s: %s" % [
+			match_manager, match_manager.round_starting.is_connected(_on_round_starting)])
+	else:
+		print("FD: match_manager is null")
 
 
 func _on_round_starting(round_number: int, _scores: Dictionary) -> void:
+	_knocked_out_tops = {}
 	_announced = false
 
-func _on_knocked_out(_top: Top) -> void:
+func _on_knocked_out(top: Top) -> void:
+	_knocked_out_tops[top] = true
 	if not _is_final():
 		return
 	_announce(ko_text, ko_top_colour, ko_bottom_colour)
 
 
 func _on_stopped(top: Top) -> void:
-	# entered_dying also fires for knockouts, which have their own call.
+	if _knocked_out_tops.has(top):
+		return
 	if top.current_state == Top.State.KNOCKED_OUT:
 		return
 	if not _is_final():

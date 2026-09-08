@@ -1,6 +1,8 @@
 class_name ResultDisplay
 extends BannerText
 
+signal result_dismissed
+
 @export_group("Result")
 @export var match_manager: MatchManager
 @export var manager: GameManager
@@ -16,7 +18,7 @@ extends BannerText
 
 @export var finish_display: FinishDisplay
 ## Extra pause after the finish banner clears, before the winner appears.
-@export var result_gap := 0.25
+@export var result_gap := 2.2
 
 var _pending_winners: Array[Top] = []
 var _finish_done := false
@@ -51,9 +53,11 @@ func _on_round_starting(_round_number: int, _scores: Dictionary) -> void:
 	_has_result = false
 
 func _show_result() -> void:
+	if _pending_winners.is_empty() and _has_result == false:
+		return
 	var winners = _pending_winners
-
 	_pending_winners = []
+	_has_result = false
 
 	var text: String
 	if winners.is_empty():
@@ -72,3 +76,5 @@ func _show_result() -> void:
 	if result_gap > 0.0:
 		await get_tree().create_timer(result_gap, true, false, true).timeout
 	show_text(text, result_hold, 1.0, result_font_size)
+	await get_tree().create_timer(result_hold, true, false, true).timeout
+	result_dismissed.emit()

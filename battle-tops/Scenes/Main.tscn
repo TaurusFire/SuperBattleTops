@@ -193,7 +193,7 @@ camera = NodePath("../../CameraRig/Camera3D")
 metadata/_custom_type_script = "uid://bvghi1nb53vvq"
 metadata/_edit_use_anchors_ = true
 
-[node name="FinishDisplay" type="Control" parent="UI" unique_id=1500735166 node_paths=PackedStringArray("manager")]
+[node name="FinishDisplay" type="Control" parent="UI" unique_id=1500735166 node_paths=PackedStringArray("match_manager", "manager")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -201,6 +201,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("20_m4llh")
+match_manager = NodePath("../../MatchManager")
 manager = NodePath("../../MatchManager/GameManager")
 finish_font_size = 180
 font = ExtResource("17_346fj")

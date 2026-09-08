@@ -18,7 +18,7 @@ signal match_complete(winners: Array[Top], scores: Dictionary)
 ## is where a viewer scrolls away.
 @export var between_rounds := 2.2
 @export var round_announce_pause := 0.0
-@export var match_freeze_delay := 6.0
+@export var match_freeze_delay := 3.0
 
 var scores := {}
 var round_number := 0
@@ -69,10 +69,8 @@ func _on_round_ended(winners: Array[Top]) -> void:
 			# Typed explicitly: an untyped array literal doesn't satisfy the
 			# signal's Array[Top] parameter, and Godot drops the call silently
 			# rather than erroring.
-			match_complete.emit(winners, scores)
 			if result_display != null:
-				result_display._on_match_complete(winners, scores)
-			manager.freeze_tops(match_freeze_delay)
+				result_display.result_dismissed.connect(_on_result_dismissed)
 			return
 
 	# Nobody there yet — but if no one can still reach the target, stop rather
@@ -94,6 +92,10 @@ func would_end_match(winners: Array[Top]) -> bool:
 		if scores.has(w) and scores[w] + 1 >= rounds_to_win:
 			return true
 	return round_number >= rounds_to_win * 2 - 1
+
+func _on_result_dismissed() -> void:
+	manager.freeze_tops(0.0)
+	
 
 func _leaders() -> Array[Top]:
 	var best = 0

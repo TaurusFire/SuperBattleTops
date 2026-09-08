@@ -40,11 +40,11 @@ func _on_round_starting(round_number: int, scores: Dictionary) -> void:
 		set_colours(round_top_colour, round_bottom_colour)
 		show_text("ROUND %d" % round_number, round_hold, 1.0, round_font_size)
 
-
-## True when someone can win this round. Checked from the scores rather than
-## the round number, so it stays right whatever `rounds_to_win` is set to.
 func _is_decider(scores: Dictionary) -> bool:
+	var max_rounds = match_manager.rounds_to_win * 2 - 1
+	if match_manager.round_number >= max_rounds:
+		return true
 	for top in scores:
-		if scores[top] >= match_manager.rounds_to_win - 1:
-			return true
-	return false
+		if scores[top] < match_manager.rounds_to_win - 1:
+			return false
+	return true
