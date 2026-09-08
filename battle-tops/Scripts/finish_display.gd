@@ -32,7 +32,7 @@ func _ready() -> void:
 		match_manager.round_starting.connect(_on_round_starting)
 
 
-func _on_round_starting(_round_number: int, _scores: Dictionary) -> void:
+func _on_round_starting(round_number: int, _scores: Dictionary) -> void:
 	_announced = false
 
 func _on_knocked_out(_top: Top) -> void:
@@ -67,4 +67,3 @@ func _announce(text: String, top_col: Color, bottom_col: Color) -> void:
 
 	await get_tree().create_timer(finish_hold, true, false, true).timeout
 	finish_shown.emit()
-	print('finish shown emitted')

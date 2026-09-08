@@ -7,6 +7,7 @@ extends Node
 signal round_starting(round_number: int, scores: Dictionary)
 signal match_complete(winners: Array[Top], scores: Dictionary)
 
+@export var result_display: ResultDisplay
 @export var manager: GameManager
 @export var rounds_to_win := 2
 ## Countdown for the opening round. Later rounds get the shorter one, since
@@ -55,25 +56,22 @@ func _on_round_ended(winners: Array[Top]) -> void:
 	if _match_over:
 		return
 		
-	print("round %d ended: %d winners, scores before: %s" % [
-		round_number, winners.size(),
-		str(scores.values())])
 		
 	
 	for w in winners:
 		if scores.has(w):
 			scores[w] += 1
 		
-	print("  scores after: %s (target %d)" % [str(scores.values()), rounds_to_win])
 
 	for top in scores:
-		print("  checking %s: %d >= %d ? %s" % [
-			top.display_name(), scores[top], rounds_to_win, scores[top] >= rounds_to_win])
 		if scores[top] >= rounds_to_win:
 			_match_over = true
-			print("emitting match_complete from %s" % self)
-			print("emitting to %d listeners" % match_complete.get_connections().size())
-			match_complete.emit([top], scores)
+			# Typed explicitly: an untyped array literal doesn't satisfy the
+			# signal's Array[Top] parameter, and Godot drops the call silently
+			# rather than erroring.
+			match_complete.emit(winners, scores)
+			if result_display != null:
+				result_display._on_match_complete(winners, scores)
 			manager.freeze_tops(match_freeze_delay)
 			return
 

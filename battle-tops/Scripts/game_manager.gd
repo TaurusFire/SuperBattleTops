@@ -223,7 +223,6 @@ func _check_collisions() -> void:
 ## anything.
 func _check_deciding_blow(victim: Top, _attacker: Top) -> void:
 	var alive = tops.filter(func(t): return t.current_state == Top.State.ACTIVE)
-	print("deciding check: phase=%d alive=%d victim=%s" % [phase, alive.size(), victim.display_name()])
 	if phase != Phase.FIGHTING:
 		return
 	if alive.size() > 2:
@@ -232,8 +231,7 @@ func _check_deciding_blow(victim: Top, _attacker: Top) -> void:
 
 
 func _begin_deciding_slowmo() -> void:
-	print("deciding slowmo armed, hitstop active=%s, scale now %.2f" % [
-		_hitstop_end_msec > 0, Engine.time_scale])
+
 	_deciding_end_msec = Time.get_ticks_msec() + int(deciding_blow_time * 1000.0)
 	if _hitstop_end_msec <= 0:
 		Engine.time_scale = deciding_blow_scale
