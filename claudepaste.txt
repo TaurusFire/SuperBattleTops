@@ -1,816 +1,155 @@
-Stamina fleeing: rpm=104 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=104 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=103 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=103 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=103 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=103 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=103 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=103 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=103 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=103 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=103 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=102 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=102 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=102 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=102 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=102 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=102 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=102 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=102 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=101 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=101 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=101 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=101 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=101 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=101 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=101 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=101 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=101 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=100 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=100 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=100 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=100 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=100 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=100 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=100 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=100 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=99 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=99 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=99 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=99 speed=0.960 (base 0.800) vs Attack at 0.544
-Stamina fleeing: rpm=99 speed=0.960 (base 0.800) vs Attack at 0.543
-Stamina fleeing: rpm=99 speed=0.960 (base 0.800) vs Attack at 0.543
-Stamina fleeing: rpm=99 speed=0.960 (base 0.800) vs Attack at 0.543
-Stamina fleeing: rpm=99 speed=0.960 (base 0.800) vs Attack at 0.543
-Stamina fleeing: rpm=98 speed=0.960 (base 0.800) vs Attack at 0.543
-Stamina fleeing: rpm=98 speed=0.960 (base 0.800) vs Attack at 0.543
-Stamina fleeing: rpm=98 speed=0.960 (base 0.800) vs Attack at 0.543
-Stamina fleeing: rpm=98 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=98 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=98 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=98 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=98 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=97 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=97 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=97 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=97 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=97 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=97 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=97 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=97 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=97 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=96 speed=0.960 (base 0.800) vs Attack at 0.542
-Stamina fleeing: rpm=96 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=96 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=96 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=96 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=96 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=96 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=96 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=96 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=95 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=95 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=95 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=95 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=95 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=95 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=95 speed=0.960 (base 0.800) vs Attack at 0.541
-Stamina fleeing: rpm=95 speed=0.960 (base 0.800) vs Attack at 0.540
-Stamina fleeing: rpm=94 speed=0.960 (base 0.800) vs Attack at 0.540
-Stamina fleeing: rpm=94 speed=0.960 (base 0.800) vs Attack at 0.540
-Stamina fleeing: rpm=94 speed=0.960 (base 0.800) vs Attack at 0.540
-Stamina fleeing: rpm=94 speed=0.960 (base 0.800) vs Attack at 0.540
-Stamina fleeing: rpm=94 speed=0.960 (base 0.800) vs Attack at 0.540
-Stamina fleeing: rpm=94 speed=0.960 (base 0.800) vs Attack at 0.540
-Stamina fleeing: rpm=94 speed=0.960 (base 0.800) vs Attack at 0.539
-Stamina fleeing: rpm=94 speed=0.960 (base 0.800) vs Attack at 0.539
-Stamina fleeing: rpm=93 speed=0.960 (base 0.800) vs Attack at 0.539
-Stamina fleeing: rpm=93 speed=0.960 (base 0.800) vs Attack at 0.539
-Stamina fleeing: rpm=93 speed=0.960 (base 0.800) vs Attack at 0.539
-Stamina fleeing: rpm=93 speed=0.960 (base 0.800) vs Attack at 0.539
-Stamina fleeing: rpm=93 speed=0.960 (base 0.800) vs Attack at 0.539
-Stamina fleeing: rpm=93 speed=0.960 (base 0.800) vs Attack at 0.539
-Stamina fleeing: rpm=93 speed=0.960 (base 0.800) vs Attack at 0.539
-Stamina fleeing: rpm=93 speed=0.960 (base 0.800) vs Attack at 0.539
-Stamina fleeing: rpm=92 speed=0.960 (base 0.800) vs Attack at 0.539
-Stamina fleeing: rpm=92 speed=0.960 (base 0.800) vs Attack at 0.539
-Stamina fleeing: rpm=92 speed=0.960 (base 0.800) vs Attack at 0.539
-Stamina fleeing: rpm=92 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=92 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=92 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=92 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=92 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=92 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=91 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=91 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=91 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=91 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=91 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=91 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=91 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=91 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=90 speed=0.960 (base 0.800) vs Attack at 0.538
-Stamina fleeing: rpm=90 speed=0.960 (base 0.800) vs Attack at 0.537
-Stamina fleeing: rpm=90 speed=0.960 (base 0.800) vs Attack at 0.537
-Stamina fleeing: rpm=90 speed=0.960 (base 0.800) vs Attack at 0.537
-Stamina fleeing: rpm=90 speed=0.960 (base 0.800) vs Attack at 0.537
-Stamina fleeing: rpm=90 speed=0.960 (base 0.800) vs Attack at 0.537
-Stamina fleeing: rpm=90 speed=0.960 (base 0.800) vs Attack at 0.537
-Stamina fleeing: rpm=90 speed=0.960 (base 0.800) vs Attack at 0.537
-Stamina fleeing: rpm=89 speed=0.960 (base 0.800) vs Attack at 0.537
-Stamina fleeing: rpm=89 speed=0.960 (base 0.800) vs Attack at 0.537
-Stamina fleeing: rpm=89 speed=0.960 (base 0.800) vs Attack at 0.537
-Stamina fleeing: rpm=89 speed=0.960 (base 0.800) vs Attack at 0.537
-Stamina fleeing: rpm=89 speed=0.960 (base 0.800) vs Attack at 0.537
-Stamina fleeing: rpm=89 speed=0.960 (base 0.800) vs Attack at 0.536
-Stamina fleeing: rpm=89 speed=0.960 (base 0.800) vs Attack at 0.536
-Stamina fleeing: rpm=89 speed=0.960 (base 0.800) vs Attack at 0.536
-Stamina fleeing: rpm=88 speed=0.960 (base 0.800) vs Attack at 0.536
-Stamina fleeing: rpm=88 speed=0.960 (base 0.800) vs Attack at 0.536
-Stamina fleeing: rpm=88 speed=0.960 (base 0.800) vs Attack at 0.536
-Stamina fleeing: rpm=88 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=88 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=88 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=88 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=88 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=88 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=87 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=87 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=87 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=87 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=87 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=87 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=87 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=87 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=86 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=86 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=86 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=86 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=86 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=86 speed=0.960 (base 0.800) vs Attack at 0.535
-Stamina fleeing: rpm=86 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=86 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=86 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=85 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=85 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=85 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=85 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=85 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=85 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=85 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=84 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=84 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=84 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=84 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=84 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=84 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=84 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=84 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=84 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=83 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=83 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=83 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=83 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=83 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=83 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=83 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=83 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=82 speed=0.960 (base 0.800) vs Attack at 0.534
-Stamina fleeing: rpm=82 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=82 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=82 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=82 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=82 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=82 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=82 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=81 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=81 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=81 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=81 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=81 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=81 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=81 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=81 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=81 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=80 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=80 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=80 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=80 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=80 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=80 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=80 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=79 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=79 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=79 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=79 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=79 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=79 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=79 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=79 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=79 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=78 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=78 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=78 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=78 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=78 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=78 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=78 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=78 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=77 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=77 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=77 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=77 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=77 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=77 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=77 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=77 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=77 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=76 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=76 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=76 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=76 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=76 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=76 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=76 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=76 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=75 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=75 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=75 speed=0.960 (base 0.800) vs Attack at 0.533
-Stamina fleeing: rpm=75 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=75 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=75 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=75 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=75 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=75 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=74 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=74 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=74 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=74 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=74 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=74 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=74 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=73 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=73 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=73 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=73 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=73 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=73 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=73 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=73 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=73 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=72 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=72 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=72 speed=0.960 (base 0.800) vs Attack at 0.532
-Stamina fleeing: rpm=72 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=72 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=72 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=72 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=72 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=72 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=71 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=71 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=71 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=71 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=71 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=71 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=71 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=70 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=70 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=70 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=70 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=70 speed=0.960 (base 0.800) vs Attack at 0.531
-Stamina fleeing: rpm=70 speed=0.960 (base 0.800) vs Attack at 0.530
-Stamina fleeing: rpm=70 speed=0.960 (base 0.800) vs Attack at 0.530
-Stamina fleeing: rpm=70 speed=0.960 (base 0.800) vs Attack at 0.530
-Stamina fleeing: rpm=70 speed=0.960 (base 0.800) vs Attack at 0.530
-Stamina fleeing: rpm=69 speed=0.960 (base 0.800) vs Attack at 0.530
-Stamina fleeing: rpm=69 speed=0.960 (base 0.800) vs Attack at 0.529
-Stamina fleeing: rpm=69 speed=0.960 (base 0.800) vs Attack at 0.529
-Stamina fleeing: rpm=69 speed=0.960 (base 0.800) vs Attack at 0.529
-Stamina fleeing: rpm=69 speed=0.960 (base 0.800) vs Attack at 0.529
-Stamina fleeing: rpm=69 speed=0.960 (base 0.800) vs Attack at 0.529
-Stamina fleeing: rpm=69 speed=0.960 (base 0.800) vs Attack at 0.529
-Stamina fleeing: rpm=69 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=68 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=68 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=68 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=68 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=68 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=68 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=68 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=68 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=68 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=67 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=67 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=67 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=67 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=67 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=67 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=67 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=67 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=66 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=66 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=66 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=66 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=66 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=66 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=66 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=66 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=65 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=65 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=65 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=65 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=65 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=65 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=65 speed=0.960 (base 0.800) vs Attack at 0.528
-Stamina fleeing: rpm=65 speed=0.960 (base 0.800) vs Attack at 0.527
-Stamina fleeing: rpm=64 speed=0.960 (base 0.800) vs Attack at 0.527
-Stamina fleeing: rpm=64 speed=0.960 (base 0.800) vs Attack at 0.527
-Stamina fleeing: rpm=64 speed=0.960 (base 0.800) vs Attack at 0.527
-Stamina fleeing: rpm=64 speed=0.960 (base 0.800) vs Attack at 0.527
-Stamina fleeing: rpm=64 speed=0.960 (base 0.800) vs Attack at 0.527
-Stamina fleeing: rpm=64 speed=0.960 (base 0.800) vs Attack at 0.527
-Stamina fleeing: rpm=64 speed=0.960 (base 0.800) vs Attack at 0.526
-Stamina fleeing: rpm=64 speed=0.960 (base 0.800) vs Attack at 0.526
-Stamina fleeing: rpm=64 speed=0.960 (base 0.800) vs Attack at 0.526
-Stamina fleeing: rpm=63 speed=0.960 (base 0.800) vs Attack at 0.526
-Stamina fleeing: rpm=63 speed=0.960 (base 0.800) vs Attack at 0.526
-Stamina fleeing: rpm=63 speed=0.960 (base 0.800) vs Attack at 0.526
-Stamina fleeing: rpm=63 speed=0.960 (base 0.800) vs Attack at 0.526
-Stamina fleeing: rpm=63 speed=0.960 (base 0.800) vs Attack at 0.526
-Stamina fleeing: rpm=63 speed=0.960 (base 0.800) vs Attack at 0.525
-Stamina fleeing: rpm=63 speed=0.960 (base 0.800) vs Attack at 0.525
-Stamina fleeing: rpm=63 speed=0.960 (base 0.800) vs Attack at 0.525
-Stamina fleeing: rpm=62 speed=0.960 (base 0.800) vs Attack at 0.525
-Stamina fleeing: rpm=62 speed=0.960 (base 0.800) vs Attack at 0.525
-Stamina fleeing: rpm=62 speed=0.960 (base 0.800) vs Attack at 0.525
-Stamina fleeing: rpm=62 speed=0.960 (base 0.800) vs Attack at 0.525
-Stamina fleeing: rpm=62 speed=0.960 (base 0.800) vs Attack at 0.525
-Stamina fleeing: rpm=62 speed=0.960 (base 0.800) vs Attack at 0.525
-Stamina fleeing: rpm=62 speed=0.960 (base 0.800) vs Attack at 0.525
-Stamina fleeing: rpm=62 speed=0.960 (base 0.800) vs Attack at 0.525
-Stamina fleeing: rpm=61 speed=0.960 (base 0.800) vs Attack at 0.524
-Stamina fleeing: rpm=61 speed=0.960 (base 0.800) vs Attack at 0.524
-Stamina fleeing: rpm=61 speed=0.960 (base 0.800) vs Attack at 0.524
-Stamina fleeing: rpm=61 speed=0.960 (base 0.800) vs Attack at 0.524
-Stamina fleeing: rpm=61 speed=0.960 (base 0.800) vs Attack at 0.524
-Stamina fleeing: rpm=61 speed=0.960 (base 0.800) vs Attack at 0.524
-Stamina fleeing: rpm=61 speed=0.960 (base 0.800) vs Attack at 0.524
-Stamina fleeing: rpm=61 speed=0.960 (base 0.800) vs Attack at 0.524
-Stamina fleeing: rpm=60 speed=0.960 (base 0.800) vs Attack at 0.524
-Stamina fleeing: rpm=60 speed=0.960 (base 0.800) vs Attack at 0.524
-Stamina fleeing: rpm=60 speed=0.960 (base 0.800) vs Attack at 0.523
-Stamina fleeing: rpm=60 speed=0.960 (base 0.800) vs Attack at 0.523
-Stamina fleeing: rpm=60 speed=0.960 (base 0.800) vs Attack at 0.523
-Stamina fleeing: rpm=60 speed=0.960 (base 0.800) vs Attack at 0.523
-Stamina fleeing: rpm=60 speed=0.960 (base 0.800) vs Attack at 0.523
-Stamina fleeing: rpm=59 speed=0.960 (base 0.800) vs Attack at 0.522
-Stamina fleeing: rpm=59 speed=0.960 (base 0.800) vs Attack at 0.522
-Stamina fleeing: rpm=59 speed=0.960 (base 0.800) vs Attack at 0.522
-Stamina fleeing: rpm=59 speed=0.960 (base 0.800) vs Attack at 0.522
-Stamina fleeing: rpm=59 speed=0.960 (base 0.800) vs Attack at 0.521
-Stamina fleeing: rpm=59 speed=0.960 (base 0.800) vs Attack at 0.521
-Stamina fleeing: rpm=59 speed=0.960 (base 0.800) vs Attack at 0.521
-Stamina fleeing: rpm=59 speed=0.960 (base 0.800) vs Attack at 0.521
-Stamina fleeing: rpm=58 speed=0.960 (base 0.800) vs Attack at 0.521
-Stamina fleeing: rpm=58 speed=0.960 (base 0.800) vs Attack at 0.521
-Stamina fleeing: rpm=58 speed=0.960 (base 0.800) vs Attack at 0.521
-Stamina fleeing: rpm=58 speed=0.960 (base 0.800) vs Attack at 0.521
-Stamina fleeing: rpm=58 speed=0.960 (base 0.800) vs Attack at 0.521
-Stamina fleeing: rpm=58 speed=0.960 (base 0.800) vs Attack at 0.521
-Stamina fleeing: rpm=58 speed=0.960 (base 0.800) vs Attack at 0.520
-Stamina fleeing: rpm=58 speed=0.960 (base 0.800) vs Attack at 0.520
-Stamina fleeing: rpm=57 speed=0.960 (base 0.800) vs Attack at 0.520
-Stamina fleeing: rpm=57 speed=0.960 (base 0.800) vs Attack at 0.520
-Stamina fleeing: rpm=57 speed=0.960 (base 0.800) vs Attack at 0.520
-Stamina fleeing: rpm=57 speed=0.960 (base 0.800) vs Attack at 0.520
-Stamina fleeing: rpm=57 speed=0.960 (base 0.800) vs Attack at 0.520
-Stamina fleeing: rpm=57 speed=0.960 (base 0.800) vs Attack at 0.520
-Stamina fleeing: rpm=57 speed=0.960 (base 0.800) vs Attack at 0.520
-Stamina fleeing: rpm=57 speed=0.960 (base 0.800) vs Attack at 0.520
-Stamina fleeing: rpm=57 speed=0.960 (base 0.800) vs Attack at 0.519
-Stamina fleeing: rpm=56 speed=0.960 (base 0.800) vs Attack at 0.519
-Stamina fleeing: rpm=56 speed=0.960 (base 0.800) vs Attack at 0.519
-Stamina fleeing: rpm=56 speed=0.960 (base 0.800) vs Attack at 0.519
-Stamina fleeing: rpm=56 speed=0.960 (base 0.800) vs Attack at 0.519
-Stamina fleeing: rpm=56 speed=0.960 (base 0.800) vs Attack at 0.519
-Stamina fleeing: rpm=56 speed=0.960 (base 0.800) vs Attack at 0.519
-Stamina fleeing: rpm=56 speed=0.960 (base 0.800) vs Attack at 0.519
-Stamina fleeing: rpm=56 speed=0.960 (base 0.800) vs Attack at 0.519
-Stamina fleeing: rpm=55 speed=0.960 (base 0.800) vs Attack at 0.519
-Stamina fleeing: rpm=55 speed=0.960 (base 0.800) vs Attack at 0.519
-Stamina fleeing: rpm=55 speed=0.960 (base 0.800) vs Attack at 0.519
-Stamina fleeing: rpm=55 speed=0.960 (base 0.800) vs Attack at 0.519
-Stamina fleeing: rpm=55 speed=0.960 (base 0.800) vs Attack at 0.518
-Stamina fleeing: rpm=55 speed=0.960 (base 0.800) vs Attack at 0.518
-Stamina fleeing: rpm=55 speed=0.960 (base 0.800) vs Attack at 0.518
-Stamina fleeing: rpm=54 speed=0.960 (base 0.800) vs Attack at 0.518
-Stamina fleeing: rpm=54 speed=0.960 (base 0.800) vs Attack at 0.518
-Stamina fleeing: rpm=54 speed=0.960 (base 0.800) vs Attack at 0.518
-Stamina fleeing: rpm=54 speed=0.960 (base 0.800) vs Attack at 0.518
-Stamina fleeing: rpm=54 speed=0.960 (base 0.800) vs Attack at 0.518
-Stamina fleeing: rpm=54 speed=0.960 (base 0.800) vs Attack at 0.517
-Stamina fleeing: rpm=54 speed=0.960 (base 0.800) vs Attack at 0.517
-Stamina fleeing: rpm=54 speed=0.960 (base 0.800) vs Attack at 0.517
-Stamina fleeing: rpm=53 speed=0.960 (base 0.800) vs Attack at 0.517
-Stamina fleeing: rpm=53 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=53 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=53 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=53 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=53 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=53 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=53 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=52 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=52 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=52 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=52 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=52 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=52 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=52 speed=0.960 (base 0.800) vs Attack at 0.516
-Stamina fleeing: rpm=52 speed=0.960 (base 0.800) vs Attack at 0.515
-Stamina fleeing: rpm=51 speed=0.960 (base 0.800) vs Attack at 0.515
-Stamina fleeing: rpm=51 speed=0.960 (base 0.800) vs Attack at 0.515
-Stamina fleeing: rpm=51 speed=0.960 (base 0.800) vs Attack at 0.515
-Stamina fleeing: rpm=51 speed=0.960 (base 0.800) vs Attack at 0.515
-Stamina fleeing: rpm=51 speed=0.960 (base 0.800) vs Attack at 0.515
-Stamina fleeing: rpm=51 speed=0.960 (base 0.800) vs Attack at 0.515
-Stamina fleeing: rpm=51 speed=0.960 (base 0.800) vs Attack at 0.515
-Stamina fleeing: rpm=50 speed=0.960 (base 0.800) vs Attack at 0.515
-Stamina fleeing: rpm=50 speed=0.960 (base 0.800) vs Attack at 0.515
-Stamina fleeing: rpm=50 speed=0.960 (base 0.800) vs Attack at 0.515
-Stamina fleeing: rpm=50 speed=0.960 (base 0.800) vs Attack at 0.515
-Stamina fleeing: rpm=50 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=50 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=50 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=50 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=49 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=49 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=49 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=49 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=49 speed=0.960 (base 0.800) vs Attack at 0.513
-Stamina fleeing: rpm=49 speed=0.960 (base 0.800) vs Attack at 0.513
-Stamina fleeing: rpm=49 speed=0.960 (base 0.800) vs Attack at 0.513
-Stamina fleeing: rpm=49 speed=0.960 (base 0.800) vs Attack at 0.513
-Stamina fleeing: rpm=48 speed=0.960 (base 0.800) vs Attack at 0.513
-Stamina fleeing: rpm=48 speed=0.960 (base 0.800) vs Attack at 0.513
-Stamina fleeing: rpm=48 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=48 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=48 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=48 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=48 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=48 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=47 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=47 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=47 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=47 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=47 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=47 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=47 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=47 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=46 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=46 speed=0.960 (base 0.800) vs Attack at 0.514
-Stamina fleeing: rpm=46 speed=0.960 (base 0.800) vs Attack at 0.513
-Stamina fleeing: rpm=46 speed=0.960 (base 0.800) vs Attack at 0.513
-Stamina fleeing: rpm=46 speed=0.960 (base 0.800) vs Attack at 0.513
-Stamina fleeing: rpm=46 speed=0.960 (base 0.800) vs Attack at 0.513
-Stamina fleeing: rpm=46 speed=0.960 (base 0.800) vs Attack at 0.513
-Stamina fleeing: rpm=45 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=45 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=45 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=45 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=45 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=45 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=45 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=45 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=45 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=44 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=44 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=44 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=44 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=44 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=44 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=44 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=43 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=43 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=43 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=43 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=43 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=43 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=43 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=43 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=42 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=42 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=42 speed=0.960 (base 0.800) vs Attack at 0.512
-Stamina fleeing: rpm=42 speed=0.960 (base 0.800) vs Attack at 0.511
-Stamina fleeing: rpm=42 speed=0.960 (base 0.800) vs Attack at 0.511
-Stamina fleeing: rpm=42 speed=0.960 (base 0.800) vs Attack at 0.511
-Stamina fleeing: rpm=42 speed=0.960 (base 0.800) vs Attack at 0.511
-Stamina fleeing: rpm=41 speed=0.960 (base 0.800) vs Attack at 0.511
-Stamina fleeing: rpm=41 speed=0.960 (base 0.800) vs Attack at 0.510
-Stamina fleeing: rpm=41 speed=0.960 (base 0.800) vs Attack at 0.510
-Stamina fleeing: rpm=41 speed=0.960 (base 0.800) vs Attack at 0.510
-Stamina fleeing: rpm=41 speed=0.960 (base 0.800) vs Attack at 0.510
-Stamina fleeing: rpm=41 speed=0.960 (base 0.800) vs Attack at 0.510
-Stamina fleeing: rpm=41 speed=0.960 (base 0.800) vs Attack at 0.509
-Stamina fleeing: rpm=41 speed=0.960 (base 0.800) vs Attack at 0.509
-Stamina fleeing: rpm=41 speed=0.960 (base 0.800) vs Attack at 0.509
-Stamina fleeing: rpm=40 speed=0.960 (base 0.800) vs Attack at 0.508
-Stamina fleeing: rpm=40 speed=0.960 (base 0.800) vs Attack at 0.508
-Stamina fleeing: rpm=40 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=40 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=40 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=40 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=40 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=40 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=39 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=39 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=39 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=39 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=39 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=39 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=39 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=39 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=38 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=38 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=38 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=38 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=38 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=38 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=38 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=38 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=38 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=37 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=37 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=37 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=37 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=37 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=37 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=37 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=36 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=36 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=36 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=36 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=36 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=36 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=36 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=36 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=36 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=35 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=35 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=35 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=35 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=35 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=35 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=35 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=35 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=35 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=34 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=34 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=34 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=34 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=34 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=34 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=34 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=34 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=33 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=33 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=33 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=33 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=33 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=33 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=33 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=33 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=33 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=32 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=32 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=32 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=32 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=32 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=32 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=32 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=32 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=32 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=31 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=31 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=31 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=31 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=31 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=31 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=31 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=31 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=30 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=30 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=30 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=30 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=30 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=30 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=30 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=30 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=29 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=29 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=29 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=29 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=29 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=29 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=29 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=29 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=29 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=28 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=28 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=28 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=28 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=28 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=28 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=28 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=28 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=27 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=27 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=27 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=27 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=27 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=27 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=27 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=27 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=27 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=26 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=26 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=26 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=26 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=26 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=26 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=26 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=26 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=26 speed=0.960 (base 0.800) vs Attack at 0.507
-Stamina fleeing: rpm=25 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=25 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=25 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=25 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=25 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=25 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=25 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=25 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=24 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=24 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=24 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=24 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=24 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=24 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=24 speed=0.960 (base 0.800) vs Attack at 0.506
-Stamina fleeing: rpm=24 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=24 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=23 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=23 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=23 speed=0.960 (base 0.800) vs Attack at 0.505
-Stamina fleeing: rpm=23 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=23 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=23 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=23 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=23 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=22 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=22 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=22 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=22 speed=0.960 (base 0.800) vs Attack at 0.504
-Stamina fleeing: rpm=22 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=22 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=22 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=22 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=22 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=21 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=21 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=21 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=21 speed=0.960 (base 0.800) vs Attack at 0.503
-Stamina fleeing: rpm=21 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=21 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=21 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=21 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=21 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=20 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=20 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=20 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=20 speed=0.960 (base 0.800) vs Attack at 0.502
-Stamina fleeing: rpm=20 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=20 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=20 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=20 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=19 speed=0.960 (base 0.800) vs Attack at 0.501
-Stamina fleeing: rpm=19 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=19 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=19 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=19 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=19 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=19 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=19 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=18 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=18 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=18 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=18 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=18 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=18 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=18 speed=0.960 (base 0.800) vs Attack at 0.500
-Stamina fleeing: rpm=18 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=18 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=17 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=17 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=17 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=17 speed=0.960 (base 0.800) vs Attack at 0.498
-Stamina fleeing: rpm=17 speed=0.960 (base 0.800) vs Attack at 0.498
-Stamina fleeing: rpm=17 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=17 speed=0.960 (base 0.800) vs Attack at 0.499
-Stamina fleeing: rpm=17 speed=0.960 (base 0.800) vs Attack at 0.498
-Stamina fleeing: rpm=16 speed=0.960 (base 0.800) vs Attack at 0.498
-Stamina fleeing: rpm=16 speed=0.960 (base 0.800) vs Attack at 0.498
-Stamina fleeing: rpm=16 speed=0.960 (base 0.800) vs Attack at 0.498
-Stamina fleeing: rpm=16 speed=0.960 (base 0.800) vs Attack at 0.498
-Stamina fleeing: rpm=16 speed=0.960 (base 0.800) vs Attack at 0.497
-Stamina fleeing: rpm=16 speed=0.960 (base 0.800) vs Attack at 0.497
-Stamina fleeing: rpm=16 speed=0.960 (base 0.800) vs Attack at 0.497
-Stamina fleeing: rpm=16 speed=0.960 (base 0.800) vs Attack at 0.497
-Stamina fleeing: rpm=16 speed=0.960 (base 0.800) vs Attack at 0.497
-Stamina fleeing: rpm=15 speed=0.960 (base 0.800) vs Attack at 0.496
-Stamina fleeing: rpm=15 speed=0.960 (base 0.800) vs Attack at 0.496
-Stamina fleeing: rpm=15 speed=0.960 (base 0.800) vs Attack at 0.496
-Stamina fleeing: rpm=15 speed=0.960 (base 0.800) vs Attack at 0.496
-Stamina fleeing: rpm=15 speed=0.960 (base 0.800) vs Attack at 0.496
-Stamina fleeing: rpm=15 speed=0.960 (base 0.800) vs Attack at 0.495
-Stamina fleeing: rpm=15 speed=0.960 (base 0.800) vs Attack at 0.495
-Stamina fleeing: rpm=15 speed=0.960 (base 0.800) vs Attack at 0.495
-Stamina fleeing: rpm=15 speed=0.960 (base 0.800) vs Attack at 0.495
-Stamina fleeing: rpm=14 speed=0.960 (base 0.800) vs Attack at 0.495
-Stamina fleeing: rpm=14 speed=0.960 (base 0.800) vs Attack at 0.495
-Stamina fleeing: rpm=14 speed=0.960 (base 0.800) vs Attack at 0.495
-Stamina fleeing: rpm=14 speed=0.960 (base 0.800) vs Attack at 0.495
-Stamina fleeing: rpm=14 speed=0.960 (base 0.800) vs Attack at 0.495
-Stamina fleeing: rpm=14 speed=0.960 (base 0.800) vs Attack at 0.494
-Stamina fleeing: rpm=14 speed=0.960 (base 0.800) vs Attack at 0.494
-Stamina fleeing: rpm=14 speed=0.960 (base 0.800) vs Attack at 0.494
-Stamina fleeing: rpm=13 speed=0.960 (base 0.800) vs Attack at 0.493
-Stamina fleeing: rpm=13 speed=0.960 (base 0.800) vs Attack at 0.493
-Stamina fleeing: rpm=13 speed=0.960 (base 0.800) vs Attack at 0.493
-Stamina fleeing: rpm=13 speed=0.960 (base 0.800) vs Attack at 0.493
-Stamina fleeing: rpm=13 speed=0.960 (base 0.800) vs Attack at 0.492
-Stamina fleeing: rpm=13 speed=0.960 (base 0.800) vs Attack at 0.492
-Stamina fleeing: rpm=13 speed=0.960 (base 0.800) vs Attack at 0.492
-Stamina fleeing: rpm=13 speed=0.960 (base 0.800) vs Attack at 0.492
-Stamina fleeing: rpm=12 speed=0.960 (base 0.800) vs Attack at 0.492
-Stamina fleeing: rpm=12 speed=0.960 (base 0.800) vs Attack at 0.492
-Stamina fleeing: rpm=12 speed=0.960 (base 0.800) vs Attack at 0.492
-Stamina fleeing: rpm=12 speed=0.960 (base 0.800) vs Attack at 0.492
-Stamina fleeing: rpm=12 speed=0.960 (base 0.800) vs Attack at 0.492
-Stamina fleeing: rpm=12 speed=0.960 (base 0.800) vs Attack at 0.492
-Stamina fleeing: rpm=12 speed=0.960 (base 0.800) vs Attack at 0.492
-Stamina fleeing: rpm=12 speed=0.960 (base 0.800) vs Attack at 0.492
-Stamina fleeing: rpm=12 speed=0.960 (base 0.800) vs Attack at 0.491
-Stamina fleeing: rpm=11 speed=0.960 (base 0.800) vs Attack at 0.491
-Stamina fleeing: rpm=11 speed=0.960 (base 0.800) vs Attack at 0.491
-Stamina fleeing: rpm=11 speed=0.960 (base 0.800) vs Attack at 0.491
-Stamina fleeing: rpm=11 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=11 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=11 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=11 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=11 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=10 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=10 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=10 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=10 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=10 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=10 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=10 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=10 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=10 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=9 speed=0.960 (base 0.800) vs Attack at 0.490
-Stamina fleeing: rpm=9 speed=0.960 (base 0.800) vs Attack at 0.489
-Stamina fleeing: rpm=9 speed=0.960 (base 0.800) vs Attack at 0.489
-Stamina fleeing: rpm=9 speed=0.960 (base 0.800) vs Attack at 0.489
-Stamina fleeing: rpm=9 speed=0.960 (base 0.800) vs Attack at 0.489
-Stamina fleeing: rpm=9 speed=0.960 (base 0.800) vs Attack at 0.489
-Stamina fleeing: rpm=9 speed=0.960 (base 0.800) vs Attack at 0.489
-Stamina fleeing: rpm=9 speed=0.960 (base 0.800) vs Attack at 0.489
-Stamina fleeing: rpm=8 speed=0.960 (base 0.800) vs Attack at 0.489
-Stamina fleeing: rpm=8 speed=0.960 (base 0.800) vs Attack at 0.489
-Stamina fleeing: rpm=8 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=8 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=8 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=8 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=8 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=8 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=8 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=7 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=7 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=7 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=7 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=7 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=7 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=7 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=7 speed=0.960 (base 0.800) vs Attack at 0.487
-Stamina fleeing: rpm=6 speed=0.960 (base 0.800) vs Attack at 0.487
-Stamina fleeing: rpm=6 speed=0.960 (base 0.800) vs Attack at 0.487
-Stamina fleeing: rpm=6 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=6 speed=0.960 (base 0.800) vs Attack at 0.488
-Stamina fleeing: rpm=6 speed=0.960 (base 0.800) vs Attack at 0.487
-Stamina fleeing: rpm=6 speed=0.960 (base 0.800) vs Attack at 0.487
-Stamina fleeing: rpm=6 speed=0.960 (base 0.800) vs Attack at 0.487
-Stamina fleeing: rpm=6 speed=0.960 (base 0.800) vs Attack at 0.487
-Stamina fleeing: rpm=5 speed=0.960 (base 0.800) vs Attack at 0.487
-Stamina fleeing: rpm=5 speed=0.960 (base 0.800) vs Attack at 0.486
-Stamina fleeing: rpm=5 speed=0.960 (base 0.800) vs Attack at 0.486
-Stamina fleeing: rpm=5 speed=0.960 (base 0.800) vs Attack at 0.486
+Godot Engine v4.6.stable.official.89cea1439 - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 Max (Apple9)
+
+Stamina repositioning to (0.0, 0.0) (from 0.038 away)
+Attack repositioning to (0.0, 0.0) (from 0.084 away)
+Stamina repositioning to (0.091308, 0.017658) (from 0.052 away)
+Attack repositioning to (-0.091643, -0.015826) (from 0.029 away)
+Stamina repositioning to (-0.062374, -0.068982) (from 0.048 away)
+Stamina repositioning to (0.088778, -0.027703) (from 0.205 away)
+Stamina repositioning to (0.090357, 0.022013) (from 0.216 away)
+Attack repositioning to (0.085183, 0.037322) (from 0.173 away)
+Attack repositioning to (0.090656, 0.020749) (from 0.148 away)
+Stamina repositioning to (0.07501, 0.054977) (from 0.214 away)
+Stamina repositioning to (0.091329, -0.017549) (from 0.204 away)
+Stamina repositioning to (0.092938, -0.0034) (from 0.160 away)
+Attack repositioning to (0.061555, 0.069713) (from 0.138 away)
+Stamina repositioning to (0.089509, 0.025243) (from 0.196 away)
+Stamina repositioning to (0.079903, -0.047586) (from 0.195 away)
+Stamina repositioning to (0.034478, -0.086373) (from 0.157 away)
+Stamina repositioning to (0.065102, -0.066413) (from 0.223 away)
+Attack repositioning to (0.085452, 0.0367) (from 0.168 away)
+Attack repositioning to (0.081265, -0.045221) (from 0.137 away)
+Attack repositioning to (0.071966, 0.058905) (from 0.188 away)
+Stamina repositioning to (0.083891, -0.040141) (from 0.203 away)
+Attack repositioning to (0.082731, 0.04248) (from 0.098 away)
+Attack repositioning to (-0.092779, -0.006401) (from 0.128 away)
+Stamina repositioning to (-0.015494, 0.0917) (from 0.145 away)
+Attack repositioning to (-0.067348, -0.064134) (from 0.174 away)
+Attack repositioning to (-0.090112, -0.022995) (from 0.184 away)
+Attack repositioning to (-0.032947, -0.086968) (from 0.116 away)
+Stamina repositioning to (-0.018832, -0.091073) (from 0.081 away)
+Attack repositioning to (-0.080934, -0.045812) (from 0.141 away)
+Stamina repositioning to (-0.05291, 0.076482) (from 0.204 away)
+Attack repositioning to (-0.023912, 0.089873) (from 0.155 away)
+Stamina repositioning to (-0.075124, -0.054822) (from 0.130 away)
+Stamina repositioning to (-0.032166, 0.08726) (from 0.060 away)
+Attack repositioning to (-0.019555, 0.090921) (from 0.065 away)
+Stamina repositioning to (-0.070937, 0.06014) (from 0.033 away)
+Attack repositioning to (0.042197, -0.082876) (from 0.157 away)
+Stamina repositioning to (0.043247, -0.082333) (from 0.186 away)
+Attack repositioning to (0.045759, -0.080964) (from 0.042 away)
+Attack repositioning to (-0.069703, 0.061567) (from 0.108 away)
+Stamina repositioning to (0.076887, -0.05232) (from 0.065 away)
+Winner: Attack
+Stamina repositioning to (-0.013127, 0.092069) (from 0.182 away)
+Attack repositioning to (-0.063189, 0.068236) (from 0.052 away)
+Attack repositioning to (-0.088854, -0.027459) (from 0.101 away)
+Stamina repositioning to (-0.091621, 0.015957) (from 0.088 away)
+Attack repositioning to (-0.08765, -0.031089) (from 0.091 away)
+Stamina repositioning to (-0.0826, 0.042735) (from 0.044 away)
+Stamina repositioning to (0.075057, -0.054914) (from 0.182 away)
+Attack repositioning to (0.006394, -0.09278) (from 0.094 away)
+Stamina repositioning to (-0.009004, 0.092563) (from 0.105 away)
+Attack repositioning to (-0.090322, 0.022157) (from 0.164 away)
+Stamina repositioning to (-0.092928, 0.003666) (from 0.048 away)
+Attack repositioning to (-0.074854, -0.055189) (from 0.167 away)
+Stamina repositioning to (0.088769, 0.027733) (from 0.062 away)
+Attack repositioning to (-0.090942, 0.019456) (from 0.056 away)
+Stamina repositioning to (-0.083766, -0.040401) (from 0.128 away)
+Stamina repositioning to (0.09284, 0.005447) (from 0.139 away)
+Attack repositioning to (-0.027552, -0.088825) (from 0.184 away)
+Attack repositioning to (0.059188, -0.071734) (from 0.018 away)
+Stamina repositioning to (-0.028324, -0.088582) (from 0.127 away)
+Attack repositioning to (-0.081462, 0.044866) (from 0.108 away)
+Stamina repositioning to (-0.090903, -0.019639) (from 0.134 away)
+Attack repositioning to (0.013506, 0.092014) (from 0.117 away)
+Attack repositioning to (-0.066557, 0.064955) (from 0.113 away)
+Stamina repositioning to (-0.066817, 0.064688) (from 0.067 away)
+Attack repositioning to (0.052855, -0.07652) (from 0.116 away)
+Stamina repositioning to (-0.046131, -0.080753) (from 0.162 away)
+Stamina repositioning to (0.070372, 0.060801) (from 0.107 away)
+Attack repositioning to (-0.029621, 0.088157) (from 0.057 away)
+Stamina repositioning to (-0.005063, 0.092862) (from 0.152 away)
+Attack repositioning to (-0.025682, -0.089384) (from 0.183 away)
+Stamina repositioning to (0.089165, -0.026432) (from 0.110 away)
+Attack repositioning to (0.007684, -0.092682) (from 0.042 away)
+Attack repositioning to (0.018185, 0.091205) (from 0.201 away)
+Attack repositioning to (0.081428, 0.044927) (from 0.018 away)
+Stamina repositioning to (0.009087, -0.092555) (from 0.069 away)
+Attack repositioning to (0.088845, 0.027486) (from 0.090 away)
+Stamina repositioning to (-0.091788, 0.014966) (from 0.118 away)
+Attack repositioning to (0.023859, 0.089887) (from 0.104 away)
+Stamina repositioning to (-0.069547, -0.061743) (from 0.126 away)
+Stamina repositioning to (0.086662, 0.033744) (from 0.072 away)
+Stamina repositioning to (-0.024493, -0.089717) (from 0.163 away)
+Attack repositioning to (0.060233, -0.070859) (from 0.052 away)
+Attack repositioning to (-0.091794, 0.014929) (from 0.165 away)
+Attack repositioning to (0.091163, 0.018392) (from 0.054 away)
+Knockout projected
+deciding check: phase=2 alive=2 victim=Stamina
+deciding slowmo armed, hitstop active=true, scale now 0.05
+Stamina repositioning to (-0.089217, 0.026255) (from 0.169 away)
+Stamina repositioning to (0.069781, -0.061479) (from 0.136 away)
+Stamina repositioning to (-0.050507, -0.07809) (from 0.084 away)
+Stamina repositioning to (0.064673, 0.066831) (from 0.124 away)
+Attack repositioning to (0.001533, -0.092987) (from 0.090 away)
+Stamina repositioning to (-0.092499, -0.00964) (from 0.110 away)
+Attack repositioning to (0.090794, 0.020138) (from 0.105 away)
+Stamina repositioning to (-0.092733, -0.007037) (from 0.128 away)
+Attack repositioning to (-0.017162, -0.091403) (from 0.081 away)
+Stamina repositioning to (-0.0363, -0.085623) (from 0.124 away)
+Knockout projected
+deciding check: phase=2 alive=2 victim=Attack
+deciding slowmo armed, hitstop active=false, scale now 1.00
+Knockout projected
+deciding check: phase=2 alive=2 victim=Attack
+deciding slowmo armed, hitstop active=true, scale now 0.05
+Winner: Stamina
+Stamina repositioning to (0.00885, 0.092578) (from 0.051 away)
+Attack repositioning to (-0.079723, -0.047888) (from 0.062 away)
+Attack repositioning to (0.050935, -0.077811) (from 0.117 away)
+Stamina repositioning to (-0.064024, -0.067453) (from 0.176 away)
+Attack repositioning to (-0.017748, -0.091291) (from 0.115 away)
+Stamina repositioning to (0.091084, 0.018781) (from 0.043 away)
+Attack repositioning to (-0.05067, -0.077985) (from 0.150 away)
+Stamina repositioning to (0.09179, 0.014951) (from 0.220 away)
+Attack repositioning to (0.072301, -0.058495) (from 0.172 away)
+Stamina repositioning to (0.08618, -0.034957) (from 0.172 away)
+Stamina repositioning to (0.090708, -0.020518) (from 0.165 away)
+Attack repositioning to (0.091883, -0.01437) (from 0.126 away)
+Stamina repositioning to (-0.052254, 0.076932) (from 0.152 away)
+Stamina repositioning to (0.083575, 0.040796) (from 0.167 away)
+Stamina repositioning to (0.032088, 0.087289) (from 0.166 away)
+Stamina repositioning to (0.061337, -0.069906) (from 0.109 away)
+Stamina repositioning to (0.065248, -0.06627) (from 0.130 away)
+Attack repositioning to (0.088864, 0.027427) (from 0.130 away)
+Stamina repositioning to (0.09198, 0.013735) (from 0.104 away)
+Stamina repositioning to (-0.047158, 0.080157) (from 0.134 away)
+Stamina repositioning to (-0.054707, -0.075207) (from 0.050 away)
+Stamina repositioning to (0.086971, 0.032939) (from 0.103 away)
+Attack repositioning to (0.032379, 0.087182) (from 0.141 away)
+Stamina repositioning to (-0.092715, 0.007281) (from 0.012 away)
+Attack repositioning to (0.060107, 0.070966) (from 0.168 away)
+Attack repositioning to (0.086188, 0.034937) (from 0.112 away)
+Stamina repositioning to (0.090372, -0.021953) (from 0.108 away)
+Attack repositioning to (-0.006771, -0.092753) (from 0.123 away)
+Stamina repositioning to (0.05004, -0.07839) (from 0.140 away)
+Stamina repositioning to (-0.066887, -0.064615) (from 0.178 away)
+Attack repositioning to (-0.029493, -0.0882) (from 0.152 away)
+Attack repositioning to (0.023075, -0.090092) (from 0.080 away)
+Stamina repositioning to (-0.092295, 0.011426) (from 0.151 away)
+Stamina repositioning to (-0.089894, 0.023833) (from 0.175 away)
+Stamina repositioning to (-0.084467, 0.038915) (from 0.052 away)
+Attack repositioning to (-0.090305, 0.022227) (from 0.090 away)
+Stamina repositioning to (0.046558, -0.080507) (from 0.125 away)
+Attack repositioning to (0.087341, 0.031946) (from 0.082 away)
+Stamina repositioning to (0.091324, 0.017575) (from 0.081 away)
+Attack repositioning to (-0.012847, 0.092108) (from 0.128 away)
+Attack repositioning to (0.081105, 0.045509) (from 0.146 away)
+Stamina repositioning to (-0.030302, -0.087925) (from 0.050 away)
+Attack repositioning to (-0.042377, 0.082784) (from 0.116 away)
+Attack repositioning to (-0.07688, -0.052331) (from 0.064 away)
+Stamina repositioning to (-0.008228, 0.092635) (from 0.143 away)
+Attack repositioning to (0.092797, -0.006146) (from 0.036 away)
+Winner: Attack

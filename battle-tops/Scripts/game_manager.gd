@@ -62,7 +62,7 @@ var countdown_seconds := 3.0
 var time_remaining := 0.0
 
 enum Phase { INTRO, COUNTDOWN, FIGHTING, ENDING, ENDED } 
-var phase := Phase.COUNTDOWN
+var phase := Phase.INTRO
 signal countdown_tick(seconds_left: int)
 signal match_started
 signal match_ended(winners: Array[Top])
@@ -137,9 +137,11 @@ func _on_intro_finished() -> void:
 func _start_countdown() -> void:
 	for top in tops:
 		top.begin_countdown()
-	time_remaining = countdown_seconds
+	time_remaining = countdown_for_round
 	phase = Phase.COUNTDOWN
-	countdown_tick.emit(int(ceil(time_remaining)))
+	var opening = int(ceil(time_remaining))
+	if opening > 0:
+		countdown_tick.emit(opening)
 
 func _process(delta: float) -> void:
 	# Hitstop freezes everything, so this must run on wall-clock time.
@@ -341,7 +343,6 @@ func _trigger_hitstop(damage: float, knockback: float, combo_depth = 0) -> void:
 	var strength := (
 		(knockback / hitstop_reference_knockback) + (damage / hitstop_reference_damage)
 		)/2
-	print(knockback, " ", strength)
 	if strength < hitstop_threshold:
 		return
 	
@@ -381,9 +382,8 @@ func _end_match(winners: Array[Top]) -> void:
 		
 	round_ended.emit(winners)
 	match_ended.emit(winners)
-	_freeze_after(freeze_delay)
 
-func _freeze_after(delay: float) -> void:
+func freeze_tops(delay: float) -> void:
 	await get_tree().create_timer(delay, true, false, true).timeout
 	for t in tops:
 		if t.current_state == Top.State.ACTIVE:

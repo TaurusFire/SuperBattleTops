@@ -5,7 +5,9 @@ extends Node
 ## triggered per event, so the mix has the same hierarchy the visuals do — a
 ## glancing tap and a kamikaze strike shouldn't sound alike.
 
+@export var match_manager: MatchManager
 @export var manager: GameManager
+@export var bell_at_start := true
 
 @export_group('Clash Sounds')
 ## Ordered from weakest to strongest. The hit's strength picks a position in
@@ -100,7 +102,8 @@ func _ready() -> void:
 	
 	manager.collision_occurred.connect(_on_clash)
 	manager.knockout_projected.connect(_on_knockout_projected)
-
+	if match_manager != null:
+		match_manager.round_starting.connect(_on_round_starting)
 	_ko_player = AudioStreamPlayer.new()
 	_ko_player.bus = bus
 	add_child(_ko_player)
@@ -117,6 +120,13 @@ func _ready() -> void:
 		top.wall_hit.connect(_on_wall_hit)
 		top.knocked_out.connect(_on_knocked_out)
 		top.stopped.connect(_on_stopped)
+
+func _on_round_starting(round_number: int, _scores: Dictionary) -> void:
+	_finish_called = false
+	# Only the opening round: a bell before every round would dilute the one
+	# that ends the match.
+	if bell_at_start and round_number == 1:
+		_ring_bell()
 
 func _on_stopped(top: Top) -> void:
 	# entered_dying also fires for knockouts, which have their own call.

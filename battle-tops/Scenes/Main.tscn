@@ -80,7 +80,7 @@ metadata/_custom_type_script = "uid://coqcr74hpq7hm"
 [node name="GameManager" type="Node" parent="MatchManager" unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
 script = ExtResource("5_pbw6q")
 arena = NodePath("../../Arena")
-tops = [NodePath("../../Att"), NodePath("../../Stam")]
+tops = [NodePath("../../Spe"), NodePath("../../Def")]
 intro = NodePath("../../IntroSequence")
 
 [node name="Arena" parent="." unique_id=1258390969 instance=ExtResource("1_kln2b")]
@@ -90,13 +90,14 @@ script = ExtResource("2_jw32o")
 
 [node name="Att" parent="." unique_id=2088087833 instance=ExtResource("16_346fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05456163, 0)
+visible = false
 stats = ExtResource("17_0sclb")
 
 [node name="Def" parent="." unique_id=1788708962 instance=ExtResource("16_346fj")]
-visible = false
 stats = ExtResource("14_h1m7h")
 
 [node name="Stam" parent="." unique_id=1632133170 instance=ExtResource("16_346fj")]
+visible = false
 stats = ExtResource("15_erwvk")
 
 [node name="Kam" parent="." unique_id=1078701170 instance=ExtResource("16_346fj")]
@@ -104,7 +105,6 @@ visible = false
 stats = ExtResource("7_erwvk")
 
 [node name="Spe" parent="." unique_id=1313620997 instance=ExtResource("16_346fj")]
-visible = false
 stats = ExtResource("8_2w5on")
 
 [node name="CameraRig" type="Node3D" parent="." unique_id=2087369725 node_paths=PackedStringArray("manager", "arena")]
@@ -299,8 +299,9 @@ lock_click = ExtResource("24_aht7i")
 lock_buzzer = ExtResource("25_5jffn")
 metadata/_custom_type_script = "uid://8qxptv2id3hf"
 
-[node name="ImpactSfx" type="Node" parent="." unique_id=1315393626 node_paths=PackedStringArray("manager")]
+[node name="ImpactSfx" type="Node" parent="." unique_id=1315393626 node_paths=PackedStringArray("match_manager", "manager")]
 script = ExtResource("26_x3rx7")
+match_manager = NodePath("../MatchManager")
 manager = NodePath("../MatchManager/GameManager")
 clash_sounds = Array[AudioStream]([ExtResource("27_6heos"), ExtResource("28_vvnwx"), ExtResource("29_btbly"), ExtResource("30_vs04g"), ExtResource("31_vs04g"), ExtResource("31_6ehlx")])
 wall_sounds = Array[AudioStream]([ExtResource("35_d8m2u")])

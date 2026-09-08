@@ -14,7 +14,8 @@ func _ready() -> void:
 	assert(manager != null, "CountdownDisplay needs the manager assigned.")
 	manager.countdown_tick.connect(_on_tick)
 	manager.match_started.connect(_on_match_started)
-	if manager.phase == GameManager.Phase.COUNTDOWN:
+
+	if manager.phase == GameManager.Phase.COUNTDOWN and manager.time_remaining > 0.0:
 		show_text(str(int(ceil(manager.time_remaining))), hold)
 
 

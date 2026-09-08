@@ -104,7 +104,7 @@ var ability: Ability
 ## negate an attack and no matchup becomes unwinnable.
 @export_range(0.0, 1.0) var min_damage_frac = 0.7
 ## Closing speed that earns full momentum credit.
-@export var velo_reference = 1.2
+@export var velo_reference = 2
 ## Vertical knockback multiplier at full RPM — a top spinning fast is settled
 ## on its foot and resists being launched.
 @export var vertical_mult_high_rpm = 0.25
@@ -135,11 +135,11 @@ var spin_display_scale := 1.0
 @export var recover_reference = 2.0
 ## Below this fraction of reference, a hit only triggers a brief orbit.
 @export var recover_threshold = 0.5
-@export var max_speed := 8.0
+@export var max_speed := 10.0
 ## RPM at which a top moves at full `move_speed`. Shared across fighters, so a
 ## top with more spin genuinely moves better — unlike rpm_ratio, which is
 ## self-relative and makes a high-RPM top at 10% as slow as a low-RPM one.
-@export var speed_ref_rpm = 5000.0
+@export var speed_ref_rpm = 2000.0
 ## Slowest a top can get, as a fraction of move_speed. Without a floor a
 ## nearly-spent top becomes unwatchable.
 @export_range(0.0, 1.0) var min_speed_frac = 0.05
@@ -150,7 +150,7 @@ var spin_display_scale := 1.0
 ## intent so tops can never settle inside each other.
 @export var separation_factor = 1.05
 @export var separation_strength = 2.0
-@export var slope_scale := 20
+@export var slope_scale := 30
 ## Radius, as a fraction of the arena, beyond which a top counts as loitering.
 @export_range(0.0, 1.0) var loiter_radius_frac = 0.75
 ## Seconds at the edge before the inward pull reaches full strength.
@@ -169,7 +169,7 @@ var spin_display_scale := 1.0
 @export var reposition_time_max = 3
 ## Where it heads, as a fraction of the arena radius. Moderate, so it resets
 ## toward open space rather than to the rim or the dead centre.
-@export_range(0.0, 1.0) var reposition_radius_frac = 0.6
+@export_range(0.0, 1.0) var reposition_radius_frac = 0.45
 ## Angular scatter around the point opposite the opponent, in radians.
 @export var reposition_spread = 1.0
 ## How close counts as arrived.
@@ -178,10 +178,10 @@ var spin_display_scale := 1.0
 ## How much the path to the reset point bows sideways. A straight line reads
 ## as a retreat; a curve reads as circling round to a new angle, which suits
 ## the hit-and-run better.
-@export_range(0.0, 1.5) var reposition_curve = 0.7
+@export_range(0.0, 1.5) var reposition_curve = 0.9
 ## Distance over which the curve fades out, so the top straightens as it
 ## arrives rather than swinging past.
-@export var reposition_curve_range = 0.06
+@export var reposition_curve_range = 0.08
 var _reposition_target = Vector2.ZERO
 var _reposition_dir = 1.0
 
@@ -232,9 +232,9 @@ var _reposition_dir = 1.0
 ## How strongly motion along the rim is damped, per second. Only the
 ## tangential component: a top should still be able to leave the wall freely,
 ## it just shouldn't be able to race around it.
-@export var rim_drag = 10
+@export var rim_drag = 20
 ## Distance inside the limit at which the drag begins.
-@export var rim_drag_range = 0.07
+@export var rim_drag_range = 0.065
 ## Steering suspension after a wall bounce, so it reads as a ping not a guide.
 @export var wall_recoil_time = 0.05
 ## Steering suspension after a top-on-top hit, so a pair can't lock together.
@@ -293,7 +293,7 @@ var _committed = false
 ## Chance of the first extra hit, before aggression scales it.
 @export_range(0.0, 1.0) var combo_base_chance = 0.45
 ## How much aggression moves that chance.
-@export_range(0.0, 1.0) var combo_aggression_weight = 0.55
+@export_range(0.0, 1.0) var combo_aggression_weight = 0.6
 ## Each additional hit multiplies the chance by this, so long combos are rare
 ## without a cap having to enforce it.
 @export_range(0.1, 1.0) var combo_chance_decay = 0.4
@@ -594,7 +594,12 @@ func _horizontal_pos() -> Vector2:
 ## plus two corrections that always apply regardless of intent.
 func _desired_velocity() -> Vector2:
 	
-	var spin_factor = clamp(pow(current_rpm + 2000/ speed_ref_rpm, 0.3), min_speed_frac, 1.8)
+	var ratio = (current_rpm / speed_ref_rpm)
+	if ratio < 1:
+		ratio = pow(ratio, 0.15)
+	
+	var spin_factor = clamp(ratio, min_speed_frac, 5)
+
 	var speed = move_speed * spin_factor
 	
 	if ability != null:
@@ -672,9 +677,6 @@ func _intent_velocity(speed: float) -> Vector2:
 				var inward_weight = clamp(from_centre.length() / (arena_radius * 0.3), 0.0, 1.0)
 				inward_bias = -from_centre.normalized() * inward_weight * 0.35
 			
-			print("%s fleeing: rpm=%.0f speed=%.3f (base %.3f) vs %s at %.3f" % [
-				display_name(), current_rpm, speed * flee_speed, move_speed,
-				target.display_name(), target._velocity.length()])
 			
 			return (radial_flee * (1.0 - tangent_mix)
 				+ flee_tan * tangent_mix
@@ -922,9 +924,13 @@ func _update_intent(delta: float) -> void:
 	# An expired orbit or recovery returns to the hunt. CLOSING has no timer —
 	# it persists until a collision interrupts it.
 	if intent == Intent.IDLE or _intent_timer <= 0.0:
-		if intent == Intent.RECOVERING and randf() < recovery_reposition_chance:
-			_begin_repositioning()
-		elif intent == Intent.CLOSING and not _committed:
+		# Repositioning is the default return, not closing. A top that has
+		# just finished something — a recovery, a probe, a reset — moves to
+		# open ground before committing again, which is what puts space
+		# between exchanges instead of chaining them.
+		if intent == Intent.REPOSITIONING:
+			_begin_closing()
+		elif randf() < recovery_reposition_chance:
 			_begin_repositioning()
 		else:
 			_begin_closing()
@@ -953,6 +959,10 @@ func _should_flee() -> bool:
 ## destination doesn't move — which is what makes it read as a deliberate
 ## reset rather than more chasing.
 func _begin_repositioning() -> void:
+	print("%s repositioning to %s (from %.3f away)" % [
+		display_name(), _reposition_target,
+		_horizontal_pos().distance_to(_reposition_target)])
+	
 	intent = Intent.REPOSITIONING
 	_reposition_dir = 1.0 if randf() < 0.5 else -1.0
 
@@ -1058,7 +1068,7 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	
 	# Momentum: a charging top lands a full hit, a stationary or retreating one
 	# only glances. This is what makes aggression pay.
-	var momentum = clamp(velo_bonus / velo_reference, 0.0, 1.5)
+	var momentum = clamp(velo_bonus / velo_reference, 0.2, 1.5)
 
 	var momentum_mult = lerpf(min_momentum_mult, 1.0, momentum)
 	
@@ -1187,7 +1197,7 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0, attacker:
 	if ability != null:
 		ability.on_collision(self)
 
-	knockback = knockback / (17.5 * (weight / 0.17))
+	knockback = knockback / (20 * (weight / 0.17))
 
 	# Lower RPM means a top less settled on its foot, so it pops higher.
 	var stability = pow(clamp(current_rpm/1500, 0.0, 1.1), vertical_mult_curve)
@@ -1201,7 +1211,6 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0, attacker:
 	# A hard hit knocks a top onto the back foot; a light one just breaks the
 	# charge. This is what produces the clash-separate-clash rhythm.
 	var severity = clamp(knockback / recover_reference, 0.0, 1.0)
-	print(severity)
 
 	# A fleeing top stays fleeing — being hit is exactly why it's running, and
 	# dropping to ORBITING would send it back toward its attacker.
@@ -1210,6 +1219,10 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0, attacker:
 	elif not _should_flee():
 		if severity > recover_threshold:
 			_begin_recovering(severity)
+		elif intent == Intent.REPOSITIONING:
+			pass          # a glancing blow doesn't abandon a reset
+		elif randf() < attack_reposition_chance:
+			_begin_repositioning()
 		else:
 			_begin_closing()
 	
@@ -1516,9 +1529,10 @@ func begin_countdown() -> void:
 func begin_match() -> void:
 	current_rpm = initial_rpm
 	current_state = State.ACTIVE
-	# Stagger the opening so the first clash isn't identical every match.
-	if randf() > aggression:
-		_begin_closing()
+	# Open by taking position rather than charging: the first clash lands
+	# better for having been approached rather than happening immediately.
+	if randf() < 0.8:
+		_begin_repositioning()
 	else:
 		_begin_closing()
 

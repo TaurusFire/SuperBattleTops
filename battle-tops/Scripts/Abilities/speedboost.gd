@@ -43,3 +43,7 @@ func on_collision(top: Top) -> void:
 
 func speed_multiplier(top: Top) -> float:
 	return 1.0 + bonus_of(top)
+	
+func reset(top: Top) -> void:
+	_bonus[top] = 0.0
+	_since_hit[top] = 0.0

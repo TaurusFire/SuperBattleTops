@@ -17,6 +17,7 @@ signal match_complete(winners: Array[Top], scores: Dictionary)
 ## is where a viewer scrolls away.
 @export var between_rounds := 2.2
 @export var round_announce_pause := 0.0
+@export var match_freeze_delay := 6.0
 
 var scores := {}
 var round_number := 0
@@ -61,6 +62,7 @@ func _on_round_ended(winners: Array[Top]) -> void:
 		if scores[top] >= rounds_to_win:
 			_match_over = true
 			match_complete.emit([top], scores)
+			manager.freeze_tops(match_freeze_delay)
 			return
 
 	# Nobody there yet — but if no one can still reach the target, stop rather

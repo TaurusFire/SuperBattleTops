@@ -60,7 +60,13 @@ func _rebuild() -> void:
 		intro.top_introduced.connect(_on_top_introduced)
 	if match_manager != null:
 		match_manager.round_starting.connect(_on_round_starting)
+		match_manager.match_complete.connect(_on_match_complete)
 
+
+func _on_match_complete(_winners: Array[Top], scores: Dictionary) -> void:
+	for top in scores:
+		if _by_top.has(top):
+			_by_top[top].set_score(scores[top], match_manager.rounds_to_win)
 
 func _on_round_starting(_round_number: int, scores: Dictionary) -> void:
 	for top in scores:
