@@ -5,6 +5,8 @@ extends Control
 ## countdown and the result — it knows nothing about either, it just displays
 ## whatever it's handed.
 
+signal dismissed
+
 @export_group("Text")
 @export var font: Font
 @export var font_size := 220
@@ -100,6 +102,7 @@ func _process(delta: float) -> void:
 		_alpha = clamp(1.0 - (_timer - fade_start) / fade_time, 0.0, 1.0)
 	if _timer >= _active_hold:
 		visible = false
+		dismissed.emit()
 		return
 
 	_apply()

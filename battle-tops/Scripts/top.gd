@@ -135,7 +135,7 @@ var spin_display_scale := 1.0
 @export var recover_reference = 2.0
 ## Below this fraction of reference, a hit only triggers a brief orbit.
 @export var recover_threshold = 0.5
-@export var max_speed := 10.0
+@export var max_speed := 8.0
 ## RPM at which a top moves at full `move_speed`. Shared across fighters, so a
 ## top with more spin genuinely moves better — unlike rpm_ratio, which is
 ## self-relative and makes a high-RPM top at 10% as slow as a low-RPM one.
@@ -541,7 +541,9 @@ func _update_active(delta: float) -> void:
 func reset_for_round() -> void:
 	current_rpm = initial_rpm
 	current_state = State.COUNTDOWN
-
+	_countdown_remaining = countdown_duration
+	_countdown_elapsed = 0.0
+	
 	_velocity = Vector2.ZERO
 	_vertical_velocity = 0.0
 	_airborne = false

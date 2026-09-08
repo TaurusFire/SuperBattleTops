@@ -8,7 +8,7 @@ signal result_dismissed
 @export var manager: GameManager
 ## Seconds to wait after the match resolves before the banner appears, so the
 ## topple has time to play out.
-@export var result_hold := 1.5
+@export var result_hold := 2.0
 @export var result_font_size := 96
 @export var draw_text := "DRAW"
 @export var no_contest_text := "NO CONTEST"

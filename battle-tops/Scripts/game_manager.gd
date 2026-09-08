@@ -56,6 +56,7 @@ var _window_deaths: Array[Top] = []
 @export var vertical_threshold := 0.028
 
 var _in_contact := {}
+var _round_prepared := false
 
 var _intro_countdown := 3.0
 var countdown_seconds := 3.0
@@ -109,15 +110,11 @@ func _ready() -> void:
 ## Begins a round. Called by the match manager, or by _ready when standalone.
 func start_round(countdown_length: float) -> void:
 	countdown_for_round = countdown_length
-	_pending_end = false
-	_window_deaths.clear()
-	_deciding_end_msec = 0
-	_hitstop_end_msec = 0
-	Engine.time_scale = 1.0
-
-	for top in tops:
-		top.reset_for_round()
-	_arrange_tops()
+	# Idempotent: the match manager may have prepared already, and preparing
+	# twice costs nothing but re-placing the tops.
+	if not _round_prepared:
+		prepare_round()
+	_round_prepared = false
 	_start_countdown()
 
 
@@ -386,3 +383,18 @@ func freeze_tops(delay: float) -> void:
 	for t in tops:
 		if t.current_state == Top.State.ACTIVE:
 			t.freeze_in_place()
+
+func prepare_round() -> void:
+	_pending_end = false
+	_window_deaths.clear()
+	_deciding_end_msec = 0
+	_hitstop_end_msec = 0
+	Engine.time_scale = 1.0
+
+	for top in tops:
+		top.reset_for_round()
+	_arrange_tops()
+	_round_prepared = true
+
+	
+	

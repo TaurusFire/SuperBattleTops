@@ -71,11 +71,10 @@ glow_bloom = 0.1
 
 [node name="Main" type="Node3D" unique_id=963593362]
 
-[node name="MatchManager" type="Node" parent="." unique_id=1435912766 node_paths=PackedStringArray("result_display", "manager")]
+[node name="MatchManager" type="Node" parent="." unique_id=1435912766 node_paths=PackedStringArray("manager", "result_display")]
 script = ExtResource("1_lfh1j")
-result_display = NodePath("../UI/ResultDisplay")
 manager = NodePath("GameManager")
-between_rounds = 2.0
+result_display = NodePath("../UI/ResultDisplay")
 metadata/_custom_type_script = "uid://coqcr74hpq7hm"
 
 [node name="GameManager" type="Node" parent="MatchManager" unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]

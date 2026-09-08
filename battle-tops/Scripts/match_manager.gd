@@ -7,7 +7,6 @@ extends Node
 signal round_starting(round_number: int, scores: Dictionary)
 signal match_complete(winners: Array[Top], scores: Dictionary)
 
-@export var result_display: ResultDisplay
 @export var manager: GameManager
 @export var rounds_to_win := 2
 ## Countdown for the opening round. Later rounds get the shorter one, since
@@ -16,9 +15,9 @@ signal match_complete(winners: Array[Top], scores: Dictionary)
 @export var later_countdown := 1.0
 ## Pause between a round's result and the next beginning. Kept short — a gap
 ## is where a viewer scrolls away.
-@export var between_rounds := 0.0
-@export var round_announce_pause := 0.0
-@export var round_banner_time := 1.6
+@export var finish_display: FinishDisplay
+@export var round_display: RoundDisplay
+@export var result_display: ResultDisplay
 
 var scores := {}
 var round_number := 0
@@ -43,17 +42,20 @@ func register_manager() -> void:
 
 func _begin_round() -> void:
 	round_number += 1
-	round_starting.emit(round_number, scores)
 
 	if round_number == 1 and manager.intro != null:
+		round_starting.emit(round_number, scores)
 		manager.play_intro(first_countdown)
 		return
 
-	if round_number > 1 and round_announce_pause > 0.0:
-		await get_tree().create_timer(round_announce_pause, true, false, true).timeout
-	
-	if round_banner_time > 0.0:
-		await get_tree().create_timer(round_banner_time, true, false, true).timeout
+	manager.prepare_round()
+	round_starting.emit(round_number, scores)
+
+	# The banner tells us when it's gone, rather than us guessing with a timer
+	# that has to be kept in step with its hold.
+	if round_display != null:
+		await round_display.dismissed
+
 	manager.start_round(later_countdown)
 
 
@@ -88,7 +90,9 @@ func _on_round_ended(winners: Array[Top]) -> void:
 		match_complete.emit(_leaders(), scores)
 		return
 
-	await get_tree().create_timer(between_rounds, true, false, true).timeout
+	if finish_display != null and finish_display.visible:
+		await finish_display.dismissed
+
 	_begin_round()
 
 func would_end_match(winners: Array[Top]) -> bool:
