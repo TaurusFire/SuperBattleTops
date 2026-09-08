@@ -140,7 +140,7 @@ func _start_countdown() -> void:
 	time_remaining = countdown_for_round
 	phase = Phase.COUNTDOWN
 	var opening = int(ceil(time_remaining))
-	if opening > 0:
+	if opening > 1:
 		countdown_tick.emit(opening)
 
 func _process(delta: float) -> void:

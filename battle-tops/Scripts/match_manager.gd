@@ -16,9 +16,9 @@ signal match_complete(winners: Array[Top], scores: Dictionary)
 @export var later_countdown := 1.0
 ## Pause between a round's result and the next beginning. Kept short — a gap
 ## is where a viewer scrolls away.
-@export var between_rounds := 2.2
+@export var between_rounds := 0.0
 @export var round_announce_pause := 0.0
-@export var match_freeze_delay := 3.0
+@export var round_banner_time := 1.6
 
 var scores := {}
 var round_number := 0
@@ -30,6 +30,8 @@ func _ready() -> void:
 	for top in manager.tops:
 		scores[top] = 0
 	manager.round_ended.connect(_on_round_ended)
+	if result_display != null:
+		result_display.result_dismissed.connect(_on_result_dismissed)
 	# Ready runs children first, so the manager has finished its own setup.
 	call_deferred("_begin_round")
 
@@ -49,6 +51,9 @@ func _begin_round() -> void:
 
 	if round_number > 1 and round_announce_pause > 0.0:
 		await get_tree().create_timer(round_announce_pause, true, false, true).timeout
+	
+	if round_banner_time > 0.0:
+		await get_tree().create_timer(round_banner_time, true, false, true).timeout
 	manager.start_round(later_countdown)
 
 
@@ -69,8 +74,7 @@ func _on_round_ended(winners: Array[Top]) -> void:
 			# Typed explicitly: an untyped array literal doesn't satisfy the
 			# signal's Array[Top] parameter, and Godot drops the call silently
 			# rather than erroring.
-			if result_display != null:
-				result_display.result_dismissed.connect(_on_result_dismissed)
+			match_complete.emit(winners, scores)
 			return
 
 	# Nobody there yet — but if no one can still reach the target, stop rather

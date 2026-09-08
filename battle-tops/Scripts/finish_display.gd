@@ -37,9 +37,9 @@ func _ready() -> void:
 		print("FD: match_manager is null")
 
 
-func _on_round_starting(round_number: int, _scores: Dictionary) -> void:
-	_knocked_out_tops = {}
+func _on_round_starting(_round_number: int, _scores: Dictionary) -> void:
 	_announced = false
+	_knocked_out_tops.clear()
 
 func _on_knocked_out(top: Top) -> void:
 	_knocked_out_tops[top] = true
@@ -49,9 +49,10 @@ func _on_knocked_out(top: Top) -> void:
 
 
 func _on_stopped(top: Top) -> void:
+	# A knockout announces itself as it clears the rim. By the time it stops,
+	# its state is STOPPED like any other, so the state alone can't tell them
+	# apart — hence the record.
 	if _knocked_out_tops.has(top):
-		return
-	if top.current_state == Top.State.KNOCKED_OUT:
 		return
 	if not _is_final():
 		return

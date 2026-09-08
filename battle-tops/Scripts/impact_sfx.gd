@@ -85,6 +85,7 @@ var _ko_player: AudioStreamPlayer
 var _doom_player: AudioStreamPlayer
 var _doom_tween: Tween
 var _finish_called := false
+var _knocked_out := {}
 
 func _ready() -> void:
 	assert(manager != null, "ImpactSfx: manager is unassigned.")
@@ -123,6 +124,8 @@ func _ready() -> void:
 
 func _on_round_starting(round_number: int, _scores: Dictionary) -> void:
 	_finish_called = false
+	_knocked_out.clear()
+
 	# Only the opening round: a bell before every round would dilute the one
 	# that ends the match.
 	if bell_at_start and round_number == 1:
@@ -130,15 +133,14 @@ func _on_round_starting(round_number: int, _scores: Dictionary) -> void:
 
 func _on_stopped(top: Top) -> void:
 	# entered_dying also fires for knockouts, which have their own call.
+	if _knocked_out.has(top):
+		return
 	if _finish_called:
 		return
-	if top.current_state == Top.State.KNOCKED_OUT:
+	var alive = manager.tops.filter(func(t):
+		return t.current_state not in [Top.State.STOPPED, Top.State.KNOCKED_OUT])
+	if alive.size() > 1:
 		return
-	var still_in = manager.tops.filter(func(t):
-		return t.current_state == Top.State.ACTIVE)
-	if still_in.size() > 1:
-		return
-
 	_finish_called = true
 	_ring_bell()
 	
@@ -182,16 +184,14 @@ func _on_clash(a: Top, b: Top) -> void:
 	_play_one(clash_sounds[pick], db)
 
 func _on_knocked_out(_top: Top) -> void:
+	_knocked_out[_top] = true
+
 	if _finish_called:
 		return
-
-	# Only when it settles the match: everyone else is already out or on their
-	# way, so this knockout is the one that ends it.
-	var still_in = manager.tops.filter(func(t):
-		return t.current_state == Top.State.ACTIVE)
-	if still_in.size() > 1:
+	var alive = manager.tops.filter(func(t):
+		return t.current_state not in [Top.State.STOPPED, Top.State.KNOCKED_OUT])
+	if alive.size() > 1:
 		return
-	
 	_finish_called = true
 	_ring_bell()
 		
