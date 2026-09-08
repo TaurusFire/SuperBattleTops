@@ -47,3 +47,4 @@ func speed_multiplier(top: Top) -> float:
 func reset(top: Top) -> void:
 	_bonus[top] = 0.0
 	_since_hit[top] = 0.0
+	print("resetting. bonus:", _bonus[top], " since hit: ", _since_hit[top])

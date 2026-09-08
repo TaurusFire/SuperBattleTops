@@ -959,10 +959,7 @@ func _should_flee() -> bool:
 ## destination doesn't move — which is what makes it read as a deliberate
 ## reset rather than more chasing.
 func _begin_repositioning() -> void:
-	print("%s repositioning to %s (from %.3f away)" % [
-		display_name(), _reposition_target,
-		_horizontal_pos().distance_to(_reposition_target)])
-	
+
 	intent = Intent.REPOSITIONING
 	_reposition_dir = 1.0 if randf() < 0.5 else -1.0
 

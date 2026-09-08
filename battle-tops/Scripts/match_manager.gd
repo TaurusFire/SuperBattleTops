@@ -54,13 +54,25 @@ func _begin_round() -> void:
 func _on_round_ended(winners: Array[Top]) -> void:
 	if _match_over:
 		return
+		
+	print("round %d ended: %d winners, scores before: %s" % [
+		round_number, winners.size(),
+		str(scores.values())])
+		
+	
 	for w in winners:
 		if scores.has(w):
 			scores[w] += 1
+		
+	print("  scores after: %s (target %d)" % [str(scores.values()), rounds_to_win])
 
 	for top in scores:
+		print("  checking %s: %d >= %d ? %s" % [
+			top.display_name(), scores[top], rounds_to_win, scores[top] >= rounds_to_win])
 		if scores[top] >= rounds_to_win:
 			_match_over = true
+			print("emitting match_complete from %s" % self)
+			print("emitting to %d listeners" % match_complete.get_connections().size())
 			match_complete.emit([top], scores)
 			manager.freeze_tops(match_freeze_delay)
 			return

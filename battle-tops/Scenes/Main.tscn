@@ -80,7 +80,7 @@ metadata/_custom_type_script = "uid://coqcr74hpq7hm"
 [node name="GameManager" type="Node" parent="MatchManager" unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
 script = ExtResource("5_pbw6q")
 arena = NodePath("../../Arena")
-tops = [NodePath("../../Spe"), NodePath("../../Def")]
+tops = [NodePath("../../Kam"), NodePath("../../Def")]
 intro = NodePath("../../IntroSequence")
 
 [node name="Arena" parent="." unique_id=1258390969 instance=ExtResource("1_kln2b")]
@@ -101,10 +101,10 @@ visible = false
 stats = ExtResource("15_erwvk")
 
 [node name="Kam" parent="." unique_id=1078701170 instance=ExtResource("16_346fj")]
-visible = false
 stats = ExtResource("7_erwvk")
 
 [node name="Spe" parent="." unique_id=1313620997 instance=ExtResource("16_346fj")]
+visible = false
 stats = ExtResource("8_2w5on")
 
 [node name="CameraRig" type="Node3D" parent="." unique_id=2087369725 node_paths=PackedStringArray("manager", "arena")]

@@ -67,3 +67,4 @@ func _announce(text: String, top_col: Color, bottom_col: Color) -> void:
 
 	await get_tree().create_timer(finish_hold, true, false, true).timeout
 	finish_shown.emit()
+	print('finish shown emitted')

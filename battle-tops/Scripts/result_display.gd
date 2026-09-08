@@ -26,6 +26,7 @@ func _ready() -> void:
 	super()
 	assert(match_manager != null, "ResultDisplay: match_manager is unassigned.")
 	match_manager.match_complete.connect(_on_match_complete)
+	match_manager.round_starting.connect(_on_round_starting)
 	if finish_display != null:
 		finish_display.finish_shown.connect(_on_finish_shown)
 	else:
@@ -39,13 +40,21 @@ func _on_finish_shown() -> void:
 		_show_result()
 
 func _on_match_complete(winners: Array[Top], _scores: Dictionary) -> void:
+	print("handler reached: %d winners, finish_done=%s, in_tree=%s" % [
+		winners.size(), _finish_done, is_inside_tree()])
 	_pending_winners = winners
 	_has_result = true
 	if _finish_done:
 		_show_result()
 
+func _on_round_starting(_round_number: int, _scores: Dictionary) -> void:
+	_finish_done = finish_display == null
+	_has_result = false
+
 func _show_result() -> void:
 	var winners = _pending_winners
+	print("showing result for %d winners" % winners.size())
+
 	_pending_winners = []
 
 	var text: String
