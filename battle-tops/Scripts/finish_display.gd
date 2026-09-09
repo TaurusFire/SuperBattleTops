@@ -5,8 +5,6 @@ extends BannerText
 ## for the clip: a knockout and a spin-out are different endings, and naming
 ## which one happened lands harder than going straight to the winner.
 
-signal finish_shown
-
 @export_group("Finish")
 @export var match_manager: MatchManager
 @export var manager: GameManager
@@ -78,6 +76,3 @@ func _announce(text: String, top_col: Color, bottom_col: Color) -> void:
 	print("[%d] FINISH banner shown: %s" % [Time.get_ticks_msec(), text])
 	set_colours(top_col, bottom_col)
 	show_text(text, finish_hold, 1.0, finish_font_size)
-
-	await get_tree().create_timer(finish_hold, true, false, true).timeout
-	finish_shown.emit()

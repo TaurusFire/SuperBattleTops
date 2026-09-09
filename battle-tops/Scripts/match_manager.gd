@@ -65,12 +65,11 @@ func _on_round_ended(winners: Array[Top]) -> void:
 		return
 		
 		
-	
-	for w in winners:
-		if scores.has(w):
-			scores[w] += 1
+	if winners.size() == 1:
+		for w in winners:
+			if scores.has(w):
+				scores[w] += 1
 		
-
 	for top in scores:
 		if scores[top] >= rounds_to_win:
 			_match_over = true

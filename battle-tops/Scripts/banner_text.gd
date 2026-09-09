@@ -55,7 +55,7 @@ func show_text(text: String, hold: float, settle_scale := 1.0,
 	_timer = 0.0
 	_active_hold = hold
 	visible = true
-
+	_apply()
 
 func _build_labels() -> void:
 	_label_outline = Label.new()

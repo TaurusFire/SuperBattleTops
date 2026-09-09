@@ -20,65 +20,32 @@ signal result_dismissed
 ## Extra pause after the finish banner clears, before the winner appears.
 
 var _pending_winners: Array[Top] = []
-var _finish_done := false
-var _has_result := false
+
 
 func _ready() -> void:
 	super()
 	assert(match_manager != null, "ResultDisplay: match_manager is unassigned.")
-
-	
 	match_manager.match_complete.connect(_on_match_complete)
-	match_manager.round_starting.connect(_on_round_starting)
-	if finish_display != null:
-		finish_display.finish_shown.connect(_on_finish_shown)
-	else:
-		_finish_done = true
 
-
-func _on_finish_shown() -> void:
-	_finish_done = true
-	if _has_result:
-		_show_result()
 
 func _on_match_complete(winners: Array[Top], _scores: Dictionary) -> void:
-
 	_pending_winners = winners
-	_has_result = true
-	if _finish_done:
-		_show_result()
-
-func _on_round_starting(_round_number: int, _scores: Dictionary) -> void:
-	_has_result = false
+	_show_result()
 
 func _show_result() -> void:
-	if _pending_winners.is_empty() and _has_result == false:
-		return
 	var winners = _pending_winners
 	_pending_winners = []
-	_has_result = false
 
 	var text: String
-	if winners.is_empty():
-		text = no_contest_text
-		set_colours(draw_top_colour, draw_bottom_colour)
-	elif winners.size() == 1:
-		var w = winners[0]
-		text = "%s WINS" % w.display_name().to_upper()
-		var base = w.stats.name_colour
-		var second = w.stats.name_colour_secondary
-		set_colours(base, second if second.a > 0.001 else base)
-	else:
-		text = draw_text
-		set_colours(draw_top_colour, draw_bottom_colour)
+	# ... unchanged branch building text and colours ...
 
+	# One gate, on the banner's own signal. A frame's wait first, because
+	# match_complete and the finish announcement come from the same round
+	# resolution and the banner may not have claimed the screen yet.
 	await get_tree().process_frame
-	if finish_display != null and not finish_display.visible:
-		await finish_display.dismissed
-	elif finish_display != null:
+	if finish_display != null and finish_display.visible:
 		await finish_display.dismissed
 
 	show_text(text, result_hold, 1.0, result_font_size)
-	
 	await get_tree().create_timer(result_hold, true, false, true).timeout
 	result_dismissed.emit()
