@@ -81,7 +81,7 @@ var idle_radius = 0.08
 var idle_speed = 0.35
 
 var ability: Ability
-
+var _last_surface_y := 0.0
 # ══════════════════════════════════════════════════════════════════════════
 #  SHARED TUNING — exports that shape the system, not individual fighters
 # ══════════════════════════════════════════════════════════════════════════
@@ -104,7 +104,7 @@ var ability: Ability
 ## negate an attack and no matchup becomes unwinnable.
 @export_range(0.0, 1.0) var min_damage_frac = 0.7
 ## Closing speed that earns full momentum credit.
-@export var velo_reference = 2
+@export var velo_reference = 3
 ## Vertical knockback multiplier at full RPM — a top spinning fast is settled
 ## on its foot and resists being launched.
 @export var vertical_mult_high_rpm = 0.25
@@ -216,13 +216,13 @@ var _reposition_dir = 1.0
 ## Seconds of lateral burst.
 @export var dodge_duration = 0.05
 ## Speed multiplier during the slip.
-@export var dodge_speed = 2
+@export var dodge_speed = 1.5
 ## Seconds before another dodge is possible, so it stays a moment.
 @export var dodge_cooldown_time = 1.5
 ## Seconds of counter-attack after a successful slip.
 @export var counter_duration = 0.45
 ## Speed multiplier while countering.
-@export var counter_speed = 2.5
+@export var counter_speed = 1.5
 ## How far the slip angles backward along the opponent's approach rather than
 ## purely sideways. 0 is a pure sidestep; higher ends up behind the charge.
 @export_range(0.0, 1.5) var dodge_back_bias := 0.3
@@ -232,7 +232,7 @@ var _reposition_dir = 1.0
 ## How strongly motion along the rim is damped, per second. Only the
 ## tangential component: a top should still be able to leave the wall freely,
 ## it just shouldn't be able to race around it.
-@export var rim_drag = 20
+@export var rim_drag = 40
 ## Distance inside the limit at which the drag begins.
 @export var rim_drag_range = 0.065
 ## Steering suspension after a wall bounce, so it reads as a ping not a guide.
@@ -480,7 +480,6 @@ func _physics_process(delta: float) -> void:
 		State.KNOCKED_OUT: _update_knocked_out(delta)
 
 
-
 func _update_active(delta: float) -> void:
 	var decay = rpm_base_decay_rate + current_rpm * rpm_decay_frac
 	current_rpm = max(current_rpm - decay * delta, 0.0)
@@ -577,12 +576,27 @@ func reset_for_round() -> void:
 func _apply_velocity(delta: float) -> void:
 	if _velocity.length() > max_speed:
 		_velocity = _velocity.normalized() * max_speed
-	
+
+	var before = _horizontal_pos()
 	var pos = global_position
 	pos.x += _velocity.x * delta
 	pos.z += _velocity.y * delta
 	global_position = pos
 
+	# A single fast step can carry a top clean past the wall, so the positional
+	# check in _apply_wall_collision finds it already outside and yanks it
+	# back — which reads as clipping through. Clamping the step to the limit
+	# stops it leaving in the first place.
+	if _airborne:
+		return
+	var limit = wall_radius - radius
+	var from_centre = _horizontal_pos() - arena_centre
+	if from_centre.length() > limit:
+		var dir = from_centre.normalized()
+		global_position.x = arena_centre.x + dir.x * limit
+		global_position.z = arena_centre.y + dir.y * limit
+
+			
 
 func _horizontal_pos() -> Vector2:
 	return Vector2(global_position.x, global_position.z)
@@ -647,7 +661,7 @@ func _intent_velocity(speed: float) -> Vector2:
 			return (spot_dir + tangent * bow).normalized() * speed * reposition_speed
 		Intent.DODGING:
 			# Pure lateral burst — the opponent's momentum carries them past.
-			return _dodge_dir_vec * move_speed * dodge_speed
+			return _dodge_dir_vec * dodge_speed
 
 		Intent.COUNTERING:
 			# A committed punish: aimed at whoever we slipped, and immune to
@@ -656,7 +670,7 @@ func _intent_velocity(speed: float) -> Vector2:
 			var to_ct = ct._horizontal_pos() - _horizontal_pos()
 			if to_ct.length() < 0.0001:
 				return _velocity
-			return to_ct.normalized() * max(move_speed, _velocity.length()) * counter_speed
+			return to_ct.normalized() * counter_speed
 		
 		Intent.ABILITY:
 			return _ability_velocity(speed, target)
@@ -1010,8 +1024,7 @@ func _begin_dodging(slip: Vector2, from: Top) -> void:
 	_counter_target = from
 	_intent_timer = dodge_duration
 	_dodge_cooldown = dodge_cooldown_time
-	#_velocity = slip * move_speed * dodge_speed
-	_velocity = slip * max(_velocity.length(), move_speed) * dodge_speed
+	_velocity = slip * move_speed * dodge_speed
 	dodged.emit(self)
 
 
@@ -1067,7 +1080,7 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	
 	# Momentum: a charging top lands a full hit, a stationary or retreating one
 	# only glances. This is what makes aggression pay.
-	var momentum = clamp(velo_bonus / velo_reference, 0.2, 1.5)
+	var momentum = clamp(velo_bonus / velo_reference, 0.4, 1.8)
 
 	var momentum_mult = lerpf(min_momentum_mult, 1.0, momentum)
 	
@@ -1259,7 +1272,7 @@ func _projects_knockout() -> bool:
 	return landing.distance_to(arena_centre) > knockout_radius
 
 func _apply_wall_collision() -> void:
-	if _airborne:
+	if _airborne and global_position.y >= arena_centre.y + wall_top_height:
 		return
 
 	var from_centre = _horizontal_pos() - arena_centre
@@ -1428,14 +1441,24 @@ func _update_vertical(delta: float) -> void:
 
 
 func _surface_y_at(x: float, z: float) -> float:
+	# Sample within the bowl: past its edge the ray finds the top of the wall,
+	# and a top snapped there appears to teleport up onto the rim.
+	var here = Vector2(x, z) - arena_centre
+	var limit = wall_radius - radius
+	if here.length() > limit:
+		here = here.normalized() * limit
+		x = arena_centre.x + here.x
+		z = arena_centre.y + here.y
+
 	var space = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(
 		Vector3(x, 1.0, z), Vector3(x, -1.0, z))
 	query.collision_mask = ARENA_LAYER
 	var hit = space.intersect_ray(query)
 	if hit:
-		return hit.position.y
-	return 0.0
+		_last_surface_y = hit.position.y
+		return _last_surface_y
+	return _last_surface_y
 
 
 # ══════════════════════════════════════════════════════════════════════════

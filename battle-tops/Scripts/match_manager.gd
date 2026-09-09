@@ -60,6 +60,7 @@ func _begin_round() -> void:
 
 
 func _on_round_ended(winners: Array[Top]) -> void:
+	print("[%d] round_ended handler entered" % Time.get_ticks_msec())
 	if _match_over:
 		return
 		
@@ -89,6 +90,15 @@ func _on_round_ended(winners: Array[Top]) -> void:
 		_match_over = true
 		match_complete.emit(_leaders(), scores)
 		return
+
+	await get_tree().process_frame
+
+	print("[%d] settle check: %s" % [Time.get_ticks_msec(),
+		str(manager.tops.map(func(t): return t.current_state))])
+	if manager.has_dying_tops():
+		print("  waiting for round_settled")
+		await manager.round_settled
+		print("  settled")
 
 	if finish_display != null and finish_display.visible:
 		await finish_display.dismissed

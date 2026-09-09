@@ -18,7 +18,6 @@ signal result_dismissed
 
 @export var finish_display: FinishDisplay
 ## Extra pause after the finish banner clears, before the winner appears.
-@export var result_gap := 2.2
 
 var _pending_winners: Array[Top] = []
 var _finish_done := false
@@ -73,8 +72,13 @@ func _show_result() -> void:
 		text = draw_text
 		set_colours(draw_top_colour, draw_bottom_colour)
 
-	if result_gap > 0.0:
-		await get_tree().create_timer(result_gap, true, false, true).timeout
+	await get_tree().process_frame
+	if finish_display != null and not finish_display.visible:
+		await finish_display.dismissed
+	elif finish_display != null:
+		await finish_display.dismissed
+
 	show_text(text, result_hold, 1.0, result_font_size)
+	
 	await get_tree().create_timer(result_hold, true, false, true).timeout
 	result_dismissed.emit()

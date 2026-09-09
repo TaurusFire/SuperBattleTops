@@ -1,155 +1,690 @@
 Godot Engine v4.6.stable.official.89cea1439 - https://godotengine.org
 Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 Max (Apple9)
 
-Stamina repositioning to (0.0, 0.0) (from 0.038 away)
-Attack repositioning to (0.0, 0.0) (from 0.084 away)
-Stamina repositioning to (0.091308, 0.017658) (from 0.052 away)
-Attack repositioning to (-0.091643, -0.015826) (from 0.029 away)
-Stamina repositioning to (-0.062374, -0.068982) (from 0.048 away)
-Stamina repositioning to (0.088778, -0.027703) (from 0.205 away)
-Stamina repositioning to (0.090357, 0.022013) (from 0.216 away)
-Attack repositioning to (0.085183, 0.037322) (from 0.173 away)
-Attack repositioning to (0.090656, 0.020749) (from 0.148 away)
-Stamina repositioning to (0.07501, 0.054977) (from 0.214 away)
-Stamina repositioning to (0.091329, -0.017549) (from 0.204 away)
-Stamina repositioning to (0.092938, -0.0034) (from 0.160 away)
-Attack repositioning to (0.061555, 0.069713) (from 0.138 away)
-Stamina repositioning to (0.089509, 0.025243) (from 0.196 away)
-Stamina repositioning to (0.079903, -0.047586) (from 0.195 away)
-Stamina repositioning to (0.034478, -0.086373) (from 0.157 away)
-Stamina repositioning to (0.065102, -0.066413) (from 0.223 away)
-Attack repositioning to (0.085452, 0.0367) (from 0.168 away)
-Attack repositioning to (0.081265, -0.045221) (from 0.137 away)
-Attack repositioning to (0.071966, 0.058905) (from 0.188 away)
-Stamina repositioning to (0.083891, -0.040141) (from 0.203 away)
-Attack repositioning to (0.082731, 0.04248) (from 0.098 away)
-Attack repositioning to (-0.092779, -0.006401) (from 0.128 away)
-Stamina repositioning to (-0.015494, 0.0917) (from 0.145 away)
-Attack repositioning to (-0.067348, -0.064134) (from 0.174 away)
-Attack repositioning to (-0.090112, -0.022995) (from 0.184 away)
-Attack repositioning to (-0.032947, -0.086968) (from 0.116 away)
-Stamina repositioning to (-0.018832, -0.091073) (from 0.081 away)
-Attack repositioning to (-0.080934, -0.045812) (from 0.141 away)
-Stamina repositioning to (-0.05291, 0.076482) (from 0.204 away)
-Attack repositioning to (-0.023912, 0.089873) (from 0.155 away)
-Stamina repositioning to (-0.075124, -0.054822) (from 0.130 away)
-Stamina repositioning to (-0.032166, 0.08726) (from 0.060 away)
-Attack repositioning to (-0.019555, 0.090921) (from 0.065 away)
-Stamina repositioning to (-0.070937, 0.06014) (from 0.033 away)
-Attack repositioning to (0.042197, -0.082876) (from 0.157 away)
-Stamina repositioning to (0.043247, -0.082333) (from 0.186 away)
-Attack repositioning to (0.045759, -0.080964) (from 0.042 away)
-Attack repositioning to (-0.069703, 0.061567) (from 0.108 away)
-Stamina repositioning to (0.076887, -0.05232) (from 0.065 away)
-Winner: Attack
-Stamina repositioning to (-0.013127, 0.092069) (from 0.182 away)
-Attack repositioning to (-0.063189, 0.068236) (from 0.052 away)
-Attack repositioning to (-0.088854, -0.027459) (from 0.101 away)
-Stamina repositioning to (-0.091621, 0.015957) (from 0.088 away)
-Attack repositioning to (-0.08765, -0.031089) (from 0.091 away)
-Stamina repositioning to (-0.0826, 0.042735) (from 0.044 away)
-Stamina repositioning to (0.075057, -0.054914) (from 0.182 away)
-Attack repositioning to (0.006394, -0.09278) (from 0.094 away)
-Stamina repositioning to (-0.009004, 0.092563) (from 0.105 away)
-Attack repositioning to (-0.090322, 0.022157) (from 0.164 away)
-Stamina repositioning to (-0.092928, 0.003666) (from 0.048 away)
-Attack repositioning to (-0.074854, -0.055189) (from 0.167 away)
-Stamina repositioning to (0.088769, 0.027733) (from 0.062 away)
-Attack repositioning to (-0.090942, 0.019456) (from 0.056 away)
-Stamina repositioning to (-0.083766, -0.040401) (from 0.128 away)
-Stamina repositioning to (0.09284, 0.005447) (from 0.139 away)
-Attack repositioning to (-0.027552, -0.088825) (from 0.184 away)
-Attack repositioning to (0.059188, -0.071734) (from 0.018 away)
-Stamina repositioning to (-0.028324, -0.088582) (from 0.127 away)
-Attack repositioning to (-0.081462, 0.044866) (from 0.108 away)
-Stamina repositioning to (-0.090903, -0.019639) (from 0.134 away)
-Attack repositioning to (0.013506, 0.092014) (from 0.117 away)
-Attack repositioning to (-0.066557, 0.064955) (from 0.113 away)
-Stamina repositioning to (-0.066817, 0.064688) (from 0.067 away)
-Attack repositioning to (0.052855, -0.07652) (from 0.116 away)
-Stamina repositioning to (-0.046131, -0.080753) (from 0.162 away)
-Stamina repositioning to (0.070372, 0.060801) (from 0.107 away)
-Attack repositioning to (-0.029621, 0.088157) (from 0.057 away)
-Stamina repositioning to (-0.005063, 0.092862) (from 0.152 away)
-Attack repositioning to (-0.025682, -0.089384) (from 0.183 away)
-Stamina repositioning to (0.089165, -0.026432) (from 0.110 away)
-Attack repositioning to (0.007684, -0.092682) (from 0.042 away)
-Attack repositioning to (0.018185, 0.091205) (from 0.201 away)
-Attack repositioning to (0.081428, 0.044927) (from 0.018 away)
-Stamina repositioning to (0.009087, -0.092555) (from 0.069 away)
-Attack repositioning to (0.088845, 0.027486) (from 0.090 away)
-Stamina repositioning to (-0.091788, 0.014966) (from 0.118 away)
-Attack repositioning to (0.023859, 0.089887) (from 0.104 away)
-Stamina repositioning to (-0.069547, -0.061743) (from 0.126 away)
-Stamina repositioning to (0.086662, 0.033744) (from 0.072 away)
-Stamina repositioning to (-0.024493, -0.089717) (from 0.163 away)
-Attack repositioning to (0.060233, -0.070859) (from 0.052 away)
-Attack repositioning to (-0.091794, 0.014929) (from 0.165 away)
-Attack repositioning to (0.091163, 0.018392) (from 0.054 away)
-Knockout projected
-deciding check: phase=2 alive=2 victim=Stamina
-deciding slowmo armed, hitstop active=true, scale now 0.05
-Stamina repositioning to (-0.089217, 0.026255) (from 0.169 away)
-Stamina repositioning to (0.069781, -0.061479) (from 0.136 away)
-Stamina repositioning to (-0.050507, -0.07809) (from 0.084 away)
-Stamina repositioning to (0.064673, 0.066831) (from 0.124 away)
-Attack repositioning to (0.001533, -0.092987) (from 0.090 away)
-Stamina repositioning to (-0.092499, -0.00964) (from 0.110 away)
-Attack repositioning to (0.090794, 0.020138) (from 0.105 away)
-Stamina repositioning to (-0.092733, -0.007037) (from 0.128 away)
-Attack repositioning to (-0.017162, -0.091403) (from 0.081 away)
-Stamina repositioning to (-0.0363, -0.085623) (from 0.124 away)
-Knockout projected
-deciding check: phase=2 alive=2 victim=Attack
-deciding slowmo armed, hitstop active=false, scale now 1.00
-Knockout projected
-deciding check: phase=2 alive=2 victim=Attack
-deciding slowmo armed, hitstop active=true, scale now 0.05
+FD connected to round_starting on MatchManager:<Node#49744446910>: true
+[Attack] FINAL OUTSIDE by 0.1413: r=0.2701 y=0.2334 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4591: r=0.5895 y=0.4789 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1413: r=0.2701 y=0.2334 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4591: r=0.5895 y=0.4789 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1413: r=0.2701 y=0.2334 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4591: r=0.5895 y=0.4789 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1423: r=0.2712 y=0.2343 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4601: r=0.5905 y=0.4798 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1428: r=0.2716 y=0.2347 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4605: r=0.5909 y=0.4802 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1431: r=0.2720 y=0.2350 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4608: r=0.5912 y=0.4805 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1435: r=0.2723 y=0.2353 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4611: r=0.5916 y=0.4808 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1438: r=0.2726 y=0.2356 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4614: r=0.5919 y=0.4810 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1441: r=0.2729 y=0.2358 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4617: r=0.5921 y=0.4813 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1444: r=0.2732 y=0.2360 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4620: r=0.5924 y=0.4815 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1447: r=0.2735 y=0.2363 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4622: r=0.5927 y=0.4818 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1450: r=0.2738 y=0.2366 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4625: r=0.5930 y=0.4820 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1453: r=0.2741 y=0.2368 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4628: r=0.5932 y=0.4823 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1456: r=0.2744 y=0.2371 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4631: r=0.5935 y=0.4826 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1459: r=0.2747 y=0.2373 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4633: r=0.5938 y=0.4828 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1462: r=0.2750 y=0.2375 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4636: r=0.5941 y=0.4830 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1465: r=0.2753 y=0.2378 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4639: r=0.5943 y=0.4833 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1468: r=0.2756 y=0.2380 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4642: r=0.5946 y=0.4835 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1470: r=0.2758 y=0.2382 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4644: r=0.5948 y=0.4837 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1473: r=0.2761 y=0.2385 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4647: r=0.5951 y=0.4840 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1476: r=0.2764 y=0.2387 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4649: r=0.5953 y=0.4842 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1479: r=0.2767 y=0.2389 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4652: r=0.5956 y=0.4844 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1481: r=0.2769 y=0.2391 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4654: r=0.5958 y=0.4846 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1484: r=0.2772 y=0.2394 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4657: r=0.5961 y=0.4849 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1486: r=0.2775 y=0.2396 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4659: r=0.5963 y=0.4851 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1489: r=0.2777 y=0.2398 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4661: r=0.5966 y=0.4853 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1491: r=0.2780 y=0.2400 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4663: r=0.5968 y=0.4855 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1494: r=0.2782 y=0.2402 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4666: r=0.5970 y=0.4857 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1496: r=0.2785 y=0.2404 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4668: r=0.5973 y=0.4859 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1499: r=0.2787 y=0.2406 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4670: r=0.5975 y=0.4861 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1501: r=0.2790 y=0.2408 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4673: r=0.5977 y=0.4863 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1501: r=0.2790 y=0.2408 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4673: r=0.5977 y=0.4863 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1506: r=0.2794 y=0.2412 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4677: r=0.5981 y=0.4867 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1506: r=0.2794 y=0.2412 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4677: r=0.5981 y=0.4867 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1510: r=0.2799 y=0.2416 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4681: r=0.5986 y=0.4871 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1513: r=0.2801 y=0.2418 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4683: r=0.5988 y=0.4873 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1513: r=0.2801 y=0.2418 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4683: r=0.5988 y=0.4873 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1515: r=0.2804 y=0.2420 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4686: r=0.5990 y=0.4875 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1519: r=0.2807 y=0.2423 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4689: r=0.5994 y=0.4878 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1522: r=0.2810 y=0.2425 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4691: r=0.5996 y=0.4880 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1524: r=0.2812 y=0.2427 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4693: r=0.5998 y=0.4882 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1526: r=0.2814 y=0.2429 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4695: r=0.6000 y=0.4884 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1528: r=0.2816 y=0.2430 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4697: r=0.6001 y=0.4885 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1528: r=0.2816 y=0.2430 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4697: r=0.6001 y=0.4885 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1532: r=0.2820 y=0.2434 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4701: r=0.6005 y=0.4889 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1534: r=0.2822 y=0.2436 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4703: r=0.6007 y=0.4890 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1536: r=0.2824 y=0.2437 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4704: r=0.6009 y=0.4892 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1538: r=0.2826 y=0.2439 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4706: r=0.6011 y=0.4894 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1540: r=0.2828 y=0.2440 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4708: r=0.6013 y=0.4895 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1540: r=0.2828 y=0.2440 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4708: r=0.6013 y=0.4895 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1543: r=0.2831 y=0.2443 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4712: r=0.6016 y=0.4898 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1543: r=0.2831 y=0.2443 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4712: r=0.6016 y=0.4898 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1547: r=0.2835 y=0.2446 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4715: r=0.6019 y=0.4901 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1547: r=0.2835 y=0.2446 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4715: r=0.6019 y=0.4901 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1550: r=0.2839 y=0.2449 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4718: r=0.6023 y=0.4904 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1552: r=0.2841 y=0.2451 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4720: r=0.6024 y=0.4906 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1554: r=0.2842 y=0.2452 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4721: r=0.6026 y=0.4907 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1556: r=0.2844 y=0.2454 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4723: r=0.6027 y=0.4909 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1556: r=0.2844 y=0.2454 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4723: r=0.6027 y=0.4909 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1559: r=0.2847 y=0.2457 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4726: r=0.6031 y=0.4911 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1561: r=0.2849 y=0.2458 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4728: r=0.6032 y=0.4913 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1562: r=0.2850 y=0.2459 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4729: r=0.6034 y=0.4914 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1564: r=0.2852 y=0.2461 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4731: r=0.6035 y=0.4916 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1564: r=0.2852 y=0.2461 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4731: r=0.6035 y=0.4916 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1567: r=0.2855 y=0.2463 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4733: r=0.6038 y=0.4918 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1568: r=0.2857 y=0.2464 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4735: r=0.6039 y=0.4919 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1570: r=0.2858 y=0.2466 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4736: r=0.6041 y=0.4921 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1572: r=0.2860 y=0.2467 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4738: r=0.6042 y=0.4922 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1572: r=0.2860 y=0.2467 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4738: r=0.6042 y=0.4922 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1575: r=0.2863 y=0.2470 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4740: r=0.6045 y=0.4924 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1576: r=0.2864 y=0.2471 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4742: r=0.6046 y=0.4926 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1577: r=0.2866 y=0.2472 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4743: r=0.6048 y=0.4927 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1577: r=0.2866 y=0.2472 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4743: r=0.6048 y=0.4927 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1580: r=0.2868 y=0.2474 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4746: r=0.6050 y=0.4929 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1582: r=0.2870 y=0.2475 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4747: r=0.6051 y=0.4930 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1582: r=0.2870 y=0.2475 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4747: r=0.6051 y=0.4930 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1584: r=0.2872 y=0.2478 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4750: r=0.6054 y=0.4933 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1586: r=0.2874 y=0.2479 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4751: r=0.6055 y=0.4934 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1586: r=0.2874 y=0.2479 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4751: r=0.6055 y=0.4934 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1588: r=0.2876 y=0.2481 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4753: r=0.6058 y=0.4936 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1590: r=0.2878 y=0.2482 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4754: r=0.6059 y=0.4937 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1591: r=0.2879 y=0.2483 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4755: r=0.6060 y=0.4938 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1592: r=0.2880 y=0.2484 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4757: r=0.6061 y=0.4939 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1592: r=0.2880 y=0.2484 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4757: r=0.6061 y=0.4939 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1594: r=0.2883 y=0.2486 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4759: r=0.6063 y=0.4941 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1596: r=0.2884 y=0.2487 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4760: r=0.6064 y=0.4942 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1596: r=0.2884 y=0.2487 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4760: r=0.6064 y=0.4942 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1598: r=0.2886 y=0.2489 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4762: r=0.6067 y=0.4944 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1599: r=0.2887 y=0.2490 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4763: r=0.6068 y=0.4945 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1599: r=0.2887 y=0.2490 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4763: r=0.6068 y=0.4945 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1601: r=0.2890 y=0.2492 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4765: r=0.6070 y=0.4947 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1601: r=0.2890 y=0.2492 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4765: r=0.6070 y=0.4947 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1604: r=0.2892 y=0.2494 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4767: r=0.6072 y=0.4949 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1605: r=0.2893 y=0.2495 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4768: r=0.6073 y=0.4950 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1605: r=0.2893 y=0.2495 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4768: r=0.6073 y=0.4950 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1607: r=0.2895 y=0.2496 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4770: r=0.6075 y=0.4951 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1608: r=0.2896 y=0.2497 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4771: r=0.6076 y=0.4952 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1608: r=0.2896 y=0.2497 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4771: r=0.6076 y=0.4952 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1610: r=0.2898 y=0.2499 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4773: r=0.6078 y=0.4954 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1610: r=0.2898 y=0.2499 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4773: r=0.6078 y=0.4954 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1612: r=0.2900 y=0.2501 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4775: r=0.6080 y=0.4956 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1613: r=0.2901 y=0.2501 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4776: r=0.6080 y=0.4956 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1614: r=0.2902 y=0.2502 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4777: r=0.6081 y=0.4957 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1615: r=0.2903 y=0.2503 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4778: r=0.6082 y=0.4958 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1616: r=0.2904 y=0.2504 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4779: r=0.6083 y=0.4959 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1616: r=0.2904 y=0.2504 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4779: r=0.6083 y=0.4959 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1618: r=0.2906 y=0.2505 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4780: r=0.6085 y=0.4960 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1618: r=0.2906 y=0.2505 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4780: r=0.6085 y=0.4960 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1620: r=0.2908 y=0.2507 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4782: r=0.6086 y=0.4962 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1620: r=0.2908 y=0.2507 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4782: r=0.6086 y=0.4962 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1621: r=0.2909 y=0.2508 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4784: r=0.6088 y=0.4963 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1621: r=0.2909 y=0.2508 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4784: r=0.6088 y=0.4963 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1623: r=0.2911 y=0.2510 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4785: r=0.6090 y=0.4965 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1623: r=0.2911 y=0.2510 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4785: r=0.6090 y=0.4965 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1625: r=0.2913 y=0.2511 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4787: r=0.6091 y=0.4966 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1626: r=0.2914 y=0.2512 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4788: r=0.6092 y=0.4967 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1626: r=0.2914 y=0.2512 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4788: r=0.6092 y=0.4967 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1627: r=0.2915 y=0.2513 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4789: r=0.6093 y=0.4968 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1628: r=0.2916 y=0.2514 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4790: r=0.6094 y=0.4969 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1628: r=0.2916 y=0.2514 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4790: r=0.6094 y=0.4969 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1630: r=0.2918 y=0.2515 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4791: r=0.6096 y=0.4970 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1630: r=0.2918 y=0.2516 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4792: r=0.6096 y=0.4971 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1631: r=0.2919 y=0.2516 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4793: r=0.6097 y=0.4971 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1631: r=0.2919 y=0.2516 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4793: r=0.6097 y=0.4971 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1632: r=0.2921 y=0.2518 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4794: r=0.6098 y=0.4973 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1633: r=0.2921 y=0.2518 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4795: r=0.6099 y=0.4973 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1633: r=0.2921 y=0.2518 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4795: r=0.6099 y=0.4973 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1635: r=0.2923 y=0.2519 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4796: r=0.6100 y=0.4974 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1635: r=0.2923 y=0.2519 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4796: r=0.6100 y=0.4974 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1636: r=0.2924 y=0.2521 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4797: r=0.6102 y=0.4976 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1637: r=0.2925 y=0.2521 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4798: r=0.6102 y=0.4976 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1637: r=0.2926 y=0.2522 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4799: r=0.6103 y=0.4977 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1637: r=0.2926 y=0.2522 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4799: r=0.6103 y=0.4977 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1639: r=0.2927 y=0.2523 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4800: r=0.6104 y=0.4978 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1639: r=0.2927 y=0.2523 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4800: r=0.6104 y=0.4978 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1640: r=0.2928 y=0.2524 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4801: r=0.6105 y=0.4979 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1641: r=0.2929 y=0.2524 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4802: r=0.6106 y=0.4979 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1641: r=0.2929 y=0.2524 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4802: r=0.6106 y=0.4979 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1642: r=0.2930 y=0.2525 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4803: r=0.6107 y=0.4980 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1643: r=0.2931 y=0.2526 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4803: r=0.6108 y=0.4981 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1643: r=0.2931 y=0.2526 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4804: r=0.6108 y=0.4981 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1644: r=0.2932 y=0.2527 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4804: r=0.6109 y=0.4982 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1644: r=0.2933 y=0.2527 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4805: r=0.6109 y=0.4982 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1645: r=0.2933 y=0.2528 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4805: r=0.6110 y=0.4983 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1646: r=0.2934 y=0.2528 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4806: r=0.6110 y=0.4983 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1646: r=0.2934 y=0.2529 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4806: r=0.6111 y=0.4984 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1646: r=0.2934 y=0.2529 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4806: r=0.6111 y=0.4984 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1647: r=0.2935 y=0.2530 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4808: r=0.6112 y=0.4985 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1648: r=0.2936 y=0.2530 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4808: r=0.6112 y=0.4985 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1648: r=0.2936 y=0.2530 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4808: r=0.6112 y=0.4985 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1649: r=0.2937 y=0.2531 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4809: r=0.6113 y=0.4986 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1649: r=0.2937 y=0.2531 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4809: r=0.6113 y=0.4986 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1650: r=0.2938 y=0.2532 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4810: r=0.6114 y=0.4987 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1650: r=0.2939 y=0.2532 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4810: r=0.6115 y=0.4987 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1651: r=0.2939 y=0.2533 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4811: r=0.6115 y=0.4988 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1651: r=0.2939 y=0.2533 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4811: r=0.6115 y=0.4988 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1652: r=0.2940 y=0.2534 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4812: r=0.6116 y=0.4989 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1652: r=0.2941 y=0.2534 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4812: r=0.6117 y=0.4989 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1652: r=0.2941 y=0.2534 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4812: r=0.6117 y=0.4989 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1653: r=0.2942 y=0.2535 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4813: r=0.6118 y=0.4990 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1653: r=0.2942 y=0.2535 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4813: r=0.6118 y=0.4990 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1654: r=0.2943 y=0.2536 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4814: r=0.6118 y=0.4991 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1654: r=0.2943 y=0.2536 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4814: r=0.6118 y=0.4991 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1655: r=0.2944 y=0.2536 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4815: r=0.6119 y=0.4991 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1656: r=0.2944 y=0.2537 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4815: r=0.6120 y=0.4992 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1656: r=0.2944 y=0.2537 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4815: r=0.6120 y=0.4992 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1657: r=0.2945 y=0.2537 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4816: r=0.6120 y=0.4992 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1657: r=0.2945 y=0.2538 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4816: r=0.6121 y=0.4993 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1657: r=0.2946 y=0.2538 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4817: r=0.6121 y=0.4993 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1657: r=0.2946 y=0.2538 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4817: r=0.6121 y=0.4993 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1658: r=0.2947 y=0.2539 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4818: r=0.6122 y=0.4994 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1659: r=0.2947 y=0.2539 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4818: r=0.6122 y=0.4994 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1659: r=0.2947 y=0.2539 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4818: r=0.6122 y=0.4994 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1660: r=0.2948 y=0.2540 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4819: r=0.6123 y=0.4995 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1660: r=0.2948 y=0.2540 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4819: r=0.6124 y=0.4995 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1660: r=0.2948 y=0.2540 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4819: r=0.6124 y=0.4995 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1661: r=0.2949 y=0.2541 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4820: r=0.6124 y=0.4996 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1661: r=0.2949 y=0.2541 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4820: r=0.6125 y=0.4996 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1661: r=0.2949 y=0.2541 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4820: r=0.6125 y=0.4996 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1662: r=0.2950 y=0.2542 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4821: r=0.6125 y=0.4997 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1662: r=0.2950 y=0.2542 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4821: r=0.6125 y=0.4997 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1662: r=0.2951 y=0.2542 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4821: r=0.6126 y=0.4997 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1663: r=0.2951 y=0.2543 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4822: r=0.6126 y=0.4998 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1663: r=0.2952 y=0.2543 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4822: r=0.6127 y=0.4998 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1664: r=0.2952 y=0.2543 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4822: r=0.6127 y=0.4998 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1664: r=0.2952 y=0.2544 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4823: r=0.6127 y=0.4998 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1664: r=0.2952 y=0.2544 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4823: r=0.6127 y=0.4998 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1665: r=0.2953 y=0.2544 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4823: r=0.6128 y=0.4999 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1665: r=0.2953 y=0.2544 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4823: r=0.6128 y=0.4999 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1658: r=0.2946 y=0.2543 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4824: r=0.6128 y=0.5000 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1649: r=0.2937 y=0.2540 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4824: r=0.6129 y=0.5000 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1649: r=0.2937 y=0.2540 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4824: r=0.6129 y=0.5000 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1619: r=0.2908 y=0.2531 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4825: r=0.6129 y=0.5000 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1598: r=0.2886 y=0.2525 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4825: r=0.6130 y=0.5001 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1598: r=0.2886 y=0.2525 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4825: r=0.6130 y=0.5001 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1548: r=0.2836 y=0.2509 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4826: r=0.6130 y=0.5001 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1518: r=0.2806 y=0.2500 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4826: r=0.6130 y=0.5001 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1485: r=0.2773 y=0.2489 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4826: r=0.6131 y=0.5002 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1453: r=0.2741 y=0.2478 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4827: r=0.6131 y=0.5002 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1453: r=0.2741 y=0.2478 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4827: r=0.6131 y=0.5002 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1373: r=0.2662 y=0.2450 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4342: r=0.5646 y=0.4651 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1373: r=0.2662 y=0.2450 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4342: r=0.5646 y=0.4651 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1373: r=0.2662 y=0.2450 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4342: r=0.5646 y=0.4651 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1373: r=0.2662 y=0.2450 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.4342: r=0.5646 y=0.4651 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1205: r=0.2493 y=0.2387 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.2890: r=0.4194 y=0.3569 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1140: r=0.2428 y=0.2360 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.2554: r=0.3859 y=0.3307 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1087: r=0.2375 y=0.2338 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.2340: r=0.3644 y=0.3135 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.1033: r=0.2321 y=0.2315 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.2165: r=0.3470 y=0.2993 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0968: r=0.2257 y=0.2287 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.2008: r=0.3312 y=0.2861 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0911: r=0.2199 y=0.2261 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1902: r=0.3206 y=0.2770 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0849: r=0.2137 y=0.2232 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1816: r=0.3120 y=0.2695 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0787: r=0.2076 y=0.2203 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1755: r=0.3059 y=0.2641 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0728: r=0.2016 y=0.2174 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1713: r=0.3018 y=0.2604 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0665: r=0.1953 y=0.2142 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1684: r=0.2989 y=0.2578 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0603: r=0.1891 y=0.2110 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1667: r=0.2972 y=0.2563 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0535: r=0.1823 y=0.2075 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1658: r=0.2962 y=0.2554 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0473: r=0.1761 y=0.2041 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1655: r=0.2959 y=0.2551 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0408: r=0.1696 y=0.2005 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1655: r=0.2959 y=0.2551 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0349: r=0.1637 y=0.1972 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1655: r=0.2959 y=0.2551 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0349: r=0.1637 y=0.1972 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1655: r=0.2959 y=0.2551 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0276: r=0.1564 y=0.1929 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1655: r=0.2960 y=0.2551 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0154: r=0.1442 y=0.1855 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1656: r=0.2960 y=0.2552 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0091: r=0.1379 y=0.1815 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1656: r=0.2960 y=0.2552 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0032: r=0.1321 y=0.1776 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1656: r=0.2960 y=0.2552 airborne=false state=0
+[Attack] FINAL OUTSIDE by 0.0032: r=0.1321 y=0.1776 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1656: r=0.2960 y=0.2552 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1656: r=0.2961 y=0.2552 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1657: r=0.2961 y=0.2553 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1657: r=0.2961 y=0.2553 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1657: r=0.2961 y=0.2553 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1657: r=0.2962 y=0.2553 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1657: r=0.2962 y=0.2553 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1658: r=0.2962 y=0.2553 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1658: r=0.2962 y=0.2554 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1658: r=0.2962 y=0.2554 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1658: r=0.2963 y=0.2554 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1658: r=0.2963 y=0.2554 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1658: r=0.2963 y=0.2554 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1659: r=0.2963 y=0.2554 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1659: r=0.2963 y=0.2554 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1659: r=0.2964 y=0.2555 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1659: r=0.2964 y=0.2555 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1660: r=0.2964 y=0.2555 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1660: r=0.2964 y=0.2555 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1660: r=0.2964 y=0.2555 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1660: r=0.2964 y=0.2555 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1660: r=0.2965 y=0.2555 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1660: r=0.2965 y=0.2556 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1661: r=0.2965 y=0.2556 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1661: r=0.2965 y=0.2556 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1661: r=0.2965 y=0.2556 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1661: r=0.2965 y=0.2556 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1661: r=0.2966 y=0.2556 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1661: r=0.2966 y=0.2556 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1662: r=0.2966 y=0.2556 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1662: r=0.2966 y=0.2557 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1662: r=0.2966 y=0.2557 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1662: r=0.2966 y=0.2557 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1662: r=0.2967 y=0.2557 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1662: r=0.2967 y=0.2557 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1662: r=0.2967 y=0.2557 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1663: r=0.2967 y=0.2557 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1663: r=0.2967 y=0.2557 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1663: r=0.2967 y=0.2557 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1663: r=0.2967 y=0.2558 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1663: r=0.2967 y=0.2558 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1663: r=0.2968 y=0.2558 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1663: r=0.2968 y=0.2558 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1663: r=0.2968 y=0.2558 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1664: r=0.2968 y=0.2558 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1664: r=0.2968 y=0.2558 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1664: r=0.2968 y=0.2558 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1664: r=0.2968 y=0.2558 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1664: r=0.2969 y=0.2558 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1664: r=0.2969 y=0.2559 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1664: r=0.2969 y=0.2559 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1664: r=0.2969 y=0.2559 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1665: r=0.2969 y=0.2559 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1665: r=0.2969 y=0.2559 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1665: r=0.2969 y=0.2559 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1665: r=0.2969 y=0.2559 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1665: r=0.2969 y=0.2559 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1665: r=0.2970 y=0.2559 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1665: r=0.2970 y=0.2559 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1665: r=0.2970 y=0.2559 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1665: r=0.2970 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1666: r=0.2970 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1666: r=0.2970 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1666: r=0.2970 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1666: r=0.2970 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1666: r=0.2970 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1666: r=0.2971 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1666: r=0.2971 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1666: r=0.2971 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1666: r=0.2971 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1666: r=0.2971 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1667: r=0.2971 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1667: r=0.2971 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1667: r=0.2971 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1667: r=0.2971 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1667: r=0.2971 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1667: r=0.2971 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1667: r=0.2972 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1667: r=0.2972 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1667: r=0.2972 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1667: r=0.2972 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1667: r=0.2972 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1668: r=0.2972 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1668: r=0.2972 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1668: r=0.2972 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1668: r=0.2972 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1668: r=0.2972 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1668: r=0.2972 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1668: r=0.2972 y=0.2561 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1668: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1668: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1668: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1668: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1668: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2973 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2974 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2974 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2974 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2974 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2974 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1669: r=0.2974 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2974 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2974 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2974 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2974 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2974 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2974 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2974 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2974 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2974 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2974 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2974 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1670: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2975 y=0.2563 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2975 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2976 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1672: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2565 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2565 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2565 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2565 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2565 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2565 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2565 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2565 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1673: r=0.2977 y=0.2565 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1671: r=0.2975 y=0.2564 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1663: r=0.2967 y=0.2562 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1650: r=0.2955 y=0.2560 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1631: r=0.2935 y=0.2555 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1609: r=0.2913 y=0.2550 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1580: r=0.2884 y=0.2543 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1550: r=0.2854 y=0.2536 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1511: r=0.2815 y=0.2527 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1475: r=0.2779 y=0.2518 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1428: r=0.2733 y=0.2506 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1379: r=0.2684 y=0.2494 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1328: r=0.2632 y=0.2480 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1274: r=0.2578 y=0.2465 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1212: r=0.2516 y=0.2448 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1155: r=0.2460 y=0.2432 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1155: r=0.2460 y=0.2432 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.1021: r=0.2325 y=0.2392 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.0951: r=0.2255 y=0.2370 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.0884: r=0.2188 y=0.2349 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.0806: r=0.2110 y=0.2323 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.0735: r=0.2039 y=0.2300 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.0657: r=0.1962 y=0.2273 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.0578: r=0.1883 y=0.2245 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.0491: r=0.1795 y=0.2214 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.0413: r=0.1717 y=0.2185 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.0323: r=0.1628 y=0.2151 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.0244: r=0.1549 y=0.2120 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.0244: r=0.1549 y=0.2120 airborne=false state=0
+[Stamina] FINAL OUTSIDE by 0.0131: r=0.1436 y=0.2075 airborne=false state=0
+[5421] CountdownDisplay dismissed
+[6422] CountdownDisplay dismissed
+[6998] ArenaNameDisplay dismissed
+[7422] CountdownDisplay dismissed
+[8996] CountdownDisplay dismissed
 Winner: Stamina
-Stamina repositioning to (0.00885, 0.092578) (from 0.051 away)
-Attack repositioning to (-0.079723, -0.047888) (from 0.062 away)
-Attack repositioning to (0.050935, -0.077811) (from 0.117 away)
-Stamina repositioning to (-0.064024, -0.067453) (from 0.176 away)
-Attack repositioning to (-0.017748, -0.091291) (from 0.115 away)
-Stamina repositioning to (0.091084, 0.018781) (from 0.043 away)
-Attack repositioning to (-0.05067, -0.077985) (from 0.150 away)
-Stamina repositioning to (0.09179, 0.014951) (from 0.220 away)
-Attack repositioning to (0.072301, -0.058495) (from 0.172 away)
-Stamina repositioning to (0.08618, -0.034957) (from 0.172 away)
-Stamina repositioning to (0.090708, -0.020518) (from 0.165 away)
-Attack repositioning to (0.091883, -0.01437) (from 0.126 away)
-Stamina repositioning to (-0.052254, 0.076932) (from 0.152 away)
-Stamina repositioning to (0.083575, 0.040796) (from 0.167 away)
-Stamina repositioning to (0.032088, 0.087289) (from 0.166 away)
-Stamina repositioning to (0.061337, -0.069906) (from 0.109 away)
-Stamina repositioning to (0.065248, -0.06627) (from 0.130 away)
-Attack repositioning to (0.088864, 0.027427) (from 0.130 away)
-Stamina repositioning to (0.09198, 0.013735) (from 0.104 away)
-Stamina repositioning to (-0.047158, 0.080157) (from 0.134 away)
-Stamina repositioning to (-0.054707, -0.075207) (from 0.050 away)
-Stamina repositioning to (0.086971, 0.032939) (from 0.103 away)
-Attack repositioning to (0.032379, 0.087182) (from 0.141 away)
-Stamina repositioning to (-0.092715, 0.007281) (from 0.012 away)
-Attack repositioning to (0.060107, 0.070966) (from 0.168 away)
-Attack repositioning to (0.086188, 0.034937) (from 0.112 away)
-Stamina repositioning to (0.090372, -0.021953) (from 0.108 away)
-Attack repositioning to (-0.006771, -0.092753) (from 0.123 away)
-Stamina repositioning to (0.05004, -0.07839) (from 0.140 away)
-Stamina repositioning to (-0.066887, -0.064615) (from 0.178 away)
-Attack repositioning to (-0.029493, -0.0882) (from 0.152 away)
-Attack repositioning to (0.023075, -0.090092) (from 0.080 away)
-Stamina repositioning to (-0.092295, 0.011426) (from 0.151 away)
-Stamina repositioning to (-0.089894, 0.023833) (from 0.175 away)
-Stamina repositioning to (-0.084467, 0.038915) (from 0.052 away)
-Attack repositioning to (-0.090305, 0.022227) (from 0.090 away)
-Stamina repositioning to (0.046558, -0.080507) (from 0.125 away)
-Attack repositioning to (0.087341, 0.031946) (from 0.082 away)
-Stamina repositioning to (0.091324, 0.017575) (from 0.081 away)
-Attack repositioning to (-0.012847, 0.092108) (from 0.128 away)
-Attack repositioning to (0.081105, 0.045509) (from 0.146 away)
-Stamina repositioning to (-0.030302, -0.087925) (from 0.050 away)
-Attack repositioning to (-0.042377, 0.082784) (from 0.116 away)
-Attack repositioning to (-0.07688, -0.052331) (from 0.064 away)
-Stamina repositioning to (-0.008228, 0.092635) (from 0.143 away)
-Attack repositioning to (0.092797, -0.006146) (from 0.036 away)
+[31189] round_ended handler entered
+[31196] proceeding to next round (finish visible=false)
+[31196] ROUND banner shown: round 2
+[32198] RoundDisplay dismissed
+[34530] CountdownDisplay dismissed
 Winner: Attack
+[54263] round_ended handler entered
+[54273] proceeding to next round (finish visible=false)
+[54273] ROUND banner shown: round 3
+[55271] RoundDisplay dismissed
+[57988] CountdownDisplay dismissed
+Knockout projected
+Winner: Attack
+[78188] round_ended handler entered
+[79296] FINISH banner shown: GAME!
+[81305] FinishDisplay dismissed

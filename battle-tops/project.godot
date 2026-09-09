@@ -32,7 +32,7 @@ movie_writer/fps=300
 
 [physics]
 
-common/physics_ticks_per_second=480
+common/physics_ticks_per_second=120
 common/max_physics_steps_per_frame=32
 3d/physics_engine="Jolt Physics"
 jolt_physics_3d/limits/max_angular_velocity=628.3185307179587

@@ -31,8 +31,7 @@ func _ready() -> void:
 		top.stopped.connect(_on_stopped)
 	if match_manager != null:
 		match_manager.round_starting.connect(_on_round_starting)
-		print("FD connected to round_starting on %s: %s" % [
-			match_manager, match_manager.round_starting.is_connected(_on_round_starting)])
+
 	else:
 		print("FD: match_manager is null")
 
@@ -42,6 +41,8 @@ func _on_round_starting(_round_number: int, _scores: Dictionary) -> void:
 	_knocked_out_tops.clear()
 
 func _on_knocked_out(top: Top) -> void:
+	print("FD knocked_out %s: is_final=%s announced=%s" % [
+		top.display_name(), _is_final(), _announced])
 	_knocked_out_tops[top] = true
 	if not _is_final():
 		return
@@ -52,6 +53,9 @@ func _on_stopped(top: Top) -> void:
 	# A knockout announces itself as it clears the rim. By the time it stops,
 	# its state is STOPPED like any other, so the state alone can't tell them
 	# apart — hence the record.
+	print("FD stopped %s (state %d): knocked=%s is_final=%s announced=%s" % [
+		top.display_name(), top.current_state,
+		_knocked_out_tops.has(top), _is_final(), _announced])
 	if _knocked_out_tops.has(top):
 		return
 	if not _is_final():
@@ -71,6 +75,7 @@ func _announce(text: String, top_col: Color, bottom_col: Color) -> void:
 	if _announced:
 		return
 	_announced = true
+	print("[%d] FINISH banner shown: %s" % [Time.get_ticks_msec(), text])
 	set_colours(top_col, bottom_col)
 	show_text(text, finish_hold, 1.0, finish_font_size)
 

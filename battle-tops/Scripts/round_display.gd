@@ -7,7 +7,7 @@ extends BannerText
 @export_group("Round")
 @export var match_manager: MatchManager
 @export var round_font_size := 130
-@export var round_hold := 2.0
+@export var round_hold := 1.0
 ## Shown instead of the number when it's the decider. A "FINAL ROUND" card
 ## does more for retention than "ROUND 3" — it tells the viewer this one
 ## settles it.
@@ -32,7 +32,7 @@ func _ready() -> void:
 func _on_round_starting(round_number: int, scores: Dictionary) -> void:
 	if round_number == 1 and not announce_first_round:
 		return
-
+	print("[%d] ROUND banner shown: round %d" % [Time.get_ticks_msec(), round_number])
 	if show_final_text and _is_decider(scores):
 		set_colours(final_top_colour, final_bottom_colour)
 		show_text(final_round_text, round_hold, 1.0, round_font_size)

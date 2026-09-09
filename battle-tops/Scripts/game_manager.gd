@@ -3,6 +3,7 @@ extends Node
 
 signal knockout_projected(top: Top, attacker: Top)
 signal round_ended(winners: Array[Top])
+signal round_settled
 var countdown_for_round := 3.0
 
 
@@ -89,6 +90,7 @@ func _ready() -> void:
 		top.opponents = tops.filter(func(t): return t != top)
 		top.entered_dying.connect(_on_top_entered_dying)
 		top.knockout_incoming.connect(_on_knockout_projected)
+		top.stopped.connect(_on_top_stopped_for_settle)
 		top.manager = self
 	
 	if tops.size() == 3:
@@ -130,6 +132,20 @@ func play_intro(countdown_length := -1.0) -> void:
 
 func _on_intro_finished() -> void:
 	_start_countdown()
+
+func has_dying_tops() -> bool:
+	for t in tops:
+		if t.current_state in [Top.State.DYING, Top.State.KNOCKED_OUT]:
+			return true
+	return false
+
+func _on_top_stopped_for_settle(_top: Top) -> void:
+	if phase != Phase.ENDED:
+		return
+	for t in tops:
+		if t.current_state in [Top.State.DYING, Top.State.KNOCKED_OUT]:
+			return          # still falling
+	round_settled.emit()
 
 func _start_countdown() -> void:
 	for top in tops:
