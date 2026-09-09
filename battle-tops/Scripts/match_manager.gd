@@ -95,10 +95,12 @@ func _on_round_ended(winners: Array[Top]) -> void:
 	print("[%d] settle check: %s" % [Time.get_ticks_msec(),
 		str(manager.tops.map(func(t): return t.current_state))])
 	if manager.has_dying_tops():
-		print("  waiting for round_settled")
 		await manager.round_settled
-		print("  settled")
-
+		# Resuming from an await runs synchronously inside the emit, so the
+		# remaining handlers of that same signal haven't run yet — including
+		# the finish banner's. A frame's wait lets the emission finish before
+		# we reset the arena out from under it.
+		await get_tree().process_frame
 	if finish_display != null and finish_display.visible:
 		await finish_display.dismissed
 

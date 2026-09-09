@@ -45,7 +45,8 @@ func _show_result() -> void:
 	await get_tree().process_frame
 	if finish_display != null and finish_display.visible:
 		await finish_display.dismissed
-
+	print("[%d] showing result: '%s' visible=%s size=%s" % [
+		Time.get_ticks_msec(), text, visible, size])
 	show_text(text, result_hold, 1.0, result_font_size)
 	await get_tree().create_timer(result_hold, true, false, true).timeout
 	result_dismissed.emit()
