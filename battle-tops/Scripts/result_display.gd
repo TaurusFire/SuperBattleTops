@@ -37,16 +37,34 @@ func _show_result() -> void:
 	_pending_winners = []
 
 	var text: String
-	# ... unchanged branch building text and colours ...
+	if winners.is_empty():
+		text = no_contest_text
+		set_colours(draw_top_colour, draw_bottom_colour)
+	elif winners.size() == 1:
+		var w = winners[0]
+		text = "%s WINS" % w.display_name().to_upper()
+		var base = w.stats.name_colour
+		var second = w.stats.name_colour_secondary
+		set_colours(base, second if second.a > 0.001 else base)
+	else:
+		text = draw_text
+		set_colours(draw_top_colour, draw_bottom_colour)
 
-	# One gate, on the banner's own signal. A frame's wait first, because
-	# match_complete and the finish announcement come from the same round
-	# resolution and the banner may not have claimed the screen yet.
-	await get_tree().process_frame
+	# A top still dying means the finish banner hasn't announced yet: it fires
+	# when the loser finishes toppling or falls out, which lags the round
+	# resolving by over a second. Checking `visible` alone would find nothing
+	# up and let the result through first.
+	if manager != null and manager.has_dying_tops():
+		await manager.round_settled
+		# Resuming from an await runs inside the emit, before the remaining
+		# handlers of that signal — including the one that shows the banner.
+		await get_tree().process_frame
+	else:
+		await get_tree().process_frame
+
 	if finish_display != null and finish_display.visible:
 		await finish_display.dismissed
-	print("[%d] showing result: '%s' visible=%s size=%s" % [
-		Time.get_ticks_msec(), text, visible, size])
+
 	show_text(text, result_hold, 1.0, result_font_size)
 	await get_tree().create_timer(result_hold, true, false, true).timeout
 	result_dismissed.emit()

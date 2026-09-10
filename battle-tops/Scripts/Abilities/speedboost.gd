@@ -6,7 +6,7 @@ extends Ability
 ## rather than simply surviving to the end of a long match.
 
 ## Speed added per collision, as a fraction of the top's base move speed.
-@export var gain_per_hit := 0.25
+@export var gain_per_hit := 0.2
 ## Ceiling on the accumulated bonus, as a fraction of base move speed.
 @export var max_bonus := 9
 ## How much of the bonus bleeds away per second without contact.

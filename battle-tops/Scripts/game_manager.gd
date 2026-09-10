@@ -94,7 +94,7 @@ func _ready() -> void:
 		top.manager = self
 	
 	if tops.size() == 3:
-		hitstop_max_duration = 0.06
+		hitstop_max_duration = 0.04
 	elif tops.size() >= 4:
 		hitstop_max_duration = 0.02
 	

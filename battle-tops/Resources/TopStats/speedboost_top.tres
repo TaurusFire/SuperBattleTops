@@ -22,20 +22,20 @@ roughness = 0.3
 
 [resource]
 script = ExtResource("3_unkte")
-display_name = "Speedboost"
+display_name = "Speedbooster"
 mesh = ExtResource("2_q6yxo")
 materials = Array[Material]([SubResource("StandardMaterial3D_7xdy8"), SubResource("StandardMaterial3D_bi8nj")])
 trail_colour = Color(2.2905588, 2.3575678, 0, 1)
 name_colour = Color(0.8703487, 0.87510157, 1.1551381e-06, 1)
 name_colour_secondary = Color(1.086, 1.036, 0.47, 1)
 initial_rpm = 8000.0
-rpm_base_decay_rate = 40.0
-base_knockback = 30.0
+rpm_base_decay_rate = 50.0
+base_knockback = 40.0
 base_damage = 70.0
-defence = 15.0
-weight = 0.14
-move_speed = 1.5
-aggression = 0.65
+defence = 25.0
+weight = 0.13
+move_speed = 0.4
+aggression = 0.6
 dodge_skill = 0.6
 ability = SubResource("Resource_vpwyr")
 metadata/_custom_type_script = "uid://t37dunmlguwa"

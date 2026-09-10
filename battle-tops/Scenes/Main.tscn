@@ -4,8 +4,11 @@
 [ext_resource type="Script" uid="uid://coqcr74hpq7hm" path="res://Scripts/match_manager.gd" id="1_lfh1j"]
 [ext_resource type="Script" uid="uid://du8l53udjwpp3" path="res://Scripts/arena.gd" id="2_jw32o"]
 [ext_resource type="Script" uid="uid://cwfynragtcdna" path="res://Scripts/game_manager.gd" id="5_pbw6q"]
+[ext_resource type="Resource" uid="uid://bdxnha6inkrda" path="res://Resources/TopStats/kamikaze_top.tres" id="7_erwvk"]
+[ext_resource type="Resource" uid="uid://d03bu307247xs" path="res://Resources/TopStats/speedboost_top.tres" id="8_2w5on"]
 [ext_resource type="Script" uid="uid://chlrxh3p2hvgi" path="res://Scripts/battle_camera.gd" id="11_frkhe"]
 [ext_resource type="Script" uid="uid://dijh5idgjhftf" path="res://Scripts/clash_sparks.gd" id="14_1p5hy"]
+[ext_resource type="Resource" uid="uid://xbkfk4vypo24" path="res://Resources/TopStats/defence_top.tres" id="14_h1m7h"]
 [ext_resource type="Resource" uid="uid://cyw1ponrlaltn" path="res://Resources/TopStats/stamina_top.tres" id="15_erwvk"]
 [ext_resource type="Script" uid="uid://tryrqifax2po" path="res://Scripts/gauge_panel.gd" id="15_h1m7h"]
 [ext_resource type="Script" uid="uid://bgsbswi4nujlb" path="res://Scripts/countdown_display.gd" id="16_2w5on"]
@@ -79,7 +82,7 @@ metadata/_custom_type_script = "uid://coqcr74hpq7hm"
 [node name="GameManager" type="Node" parent="MatchManager" unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
 script = ExtResource("5_pbw6q")
 arena = NodePath("../../Arena")
-tops = [NodePath("../../Att"), NodePath("../../Stam")]
+tops = [NodePath("../../Spe"), NodePath("../../Def")]
 intro = NodePath("../../IntroSequence")
 
 [node name="Arena" parent="." unique_id=1258390969 instance=ExtResource("1_kln2b")]
@@ -89,10 +92,23 @@ script = ExtResource("2_jw32o")
 
 [node name="Att" parent="." unique_id=2088087833 instance=ExtResource("16_346fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05456163, 0)
+visible = false
 stats = ExtResource("17_0sclb")
 
-[node name="Stam" parent="." unique_id=1632133170 instance=ExtResource("16_346fj")]
+[node name="Def" parent="." unique_id=1632133170 instance=ExtResource("16_346fj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05456163, 0)
+stats = ExtResource("14_h1m7h")
+
+[node name="Stam" parent="." unique_id=225021196 instance=ExtResource("16_346fj")]
+visible = false
 stats = ExtResource("15_erwvk")
+
+[node name="Kam" parent="." unique_id=1193440279 instance=ExtResource("16_346fj")]
+visible = false
+stats = ExtResource("7_erwvk")
+
+[node name="Spe" parent="." unique_id=1596799693 instance=ExtResource("16_346fj")]
+stats = ExtResource("8_2w5on")
 
 [node name="CameraRig" type="Node3D" parent="." unique_id=2087369725 node_paths=PackedStringArray("manager", "arena")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0646254, 0.109648645, -0.0709825)

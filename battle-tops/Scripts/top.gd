@@ -35,7 +35,7 @@ signal target_committed(top: Top, target: Top)
 signal knocked_out(top: Top)
 
 var current_state: State = State.INTRO
-var intent: Intent = Intent.CLOSING
+var intent: Intent = Intent.REPOSITIONING
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -104,7 +104,7 @@ var _last_surface_y := 0.0
 ## negate an attack and no matchup becomes unwinnable.
 @export_range(0.0, 1.0) var min_damage_frac = 0.7
 ## Closing speed that earns full momentum credit.
-@export var velo_reference = 3
+@export var velo_reference = 5
 ## Vertical knockback multiplier at full RPM — a top spinning fast is settled
 ## on its foot and resists being launched.
 @export var vertical_mult_high_rpm = 0.25
@@ -139,20 +139,20 @@ var spin_display_scale := 1.0
 ## RPM at which a top moves at full `move_speed`. Shared across fighters, so a
 ## top with more spin genuinely moves better — unlike rpm_ratio, which is
 ## self-relative and makes a high-RPM top at 10% as slow as a low-RPM one.
-@export var speed_ref_rpm = 2000.0
+@export var speed_ref_rpm = 4000.0
 ## Slowest a top can get, as a fraction of move_speed. Without a floor a
 ## nearly-spent top becomes unwatchable.
 @export_range(0.0, 1.0) var min_speed_frac = 0.05
 ## How much the approach arcs rather than charging straight in.
-@export_range(0.0, 1.5) var approach_curve = 0.5
-@export var approach_curve_range = 0.07
+@export_range(0.0, 1.5) var approach_curve = 0.75
+@export var approach_curve_range = 0.1
 ## Minimum gap to hold, as a multiple of combined radii. Applies regardless of
 ## intent so tops can never settle inside each other.
 @export var separation_factor = 1.05
 @export var separation_strength = 2.0
-@export var slope_scale := 30
+@export var slope_scale := 20
 ## Radius, as a fraction of the arena, beyond which a top counts as loitering.
-@export_range(0.0, 1.0) var loiter_radius_frac = 0.75
+@export_range(0.0, 1.0) var loiter_radius_frac = 0.7
 ## Seconds at the edge before the inward pull reaches full strength.
 @export var loiter_patience = 4
 ## Peak inward pull.
@@ -165,11 +165,11 @@ var spin_display_scale := 1.0
 @export_range(0.0, 1.0) var attack_reposition_chance = 0.6
 @export_range(0.0, 1.0) var recovery_reposition_chance = 0.8
 ## Duration range, before aggression scales it.
-@export var reposition_time_min = 0.4
-@export var reposition_time_max = 3
+@export var reposition_time_min = 0.5
+@export var reposition_time_max = 2
 ## Where it heads, as a fraction of the arena radius. Moderate, so it resets
 ## toward open space rather than to the rim or the dead centre.
-@export_range(0.0, 1.0) var reposition_radius_frac = 0.45
+@export_range(0.0, 1.0) var reposition_radius_frac = 0.4
 ## Angular scatter around the point opposite the opponent, in radians.
 @export var reposition_spread = 1.0
 ## How close counts as arrived.
@@ -216,13 +216,13 @@ var _reposition_dir = 1.0
 ## Seconds of lateral burst.
 @export var dodge_duration = 0.05
 ## Speed multiplier during the slip.
-@export var dodge_speed = 1.5
+@export var dodge_speed = 1.25
 ## Seconds before another dodge is possible, so it stays a moment.
 @export var dodge_cooldown_time = 1.5
 ## Seconds of counter-attack after a successful slip.
-@export var counter_duration = 0.45
+@export var counter_duration = 0.3
 ## Speed multiplier while countering.
-@export var counter_speed = 1.5
+@export var counter_speed = 2
 ## How far the slip angles backward along the opponent's approach rather than
 ## purely sideways. 0 is a pure sidestep; higher ends up behind the charge.
 @export_range(0.0, 1.5) var dodge_back_bias := 0.3
@@ -612,7 +612,7 @@ func _desired_velocity() -> Vector2:
 	
 	var ratio = (current_rpm / speed_ref_rpm)
 	if ratio < 1:
-		ratio = pow(ratio, 0.15)
+		ratio = pow(ratio, 0.3)
 	
 	var spin_factor = clamp(ratio, min_speed_frac, 5)
 
@@ -642,7 +642,7 @@ func _intent_velocity(speed: float) -> Vector2:
 	match intent:
 		Intent.CLOSING:
 			var tangent = Vector2(-toward.y, toward.x) * _arc_dir
-			var curve_amount = approach_curve * (1.0 - aggression * 0.5)
+			var curve_amount = approach_curve * (1.0 - aggression * 0.4)
 			curve_amount *= charge_curve if _committed else probe_curve
 			var curve = curve_amount * clamp(dist / max(approach_curve_range, 0.001), 0.0, 1.0)
 			var pace = charge_speed_mult if _committed else probe_speed
@@ -1080,7 +1080,7 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	
 	# Momentum: a charging top lands a full hit, a stationary or retreating one
 	# only glances. This is what makes aggression pay.
-	var momentum = clamp(velo_bonus / velo_reference, 0.4, 1.8)
+	var momentum = clamp(velo_bonus / velo_reference, 0.4, 3)
 
 	var momentum_mult = lerpf(min_momentum_mult, 1.0, momentum)
 	
