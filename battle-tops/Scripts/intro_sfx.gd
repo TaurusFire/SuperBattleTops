@@ -7,6 +7,12 @@ extends Node
 
 @export var intro: IntroSequence
 
+@export var stat_card: StatCard
+@export var star_ping: AudioStream
+@export var star_volume_db := -10.0
+## Each successive star pitches up, so a five-star row climbs.
+@export var star_pitch_step := 0.06
+
 @export_group('Clips')
 ## Played as a top swings in toward the camera.
 @export var whoosh: Array[AudioStream] = []
@@ -34,9 +40,11 @@ func _ready() -> void:
 
 	intro.top_approaching.connect(_on_approaching)
 	intro.top_departed.connect(_on_departed)
+	if stat_card != null:
+		stat_card.star_filled.connect(_on_star_filled)
 
-
-func _on_approaching(_top: Top, _index: int) -> void:
+func _on_approaching(top: Top, index: int) -> void:
+	print("whoosh for %s (index %d)" % [top.display_name(), index])
 	_play(whoosh, whoosh_volume_db)
 
 
@@ -52,4 +60,15 @@ func _play(set: Array[AudioStream], db: float) -> void:
 	p.stream = set[randi() % set.size()]
 	p.volume_db = db
 	p.pitch_scale = 1.0 + randf_range(-pitch_variance, pitch_variance)
+	p.play()
+
+
+func _on_star_filled(_row: int, star_index: int) -> void:
+	if star_ping == null:
+		return
+	var p: AudioStreamPlayer = _pool[_next]
+	_next = (_next + 1) % _pool.size()
+	p.stream = star_ping
+	p.volume_db = star_volume_db
+	p.pitch_scale = 1.0 + star_pitch_step * float(star_index - 1)
 	p.play()

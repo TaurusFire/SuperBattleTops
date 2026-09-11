@@ -1,9 +1,10 @@
 class_name StatCard
 extends Control
 
-## Shows a fighter's name and star ratings while it flies past the camera
-## during the intro. Listens to the sequencer rather than being driven by it,
-## so the 3D choreography and the 2D card stay separate.
+
+signal star_filled(row: int, star_index: int)
+
+var _announced_stars := {}
 
 @export var intro: IntroSequence
 @export var config: StatDisplayConfig
@@ -25,7 +26,7 @@ var _anchor = Vector2.ZERO
 @export var outline_size := 12
 @export var star_size := 40.0
 @export var star_gap := 6.0
-@export var star_filled := Color(1.0, 0.884, 0.515, 1.0)
+@export var star_fill := Color(1.0, 0.884, 0.515, 1.0)
 @export var star_empty := Color(0.28, 0.29, 0.33, 0.85)
 @export var star_outline := Color(1.0, 1.0, 1.0, 0.9)
 @export var label_colour := Color(0.88, 0.90, 0.94)
@@ -106,7 +107,18 @@ func _on_introduced(top: Top, index: int) -> void:
 	_right_side = (index % 2) == 1
 	_ratings = _rate_all(top)
 	_reveal_time = 0.0
-
+	
+	# Fired as each star lands rather than on a timer, so the audio tracks
+	# the animation even if the fill timings change.
+	for row_index in _ratings.size():
+		var row = _ratings[row_index]
+		var row_start = star_row_stagger * float(row_index)
+		var revealed = clamp((_reveal_time - row_start) / max(star_fill_time, 0.001), 0.0, 1.0) * row["stars"]
+		var landed = int(floor(revealed))
+		var key = row_index * 100 + landed
+		if landed > 0 and not _announced_stars.has(key):
+			_announced_stars[key] = true
+			star_filled.emit(row_index, landed)
 	# Captured once: the card marks where the top was when it reached the
 	# apex, rather than tracking it as it moves on.
 	_anchor = _compute_anchor(top)
@@ -235,7 +247,7 @@ func _draw_stars(at: Vector2, stars: float, max_stars: int, row_index: int) -> v
 			oc.a *= _alpha
 			_star(centre, r + star_outline_width, oc, min(portion, 1.0))
 
-		var col = star_filled.lerp(star_glow_colour, glow)
+		var col = star_fill.lerp(star_glow_colour, glow)
 		col.a *= _alpha
 		_star(centre, r, col, min(portion, 1.0))
 

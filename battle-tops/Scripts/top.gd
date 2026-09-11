@@ -95,16 +95,22 @@ var _last_surface_y := 0.0
 ## multiplier is centred on 1.0 so changing this never shifts the baseline.
 @export var dominance_influence = 0.2
 @export var dominance_vertical_bias = 1.00
-## What a stationary or retreating hit is worth relative to a full charge.
-@export var min_momentum_mult = 0.2
 ## Random scatter on knockback direction, in radians, scaled down by momentum
 ## so heavy hits stay decisive and glancing ones vary.
 @export var knockback_scatter = 1.2
 ## Floor on damage as a fraction of the raw hit, so defence can never fully
 ## negate an attack and no matchup becomes unwinnable.
 @export_range(0.0, 1.0) var min_damage_frac = 0.7
-## Closing speed that earns full momentum credit.
-@export var velo_reference = 5
+## Closing speed that earns full momentum credit. Should sit near the fastest
+## closing speed you actually see, or most hits saturate.
+@export var velo_reference = 2
+## What a stationary or retreating hit is worth.
+@export var min_momentum_mult = 0.25
+## What a full-speed charge is worth. Above 1 so committing genuinely pays.
+@export var momentum_max_mult = 1.5
+## Shape of the ramp. Above 1 keeps ordinary contact cheap and reserves the
+## top of the range for real charges.
+@export var momentum_curve = 1.5
 ## Vertical knockback multiplier at full RPM — a top spinning fast is settled
 ## on its foot and resists being launched.
 @export var vertical_mult_high_rpm = 0.25
@@ -273,7 +279,7 @@ var _committed = false
 @export var max_wobble_angle = 0.4
 ## RPM ratio below which wobble begins.
 @export var wobble_onset = 0.15
-@export var precession_rate = 6.28
+@export var precession_rate = 0.314
 
 @export_group('Topple')
 @export var topple_duration = 1.2
@@ -1080,9 +1086,9 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	
 	# Momentum: a charging top lands a full hit, a stationary or retreating one
 	# only glances. This is what makes aggression pay.
-	var momentum = clamp(velo_bonus / velo_reference, 0.4, 3)
-
-	var momentum_mult = lerpf(min_momentum_mult, 1.0, momentum)
+	var momentum = clamp(velo_bonus / velo_reference, 0.0, 1.0)
+	var momentum_mult = lerpf(min_momentum_mult, momentum_max_mult,
+		pow(momentum, momentum_curve))
 	
 	# --- Damage -----------------------------------------------------------
 	# Front-loaded: the exponent gives a high-RPM top a real early advantage

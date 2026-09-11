@@ -53,6 +53,7 @@
 [ext_resource type="AudioStream" uid="uid://dspuxlx3olo5r" path="res://Sounds/Voices/countdown_two_v3.wav" id="41_hpjjw"]
 [ext_resource type="AudioStream" uid="uid://coyijb1av16wl" path="res://Sounds/Voices/countdown_three_v2.wav" id="42_off7b"]
 [ext_resource type="AudioStream" uid="uid://c850k87jt8f1e" path="res://Sounds/Voices/countdown_go_v3.wav" id="43_lac6x"]
+[ext_resource type="AudioStream" uid="uid://6w4vyaarmujw" path="res://Sounds/star_fill_v2.wav" id="52_3133c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kln2b"]
 
@@ -331,9 +332,11 @@ beep_volume_db = -7.0
 go_beep_volume_db = -6.0
 metadata/_custom_type_script = "uid://dl5wa6iqjxkl3"
 
-[node name="IntroSfx" type="Node" parent="." unique_id=215950619 node_paths=PackedStringArray("intro")]
+[node name="IntroSfx" type="Node" parent="." unique_id=215950619 node_paths=PackedStringArray("intro", "stat_card")]
 script = ExtResource("37_btbly")
 intro = NodePath("../IntroSequence")
+stat_card = NodePath("../UI/StatCard")
+star_ping = ExtResource("52_3133c")
 whoosh = Array[AudioStream]([ExtResource("38_vs04g")])
 metadata/_custom_type_script = "uid://dpw8yxst6yi7c"
 
