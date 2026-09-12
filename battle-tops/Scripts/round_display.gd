@@ -14,7 +14,7 @@ extends BannerText
 @export var final_round_text := "FINAL ROUND"
 @export var show_final_text := true
 ## Skipped for round one, which already has the intro and countdown.
-@export var announce_first_round := false
+@export var announce_first_round := true
 
 @export_group("Round Colours")
 @export var round_top_colour := Color(0.96, 0.97, 1.0)

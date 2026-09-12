@@ -44,18 +44,19 @@ func _begin_round() -> void:
 	round_number += 1
 
 	if round_number == 1 and manager.intro != null:
-		round_starting.emit(round_number, scores)
 		manager.play_intro(first_countdown)
+		# Announced after the fly-in rather than before it: the banner belongs
+		# to the fight starting, not to the fighters arriving.
+		await manager.intro_complete
+		manager.start_round(first_countdown)
+		if round_display != null:
+			await round_display.dismissed
 		return
 
 	manager.prepare_round()
 	round_starting.emit(round_number, scores)
-
-	# The banner tells us when it's gone, rather than us guessing with a timer
-	# that has to be kept in step with its hold.
 	if round_display != null:
 		await round_display.dismissed
-
 	manager.start_round(later_countdown)
 
 
@@ -65,10 +66,9 @@ func _on_round_ended(winners: Array[Top]) -> void:
 		return
 		
 		
-	if winners.size() == 1:
-		for w in winners:
-			if scores.has(w):
-				scores[w] += 1
+	for w in winners:
+		if scores.has(w):
+			scores[w] += 1
 		
 	for top in scores:
 		if scores[top] >= rounds_to_win:
@@ -81,13 +81,13 @@ func _on_round_ended(winners: Array[Top]) -> void:
 
 	# Nobody there yet — but if no one can still reach the target, stop rather
 	# than playing out rounds that cannot change the outcome.
-	var remaining = (rounds_to_win * 2 - 1) - round_number
-	var best = 0
+	var at_target: Array[Top] = []
 	for top in scores:
-		best = max(best, scores[top])
-	if remaining <= 0:
+		if scores[top] >= rounds_to_win:
+			at_target.append(top)
+	if not at_target.is_empty():
 		_match_over = true
-		match_complete.emit(_leaders(), scores)
+		match_complete.emit(at_target, scores)
 		return
 
 	await get_tree().process_frame
@@ -105,6 +105,7 @@ func _on_round_ended(winners: Array[Top]) -> void:
 		await finish_display.dismissed
 
 	_begin_round()
+
 
 func would_end_match(winners: Array[Top]) -> bool:
 	for w in winners:

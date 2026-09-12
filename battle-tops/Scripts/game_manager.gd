@@ -1,19 +1,24 @@
 class_name GameManager
 extends Node
 
+signal intro_complete
 signal knockout_projected(top: Top, attacker: Top)
 signal round_ended(winners: Array[Top])
 signal round_settled
-var countdown_for_round := 3.0
+signal lethal_blow(victim: Top, attacker: Top)
 
+var countdown_for_round := 3.0
 
 @export var arena: Arena
 @export var tops: Array[Top]
-@export var intro: IntroSequence
 
 # collisions
 @export var collision_radius := 0.08
 @export var separation_radius := 0.11
+
+@export_group('Intro')
+@export var intro: IntroSequence
+@export var intro_hands_back := false
 
 # game over
 @export var slowmo_scale := 0.5
@@ -131,7 +136,10 @@ func play_intro(countdown_length := -1.0) -> void:
 	intro.begin()
 
 func _on_intro_finished() -> void:
-	_start_countdown()
+	if intro_hands_back:
+		intro_complete.emit()
+		return
+	start_round(_intro_countdown)
 
 func has_dying_tops() -> bool:
 	for t in tops:
@@ -240,6 +248,7 @@ func _check_deciding_blow(victim: Top, _attacker: Top) -> void:
 		return
 	if alive.size() > 2:
 		return
+	lethal_blow.emit(victim, _attacker)
 	_begin_deciding_slowmo()
 
 

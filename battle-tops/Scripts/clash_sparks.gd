@@ -67,7 +67,13 @@ func _ready() -> void:
 	
 	manager.collision_occurred.connect(_on_collision)
 	manager.knockout_projected.connect(_on_knockout_projected)
+	manager.lethal_blow.connect(_on_lethal_blow)
 
+
+func _on_lethal_blow(_victim: Top, _attacker: Top) -> void:
+	# Same flag as a projected knockout: a hit that empties a top's spin is as
+	# decisive as one that sends it out, and should look it.
+	_ko_pending = true
 
 func _make_process_material() -> ParticleProcessMaterial:
 	var m := ParticleProcessMaterial.new()
