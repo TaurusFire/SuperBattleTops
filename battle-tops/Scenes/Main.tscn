@@ -53,7 +53,9 @@
 [ext_resource type="AudioStream" uid="uid://dspuxlx3olo5r" path="res://Sounds/Voices/countdown_two_v3.wav" id="41_hpjjw"]
 [ext_resource type="AudioStream" uid="uid://coyijb1av16wl" path="res://Sounds/Voices/countdown_three_v2.wav" id="42_off7b"]
 [ext_resource type="AudioStream" uid="uid://c850k87jt8f1e" path="res://Sounds/Voices/countdown_go_v3.wav" id="43_lac6x"]
-[ext_resource type="AudioStream" uid="uid://6w4vyaarmujw" path="res://Sounds/star_fill_v2.wav" id="52_3133c"]
+[ext_resource type="AudioStream" uid="uid://bqhm8sap422ti" path="res://Sounds/star_blip_noise_v2.wav" id="52_3133c"]
+[ext_resource type="Script" uid="uid://bbcjchj8h670s" path="res://Scripts/surface_sfx.gd" id="55_js5gh"]
+[ext_resource type="AudioStream" uid="uid://ck5ty88tn6xtr" path="res://Sounds/wooden_scrape.wav" id="56_vvjo1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kln2b"]
 
@@ -83,7 +85,7 @@ metadata/_custom_type_script = "uid://coqcr74hpq7hm"
 [node name="GameManager" type="Node" parent="MatchManager" unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
 script = ExtResource("5_pbw6q")
 arena = NodePath("../../Arena")
-tops = [NodePath("../../Spe"), NodePath("../../Def")]
+tops = [NodePath("../../Att"), NodePath("../../Stam")]
 intro = NodePath("../../IntroSequence")
 
 [node name="Arena" parent="." unique_id=1258390969 instance=ExtResource("1_kln2b")]
@@ -93,15 +95,14 @@ script = ExtResource("2_jw32o")
 
 [node name="Att" parent="." unique_id=2088087833 instance=ExtResource("16_346fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05456163, 0)
-visible = false
 stats = ExtResource("17_0sclb")
 
 [node name="Def" parent="." unique_id=1632133170 instance=ExtResource("16_346fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05456163, 0)
+visible = false
 stats = ExtResource("14_h1m7h")
 
 [node name="Stam" parent="." unique_id=225021196 instance=ExtResource("16_346fj")]
-visible = false
 stats = ExtResource("15_erwvk")
 
 [node name="Kam" parent="." unique_id=1193440279 instance=ExtResource("16_346fj")]
@@ -109,6 +110,7 @@ visible = false
 stats = ExtResource("7_erwvk")
 
 [node name="Spe" parent="." unique_id=1596799693 instance=ExtResource("16_346fj")]
+visible = false
 stats = ExtResource("8_2w5on")
 
 [node name="CameraRig" type="Node3D" parent="." unique_id=2087369725 node_paths=PackedStringArray("manager", "arena")]
@@ -344,3 +346,10 @@ metadata/_custom_type_script = "uid://dpw8yxst6yi7c"
 script = ExtResource("40_6ehlx")
 manager = NodePath("../MatchManager/GameManager")
 metadata/_custom_type_script = "uid://q0wit3jk86o"
+
+[node name="SurfaceSfx" type="Node" parent="." unique_id=1803024477 node_paths=PackedStringArray("manager")]
+script = ExtResource("55_js5gh")
+manager = NodePath("../MatchManager/GameManager")
+surface_loop = ExtResource("56_vvjo1")
+quiet_db = -30.0
+metadata/_custom_type_script = "uid://bbcjchj8h670s"

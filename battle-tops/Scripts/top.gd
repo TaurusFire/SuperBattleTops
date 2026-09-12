@@ -93,7 +93,7 @@ var _last_surface_y := 0.0
 @export var vertical_fraction = 0.25
 ## How much the RPM advantage swings knockback. At 0 it's ignored; the
 ## multiplier is centred on 1.0 so changing this never shifts the baseline.
-@export var dominance_influence = 0.2
+@export var dominance_influence = 0.1
 @export var dominance_vertical_bias = 1.00
 ## Random scatter on knockback direction, in radians, scaled down by momentum
 ## so heavy hits stay decisive and glancing ones vary.
@@ -145,13 +145,13 @@ var spin_display_scale := 1.0
 ## RPM at which a top moves at full `move_speed`. Shared across fighters, so a
 ## top with more spin genuinely moves better — unlike rpm_ratio, which is
 ## self-relative and makes a high-RPM top at 10% as slow as a low-RPM one.
-@export var speed_ref_rpm = 4000.0
+@export var speed_ref_rpm = 1000.0
 ## Slowest a top can get, as a fraction of move_speed. Without a floor a
 ## nearly-spent top becomes unwatchable.
 @export_range(0.0, 1.0) var min_speed_frac = 0.05
 ## How much the approach arcs rather than charging straight in.
-@export_range(0.0, 1.5) var approach_curve = 0.75
-@export var approach_curve_range = 0.1
+@export_range(0.0, 1.5) var approach_curve =  1.0
+@export var approach_curve_range = 0.4
 ## Minimum gap to hold, as a multiple of combined radii. Applies regardless of
 ## intent so tops can never settle inside each other.
 @export var separation_factor = 1.05
@@ -297,12 +297,12 @@ var _committed = false
 ## Closing speed a hit needs to be combo-eligible.
 @export var combo_speed_threshold = 0.04
 ## Chance of the first extra hit, before aggression scales it.
-@export_range(0.0, 1.0) var combo_base_chance = 0.45
+@export_range(0.0, 1.0) var combo_base_chance = 0.4
 ## How much aggression moves that chance.
-@export_range(0.0, 1.0) var combo_aggression_weight = 0.6
+@export_range(0.0, 1.0) var combo_aggression_weight = 0.25
 ## Each additional hit multiplies the chance by this, so long combos are rare
 ## without a cap having to enforce it.
-@export_range(0.1, 1.0) var combo_chance_decay = 0.4
+@export_range(0.1, 1.0) var combo_chance_decay = 0.35
 @export var combo_max_hits = 5
 
 @export_subgroup('Rhythm')
@@ -319,7 +319,7 @@ var _committed = false
 
 @export_subgroup('Force')
 ## Damage multiplier on each intermediate hit.
-@export var combo_hit_damage = 0.5
+@export var combo_hit_damage = 0.25
 ## Knockback on intermediate hits. Near zero so the pair stay in place.
 @export_range(0.0, 1.0) var combo_hit_knockback = 0.05
 ## Damage and knockback multiplier on the finisher.
@@ -618,7 +618,7 @@ func _desired_velocity() -> Vector2:
 	
 	var ratio = (current_rpm / speed_ref_rpm)
 	if ratio < 1:
-		ratio = pow(ratio, 0.3)
+		ratio = pow(ratio, 0.4)
 	
 	var spin_factor = clamp(ratio, min_speed_frac, 5)
 
@@ -1201,7 +1201,6 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	
 	if ability is KamikazeAbility:
 		(ability as KamikazeAbility).on_hit_landed(self)
-		
 
 
 

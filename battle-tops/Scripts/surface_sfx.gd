@@ -9,8 +9,8 @@ extends Node
 ## Must be an imported audio file with Loop enabled in its Import tab.
 @export var surface_loop: AudioStream
 ## Speed at which the sound reaches full volume.
-@export var speed_reference := 2.0
-@export var quiet_db := -32.0
+@export var speed_reference := 0.5
+@export var quiet_db := -40.0
 @export var loud_db := -10.0
 ## How much the pitch rises with speed.
 @export var pitch_range := 0.35

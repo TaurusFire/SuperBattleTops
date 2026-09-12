@@ -107,18 +107,8 @@ func _on_introduced(top: Top, index: int) -> void:
 	_right_side = (index % 2) == 1
 	_ratings = _rate_all(top)
 	_reveal_time = 0.0
-	
-	# Fired as each star lands rather than on a timer, so the audio tracks
-	# the animation even if the fill timings change.
-	for row_index in _ratings.size():
-		var row = _ratings[row_index]
-		var row_start = star_row_stagger * float(row_index)
-		var revealed = clamp((_reveal_time - row_start) / max(star_fill_time, 0.001), 0.0, 1.0) * row["stars"]
-		var landed = int(floor(revealed))
-		var key = row_index * 100 + landed
-		if landed > 0 and not _announced_stars.has(key):
-			_announced_stars[key] = true
-			star_filled.emit(row_index, landed)
+	_announced_stars.clear()
+
 	# Captured once: the card marks where the top was when it reached the
 	# apex, rather than tracking it as it moves on.
 	_anchor = _compute_anchor(top)
@@ -172,7 +162,17 @@ func _process(delta: float) -> void:
 
 	if _target_alpha > 0.0:
 		_reveal_time += delta
-		
+
+	for row_index in _ratings.size():
+		var row = _ratings[row_index]
+		var row_start = star_row_stagger * float(row_index)
+		var revealed = clamp((_reveal_time - row_start) / max(star_fill_time, 0.001), 0.0, 1.0) * row["stars"]
+		var landed = int(floor(revealed))
+		var key = row_index * 100 + landed
+		if landed > 0 and not _announced_stars.has(key):
+			_announced_stars[key] = true
+			star_filled.emit(row_index, landed)
+	
 	if _alpha <= 0.001 and _top == null:
 		return
 	_layout()

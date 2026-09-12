@@ -9,9 +9,9 @@ extends Node
 
 @export var stat_card: StatCard
 @export var star_ping: AudioStream
-@export var star_volume_db := -10.0
+@export var star_volume_db := -15.0
 ## Each successive star pitches up, so a five-star row climbs.
-@export var star_pitch_step := 0.06
+@export var star_pitch_step := 0.2
 
 @export_group('Clips')
 ## Played as a top swings in toward the camera.
