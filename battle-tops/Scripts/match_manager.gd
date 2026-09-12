@@ -62,46 +62,36 @@ func _begin_round() -> void:
 
 
 func _on_round_ended(winners: Array[Top]) -> void:
-	print("[%d] round_ended handler entered" % Time.get_ticks_msec())
 	if _match_over:
 		return
-		
-		
+
 	for w in winners:
 		if scores.has(w):
 			scores[w] += 1
-		
-	for top in scores:
-		if scores[top] >= rounds_to_win:
-			_match_over = true
-			# Typed explicitly: an untyped array literal doesn't satisfy the
-			# signal's Array[Top] parameter, and Godot drops the call silently
-			# rather than erroring.
-			match_complete.emit(winners, scores)
-			return
 
-	# Nobody there yet — but if no one can still reach the target, stop rather
-	# than playing out rounds that cannot change the outcome.
+	# Who has reached the target, not who won the round — a drawn round
+	# advances both fighters but only one of them may be at match point.
 	var at_target: Array[Top] = []
 	for top in scores:
 		if scores[top] >= rounds_to_win:
 			at_target.append(top)
+
 	if not at_target.is_empty():
 		_match_over = true
 		match_complete.emit(at_target, scores)
 		return
 
-	await get_tree().process_frame
+	var remaining = (rounds_to_win * 2 - 1) - round_number
+	if remaining <= 0:
+		_match_over = true
+		match_complete.emit(_leaders(), scores)
+		return
 
-	print("[%d] settle check: %s" % [Time.get_ticks_msec(),
-		str(manager.tops.map(func(t): return t.current_state))])
+	await get_tree().process_frame
 	if manager.has_dying_tops():
 		await manager.round_settled
-		# Resuming from an await runs synchronously inside the emit, so the
-		# remaining handlers of that same signal haven't run yet — including
-		# the finish banner's. A frame's wait lets the emission finish before
-		# we reset the arena out from under it.
 		await get_tree().process_frame
+
 	if finish_display != null and finish_display.visible:
 		await finish_display.dismissed
 

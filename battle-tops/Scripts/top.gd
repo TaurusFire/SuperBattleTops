@@ -88,12 +88,13 @@ var _last_surface_y := 0.0
 
 @export_group('Combat')
 ## Reference RPM the power curves are measured against.
-@export var ref_rpm = 6000.0
+@export var ref_rpm = 2000
+@export var kb_ref_rpm = 3000
 ## Fraction of knockback converted to an upward hop.
 @export var vertical_fraction = 0.25
 ## How much the RPM advantage swings knockback. At 0 it's ignored; the
 ## multiplier is centred on 1.0 so changing this never shifts the baseline.
-@export var dominance_influence = 0.1
+@export var dominance_influence = 0.15
 @export var dominance_vertical_bias = 1.00
 ## Random scatter on knockback direction, in radians, scaled down by momentum
 ## so heavy hits stay decisive and glancing ones vary.
@@ -118,7 +119,7 @@ var _last_surface_y := 0.0
 @export var vertical_mult_low_rpm = 1.5
 ## Shape of the transition. Below 1 the rise starts early and eases in; above
 ## 1 it stays low through most of the match then climbs sharply near death.
-@export var vertical_mult_curve = 1.1
+@export var vertical_mult_curve = 1.2
 @export_range(0.0, 1.0) var attacker_recoil = 0.4
 
 @export_group('RPM')
@@ -220,15 +221,15 @@ var _reposition_dir = 1.0
 ## approaches; higher demands a dead-straight charge.
 @export var dodge_alignment = 0.6
 ## Seconds of lateral burst.
-@export var dodge_duration = 0.05
+@export var dodge_duration = 0.03
 ## Speed multiplier during the slip.
-@export var dodge_speed = 1.25
+@export var dodge_speed = 1.5
 ## Seconds before another dodge is possible, so it stays a moment.
 @export var dodge_cooldown_time = 1.5
 ## Seconds of counter-attack after a successful slip.
-@export var counter_duration = 0.3
+@export var counter_duration = 0.15
 ## Speed multiplier while countering.
-@export var counter_speed = 2
+@export var counter_speed = 3
 ## How far the slip angles backward along the opponent's approach rather than
 ## purely sideways. 0 is a pure sidestep; higher ends up behind the charge.
 @export_range(0.0, 1.5) var dodge_back_bias := 0.3
@@ -618,7 +619,7 @@ func _desired_velocity() -> Vector2:
 	
 	var ratio = (current_rpm / speed_ref_rpm)
 	if ratio < 1:
-		ratio = pow(ratio, 0.4)
+		ratio = pow(ratio, 0.2)
 	
 	var spin_factor = clamp(ratio, min_speed_frac, 5)
 
@@ -1091,10 +1092,12 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 		pow(momentum, momentum_curve))
 	
 	# --- Damage -----------------------------------------------------------
-	# Front-loaded: the exponent gives a high-RPM top a real early advantage
-	# without collapsing damage to nothing at the tail.
-	var power = pow((attack_rpm + ref_rpm + 2000) / ref_rpm, 1)
-	
+
+
+	var att_ratio = min(current_rpm / ref_rpm, 1.5)
+	var power = att_ratio
+	if power < 1:
+		power = pow(power, 0.2)
 	# Intermediate hits chip and hold position; the finisher carries the whole
 	# flurry's force. Known in advance because the length was rolled up front.
 	var in_combo = _combo_remaining > 0
@@ -1131,7 +1134,16 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	# --- Knockback --------------------------------------------------------
 	# Its own, flatter power curve: knockback is the spectacle, and shouldn't
 	# collapse late the way damage does.
-	var kb_power = (attack_rpm + ref_rpm + 3000) / ref_rpm
+	
+	var kb_power = (current_rpm + kb_ref_rpm + 2000) / kb_ref_rpm
+	att_ratio = current_rpm / kb_ref_rpm
+	if att_ratio < 1:
+		kb_power = pow(kb_power, 0.95)
+
+	#var kb_power = att_ratio
+	#if att_ratio < 1:
+		#kb_power = pow(att_ratio, 0.1)
+	
 	var total_rpm = attack_rpm + opponent.current_rpm
 	var dominance = attack_rpm / total_rpm if total_rpm > 0.0 else 0.5
 	var dominance_mult = 1.0 + (dominance - 0.5) * 2.0 * dominance_influence
@@ -1149,7 +1161,7 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	vert_bias *= 1.0 + (dominance - 0.5) * 2.0 * dominance_vertical_bias
 	vert_bias = max(vert_bias, 0.4)
 	
-	var base_term = base_knockback * pow(kb_power, 0.5) * weight_factor * 0.75
+	var base_term = base_knockback * kb_power * weight_factor * 0.75
 	var applied = base_term * dominance_mult * momentum_mult * strike
 	
 	if in_combo:
@@ -1159,7 +1171,7 @@ func attack(opponent: Top, velo_bonus: float) -> void:
 	#print(
 		#"\nAttacker: ", self.display_name(),
 		#"\nVelocity: ", self._velocity.length(),
-		#"\nKB Power: ", kb_power,
+		#"\nKB Power: ", power,
 		#"\nMomentum: ", momentum,
 		#"\nMomentum Mult: ", momentum_mult,
 		#"\nDominance Mult: ", dominance_mult,
@@ -1217,7 +1229,7 @@ func _receive_kb(knockback: float, dir: Vector2, vertical_bias := 1.0, attacker:
 	knockback = knockback / (20 * (weight / 0.17))
 
 	# Lower RPM means a top less settled on its foot, so it pops higher.
-	var stability = pow(clamp(current_rpm/1500, 0.0, 1.1), vertical_mult_curve)
+	var stability = pow(clamp(current_rpm/2000, 0.0, 1.5), vertical_mult_curve)
 	var vert_mult = lerpf(vertical_mult_low_rpm, vertical_mult_high_rpm, stability)
 	if vertical_bias <= 0.0:
 		_velocity += dir * knockback

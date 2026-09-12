@@ -7,7 +7,6 @@ extends Node
 
 @export var match_manager: MatchManager
 @export var manager: GameManager
-@export var bell_at_start := true
 
 @export_group('Clash Sounds')
 ## Ordered from weakest to strongest. The hit's strength picks a position in
@@ -23,8 +22,8 @@ extends Node
 @export var knockback_weight := 0.65
 
 @export_group('References')
-@export var knockback_reference := 50.0
-@export var damage_reference := 110.0
+@export var knockback_reference := 40.0
+@export var damage_reference := 80.0
 @export_range(0.3, 2.0) var clash_curve := 0.5
 
 @export_group('Wall')
@@ -65,19 +64,18 @@ var _next := 0
 ## Delay so the call lands as the top clears the rim rather than racing it.
 @export var ko_call_delay := 0.00
 @export var voice_pitch := 1
-## Rings under the K.O. call. A bell has a long tail, so it needs its own
-## player — sharing with the voice would have each cut the other off.
-@export var finish_bell: AudioStream
-@export var finish_bell_volume_db := -3.0
-## Delay relative to the call. Slightly ahead reads as the bell triggering the
-## announcement rather than echoing it.
-@export var finish_bell_delay := 0.0
+
 
 @export_group('Finish')
 ## Called when the last top spins out rather than being knocked out.
 @export var game_call: AudioStream
 @export var game_call_volume_db := 0.0
 @export var game_call_delay := 0.25
+## Two dings marking the end of a round — distinct from the round-start gong,
+## so a viewer can tell a beginning from an ending without watching.
+@export var finish_dings: AudioStream
+@export var finish_dings_volume_db := -3.0
+
 
 var _game_player: AudioStreamPlayer
 var _bell_player: AudioStreamPlayer
@@ -125,11 +123,6 @@ func _ready() -> void:
 func _on_round_starting(round_number: int, _scores: Dictionary) -> void:
 	_finish_called = false
 	_knocked_out.clear()
-
-	# Only the opening round: a bell before every round would dilute the one
-	# that ends the match.
-	if bell_at_start and round_number == 1:
-		_ring_bell()
 
 func _on_stopped(top: Top) -> void:
 	# entered_dying also fires for knockouts, which have their own call.
@@ -251,10 +244,10 @@ func _on_knockout_projected(_top: Top, _attacker: Top) -> void:
 	await _doom_tween.finished
 	_doom_player.stop()
 	_doom_player.volume_db = doom_volume_db
-	
+
 func _ring_bell() -> void:
-	if finish_bell == null:
+	if finish_dings == null:
 		return
-	_bell_player.stream = finish_bell
-	_bell_player.volume_db = finish_bell_volume_db
+	_bell_player.stream = finish_dings
+	_bell_player.volume_db = finish_dings_volume_db
 	_bell_player.play()

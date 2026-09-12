@@ -7,7 +7,7 @@ extends BannerText
 @export_group("Round")
 @export var match_manager: MatchManager
 @export var round_font_size := 130
-@export var round_hold := 1.0
+@export var round_hold := 2.5
 ## Shown instead of the number when it's the decider. A "FINAL ROUND" card
 ## does more for retention than "ROUND 3" — it tells the viewer this one
 ## settles it.

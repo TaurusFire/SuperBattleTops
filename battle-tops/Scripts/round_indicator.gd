@@ -65,13 +65,15 @@ func _configure(l: Label) -> void:
 
 
 func _on_round_starting(round_number: int, _scores: Dictionary) -> void:
-	# A single-round match has no series to place this round within.
 	if match_manager.rounds_to_win <= 1:
 		return
 	var txt = "%s%d" % [prefix, round_number]
 	_label.text = txt
 	_label_outline.text = txt
 	visible = true
+	# Positioned immediately: _process only lays out from the next frame, so
+	# the labels would otherwise flash at the top-left corner first.
+	_layout()
 
 
 func _on_match_complete(_winners: Array[Top], _scores: Dictionary) -> void:
@@ -81,8 +83,14 @@ func _on_match_complete(_winners: Array[Top], _scores: Dictionary) -> void:
 func _process(_delta: float) -> void:
 	if not visible:
 		return
+	_layout()
+
+func _layout() -> void:
 	var rect = Vector2(size.x, float(font_size) * 1.5)
-	var pos = Vector2(0.0, size.y * anchor_position.y - rect.y * 0.5)
+	var pos = Vector2(
+		size.x * (anchor_position.x - 0.5),
+		size.y * anchor_position.y - rect.y * 0.5
+	)
 	for l in [_label, _label_outline]:
 		l.size = rect
 		l.position = pos
@@ -90,5 +98,6 @@ func _process(_delta: float) -> void:
 	if _label.material is ShaderMaterial:
 		var m: ShaderMaterial = _label.material
 		var glyph_h = float(font_size)
-		m.set_shader_parameter("rect_top", _label.global_position.y + rect.y * 0.5 - glyph_h * 0.5)
+		m.set_shader_parameter("rect_top",
+			_label.global_position.y + rect.y * 0.5 - glyph_h * 0.5)
 		m.set_shader_parameter("rect_height", maxf(glyph_h, 1.0))

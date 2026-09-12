@@ -56,6 +56,11 @@
 [ext_resource type="AudioStream" uid="uid://bqhm8sap422ti" path="res://Sounds/star_blip_noise_v2.wav" id="52_3133c"]
 [ext_resource type="Script" uid="uid://bbcjchj8h670s" path="res://Scripts/surface_sfx.gd" id="55_js5gh"]
 [ext_resource type="AudioStream" uid="uid://ck5ty88tn6xtr" path="res://Sounds/wooden_scrape.wav" id="56_vvjo1"]
+[ext_resource type="Script" uid="uid://6318g81vquvm" path="res://Scripts/round_sfx.gd" id="57_81ldr"]
+[ext_resource type="AudioStream" uid="uid://bw5ovrf8f7yvc" path="res://Sounds/gong.wav" id="58_eywpa"]
+[ext_resource type="AudioStream" uid="uid://3ifu7pxxphg3" path="res://Sounds/Voices/round_one.wav" id="59_j7e3e"]
+[ext_resource type="AudioStream" uid="uid://elobgyerrjyj" path="res://Sounds/Voices/round_two.wav" id="60_y2ulj"]
+[ext_resource type="AudioStream" uid="uid://cyl0nduc2tfuq" path="res://Sounds/Voices/final_round.wav" id="61_t3x2a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kln2b"]
 
@@ -85,7 +90,7 @@ metadata/_custom_type_script = "uid://coqcr74hpq7hm"
 [node name="GameManager" type="Node" parent="MatchManager" unique_id=1117798205 node_paths=PackedStringArray("arena", "tops", "intro")]
 script = ExtResource("5_pbw6q")
 arena = NodePath("../../Arena")
-tops = [NodePath("../../Att"), NodePath("../../Stam")]
+tops = [NodePath("../../Stam"), NodePath("../../Def"), NodePath("../../Att")]
 intro = NodePath("../../IntroSequence")
 
 [node name="Arena" parent="." unique_id=1258390969 instance=ExtResource("1_kln2b")]
@@ -99,7 +104,6 @@ stats = ExtResource("17_0sclb")
 
 [node name="Def" parent="." unique_id=1632133170 instance=ExtResource("16_346fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05456163, 0)
-visible = false
 stats = ExtResource("14_h1m7h")
 
 [node name="Stam" parent="." unique_id=225021196 instance=ExtResource("16_346fj")]
@@ -316,11 +320,9 @@ doom_sting = ExtResource("34_utia5")
 ko_call = ExtResource("37_lac6x")
 ko_call_volume_db = -10
 ko_call_delay = 0.3
-finish_bell = ExtResource("38_off7b")
-finish_bell_volume_db = -10.0
-finish_bell_delay = 0.25
 game_call = ExtResource("39_off7b")
 game_call_delay = 0.3
+finish_dings = ExtResource("38_off7b")
 metadata/_custom_type_script = "uid://dcgiv3nc2u51b"
 
 [node name="CountdownSfx" type="Node" parent="." unique_id=1937449196 node_paths=PackedStringArray("manager")]
@@ -351,5 +353,14 @@ metadata/_custom_type_script = "uid://q0wit3jk86o"
 script = ExtResource("55_js5gh")
 manager = NodePath("../MatchManager/GameManager")
 surface_loop = ExtResource("56_vvjo1")
-quiet_db = -30.0
+loud_db = -15.0
+responsiveness = 8.0
 metadata/_custom_type_script = "uid://bbcjchj8h670s"
+
+[node name="RoundSfx" type="Node" parent="." unique_id=1213588989 node_paths=PackedStringArray("match_manager")]
+script = ExtResource("57_81ldr")
+match_manager = NodePath("../MatchManager")
+round_gong = ExtResource("58_eywpa")
+round_voices = Array[AudioStream]([null, ExtResource("59_j7e3e"), ExtResource("60_y2ulj")])
+final_round_voice = ExtResource("61_t3x2a")
+metadata/_custom_type_script = "uid://6318g81vquvm"

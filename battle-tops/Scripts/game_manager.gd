@@ -25,7 +25,7 @@ var countdown_for_round := 3.0
 
 @export_group('Hitstop')
 @export var hitstop_max_duration := 0.08
-@export var hitstop_reference_damage := 75
+@export var hitstop_reference_damage := 60
 @export var hitstop_reference_knockback := 20
 @export var hitstop_min_duration := 0.02
 @export var hitstop_threshold := 0.4
@@ -99,9 +99,13 @@ func _ready() -> void:
 		top.manager = self
 	
 	if tops.size() == 3:
-		hitstop_max_duration = 0.04
+		hitstop_combo_step = 0.2
 	elif tops.size() >= 4:
-		hitstop_max_duration = 0.02
+		hitstop_combo_step = 0.1
+		
+	if get_parent().has_method("register_manager"):
+		intro_hands_back = true
+		return
 	
 	# The match manager drives us if one is present; otherwise run standalone.
 	if get_parent().has_method("register_manager"):
@@ -371,6 +375,11 @@ func _trigger_hitstop(damage: float, knockback: float, combo_depth = 0) -> void:
 	
 	var shaped := pow(clamp(strength, 0.0, hitstop_overrun), hitstop_curve)
 	var duration := hitstop_max_duration * shaped
+	
+	if tops.size() == 3:
+		duration = max(duration, 0.02)
+	elif tops.size() >= 4:
+		duration = max(duration, 0.01)
 	
 	duration *= 1.0 + hitstop_combo_step * float(combo_depth)
 	_hitstop_end_msec = Time.get_ticks_msec() + int(duration * 1000.0)
