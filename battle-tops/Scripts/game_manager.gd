@@ -130,6 +130,9 @@ func start_round(countdown_length: float) -> void:
 func play_intro(countdown_length := -1.0) -> void:
 	_intro_countdown = countdown_length if countdown_length > 0.0 else countdown_seconds
 	_arrange_tops()
+	# The intro flies the tops to these exact marks, so the round must not
+	# re-arrange them out from under it.
+	_round_prepared = true
 	phase = Phase.INTRO
 	if not intro.finished.is_connected(_on_intro_finished):
 		intro.finished.connect(_on_intro_finished)

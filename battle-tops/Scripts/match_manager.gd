@@ -48,9 +48,10 @@ func _begin_round() -> void:
 		# Announced after the fly-in rather than before it: the banner belongs
 		# to the fight starting, not to the fighters arriving.
 		await manager.intro_complete
-		manager.start_round(first_countdown)
+		round_starting.emit(round_number, scores)
 		if round_display != null:
 			await round_display.dismissed
+		manager.start_round(first_countdown)
 		return
 
 	manager.prepare_round()
